@@ -35,7 +35,7 @@ if (!function_exists('escapeHtmlAttr')) {
         return $escape->escapeHtmlAttr($string);
     }
 }
-if (!function_exists('escapeHtmlAttr')) {
+if (!function_exists('escapeJs')) {
     /**
      * Function escapeJs
      *
@@ -71,7 +71,7 @@ if (!function_exists('escapeCss')) {
         return $escape->escapeCss($string);
     }
 }
-if (!function_exists('escapeCss')) {
+if (!function_exists('escapeUrl')) {
     /**
      * Function escapeUrl
      *
