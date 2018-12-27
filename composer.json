@@ -37,7 +37,8 @@
             "src/helpers/escape_helper.php",
             "src/helpers/json_helper.php",
             "src/helpers/ip_helper.php",
-            "src/helpers/assets_helper.php"
+            "src/helpers/assets_helper.php",
+            "src/helpers/form_helper.php"
         ]
     }
 }
