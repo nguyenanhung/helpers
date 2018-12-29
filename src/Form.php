@@ -38,7 +38,7 @@ class Form
 
         // TODO: CSRF
 
-        return "<form action=\"{$action}\"" . Html::attributes($attributes) . '>';
+        return "<form action=\"{$action}\"" . HTML::attributes($attributes) . '>';
     }
 
     /**
@@ -221,7 +221,7 @@ class Form
             $checkBoxes[] = HTML::tag(
                 'label',
                 $labelAttributes,
-                Form::checkBox("{$name}[]", in_array($value, $checked, TRUE), $value, array(), FALSE) . Html::escape($label),
+                Form::checkBox("{$name}[]", in_array($value, $checked, TRUE), $value, array(), FALSE) . HTML::escape($label),
                 FALSE
             );
         }
@@ -273,7 +273,7 @@ class Form
             $radioButtons[] = HTML::tag(
                 'label',
                 $labelAttributes,
-                Form::radio($name, $value, $value === $checked) . Html::escape($label),
+                Form::radio($name, $value, $value === $checked) . HTML::escape($label),
                 FALSE
             );
         }
@@ -344,7 +344,7 @@ class Form
     public static function option($value, $label, $selected)
     {
         // Special handling of option tag contents to enable indentation with &nbsp;
-        $label = str_replace('&amp;nbsp;', '&nbsp;', Html::escape($label));
+        $label = str_replace('&amp;nbsp;', '&nbsp;', HTML::escape($label));
 
         return HTML::tag(
             'option',
