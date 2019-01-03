@@ -6,37 +6,6 @@
  * Date: 2018-12-27
  * Time: 23:03
  */
-if (!function_exists('form_open')) {
-    /**
-     * Function form_open
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-27 23:06
-     *
-     * @param string $action
-     * @param array  $attributes
-     *
-     * @return string
-     */
-    function form_open($action = '', array $attributes = array())
-    {
-        return \nguyenanhung\Classes\Helper\Form::open($action, $attributes);
-    }
-}
-if (!function_exists('form_close')) {
-    /**
-     * Function form_close
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-27 23:06
-     *
-     * @return string
-     */
-    function form_close()
-    {
-        return \nguyenanhung\Classes\Helper\Form::close();
-    }
-}
 if (!function_exists('form_label')) {
     /**
      * Creates a label for an input
