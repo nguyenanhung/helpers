@@ -84,3 +84,25 @@ if (!function_exists('xml_convert')) {
         return $str;
     }
 }
+if (!function_exists('parse_sitemap')) {
+    /**
+     * Function parse_sitemap
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 2019-03-25 14:30
+     *
+     * @param string $loc
+     * @param string $lastmod
+     * @param string $type
+     * @param string $newline
+     *
+     * @return string
+     */
+    function parse_sitemap($loc = '', $lastmod = '', $type = 'property', $newline = "\n")
+    {
+        $common = new \nguyenanhung\Classes\Helper\Common();
+        $result = $common->sitemapParse($loc, $lastmod, $type, $newline);
+
+        return $result;
+    }
+}

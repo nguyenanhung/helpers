@@ -38,7 +38,11 @@
             "src/helpers/json_helper.php",
             "src/helpers/ip_helper.php",
             "src/helpers/assets_helper.php",
-            "src/helpers/form_helper.php"
+            "src/helpers/form_helper.php",
+            "src/helpers/pagination_helper.php",
+            "src/helpers/date_helper.php",
+            "src/helpers/seo_helper.php",
+            "src/helpers/html_helper.php"
         ]
     }
 }
