@@ -6,9 +6,9 @@
  * Date: 11/6/18
  * Time: 09:07
  */
-return [
+return array(
     'separator'     => '-',
-    'vn_array'      => [
+    'vn_array'      => array(
         "à",
         "á",
         "ạ",
@@ -173,8 +173,8 @@ return [
         "Y",
         "Z",
         "W"
-    ],
-    'en_array'      => [
+    ),
+    'en_array'      => array(
         "a",
         "a",
         "a",
@@ -339,8 +339,8 @@ return [
         "y",
         "z",
         "w"
-    ],
-    'special_array' => [
+    ),
+    'special_array' => array(
         ',',
         ';',
         '\'',
@@ -375,8 +375,8 @@ return [
         '”',
         '’',
         '‘'
-    ],
-    'ascii_array'   => [
+    ),
+    'ascii_array'   => array(
         '&#225;',
         '&#224;',
         '&#7843;',
@@ -511,8 +511,8 @@ return [
         '&#7926;',
         '&#7928;',
         '&#7924;' // Y' Y`..
-    ],
-    'utf8_array'    => [
+    ),
+    'utf8_array'    => array(
         'á',
         'à',
         'ả',
@@ -649,8 +649,9 @@ return [
         'Ỷ',
         'Ỹ',
         'Ỵ' // Y' Y`..
-    ],
-    'normal_array'  => [
+    ),
+    'normal_array'  => array(
+
         'a',
         'a',
         'a',
@@ -785,5 +786,5 @@ return [
         'Y',
         'Y',
         'Y'
-    ],
-];
+    )
+);
