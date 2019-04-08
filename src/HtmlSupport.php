@@ -39,7 +39,7 @@ if (!trait_exists('nguyenanhung\Classes\Helper\HtmlSupport')) {
                 } elseif ($previous->$id < $current->$id) {
                     $style = "<b style='color: blue'>" . number_format($current->$id) . "</b>";
                 } else {
-                    $style = "<b style='color: orange'>" . number_format($current->$id) . "</b>";
+                    $style = "<b style='color: black'>" . number_format($current->$id) . "</b>";
                 }
             } else {
                 $style = "<b style='color: green'>" . number_format($current->$id) . "</b>";
