@@ -108,7 +108,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
         /**
          * Set the template from the table config file if it exists
          *
-         * @param    array $config (default: array())
+         * @param array $config (default: array())
          *
          * @return    void
          */
@@ -125,7 +125,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
         /**
          * Set the template
          *
-         * @param    array $template
+         * @param array $template
          *
          * @return    bool
          */
@@ -147,7 +147,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * Can be passed as an array or discreet params
          *
-         * @param    mixed
+         * @param mixed
          *
          * @return    Table
          */
@@ -166,8 +166,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          * columns. This allows a single array with many elements to be
          * displayed in a table that has a fixed column count.
          *
-         * @param    array $array
-         * @param    int   $col_limit
+         * @param array $array
+         * @param int   $col_limit
          *
          * @return    array|bool
          */
@@ -209,7 +209,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * Can be passed as an array or discreet params
          *
-         * @param    mixed $value
+         * @param mixed $value
          *
          * @return    Table
          */
@@ -227,7 +227,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * Can be passed as an array or discreet params
          *
-         * @param    mixed
+         * @param mixed
          *
          * @return    Table
          */
@@ -245,7 +245,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * Ensures a standard associative array format for all cell data
          *
-         * @param    array
+         * @param array
          *
          * @return    array
          */
@@ -270,7 +270,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
         /**
          * Add a table caption
          *
-         * @param    string $caption
+         * @param string $caption
          *
          * @return    Table
          */
@@ -286,7 +286,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
         /**
          * Generate the table
          *
-         * @param    mixed $table_data
+         * @param mixed $table_data
          *
          * @return    string
          */
@@ -416,7 +416,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
         /**
          * Set table data from a database result object
          *
-         * @param    object $object Database result object
+         * @param object $object Database result object
          *
          * @return    void
          */
@@ -437,7 +437,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
         /**
          * Set table data from an array
          *
-         * @param    array $data
+         * @param array $data
          *
          * @return    void
          */
@@ -487,32 +487,25 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
         protected function _default_template()
         {
             return array(
-                'table_open' => '<table border="0" cellpadding="4" cellspacing="0">',
-
-                'thead_open'  => '<thead>',
-                'thead_close' => '</thead>',
-
+                'table_open'         => '<table border="0" cellpadding="4" cellspacing="0">',
+                'thead_open'         => '<thead>',
+                'thead_close'        => '</thead>',
                 'heading_row_start'  => '<tr>',
                 'heading_row_end'    => '</tr>',
                 'heading_cell_start' => '<th>',
                 'heading_cell_end'   => '</th>',
-
-                'tbody_open'  => '<tbody>',
-                'tbody_close' => '</tbody>',
-
-                'row_start'  => '<tr>',
-                'row_end'    => '</tr>',
-                'cell_start' => '<td>',
-                'cell_end'   => '</td>',
-
-                'row_alt_start'  => '<tr>',
-                'row_alt_end'    => '</tr>',
-                'cell_alt_start' => '<td>',
-                'cell_alt_end'   => '</td>',
-
-                'table_close' => '</table>'
+                'tbody_open'         => '<tbody>',
+                'tbody_close'        => '</tbody>',
+                'row_start'          => '<tr>',
+                'row_end'            => '</tr>',
+                'cell_start'         => '<td>',
+                'cell_end'           => '</td>',
+                'row_alt_start'      => '<tr>',
+                'row_alt_end'        => '</tr>',
+                'cell_alt_start'     => '<td>',
+                'cell_alt_end'       => '</td>',
+                'table_close'        => '</table>'
             );
         }
-
     }
 }

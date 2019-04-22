@@ -24,15 +24,15 @@ if (!class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
         /**
          * Function mailLink
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 11/23/18 08:58
-         *
          * @param string $mailto
          * @param string $cc
          * @param string $subject
          * @param string $body
          *
          * @return string
+         *
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/23/18 08:58
          *
          * @see   https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/MailLinks/MailLinks.html
          */
@@ -58,12 +58,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
         /**
          * Function phoneLink
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 11/23/18 08:59
-         *
          * @param string $phone_number
          *
          * @return string
+         *
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/23/18 08:59
          *
          * @see   https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/PhoneLinks/PhoneLinks.html
          */
@@ -75,12 +75,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
         /**
          * Function faceTimeVideo
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 11/23/18 09:01
-         *
          * @param string $username
          *
          * @return string
+         *
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/23/18 09:01
          *
          * @see   https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/FacetimeLinks/FacetimeLinks.html
          */
@@ -92,12 +92,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
         /**
          * Function FaceTimeAudioLink
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 11/23/18 09:02
-         *
          * @param string $username
          *
          * @return string
+         *
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/23/18 09:02
          *
          * @see   https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/FacetimeLinks/FacetimeLinks.html
          */
@@ -109,13 +109,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
         /**
          * Function smsLink
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 11/23/18 09:05
-         *
          * @param string $phone_number
          * @param string $body
          *
          * @return string
+         *
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/23/18 09:05
          *
          * @see   https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/SMSLinks/SMSLinks.html
          */

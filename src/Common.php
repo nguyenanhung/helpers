@@ -9,6 +9,8 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use Carbon\Carbon;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
     /**
      * Class Common
@@ -25,12 +27,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function isEmpty
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:00
-         *
          * @param string $input
          *
          * @return bool
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:00
+         *
          */
         public function isEmpty($input = '')
         {
@@ -45,13 +47,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function arrayToObject
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 10:57
-         *
          * @param array $array
          * @param bool  $str_to_lower
          *
          * @return array|bool|\stdClass
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 10:57
+         *
          */
         public function arrayToObject($array = [], $str_to_lower = FALSE)
         {
@@ -79,12 +81,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function objectToArray
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 10:58
-         *
          * @param string $object
          *
          * @return false|mixed|string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 10:58
+         *
          */
         public function objectToArray($object = '')
         {
@@ -100,13 +102,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function jsonItem
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:08
-         *
          * @param string $json_string
          * @param string $item_output
          *
          * @return null|string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:08
+         *
          */
         public function jsonItem($json_string = '', $item_output = '')
         {
@@ -124,12 +126,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function isJson
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 09:39
-         *
          * @param string $json
          *
          * @return bool TRUE or FALSE
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 10/13/18 09:39
+         *
          */
         public function isJson($json = '')
         {
@@ -144,12 +146,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function arrayQuickSort
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:47
-         *
          * @param array $array
          *
          * @return array
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:47
+         *
          */
         public function arrayQuickSort($array = [])
         {
@@ -183,14 +185,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function zuluTime
          *
+         * @return mixed|string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 2018-12-15 02:56
          *
-         * @return mixed|string
          */
         public function zuluTime()
         {
-            $time = new \Carbon\Carbon();
+            $time = new Carbon();
 
             return $time->toIso8601ZuluString();
         }
@@ -198,13 +200,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Create a "Random" String
          *
+         * @param string    type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
+         * @param int    number of characters
+         *
+         * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:25
          *
-         * @param    string    type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
-         * @param    int    number of characters
-         *
-         * @return    string
          */
         public function randomString($type = 'alnum', $len = 8)
         {
@@ -245,14 +247,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function directoryMap
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:33
-         *
          * @param      $source_dir
          * @param int  $directory_depth
          * @param bool $hidden
          *
          * @return array|bool
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:33
+         *
          */
         public function directoryMap($source_dir, $directory_depth = 0, $hidden = FALSE)
         {
@@ -283,13 +285,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function newFolder
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 14:44
-         *
          * @param string $pathname Folder to Create
          * @param int    $mode     Mode Permission, default is 0777
          *
          * @return bool
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 14:44
+         *
          */
         public function newFolder($pathname = '', $mode = 0777)
         {
@@ -322,12 +324,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function formatSizeUnits
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 14:40
-         *
          * @param int $bytes
          *
          * @return int|string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 14:40
+         *
          */
         public function formatSizeUnits($bytes = 0)
         {
@@ -351,9 +353,6 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function placeholder
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:07
-         *
          * @param string $size
          * @param string $bg_color
          * @param string $text_color
@@ -361,6 +360,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param string $domain
          *
          * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:07
+         *
          */
         public function placeholder(
             $size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'http://via.placeholder.com/'
@@ -384,15 +386,15 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function meta
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:17
-         *
          * @param string $name
          * @param string $content
          * @param string $type
          * @param string $newline
          *
          * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:17
+         *
          */
         public function meta($name = '', $content = '', $type = 'name', $newline = "\n")
         {
@@ -421,15 +423,15 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function metaProperty
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:09
-         *
          * @param string $property
          * @param string $content
          * @param string $type
          * @param string $newline
          *
          * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:09
+         *
          */
         public function metaProperty($property = '', $content = '', $type = 'property', $newline = "\n")
         {
@@ -465,12 +467,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function metaTagEquiv
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:18
-         *
          * @param array $data
          *
          * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:18
+         *
          */
         public function metaTagEquiv($data = [])
         {
@@ -504,10 +506,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function metaDnsPrefetch
          *
+         * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/30/18 16:17
          *
-         * @return string
          */
         public function metaDnsPrefetch()
         {
@@ -524,9 +526,6 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function sitemapParse
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:11
-         *
          * @param string $domain
          * @param string $loc
          * @param string $lastmod
@@ -534,6 +533,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param string $newline
          *
          * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:11
+         *
          */
         function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n")
         {
@@ -573,13 +575,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Convert Reserved XML characters to Entities
          *
+         * @param string
+         * @param bool
+         *
+         * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:11
          *
-         * @param    string
-         * @param    bool
-         *
-         * @return    string
          */
         public function xmlConvert($str, $protect_all = FALSE)
         {
@@ -612,12 +614,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function viewPagination
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:16
-         *
          * @param array $input_data
          *
          * @return null|string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:16
+         *
          */
         public function viewPagination($input_data = [])
         {
@@ -670,13 +672,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function htmlEscape - Returns HTML escaped variable.
          *
+         * @param mixed $var           The input string or array of strings to be escaped.
+         * @param bool  $double_encode $double_encode set to FALSE prevents escaping twice.
+         *
+         * @return    mixed            The escaped string or array of strings as a result.
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:22
          *
-         * @param    mixed $var           The input string or array of strings to be escaped.
-         * @param    bool  $double_encode $double_encode set to FALSE prevents escaping twice.
-         *
-         * @return    mixed            The escaped string or array of strings as a result.
          */
         public function htmlEscape($var = '', $double_encode = TRUE)
         {
@@ -699,12 +701,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Removes single and double quotes from a string
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:25
-         *
          * @param string $str
          *
          * @return mixed
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:25
+         *
          */
         public function stripQuotes($str = '')
         {
@@ -716,12 +718,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Converts single and double quotes to entities
          *
+         * @param string
+         *
+         * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:25
          *
-         * @param    string
-         *
-         * @return    string
          */
         public function quotesToEntities($str = '')
         {
@@ -740,12 +742,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * http://www.some-site.com/index.php
          *
+         * @param string
+         *
+         * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:25
          *
-         * @param    string
-         *
-         * @return    string
          */
         public function reduceDoubleSlashes($str = '')
         {
@@ -763,14 +765,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Fred, Bill, Joe, Jimmy
          *
+         * @param string
+         * @param string    the character you wish to reduce
+         * @param bool    TRUE/FALSE - whether to trim the character from the beginning/end
+         *
+         * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:25
          *
-         * @param    string
-         * @param    string    the character you wish to reduce
-         * @param    bool    TRUE/FALSE - whether to trim the character from the beginning/end
-         *
-         * @return    string
          */
         public function reduceMultiples($str = '', $character = ',', $trim = FALSE)
         {
@@ -782,12 +784,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function stripHtmlTag
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 09:49
-         *
          * @param string $str
          *
          * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 10/13/18 09:49
+         *
          */
         public function stripHtmlTag($str = '')
         {
@@ -807,14 +809,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Strip 1 tag cố định
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 09:51
-         *
          * @param      $str
          * @param      $tags
          * @param bool $stripContent
          *
          * @return null|string|string[]
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 10/13/18 09:51
+         *
          */
         public function stripIsTags($str, $tags, $stripContent = FALSE)
         {
@@ -843,14 +845,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Limits a string to X number of words.
          *
+         * @param string
+         * @param int
+         * @param string    the end character. Usually an ellipsis
+         *
+         * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:25
          *
-         * @param    string
-         * @param    int
-         * @param    string    the end character. Usually an ellipsis
-         *
-         * @return    string
          */
         public function wordLimiter($str = '', $limit = 100, $end_char = '&#8230;')
         {
@@ -873,9 +875,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * Limits the string based on the character count.  Preserves complete words
          * so the character count may not be exactly as specified.
          *
-         * @param    string
-         * @param    int
-         * @param    string    the end character. Usually an ellipsis
+         * @param string
+         * @param int
+         * @param string    the end character. Usually an ellipsis
          *
          * @return    string
          */
@@ -911,7 +913,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Converts high ASCII text and MS Word special characters to character entities
          *
-         * @param    string $str
+         * @param string $str
          *
          * @return    string
          */
@@ -965,8 +967,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Converts character entities back to ASCII
          *
-         * @param    string
-         * @param    bool
+         * @param string
+         * @param bool
          *
          * @return    string
          */
@@ -1010,9 +1012,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * matched words will be converted to #### or to the replacement
          * word you've submitted.
          *
-         * @param    string    the text string
-         * @param    string    the array of censored words
-         * @param    string    the optional replacement value
+         * @param string    the text string
+         * @param string    the array of censored words
+         * @param string    the optional replacement value
          *
          * @return    string
          */
@@ -1060,7 +1062,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Colorizes code strings
          *
-         * @param    string    the text string
+         * @param string    the text string
          *
          * @return    string
          */
@@ -1111,10 +1113,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Highlights a phrase within a text string
          *
-         * @param    string $str       the text string
-         * @param    string $phrase    the phrase you'd like to highlight
-         * @param    string $tag_open  the openging tag to precede the phrase with
-         * @param    string $tag_close the closing tag to end the phrase with
+         * @param string $str       the text string
+         * @param string $phrase    the phrase you'd like to highlight
+         * @param string $tag_open  the openging tag to precede the phrase with
+         * @param string $tag_close the closing tag to end the phrase with
          *
          * @return    string
          */
@@ -1134,8 +1136,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * Anything placed between {unwrap}{/unwrap} will not be word wrapped, nor
          * will URLs.
          *
-         * @param    string $str     the text string
-         * @param    int    $charlim = 76    the number of characters to wrap at
+         * @param string $str     the text string
+         * @param int    $charlim = 76    the number of characters to wrap at
          *
          * @return    string
          */
@@ -1211,13 +1213,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function convertStrToEn
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 10:02
-         *
          * @param string $str
          * @param string $separator
          *
          * @return bool|mixed|null|string|string[]
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 10/13/18 10:02
+         *
          */
         public function convertStrToEn($str = '', $separator = '-')
         {
@@ -1251,7 +1253,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Validate email address
          *
-         * @param    string $email
+         * @param string $email
          *
          * @return    bool
          */
@@ -1264,14 +1266,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function strongPassword
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 10:20
-         *
          * @param int    $length
          * @param bool   $add_dashes
          * @param string $available_sets
          *
          * @return bool|string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 10/13/18 10:20
+         *
          */
         public function strongPassword($length = 20, $add_dashes = FALSE, $available_sets = 'luna')
         {
@@ -1316,12 +1318,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function validStrongPassword
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 10:21
-         *
          * @param string $password
          *
          * @return bool
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 10/13/18 10:21
+         *
          */
         public function validStrongPassword($password = '')
         {
@@ -1336,10 +1338,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function createSalt
          *
+         * @return mixed|string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 10/13/18 10:29
          *
-         * @return mixed|string
          */
         public function createSalt()
         {
