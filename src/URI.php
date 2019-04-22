@@ -220,11 +220,11 @@ class URI
      * Set the query. Must be a string, and the prepending "?" will be trimmed.
      * Example: ?a=b&c[]=123 -> "a=b&c[]=123"
      *
-     * @see Sensimity_Helper_UriTest::provideSetQuery
-     *
      * @param string $query
      *
      * @return self
+     * @see Sensimity_Helper_UriTest::provideSetQuery
+     *
      */
     public function setQuery($query)
     {
@@ -251,11 +251,11 @@ class URI
      * Will be forced to lowercase.
      * Appended : or // will be removed.
      *
-     * @see Sensimity_Helper_UriTest::provideSetScheme
-     *
      * @param string $scheme
      *
      * @return self
+     * @see Sensimity_Helper_UriTest::provideSetScheme
+     *
      */
     public function setScheme($scheme)
     {
@@ -320,11 +320,11 @@ class URI
     /**
      * Port must be a valid number. Otherwise it will be set to NULL. (default scheme port)
      *
-     * @see Sensimity_Helper_UriTest::provideSetPort
-     *
      * @param int|string $port
      *
      * @return self
+     * @see Sensimity_Helper_UriTest::provideSetPort
+     *
      */
     public function setPort($port)
     {
@@ -394,9 +394,9 @@ class URI
             return $uri;
         }
         $class = get_called_class();
-        $uri   = new $class($uri);
+        /** @var object|mixed $uri */
+        $uri = new $class($uri);
         $uri->setScheme($scheme);
-
         return $uri->getUri();
     }
 
