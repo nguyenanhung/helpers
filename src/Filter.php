@@ -9,6 +9,9 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use DateTime;
+use Exception;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
     /**
      * Class Filter
@@ -24,13 +27,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
         /**
          * Function filterInputDataIsArray
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 2018-12-18 22:37
-         *
          * @param array $inputData
          * @param array $requireData
          *
          * @return bool
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 2018-12-18 22:37
+         *
          */
         public static function filterInputDataIsArray($inputData = [], $requireData = [])
         {
@@ -53,14 +56,35 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
         }
 
         /**
-         * Function filterDate
+         * Function filterInputDataIsNull
          *
+         * @param array $inputData
+         *
+         * @return bool
          * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 2018-12-18 23:39
+         * @time  : 2019-07-11 10:27
+         *
+         */
+        public static function filterInputDataIsNull($inputData = [])
+        {
+            foreach ($inputData as $item) {
+                if ($item === NULL) {
+                    return TRUE;
+                }
+            }
+
+            return FALSE;
+        }
+
+        /**
+         * Function filterDate
          *
          * @param string $inputDate
          *
          * @return array
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 2018-12-18 23:39
+         *
          */
         public static function filterDate($inputDate = '')
         {
@@ -68,41 +92,41 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                 // Get date
                 if ($inputDate == 'back_1_day') {
                     try {
-                        $dateTime = new \DateTime("-1 day");
-                        $result   = [
+                        $dateTime = new DateTime("-1 day");
+                        $result   = array(
                             'date'       => $dateTime->format('Y-m-d'),
                             'day'        => $dateTime->format('Ymd'),
                             'month'      => $dateTime->format('Y-m'),
                             'monthTable' => $dateTime->format('Y_m')
-                        ];
+                        );
                     }
-                    catch (\Exception $e) {
+                    catch (Exception $e) {
                         if (function_exists('log_message')) {
                             $message = 'Error Code: ' . $e->getCode() . ' - File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Message: ' . $e->getMessage();
                             log_message('error', $message);
                         }
-                        $result = [
+                        $result = array(
                             'date'       => date('Y-m-d', strtotime("-1 day", strtotime($inputDate))),
                             'day'        => date('Ymd', strtotime("-1 day", strtotime($inputDate))),
                             'month'      => date('Y-m', strtotime("-1 day", strtotime($inputDate))),
                             'monthTable' => date('Y_m', strtotime("-1 day", strtotime($inputDate)))
-                        ];
+                        );
                     }
                 } else {
-                    $result = [
+                    $result = array(
                         'date'       => date('Y-m-d', strtotime($inputDate)),
                         'day'        => date('Ymd', strtotime($inputDate)),
                         'month'      => date('Y-m', strtotime($inputDate)),
                         'monthTable' => date('Y_m', strtotime($inputDate))
-                    ];
+                    );
                 }
             } else {
-                $result = [
+                $result = array(
                     'date'       => date('Y-m-d'),
                     'day'        => date('Ymd'),
                     'month'      => date('Y-m'),
                     'monthTable' => date('Y_m')
-                ];
+                );
             }
 
             return $result;

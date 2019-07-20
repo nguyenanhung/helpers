@@ -19,14 +19,21 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
      */
     interface ProjectInterface
     {
-        const VERSION       = '1.0.7';
-        const LAST_MODIFIED = '2019-05-24';
+        const VERSION       = '1.0.8';
+        const LAST_MODIFIED = '2019-07-20';
         const AUTHOR_NAME   = 'Hung Nguyen';
         const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
         const PROJECT_NAME  = 'Helper';
         const TIMEZONE      = 'Asia/Ho_Chi_Minh';
         const USE_BENCHMARK = FALSE;
         const USE_DEBUG     = FALSE;
+        // Thuật toán mã hóa chữ ký xác thực
+        const HASH_ALGORITHM                 = 'md5';
+        const REQUEST_METHOD                 = 'POST';
+        const USER_PASSWORD_RANDOM_LENGTH    = 6;
+        const USER_PASSWORD_RANDOM_ALGORITHM = 'numeric';
+        const USER_TOKEN_ALGORITHM           = 'md5';
+        const USER_SALT_ALGORITHM            = 'md5';
 
         /**
          * Hàm lấy thông tin phiên bản Package
