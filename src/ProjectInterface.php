@@ -19,14 +19,15 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
      */
     interface ProjectInterface
     {
-        const VERSION       = '1.0.11';
-        const LAST_MODIFIED = '2019-10-08';
+        const VERSION       = '1.0.12';
+        const LAST_MODIFIED = '2019-10-30';
         const AUTHOR_NAME   = 'Hung Nguyen';
         const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
         const PROJECT_NAME  = 'Helper';
         const TIMEZONE      = 'Asia/Ho_Chi_Minh';
         const USE_BENCHMARK = FALSE;
         const USE_DEBUG     = FALSE;
+
         // Thuật toán mã hóa chữ ký xác thực
         const HASH_ALGORITHM                 = 'md5';
         const REQUEST_METHOD                 = 'POST';
