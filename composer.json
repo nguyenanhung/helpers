@@ -38,7 +38,8 @@
             "src/helpers/date_helper.php",
             "src/helpers/seo_helper.php",
             "src/helpers/html_helper.php",
-            "src/helpers/base64_helper.php"
+            "src/helpers/base64_helper.php",
+            "src/helpers/email_helper.php"
         ]
     }
 }
