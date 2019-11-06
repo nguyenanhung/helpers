@@ -131,8 +131,7 @@ class Password implements ProjectInterface
      */
     public static function hashPassword($password = '')
     {
-        $options = array('cost' => 12);
-        $hash    = password_hash($password, PASSWORD_DEFAULT, $options);
+        $hash    = password_hash($password, PASSWORD_DEFAULT);
 
         return $hash;
     }
@@ -149,8 +148,7 @@ class Password implements ProjectInterface
      */
     public static function reHashPassword($hash = '')
     {
-        $options = array('cost' => 12);
-        $hash    = password_needs_rehash($hash, PASSWORD_DEFAULT, $options);
+        $hash    = password_needs_rehash($hash, PASSWORD_DEFAULT);
 
         return $hash;
     }
@@ -203,13 +201,12 @@ class Password implements ProjectInterface
      */
     public static function changeHashPassword($password = '', $hash = '')
     {
-        $options = array('cost' => 12);
         if (password_verify($password, $hash)) {
             // Check if a newer hashing algorithm is available
             // or the cost has changed
-            if (password_needs_rehash($hash, PASSWORD_DEFAULT, $options)) {
+            if (password_needs_rehash($hash, PASSWORD_DEFAULT)) {
                 // If so, create a new hash, and replace the old one
-                $newHash = password_hash($password, PASSWORD_DEFAULT, $options);
+                $newHash = password_hash($password, PASSWORD_DEFAULT);
 
                 return $newHash;
             }
