@@ -12,7 +12,7 @@ if (!function_exists('escapeHtml')) {
      */
     function escapeHtml($string = '')
     {
-        $escape = new \Zend\Escaper\Escaper('utf-8');
+        $escape = new Laminas\Escaper\Escaper('utf-8');
 
         return $escape->escapeHtml($string);
     }
@@ -30,7 +30,7 @@ if (!function_exists('escapeHtmlAttr')) {
      */
     function escapeHtmlAttr($string = '')
     {
-        $escape = new \Zend\Escaper\Escaper('utf-8');
+        $escape = new Laminas\Escaper\Escaper('utf-8');
 
         return $escape->escapeHtmlAttr($string);
     }
@@ -48,7 +48,7 @@ if (!function_exists('escapeJs')) {
      */
     function escapeJs($string = '')
     {
-        $escape = new \Zend\Escaper\Escaper('utf-8');
+        $escape = new Laminas\Escaper\Escaper('utf-8');
 
         return $escape->escapeJs($string);
     }
@@ -66,7 +66,7 @@ if (!function_exists('escapeCss')) {
      */
     function escapeCss($string = '')
     {
-        $escape = new \Zend\Escaper\Escaper('utf-8');
+        $escape = new Laminas\Escaper\Escaper('utf-8');
 
         return $escape->escapeCss($string);
     }
@@ -84,7 +84,7 @@ if (!function_exists('escapeUrl')) {
      */
     function escapeUrl($string = '')
     {
-        $escape = new \Zend\Escaper\Escaper('utf-8');
+        $escape = new Laminas\Escaper\Escaper('utf-8');
 
         return $escape->escapeUrl($string);
     }
@@ -96,8 +96,8 @@ if (!function_exists('removeInvisibleCharacters')) {
      * This prevents sandwiching null characters
      * between ascii characters, like Java\0script.
      *
-     * @param    string
-     * @param    bool
+     * @param string
+     * @param bool
      *
      * @return    string
      */
