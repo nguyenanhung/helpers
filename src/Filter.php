@@ -56,6 +56,76 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
         }
 
         /**
+         * Function filterRequireInputDataIsNull
+         *
+         * @param array $inputData
+         * @param array $requireData
+         *
+         * @return bool
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 2/11/20 22:06
+         */
+        public static function filterRequireInputDataIsNull($inputData = [], $requireData = [])
+        {
+            if (empty($inputData) || empty($requireData)) {
+                return FALSE;
+            }
+            if (count($requireData) <= 0 || count($inputData) <= 0) {
+                return FALSE;
+            }
+            if (!is_array($requireData) || !is_array($inputData)) {
+                return FALSE;
+            }
+            foreach ($requireData as $params) {
+                if (!array_key_exists($params, $inputData)) {
+                    return FALSE;
+                } else {
+                    if (is_null($inputData[$params])) {
+                        return FALSE;
+                    }
+                }
+            }
+
+            return TRUE;
+        }
+
+        /**
+         * Function filterRequireInputDataIsEmpty
+         *
+         * @param array $inputData
+         * @param array $requireData
+         *
+         * @return bool
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 2/11/20 22:28
+         */
+        public static function filterRequireInputDataIsEmpty($inputData = [], $requireData = [])
+        {
+            if (empty($inputData) || empty($requireData)) {
+                return FALSE;
+            }
+            if (count($requireData) <= 0 || count($inputData) <= 0) {
+                return FALSE;
+            }
+            if (!is_array($requireData) || !is_array($inputData)) {
+                return FALSE;
+            }
+            foreach ($requireData as $params) {
+                if (!array_key_exists($params, $inputData)) {
+                    return FALSE;
+                } else {
+                    if (empty($inputData[$params])) {
+                        return FALSE;
+                    }
+                }
+            }
+
+            return TRUE;
+        }
+
+        /**
          * Function filterInputDataIsNull
          *
          * @param array $inputData
