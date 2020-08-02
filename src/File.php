@@ -9,6 +9,12 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use DateTime;
+use Exception;
+use SplFileInfo;
+use \TheSeer\DirectoryScanner\DirectoryScanner;
+use \Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
+
 if (!class_exists('nguyenanhung\Classes\Helper\File')) {
     /**
      * Class File
@@ -17,7 +23,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\File')) {
      * @author    713uk13m <dev@nguyenanhung.com>
      * @copyright 713uk13m <dev@nguyenanhung.com>
      */
-    class File extends \Symfony\Component\Filesystem\Filesystem
+    class File extends SymfonyFilesystem
     {
         /** @var null|array Mảng dữ liệu chứa các thuộc tính cần quét */
         private $scanInclude = ['*.log', '*.txt'];
@@ -44,7 +50,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\File')) {
          */
         public function directoryScanner($path = '', $include = NULL, $exclude = NULL)
         {
-            $scanner = new \TheSeer\DirectoryScanner\DirectoryScanner();
+            $scanner = new DirectoryScanner();
             if (is_array($include) && !empty($include)) {
                 foreach ($include as $inc) {
                     $scanner->addInclude($inc);
@@ -103,11 +109,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\File')) {
                 $result             = [];
                 $result['scanPath'] = $path;
                 foreach ($getDir as $fileName) {
-                    $SplFileInfo = new \SplFileInfo($fileName);
+                    $SplFileInfo = new SplFileInfo($fileName);
                     $filename    = $SplFileInfo->getPathname();
                     $format      = 'YmdHis';
                     // Lấy thời gian xác định xóa fileName
-                    $dateTime   = new \DateTime("-" . $dayToDel . " days");
+                    $dateTime   = new DateTime("-" . $dayToDel . " days");
                     $deleteTime = $dateTime->format($format);
                     // Lấy modifyTime của file
                     $getfileTime = filemtime($filename);
@@ -121,10 +127,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\File')) {
 
                 return $result;
             }
-            catch (\Exception $e) {
-                $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+            catch (Exception $e) {
                 if (function_exists('log_message')) {
-                    log_message('error', $message);
+                    log_message('error', 'Error Message: ' . $e->getMessage());
+                    log_message('error', 'Error Trace As String: ' . $e->getTraceAsString());
                 }
 
                 return NULL;
@@ -168,7 +174,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\File')) {
                     $zipPathFilename = $zipPath . date('Y-m-d-H-i-s') . '-archive.zip';
                     // Lấy thời gian xác định sẽ Zip file
                     $format                = 'YmdHis';
-                    $dateTime              = new \DateTime("-" . $dayToZip . " days");
+                    $dateTime              = new DateTime("-" . $dayToZip . " days");
                     $zipTime               = $dateTime->format($format);
                     $result                = [];
                     $result['time']        = date('Y-m-d H:i:s');
@@ -176,7 +182,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\File')) {
                     $result['zipPath']     = $zipPath;
                     $result['zipFilePath'] = $zipPathFilename;
                     foreach ($getDir as $fileName) {
-                        $SplFileInfo = new \SplFileInfo($fileName);
+                        $SplFileInfo = new SplFileInfo($fileName);
                         $filename    = $SplFileInfo->getPathname();
                         // Lấy modifyTime của file
                         $getFileTime = filemtime($filename);
@@ -202,10 +208,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\File')) {
                     return NULL;
                 }
             }
-            catch (\Exception $e) {
-                $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+            catch (Exception $e) {
                 if (function_exists('log_message')) {
-                    log_message('error', $message);
+                    log_message('error', 'Error Message: ' . $e->getMessage());
+                    log_message('error', 'Error Trace As String: ' . $e->getTraceAsString());
                 }
 
                 return NULL;

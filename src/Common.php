@@ -9,6 +9,8 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use stdClass;
+use Exception;
 use Carbon\Carbon;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
@@ -50,7 +52,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param array $array
          * @param bool  $str_to_lower
          *
-         * @return array|bool|\stdClass
+         * @return array|bool|stdClass
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 10:57
          *
@@ -60,7 +62,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             if (!is_array($array)) {
                 return $array;
             }
-            $object = new \stdClass();
+            $object = new stdClass();
             if (is_array($array) && count($array) > 0) {
                 foreach ($array as $name => $value) {
                     $name = trim($name);
@@ -313,7 +315,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
 
                     return TRUE;
                 }
-                catch (\Exception $e) {
+                catch (Exception $e) {
                     return FALSE;
                 }
             }
