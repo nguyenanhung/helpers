@@ -9,6 +9,9 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use InvalidArgumentException;
+use BadMethodCallException;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Bool')) {
     /**
      * The boolean (aka, "bool") class
@@ -30,8 +33,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Bool')) {
          *
          * @since  0.1.0
          *
-         * @param  bool   $bool   the boolean value to convert
-         * @param  string $format the string format to convert to (possible values are
+         * @param bool   $bool    the boolean value to convert
+         * @param string $format  the string format to convert to (possible values are
          *                        't[/-]f', true[/-]false', 'y[/-]n', 'yes[/-]no', 'o[/-o]', and 'on[/-]off')
          *                        (case-insensitive) (optional; if omitted, defaults to 'true-false')
          *
@@ -83,24 +86,24 @@ if (!class_exists('nguyenanhung\Classes\Helper\Bool')) {
                                 break;
 
                             default:
-                                throw new \InvalidArgumentException(
+                                throw new InvalidArgumentException(
                                     __METHOD__ . "() expects parameter two, format, to be one of the following: " .
                                     "'t[/-]f', 'true[/-]false', 'y[/-]s', 'yes[/-]no', 'o[/-]o', or " .
                                     "'on[/-]off', '$format' given"
                                 );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . "() expects parameter two, format, to be a string"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . "() expects parameter one, bool, to be a bool value given"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects one or two parameters, a bool value and a string format"
                 );
             }
@@ -150,9 +153,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Bool')) {
          *
          * @since  0.1.0
          *
-         * @param  mixed $var the variable to test
+         * @param mixed $var the variable to test
          *
-         * @return  bool  the bool value
+         * @return  bool|null|mixed  the bool value
          *
          * @see    http://www.php.net/manual/en/function.boolval.php  boolval() man page
          */

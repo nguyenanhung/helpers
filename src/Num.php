@@ -9,6 +9,9 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use InvalidArgumentException;
+use BadMethodCallException;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
     /**
      * The number (aka, "num") class
@@ -28,7 +31,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
         const REGEX_NUMBER_COMMA = '#^([1-9](?:\d*|(?:\d{0,2})(?:,\d{3})*)(?:\.\d*[0-9])?|0?\.\d*[0-9]|0)$#';
 
         /**
-         * @var  the regex for a mixed number (e.g., "1 1/2")
+         * @var  string the regex for a mixed number (e.g., "1 1/2")
          */
         const REGEX_NUMBER_MIXED = '#^((\d+)\s+)?(\d+)[/\\\](\d+)$#';
 
@@ -131,18 +134,18 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  int|float $a       the first value
-         * @param  int|float $b       the second value
-         * @param  int|float $epsilon the maximum allowed difference (exclusive) (optional;
+         * @param int|float $a        the first value
+         * @param int|float $b        the second value
+         * @param int|float $epsilon  the maximum allowed difference (exclusive) (optional;
          *                            if omitted defaults to 0.00001)
          *
          * @return  bool  true if the values are equal
          *
-         * @throws  \BadMethodCallException    if $a, $b, or $epsilon is null
-         * @throws  \InvalidArgumentException  if $a is not a number
-         * @throws  \InvalidArgumentException  if $b is not a number
-         * @throws  \InvalidArgumentException  if $epsilon is not a number
-         * @throws  \InvalidArgumentException  if $epsilon is not greater than zero
+         * @throws  BadMethodCallException    if $a, $b, or $epsilon is null
+         * @throws  InvalidArgumentException  if $a is not a number
+         * @throws  InvalidArgumentException  if $b is not a number
+         * @throws  InvalidArgumentException  if $epsilon is not a number
+         * @throws  InvalidArgumentException  if $epsilon is not greater than zero
          *
          * @see    http://www.php.net/manual/en/language.types.float.php  man page on float type
          */
@@ -163,27 +166,27 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                                 // roll it
                                 $isEqual = (abs($a - $b) < $epsilon);
                             } else {
-                                throw new \InvalidArgumentException(
+                                throw new InvalidArgumentException(
                                     __METHOD__ . " expects the third parameter, epsilon, to be greater than zero"
                                 );
                             }
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . " expects the third parameter, epsilon, to be a number"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects the second parameter, b, to be a number"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter, a, to be a number"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects two or three numeric arguments"
                 );
             }
@@ -208,16 +211,16 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  int|float $number the number to bound
-         * @param  int|float $lower  the number's lower bound (inclusive)
-         * @param  int|float $upper  the number's upper bound (inclusive)
+         * @param int|float $number the number to bound
+         * @param int|float $lower  the number's lower bound (inclusive)
+         * @param int|float $upper  the number's upper bound (inclusive)
          *
          * @return  int|float           the bounded value or false
          *
-         * @throws  \BadMethodCallException    if $number and $lower and/or $upper are not passed
-         * @throws  \InvalidArgumentException  if $lower is passed and not a number
-         * @throws  \InvalidArgumentException  if $upper is passed and not a number
-         * @throws  \InvalidArgumentException  if $upper is not greater than or equal to $lower
+         * @throws  BadMethodCallException    if $number and $lower and/or $upper are not passed
+         * @throws  InvalidArgumentException  if $lower is passed and not a number
+         * @throws  InvalidArgumentException  if $upper is passed and not a number
+         * @throws  InvalidArgumentException  if $upper is not greater than or equal to $lower
          */
         public static function bound($number, $lower = NULL, $upper = NULL)
         {
@@ -247,28 +250,28 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                                     $bounded = min($number, $upper);
                                 }
                             } else {
-                                throw new \InvalidArgumentException(
+                                throw new InvalidArgumentException(
                                     __METHOD__ . " expects the third parameter, the upper bound ({$upper}), to be " .
                                     "greater than or equal to the second parameter, the lower bound ({$lower})"
                                 );
                             }
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . " expects the third parameter, the upper bound, to be a number"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects the second parameter, the lower bound, to be a number"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter, number, to be a number"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects two or three numeric parameters"
                 );
             }
@@ -287,17 +290,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  int|float $number   the number to ceil
-         * @param  int|float $multiple the multiple to ceil to (optional; if omitted,
+         * @param int|float $number    the number to ceil
+         * @param int|float $multiple  the multiple to ceil to (optional; if omitted,
          *                             defaults to 1 (aka, PHP's native ceil() function))
          *
          * @return  int|float  the ceiling-ed number
          *
-         * @throws  \BadMethodCallException
-         * @throws  \InvalidArgumentException  if $number or $multiple is null
-         * @throws  \InvalidArgumentException  if $number is not a number
-         * @throws  \InvalidArgumentException  if $multiple is not a number
-         * @throws  \InvalidArgumentException  if $multiple is not greater than zero
+         * @throws  BadMethodCallException
+         * @throws  InvalidArgumentException  if $number or $multiple is null
+         * @throws  InvalidArgumentException  if $number is not a number
+         * @throws  InvalidArgumentException  if $multiple is not a number
+         * @throws  InvalidArgumentException  if $multiple is not greater than zero
          *
          * @see    http://stackoverflow.com/a/1619284  Daren Schwneke's answer to "How to
          *    round up a number to the nearest 10?" on StackOverflow
@@ -319,22 +322,22 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                             // roll it
                             $ceiled = ceil($number / $multiple) * $multiple;
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . " expects parameter two, the multiple, to be greater than zero"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects parameter two, the multiple, to be a number"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects parameter one, the number, to be a number"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects one or two numeric parameters"
                 );
             }
@@ -353,16 +356,16 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  int|float $number   the number to floor
-         * @param  int|float $multiple the multiple to floor to (optional; if omitted,
+         * @param int|float $number    the number to floor
+         * @param int|float $multiple  the multiple to floor to (optional; if omitted,
          *                             defaults to 1 (aka, PHP's native floor() function))
          *
          * @return  int|float
          *
-         * @throws  \BadMethodCallException    if $number or $multiple is null
-         * @throws  \InvalidArgumentException  if $number is not a number
-         * @throws  \InvalidArgumentException  if $multiple is not a number
-         * @throws  \InvalidArgumentException  if $multiple is not greater than zero
+         * @throws  BadMethodCallException    if $number or $multiple is null
+         * @throws  InvalidArgumentException  if $number is not a number
+         * @throws  InvalidArgumentException  if $multiple is not a number
+         * @throws  InvalidArgumentException  if $multiple is not greater than zero
          *
          * @see    http://stackoverflow.com/a/1619284  Daren Schwneke's answer to "How to
          *    round up a number to the nearest 10?" on StackOverflow
@@ -382,22 +385,22 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                             // roll it
                             $floored = floor($number / $multiple) * $multiple;
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . " expects the second parameter, the multiple, to be greater than zero"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects the second parameter, the multiple, to be numeric"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter, the number, to be numeric"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects one or two numeric parameters"
                 );
             }
@@ -444,16 +447,16 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  int|float $number   the number to test
-         * @param  string    $datatype the column datatype name (possible values are
+         * @param int|float $number    the number to test
+         * @param string    $datatype  the column datatype name (possible values are
          *                             'tiny[int]', 'small[int]', 'medium[int]', 'int[eger]', and 'big[int]')
          *                             (case-insensitive) (optional; if omitted, defaults to 'int')
          *
          * @return  bool  true if the number is a valid database id
          *
-         * @throws  \BadMethodCallException    if $datatype is null
-         * @throws  \InvalidArgumentException  if $datatype is not a string
-         * @throws  \InvalidArgumentException  if $datatype is not an allowed value
+         * @throws  BadMethodCallException    if $datatype is null
+         * @throws  InvalidArgumentException  if $datatype is not a string
+         * @throws  InvalidArgumentException  if $datatype is not an allowed value
          */
         public static function isId($number, $datatype = 'int')
         {
@@ -498,7 +501,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                                     break;
 
                                 default:
-                                    throw new \InvalidArgumentException(
+                                    throw new InvalidArgumentException(
                                         __METHOD__ . " expects parameter two to be a valid datatype name such as: " .
                                         "'tiny[int]', 'small[int]', 'medium[int]', 'int[eger]', or 'big[int]'," .
                                         "{$datatype} given"
@@ -507,12 +510,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                         }
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects parameter two to be a string, the datatype name"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects two parameters, a number and a datatype name"
                 );
             }
@@ -536,7 +539,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  int|float $number the number to test
+         * @param int|float $number the number to test
          *
          * @return  bool  true if $number is an integer or integer string
          */
@@ -571,7 +574,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  mixed $number the number to test
+         * @param mixed $number the number to test
          *
          * @return  bool  true if $number is a number
          *
@@ -606,7 +609,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  mixed $number the number to test
+         * @param mixed $number the number to test
          *
          * @return  bool  true if $number is zero
          */
@@ -640,15 +643,15 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since   0.1.0
          *
-         * @param   int|float $number the number to normalize
-         * @param   int|float $max    the maximum to divide into $value
+         * @param int|float $number the number to normalize
+         * @param int|float $max    the maximum to divide into $value
          *
          * @return  int|float  a number between 1 and 0 (inclusive)
          *
-         * @throws  \BadMethodCallException    if $number or $max are not passed
-         * @throws  \InvalidArgumentException  if $number is not a number
-         * @throws  \InvalidArgumentException  if $max is not a number
-         * @throws  \InvalidArgumentException  if $max is not greater than zero
+         * @throws  BadMethodCallException    if $number or $max are not passed
+         * @throws  InvalidArgumentException  if $number is not a number
+         * @throws  InvalidArgumentException  if $max is not a number
+         * @throws  InvalidArgumentException  if $max is not greater than zero
          */
         public static function normalize($number, $max)
         {
@@ -665,22 +668,22 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                             // bound the quotient between 0 and 1
                             $norm = self::bound($number / $max, 0, 1);
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . " expects parameter two, the max, to be greater than zero"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects parameter two, the max, to be a number"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects parameter one, the number, to be a number"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects two numeric parameters"
                 );
             }
@@ -699,8 +702,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  int|float $number   the number to round
-         * @param  int|float $multiple the multiple to round to (optional; if omitted,
+         * @param int|float $number    the number to round
+         * @param int|float $multiple  the multiple to round to (optional; if omitted,
          *                             defaults to 1 (aka, PHP's native round() method))
          *
          * @return  int|float  the rounded number
@@ -723,22 +726,22 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                             // roll it
                             $round = round($number / $multiple) * $multiple;
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . " expects parameter two, the multiple, to be greater than zero"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects parameter two, the multiple, to be a number"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects parameter one, the number, to be a number"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects one or two numeric parameters"
                 );
             }
@@ -803,7 +806,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
          *
          * @since  0.1.0
          *
-         * @param  mixed $var the value to evaluate
+         * @param mixed $var the value to evaluate
          *
          * @return  int|float  the value's numeric equivalent
          *

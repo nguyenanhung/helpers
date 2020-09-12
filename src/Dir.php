@@ -9,6 +9,9 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use InvalidArgumentException;
+use BadMethodCallException;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
     /**
      * The directory (aka, "dir") class
@@ -22,14 +25,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
          *
          * @since   0.1.0
          *
-         * @param   string $absolute the abosolute path (e.g., 'C:\path\to\folder')
-         * @param   string $base     the relative base (e.g., 'C:\path\to')
+         * @param string $absolute the abosolute path (e.g., 'C:\path\to\folder')
+         * @param string $base     the relative base (e.g., 'C:\path\to')
          *
          * @return  string  the relative path (e.g., 'folder') or false on failure
          *
-         * @throws  \BadMethodCallException    if $absolute or $base is null
-         * @throws  \InvalidArgumentException  if $absolute is not a string
-         * @throws  \InvalidArgumentException  if $base is not a string
+         * @throws  BadMethodCallException    if $absolute or $base is null
+         * @throws  InvalidArgumentException  if $absolute is not a string
+         * @throws  InvalidArgumentException  if $base is not a string
          */
         public static function abs2rel($absolute, $base)
         {
@@ -55,17 +58,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
                         // implode it yar
                         $rel = implode(DIRECTORY_SEPARATOR, $diff);
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . "() expects parameter two, base path, to be a string"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . "() expects parameter one, absolute path, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects two string parameters: absolute path and base path"
                 );
             }
@@ -91,24 +94,24 @@ if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
          *
          * @since  0.1.0
          *
-         * @param  string $source      the source directory path
-         * @param  string $destination the destination directory path
-         * @param  int    $mode        the mode of the destination directory as an
+         * @param string $source       the source directory path
+         * @param string $destination  the destination directory path
+         * @param int    $mode         the mode of the destination directory as an
          *                             octal number with a leading zero (ignored on Windows) (optional; if
          *                             omitted, defaults to 0777, the widest possible access) (set to false to
          *                             throw an exception if the destination directory does not exist)
          *
          * @return  bool  true if successful
          *
-         * @throws  \BadMethodCallException    if $source, $destination, or $mode is null
-         * @throws  \InvalidArgumentException  if $source is not a string
-         * @throws  \InvalidArgumentException  if $destination is not a string
-         * @throws  \InvalidArgumentException  if $mode is not an integer or false
-         * @throws  \InvalidArgumentException  if $source does not exist or is not a directory
-         * @throws  \InvalidArgumentException  if $source is not readable
-         * @throws  \InvalidArgumentException  if $destination does not exist or it could not
+         * @throws  BadMethodCallException    if $source, $destination, or $mode is null
+         * @throws  InvalidArgumentException  if $source is not a string
+         * @throws  InvalidArgumentException  if $destination is not a string
+         * @throws  InvalidArgumentException  if $mode is not an integer or false
+         * @throws  InvalidArgumentException  if $source does not exist or is not a directory
+         * @throws  InvalidArgumentException  if $source is not readable
+         * @throws  InvalidArgumentException  if $destination does not exist or it could not
          *    be created successfully
-         * @throws  \InvalidArgumentException  if $destination is not writeable
+         * @throws  InvalidArgumentException  if $destination is not writeable
          *
          * @see    http://stackoverflow.com/a/2050909  Felix King's answer to "Copy entire
          *    contents of a directory to another using php" on StackOverflow
@@ -176,43 +179,43 @@ if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
                                             // close the source directory
                                             closedir($sourceDir);
                                         } else {
-                                            throw new \InvalidArgumentException(
+                                            throw new InvalidArgumentException(
                                                 __METHOD__ . "() expects parameter two, destination, to be a writable directory"
                                             );
                                         }
                                     } else {
-                                        throw new \InvalidArgumentException(
+                                        throw new InvalidArgumentException(
                                             __METHOD__ . "() expects parameter two, destination, to be an existing directory " .
                                             "(or it expects parameter three, mode, to be an integer)"
                                         );
                                     }
                                 } else {
-                                    throw new \InvalidArgumentException(
+                                    throw new InvalidArgumentException(
                                         __METHOD__ . "() expects parameter one, source, to be a readable directory"
                                     );
                                 }
                             } else {
-                                throw new \InvalidArgumentException(
+                                throw new InvalidArgumentException(
                                     __METHOD__ . "() expects parameter one, source, to be an existing directory"
                                 );
                             }
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . "() expects parameter three, mode, to be an integer or false"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . "() expects parameter two, destination, to be a string"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . "() expects parameter one, source, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects two or three parameters: source, destination, and mode"
                 );
             }
@@ -246,17 +249,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
          *
          * @since  0.1.0
          *
-         * @param  string $directory the path of the directory to remove
-         * @param  string $container an ancestor directory of $directory
+         * @param string $directory the path of the directory to remove
+         * @param string $container an ancestor directory of $directory
          *
          * @return  bool  true if success
          *
-         * @throws  \BadMethodCallException    if $directory or $container is null
-         * @throws  \InvalidArgumentException  if $directory is not a string
-         * @throws  \InvalidArgumentException  if $container is not a string
-         * @throws  \InvalidArgumentException  if $directory is not a valid directory path
-         * @throws  \InvalidArgumentException  if $directory is not writeable
-         * @throws  \InvalidArgumentException  if $directory is not contained in $container
+         * @throws  BadMethodCallException    if $directory or $container is null
+         * @throws  InvalidArgumentException  if $directory is not a string
+         * @throws  InvalidArgumentException  if $container is not a string
+         * @throws  InvalidArgumentException  if $directory is not a valid directory path
+         * @throws  InvalidArgumentException  if $directory is not writeable
+         * @throws  InvalidArgumentException  if $directory is not contained in $container
          *
          * @see    http://stackoverflow.com/a/11614201  donald123's answer to "Remove all
          *    files, folders, and their subfolders with php" on StackOverflow
@@ -316,32 +319,32 @@ if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
                                     closedir($dir);
                                     $isSuccess = rmdir($directory . DIRECTORY_SEPARATOR . $entity);
                                 } else {
-                                    throw new \InvalidArgumentException(
+                                    throw new InvalidArgumentException(
                                         __METHOD__ . "() expects parameter two, container, to contain the directory"
                                     );
                                 }
                             } else {
-                                throw new \InvalidArgumentException(
+                                throw new InvalidArgumentException(
                                     __METHOD__ . "() expects parameter one, directory, to be a writable directory"
                                 );
                             }
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . "() expects parameter one, directory, to be a valid directory"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . "() expects the second parameter, container, to be a string"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . "() expects the first parameter, directory, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects two string parameters, directory and container"
                 );
             }

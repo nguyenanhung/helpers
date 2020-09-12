@@ -9,6 +9,8 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use Detection\MobileDetect;
+
 if (!class_exists('nguyenanhung\Classes\Helper\DeviceDetectLink')) {
     /**
      * Class DeviceDetectLink
@@ -52,7 +54,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\DeviceDetectLink')) {
          */
         public function detectDevice()
         {
-            $detect      = new \Detection\MobileDetect();
+            $detect      = new MobileDetect();
             $linkDefault = $this->data['default'];
             if ($detect->isMobile()) {
                 $this->link = isset($this->data['link_mobile']) ? $this->data['link_mobile'] : $linkDefault;
@@ -75,7 +77,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\DeviceDetectLink')) {
          */
         public function detectSystem()
         {
-            $detect      = new \Detection\MobileDetect();
+            $detect      = new MobileDetect();
             $linkDefault = $this->data['default'];
             if ($detect->is('iOS')) {
                 $this->link = isset($this->data['ios']) ? $this->data['ios'] : $linkDefault;
