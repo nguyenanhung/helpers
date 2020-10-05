@@ -26,20 +26,22 @@
         },
         "files": [
             "src/helpers/30s-of-php-code.php",
-            "src/helpers/ci_text_helper.php",
-            "src/helpers/ci_string_helper.php",
-            "src/helpers/ci_xml_helper.php",
-            "src/helpers/escape_helper.php",
-            "src/helpers/json_helper.php",
-            "src/helpers/ip_helper.php",
+            "src/helpers/array_helper.php",
             "src/helpers/assets_helper.php",
-            "src/helpers/form_helper.php",
-            "src/helpers/pagination_helper.php",
-            "src/helpers/date_helper.php",
-            "src/helpers/seo_helper.php",
-            "src/helpers/html_helper.php",
             "src/helpers/base64_helper.php",
-            "src/helpers/email_helper.php"
+            "src/helpers/ci_string_helper.php",
+            "src/helpers/ci_text_helper.php",
+            "src/helpers/ci_xml_helper.php",
+            "src/helpers/common_helper.php",
+            "src/helpers/date_helper.php",
+            "src/helpers/email_helper.php",
+            "src/helpers/escape_helper.php",
+            "src/helpers/form_helper.php",
+            "src/helpers/html_helper.php",
+            "src/helpers/ip_helper.php",
+            "src/helpers/json_helper.php",
+            "src/helpers/pagination_helper.php",
+            "src/helpers/seo_helper.php"
         ]
     }
 }
