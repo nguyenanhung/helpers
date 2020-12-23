@@ -167,7 +167,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                             'date'       => $dateTime->format('Y-m-d'),
                             'day'        => $dateTime->format('Ymd'),
                             'month'      => $dateTime->format('Y-m'),
-                            'monthTable' => $dateTime->format('Y_m')
+                            'monthTable' => $dateTime->format('Y_m'),
+                            'week'       => $dateTime->format('w'),
+                            'months'     => $dateTime->format('m'),
+                            'year'       => $dateTime->format('Y'),
                         );
                     }
                     catch (Exception $e) {
@@ -179,7 +182,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                             'date'       => date('Y-m-d', strtotime("-1 day", strtotime($inputDate))),
                             'day'        => date('Ymd', strtotime("-1 day", strtotime($inputDate))),
                             'month'      => date('Y-m', strtotime("-1 day", strtotime($inputDate))),
-                            'monthTable' => date('Y_m', strtotime("-1 day", strtotime($inputDate)))
+                            'monthTable' => date('Y_m', strtotime("-1 day", strtotime($inputDate))),
+                            'week' => date('w', strtotime("-1 day", strtotime($inputDate))),
+                            'months' => date('m', strtotime("-1 day", strtotime($inputDate))),
+                            'year' => date('Y', strtotime("-1 day", strtotime($inputDate)))
                         );
                     }
                 } else {
@@ -187,7 +193,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                         'date'       => date('Y-m-d', strtotime($inputDate)),
                         'day'        => date('Ymd', strtotime($inputDate)),
                         'month'      => date('Y-m', strtotime($inputDate)),
-                        'monthTable' => date('Y_m', strtotime($inputDate))
+                        'monthTable' => date('Y_m', strtotime($inputDate)),
+                        'week' => date('w', strtotime($inputDate)),
+                        'months' => date('m', strtotime($inputDate)),
+                        'year' => date('Y', strtotime($inputDate)),
                     );
                 }
             } else {
@@ -195,7 +204,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                     'date'       => date('Y-m-d'),
                     'day'        => date('Ymd'),
                     'month'      => date('Y-m'),
-                    'monthTable' => date('Y_m')
+                    'monthTable' => date('Y_m'),
+                    'week' => date('w'),
+                    'months' => date('m'),
+                    'year' => date('Y'),
                 );
             }
 
