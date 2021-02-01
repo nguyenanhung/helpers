@@ -40,7 +40,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         {
             $isset = isset($input);
             if ($isset === TRUE) {
-                return empty($input) ? TRUE : FALSE;
+                if (empty($input)) {
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
             }
 
             return TRUE;
@@ -63,7 +67,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                 return $array;
             }
             $object = new stdClass();
-            if (is_array($array) && count($array) > 0) {
+            if (count($array) > 0) {
                 foreach ($array as $name => $value) {
                     $name = trim($name);
                     if ($str_to_lower === TRUE) {
@@ -96,9 +100,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                 return $object;
             }
             $object = json_encode($object);
-            $result = json_decode($object, TRUE);
 
-            return $result;
+            return json_decode($object, TRUE);
         }
 
         /**
@@ -237,8 +240,6 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                     }
 
                     return substr(str_shuffle(str_repeat($pool, ceil($len / strlen($pool)))), 0, $len);
-                case 'md5':
-                    return md5(uniqid(mt_rand()));
                 case 'sha1':
                     return sha1(uniqid(mt_rand(), TRUE));
                 default:
@@ -261,24 +262,24 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         public function directoryMap($source_dir, $directory_depth = 0, $hidden = FALSE)
         {
             if ($fp = @opendir($source_dir)) {
-                $filedata   = [];
+                $fileData   = [];
                 $new_depth  = $directory_depth - 1;
                 $source_dir = rtrim($source_dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
                 while (FALSE !== ($file = readdir($fp))) {
                     // Remove '.', '..', and hidden files [optional]
-                    if ($file === '.' OR $file === '..' OR ($hidden === FALSE && $file[0] === '.')) {
+                    if ($file === '.' or $file === '..' or ($hidden === FALSE && $file[0] === '.')) {
                         continue;
                     }
                     is_dir($source_dir . $file) && $file .= DIRECTORY_SEPARATOR;
-                    if (($directory_depth < 1 OR $new_depth > 0) && is_dir($source_dir . $file)) {
-                        $filedata[$file] = $this->directoryMap($source_dir . $file, $new_depth, $hidden);
+                    if (($directory_depth < 1 or $new_depth > 0) && is_dir($source_dir . $file)) {
+                        $fileData[$file] = $this->directoryMap($source_dir . $file, $new_depth, $hidden);
                     } else {
-                        $filedata[] = $file;
+                        $fileData[] = $file;
                     }
                 }
                 closedir($fp);
 
-                return $filedata;
+                return $fileData;
             }
 
             return FALSE;
@@ -310,8 +311,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                     // Gen file Index.html + .htaccess
                     $file_content_index_html = "<!DOCTYPE html>\n<html lang='vi'>\n<head>\n<title>403 Forbidden</title>\n</head>\n<body>\n<p>Directory access is forbidden.</p>\n</body>\n</html>";
                     $file_content_htaccess   = "RewriteEngine On\nOptions -Indexes\nAddType text/plain php3 php4 php5 php cgi asp aspx html css js";
-                    $file->appendToFile($pathname . DIRECTORY_SEPARATOR . 'index.html', $file_content_index_html);
-                    $file->appendToFile($pathname . DIRECTORY_SEPARATOR . '.htaccess', $file_content_htaccess);
+                    $file->appendToFile($pathname . '/index.html', $file_content_index_html);
+                    $file->appendToFile($pathname . '/.htaccess', $file_content_htaccess);
 
                     return TRUE;
                 }
@@ -366,9 +367,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:07
          *
          */
-        public function placeholder(
-            $size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'http://via.placeholder.com/'
-        ) {
+        public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://via.placeholder.com/')
+        {
             if (!empty($bg_color)) {
                 $bg_color = '/' . $bg_color;
             }
@@ -379,9 +379,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                 $text = '/' . $text;
             }
             $link = trim($domain) . trim($size) . trim($bg_color) . trim($text_color) . trim($text);
-            $html = '<img alt="Place-Holder" title="Place Holder" src="' . $link . '">';
 
-            return $html;
+            return '<img alt="Place-Holder" title="Place Holder" src="' . $link . '">';
         }
 
         /************************** HTML + XML HELPER **************************/
@@ -560,7 +559,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             }
             $str = '';
             foreach ($loc as $meta) {
-                $type    = (isset($meta['type']) && $meta['type'] !== 'loc') ? 'loc' : 'loc';
+                if ((isset($meta['type']) && $meta['type'] !== 'loc')) {
+                    $type = 'loc';
+                } else {
+                    $type = 'loc';
+                }
                 $loc     = isset($meta['loc']) ? $meta['loc'] : '';
                 $lastmod = isset($meta['lastmod']) ? $meta['lastmod'] : '';
                 $newline = isset($meta['newline']) ? $meta['newline'] : "\n";
@@ -1146,7 +1149,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         public function wordWrap($str = '', $charlim = 76)
         {
             // Set the character limit
-            is_numeric($charlim) OR $charlim = 76;
+            is_numeric($charlim) or $charlim = 76;
 
             // Reduce multiple spaces
             $str = preg_replace('| +|', ' ', $str);

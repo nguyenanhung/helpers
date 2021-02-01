@@ -16,8 +16,8 @@ if (!function_exists('iso_8601_utc_time')) {
      */
     function iso_8601_utc_time()
     {
-        $common = new \nguyenanhung\Classes\Helper\Common();
-        $result = $common->zuluTime();
-        return $result;
+        $common = new nguyenanhung\Classes\Helper\Common();
+
+        return $common->zuluTime();
     }
 }

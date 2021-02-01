@@ -18,7 +18,7 @@ if (!function_exists('form_label')) {
      */
     function form_label($text, $fieldName = NULL, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::label($text, $fieldName, $attributes);
+        return nguyenanhung\Classes\Helper\Form::label($text, $fieldName, $attributes);
     }
 }
 if (!function_exists('form_text')) {
@@ -33,7 +33,7 @@ if (!function_exists('form_text')) {
      */
     function form_text($name, $value = NULL, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::text($name, $value, $attributes);
+        return nguyenanhung\Classes\Helper\Form::text($name, $value, $attributes);
     }
 }
 if (!function_exists('form_password')) {
@@ -50,7 +50,7 @@ if (!function_exists('form_password')) {
      */
     function form_password($name, $value = NULL, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::password($name, $value, $attributes);
+        return nguyenanhung\Classes\Helper\Form::password($name, $value, $attributes);
     }
 }
 if (!function_exists('form_hidden')) {
@@ -67,7 +67,7 @@ if (!function_exists('form_hidden')) {
      */
     function form_hidden($name, $value, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::hidden($name, $value, $attributes);
+        return nguyenanhung\Classes\Helper\Form::hidden($name, $value, $attributes);
     }
 }
 if (!function_exists('form_textArea')) {
@@ -82,7 +82,7 @@ if (!function_exists('form_textArea')) {
      */
     function form_textArea($name, $text = NULL, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::textArea($name, $text, $attributes);
+        return nguyenanhung\Classes\Helper\Form::textArea($name, $text, $attributes);
     }
 }
 if (!function_exists('form_checkBox')) {
@@ -100,7 +100,7 @@ if (!function_exists('form_checkBox')) {
      */
     function form_checkBox($name, $checked = FALSE, $value = 1, array $attributes = array(), $withHiddenField = TRUE)
     {
-        return \nguyenanhung\Classes\Helper\Form::checkBox($name, $checked, $value, $attributes, $withHiddenField);
+        return nguyenanhung\Classes\Helper\Form::checkBox($name, $checked, $value, $attributes, $withHiddenField);
     }
 }
 if (!function_exists('form_collectionCheckBoxes')) {
@@ -118,7 +118,7 @@ if (!function_exists('form_collectionCheckBoxes')) {
      */
     function form_collectionCheckBoxes($name, array $collection, $checked, array $labelAttributes = array(), $returnAsArray = FALSE)
     {
-        return \nguyenanhung\Classes\Helper\Form::collectionCheckBoxes($name, $collection, $checked, $labelAttributes, $returnAsArray);
+        return nguyenanhung\Classes\Helper\Form::collectionCheckBoxes($name, $collection, $checked, $labelAttributes, $returnAsArray);
     }
 }
 if (!function_exists('form_radio')) {
@@ -136,7 +136,7 @@ if (!function_exists('form_radio')) {
      */
     function form_radio($name, $value, $checked = FALSE, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::radio($name, $value, $checked, $attributes);
+        return nguyenanhung\Classes\Helper\Form::radio($name, $value, $checked, $attributes);
     }
 }
 if (!function_exists('form_collectionRadios')) {
@@ -155,7 +155,7 @@ if (!function_exists('form_collectionRadios')) {
      */
     function form_collectionRadios($name, array $collection, $checked, array $labelAttributes = array(), $returnAsArray = FALSE)
     {
-        return \nguyenanhung\Classes\Helper\Form::collectionRadios($name, $collection, $checked, $labelAttributes, $returnAsArray);
+        return nguyenanhung\Classes\Helper\Form::collectionRadios($name, $collection, $checked, $labelAttributes, $returnAsArray);
     }
 }
 if (!function_exists('form_select')) {
@@ -181,7 +181,7 @@ if (!function_exists('form_select')) {
      */
     function form_select($name, array $collection, $selected = NULL, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::select($name, $collection, $selected, $attributes);
+        return nguyenanhung\Classes\Helper\Form::select($name, $collection, $selected, $attributes);
     }
 }
 if (!function_exists('form_option')) {
@@ -196,7 +196,7 @@ if (!function_exists('form_option')) {
      */
     function form_option($value, $label, $selected)
     {
-        return \nguyenanhung\Classes\Helper\Form::option($value, $label, $selected);
+        return nguyenanhung\Classes\Helper\Form::option($value, $label, $selected);
     }
 }
 if (!function_exists('form_file')) {
@@ -212,7 +212,7 @@ if (!function_exists('form_file')) {
      */
     function form_file($name, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::file($name, $attributes);
+        return nguyenanhung\Classes\Helper\Form::file($name, $attributes);
     }
 }
 if (!function_exists('form_button')) {
@@ -230,7 +230,7 @@ if (!function_exists('form_button')) {
      */
     function form_button($name, $text, array $attributes = array())
     {
-        return \nguyenanhung\Classes\Helper\Form::button($name, $text, $attributes);
+        return nguyenanhung\Classes\Helper\Form::button($name, $text, $attributes);
     }
 }
 if (!function_exists('form_autoId')) {
@@ -245,6 +245,6 @@ if (!function_exists('form_autoId')) {
      */
     function form_autoId($name)
     {
-        return \nguyenanhung\Classes\Helper\Form::autoId($name);
+        return nguyenanhung\Classes\Helper\Form::autoId($name);
     }
 }

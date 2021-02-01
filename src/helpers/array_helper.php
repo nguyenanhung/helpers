@@ -60,7 +60,7 @@ if (!function_exists('arrayToObject')) {
      */
     function arrayToObject($array = array(), $strToLower = FALSE)
     {
-        $common = new \nguyenanhung\Classes\Helper\Common();
+        $common = new nguyenanhung\Classes\Helper\Common();
 
         return $common->arrayToObject($array, $strToLower);
     }

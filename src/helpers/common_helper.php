@@ -35,9 +35,8 @@ if (!function_exists('isEmpty')) {
      */
     function isEmpty($input = '')
     {
-        $common = new \nguyenanhung\Classes\Helper\Common();
-        $result = $common->isEmpty($input);
+        $common = new nguyenanhung\Classes\Helper\Common();
 
-        return $result;
+        return $common->isEmpty($input);
     }
 }

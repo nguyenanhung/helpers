@@ -40,7 +40,7 @@ if (!function_exists('seo_meta_tag_equiv')) {
                 'type'    => 'equiv'
             ]
         ];
-        $common  = new \nguyenanhung\Classes\Helper\Common();
+        $common  = new nguyenanhung\Classes\Helper\Common();
 
         return $common->metaTagEquiv($content);
     }

@@ -35,9 +35,7 @@ if (!function_exists('getIPAddress')) {
                 foreach (explode(',', $_SERVER[$key]) as $ip) {
                     $ip = trim($ip);
                     if ($convertToInteger === TRUE) {
-                        $result = ip2long($ip);
-
-                        return $result;
+                        return ip2long($ip);
                     }
 
                     return $ip;
@@ -148,10 +146,8 @@ if (!function_exists('getIpInformation')) {
 
             return $response;
         }
-        catch (\Exception $e) {
-            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
-
-            return $message;
+        catch (Exception $e) {
+            return 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
         }
     }
 }
