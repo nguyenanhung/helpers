@@ -21,10 +21,9 @@ if (!function_exists('meta_property')) {
      */
     function meta_property($property = '', $content = '', $type = 'property', $newline = "\n")
     {
-        $common = new \nguyenanhung\Classes\Helper\Common();
-        $result = $common->metaProperty($property, $content, $type, $newline);
+        $common = new nguyenanhung\Classes\Helper\Common();
 
-        return $result;
+        return $common->metaProperty($property, $content, $type, $newline);
     }
 }
 if (!function_exists('get_json_item')) {
@@ -41,9 +40,7 @@ if (!function_exists('get_json_item')) {
      */
     function get_json_item($json_string = '', $item_output = '')
     {
-        $result = jsonItem($json_string, $item_output);
-
-        return $result;
+        return jsonItem($json_string, $item_output);
     }
 }
 if (!function_exists('placeholder_img')) {
@@ -62,10 +59,9 @@ if (!function_exists('placeholder_img')) {
      */
     function placeholder_img($size = '300x250', $background_color = '', $text_color = '', $text = '')
     {
-        $common = new \nguyenanhung\Classes\Helper\Common();
-        $result = $common->placeholder($size, $background_color, $text_color, $text);
+        $common = new nguyenanhung\Classes\Helper\Common();
 
-        return $result;
+        return $common->placeholder($size, $background_color, $text_color, $text);
     }
 }
 if (!function_exists('clean_title')) {
@@ -83,6 +79,7 @@ if (!function_exists('clean_title')) {
     {
         $str = escapeHtml($str);
         $str = strip_tags($str);
+
         return trim($str);
     }
 }

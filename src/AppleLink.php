@@ -50,9 +50,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
             }
             $data_link = http_build_query($data);
             $link      = 'mailto:' . $mailto;
-            $result    = !empty($data) ? $link . '?' . $data_link : $link;
 
-            return $result;
+            return !empty($data) ? $link . '?' . $data_link : $link;
         }
 
         /**
