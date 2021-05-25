@@ -41,9 +41,8 @@ class UserUtils implements ProjectInterface
     public static function hashUserPassword($password = '', $salt = '')
     {
         $passwordString = $password . self::$passwordPrefix . $salt;
-        $result         = password_hash($passwordString, self::$passwordAlgorithm, self::$passwordOptions);
 
-        return $result;
+        return password_hash($passwordString, self::$passwordAlgorithm, self::$passwordOptions);
     }
 
     /**

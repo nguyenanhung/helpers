@@ -46,7 +46,7 @@ class Utils implements ProjectInterface
         // IIS environment likely? Use 'refresh' for better compatibility
         if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE) {
             $method = 'refresh';
-        } elseif ($method !== 'refresh' && (empty($code) OR !is_numeric($code))) {
+        } elseif ($method !== 'refresh' && (empty($code) or !is_numeric($code))) {
             if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
                 $code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
                     ? 303    // reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
@@ -98,11 +98,10 @@ class Utils implements ProjectInterface
         if (!is_array($data)) {
             return $data;
         }
-        if (is_array($data) && count($data) > 0) {
-            $json   = json_encode($data);
-            $object = json_decode($json);
+        if (count($data) > 0) {
+            $json = json_encode($data);
 
-            return $object;
+            return json_decode($json);
         }
 
         return FALSE;
@@ -129,9 +128,8 @@ class Utils implements ProjectInterface
         if (static::isJson($data)) {
             return json_decode($data);
         }
-        $object = new stdClass();
 
-        return $object;
+        return new stdClass();
     }
 
     /**
@@ -221,10 +219,9 @@ class Utils implements ProjectInterface
      */
     public static function generateRequestId()
     {
-        $time      = new Carbon();
-        $requestId = $time->format('YmdHis') . random_string('numeric', 10);
+        $time = new Carbon();
 
-        return $requestId;
+        return $time->format('YmdHis') . random_string('numeric', 10);
     }
 
     /**
@@ -237,10 +234,9 @@ class Utils implements ProjectInterface
      */
     public static function generateVinaRequestId()
     {
-        $time      = new Carbon();
-        $requestId = $time->format('YmdHis') . ceil(microtime(TRUE) * 1000);
+        $time = new Carbon();
 
-        return $requestId;
+        return $time->format('YmdHis') . ceil(microtime(TRUE) * 1000);
     }
 
     /**

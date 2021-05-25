@@ -309,10 +309,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                     $file = new File();
                     $file->mkdir($pathname, $mode);
                     // Gen file Index.html + .htaccess
-                    $file_content_index_html = "<!DOCTYPE html>\n<html lang='vi'>\n<head>\n<title>403 Forbidden</title>\n</head>\n<body>\n<p>Directory access is forbidden.</p>\n</body>\n</html>";
-                    $file_content_htaccess   = "RewriteEngine On\nOptions -Indexes\nAddType text/plain php3 php4 php5 php cgi asp aspx html css js";
-                    $file->appendToFile($pathname . '/index.html', $file_content_index_html);
-                    $file->appendToFile($pathname . '/.htaccess', $file_content_htaccess);
+                    $fileContentIndex    = "<!DOCTYPE html>\n<html lang='vi'>\n<head>\n<title>403 Forbidden</title>\n</head>\n<body>\n<p>Directory access is forbidden.</p>\n</body>\n</html>";
+                    $fileContentHtaccess = "RewriteEngine On\nOptions -Indexes\nAddType text/plain php3 php4 php5 php cgi asp aspx html css js";
+                    $file->appendToFile($pathname . '/index.html', $fileContentIndex);
+                    $file->appendToFile($pathname . '/.htaccess', $fileContentHtaccess);
 
                     return TRUE;
                 }
@@ -979,7 +979,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function entitiesToAscii($str = '', $all = TRUE)
         {
-            if (preg_match_all('/\&#(\d+)\;/', $str, $matches)) {
+            $pattern = '/\&#(\d+)\;/';
+            if (preg_match_all($pattern, $str, $matches)) {
                 for ($i = 0, $s = count($matches[0]); $i < $s; $i++) {
                     $digits = $matches[1][$i];
                     $out    = '';
@@ -1161,8 +1162,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
 
             // If the current word is surrounded by {unwrap} tags we'll
             // strip the entire chunk and replace it with a marker.
-            $unwrap = [];
-            if (preg_match_all('|\{unwrap\}(.+?)\{/unwrap\}|s', $str, $matches)) {
+            $unwrap        = [];
+            $patternUnWrap = '|\{unwrap\}(.+?)\{/unwrap\}|s';
+            if (preg_match_all($patternUnWrap, $str, $matches)) {
                 for ($i = 0, $c = count($matches[0]); $i < $c; $i++) {
                     $unwrap[] = $matches[1][$i];
                     $str      = str_replace($matches[0][$i], '{{unwrapped' . $i . '}}', $str);
@@ -1187,7 +1189,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                 $temp = '';
                 while (mb_strlen($line) > $charlim) {
                     // If the over-length word is a URL we won't wrap it
-                    if (preg_match('!\[url.+\]|://|www\.!', $line)) {
+                    $charlimPatter = '!\[url.+\]|://|www\.!';
+                    if (preg_match($charlimPatter, $line)) {
                         break;
                     }
 
