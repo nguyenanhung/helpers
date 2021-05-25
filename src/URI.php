@@ -263,11 +263,12 @@ class URI
         if (empty($scheme) || NULL === $scheme) {
             return $this;
         }
-        $scheme = preg_replace('/[^a-zA-Z0-9\.\:\-]/', '', $scheme);
-        $scheme = strtolower($scheme);
-        $scheme = rtrim($scheme, ':/');
-        $scheme = trim($scheme, ':/');
-        $scheme = str_replace('::', ':', $scheme);
+        $schemePattern = '/[^a-zA-Z0-9\.\:\-]/';
+        $scheme        = preg_replace($schemePattern, '', $scheme);
+        $scheme        = strtolower($scheme);
+        $scheme        = rtrim($scheme, ':/');
+        $scheme        = trim($scheme, ':/');
+        $scheme        = str_replace('::', ':', $scheme);
         if (strlen($scheme) != 0) {
             if ($this->isRelative()) {
                 /* Explained: */
@@ -397,6 +398,7 @@ class URI
         /** @var object|mixed $uri */
         $uri = new $class($uri);
         $uri->setScheme($scheme);
+
         return $uri->getUri();
     }
 

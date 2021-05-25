@@ -13,6 +13,7 @@
     "require": {
         "ext-json": "*",
         "ext-curl": "*",
+        "ext-mcrypt": "*",
         "symfony/polyfill": "^1.22 || ^1.19 || ^1.18",
         "symfony/filesystem": "^5.2 || ^4.4",
         "mobiledetect/mobiledetectlib": "^2.8",
