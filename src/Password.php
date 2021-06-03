@@ -131,9 +131,7 @@ class Password implements ProjectInterface
      */
     public static function hashPassword($password = '')
     {
-        $hash    = password_hash($password, PASSWORD_DEFAULT);
-
-        return $hash;
+        return password_hash($password, PASSWORD_DEFAULT);
     }
 
     /**
@@ -183,9 +181,7 @@ class Password implements ProjectInterface
      */
     public static function verifyPassword($password = '', $hash = '')
     {
-        $verify = password_verify($password, $hash);
-
-        return $verify;
+        return password_verify($password, $hash);
     }
 
     /**
@@ -206,9 +202,7 @@ class Password implements ProjectInterface
             // or the cost has changed
             if (password_needs_rehash($hash, PASSWORD_DEFAULT)) {
                 // If so, create a new hash, and replace the old one
-                $newHash = password_hash($password, PASSWORD_DEFAULT);
-
-                return $newHash;
+                return password_hash($password, PASSWORD_DEFAULT);
             }
 
             // Log user in
