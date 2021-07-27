@@ -39,9 +39,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Base64')) {
             $output = strrev($output);
             $output = base64_encode($output);
             $output = base64_encode($output);
-            $output = strrev($output);
 
-            return $output;
+            return strrev($output);
         }
 
         /**
@@ -61,9 +60,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Base64')) {
             $output = base64_decode($output);
             $output = base64_decode($output);
             $output = strrev($output);
-            $output = base64_decode($output);
 
-            return $output;
+            return base64_decode($output);
         }
     }
 }

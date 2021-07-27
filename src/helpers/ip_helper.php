@@ -6,6 +6,9 @@
  * Date: 11/6/18
  * Time: 09:07
  */
+
+use nguyenanhung\Classes\Helper\IP;
+
 if (!function_exists('getIPAddress')) {
     /**
      * Function getIpAddress
@@ -19,31 +22,7 @@ if (!function_exists('getIPAddress')) {
      */
     function getIPAddress($convertToInteger = FALSE)
     {
-        $ip_keys = [
-            0 => 'HTTP_X_FORWARDED_FOR',
-            1 => 'HTTP_X_FORWARDED',
-            2 => 'HTTP_X_IPADDRESS',
-            3 => 'HTTP_X_CLUSTER_CLIENT_IP',
-            4 => 'HTTP_FORWARDED_FOR',
-            5 => 'HTTP_FORWARDED',
-            6 => 'HTTP_CLIENT_IP',
-            7 => 'HTTP_IP',
-            8 => 'REMOTE_ADDR'
-        ];
-        foreach ($ip_keys as $key) {
-            if (array_key_exists($key, $_SERVER) === TRUE) {
-                foreach (explode(',', $_SERVER[$key]) as $ip) {
-                    $ip = trim($ip);
-                    if ($convertToInteger === TRUE) {
-                        return ip2long($ip);
-                    }
-
-                    return $ip;
-                }
-            }
-        }
-
-        return FALSE;
+        return IP::getIPAddress($convertToInteger);
     }
 }
 if (!function_exists('validateIP')) {
@@ -59,11 +38,7 @@ if (!function_exists('validateIP')) {
      */
     function validateIP($ip)
     {
-        if (filter_var($ip, FILTER_VALIDATE_IP) === FALSE) {
-            return FALSE;
-        }
-
-        return TRUE;
+        return IP::validateIP($ip);
     }
 }
 if (!function_exists('validateIPV4')) {
@@ -79,11 +54,7 @@ if (!function_exists('validateIPV4')) {
      */
     function validateIPV4($ip)
     {
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === FALSE) {
-            return FALSE;
-        }
-
-        return TRUE;
+        return IP::validateIPV4($ip);
     }
 }
 if (!function_exists('validateIPV6')) {
@@ -99,12 +70,7 @@ if (!function_exists('validateIPV6')) {
      */
     function validateIPV6($ip)
     {
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === FALSE) {
-
-            return FALSE;
-        }
-
-        return TRUE;
+        return IP::validateIPV6($ip);
     }
 }
 if (!function_exists('getIpInformation')) {

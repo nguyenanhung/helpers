@@ -12,8 +12,8 @@ namespace nguyenanhung\Classes\Helper;
 use DateTime;
 use Exception;
 use SplFileInfo;
-use \TheSeer\DirectoryScanner\DirectoryScanner;
-use \Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
+use TheSeer\DirectoryScanner\DirectoryScanner;
+use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
 
 if (!class_exists('nguyenanhung\Classes\Helper\File')) {
     /**

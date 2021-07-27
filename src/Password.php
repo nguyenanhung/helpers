@@ -9,205 +9,203 @@
  */
 
 namespace nguyenanhung\Classes\Helper;
-
-/**
- * Class Password
- *
- * @package   nguyenanhung\Classes\Helper
- * @author    713uk13m <dev@nguyenanhung.com>
- * @copyright 713uk13m <dev@nguyenanhung.com>
- */
-class Password implements ProjectInterface
-{
-    use Version;
-
+if (!class_exists('nguyenanhung\Classes\Helper\Password')) {
     /**
-     * Function generateRandomPassword
+     * Class Password
      *
-     * @return string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 46:04
+     * @package   nguyenanhung\Classes\Helper
+     * @author    713uk13m <dev@nguyenanhung.com>
+     * @copyright 713uk13m <dev@nguyenanhung.com>
      */
-    public static function generateRandomPassword()
+    class Password implements ProjectInterface
     {
-        return random_string('alnum', 10);
-    }
+        use Version;
 
-    /**
-     * Function generateRandomSalt
-     *
-     * @return string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 07:36
-     */
-    public static function generateRandomSalt()
-    {
-        return random_string('alnum', 16);
-    }
-
-    /**
-     * Function generateStrongPassword
-     *
-     * @param int    $length
-     * @param bool   $add_dashes
-     * @param string $available_sets
-     *
-     * @return false|string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 04:38
-     */
-    public static function generateStrongPassword($length = 20, $add_dashes = FALSE, $available_sets = 'hung')
-    {
-        $sets = [];
-        if (strpos($available_sets, 'h') !== FALSE) {
-            $sets[] = 'abcdefghjkmnpqrstuvwxyz';
+        /**
+         * Function generateRandomPassword
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 10/30/19 46:04
+         */
+        public static function generateRandomPassword()
+        {
+            return random_string('alnum', 10);
         }
-        if (strpos($available_sets, 'u') !== FALSE) {
-            $sets[] = 'ABCDEFGHJKMNPQRSTUVWXYZ';
+
+        /**
+         * Function generateRandomSalt
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 10/30/19 07:36
+         */
+        public static function generateRandomSalt()
+        {
+            return random_string('alnum', 16);
         }
-        if (strpos($available_sets, 'n') !== FALSE) {
-            $sets[] = '0123456789';
+
+        /**
+         * Function generateStrongPassword
+         *
+         * @param int    $length
+         * @param false  $add_dashes
+         * @param string $available_sets
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 07/28/2021 49:04
+         */
+        public static function generateStrongPassword($length = 20, $add_dashes = FALSE, $available_sets = 'hung')
+        {
+            $sets = [];
+            if (strpos($available_sets, 'h') !== FALSE) {
+                $sets[] = 'abcdefghjkmnpqrstuvwxyz';
+            }
+            if (strpos($available_sets, 'u') !== FALSE) {
+                $sets[] = 'ABCDEFGHJKMNPQRSTUVWXYZ';
+            }
+            if (strpos($available_sets, 'n') !== FALSE) {
+                $sets[] = '0123456789';
+            }
+            if (strpos($available_sets, 'g') !== FALSE) {
+                $sets[] = '!@#$%&*?';
+            }
+            $all      = '';
+            $password = '';
+            foreach ($sets as $set) {
+                $password .= $set[array_rand(str_split($set))];
+                $all      .= $set;
+            }
+            $all = str_split($all);
+            for ($i = 0; $i < $length - count($sets); $i++) {
+                $password .= $all[array_rand($all)];
+            }
+            $password = str_shuffle($password);
+            if (!$add_dashes) {
+                return $password;
+            }
+            $dash_len = floor(sqrt($length));
+            $dash_str = '';
+            while (strlen($password) > $dash_len) {
+                $dash_str .= substr($password, 0, $dash_len) . '-';
+                $password = substr($password, $dash_len);
+            }
+            $dash_str .= $password;
+
+            return $dash_str;
         }
-        if (strpos($available_sets, 'g') !== FALSE) {
-            $sets[] = '!@#$%&*?';
+
+        /**
+         * Function validStrongPassword
+         *
+         * @param string $password
+         *
+         * @return bool
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 10/30/19 04:14
+         */
+        public static function validStrongPassword($password = '')
+        {
+            $containsSmallLetter = preg_match('/[a-z]/', $password); // Yêu cầu có ít nhất 1 ký tự viết thường
+            $containsCapsLetter  = preg_match('/[A-Z]/', $password); // Yêu cầu có ít nhất 1 ký tự viết hoa
+            $containsDigit       = preg_match('/\d/', $password); // Yêu cầu có ít nhất 1 số
+            $containsSpecial     = preg_match('/[^a-zA-Z\d]/', $password); // Yêu cầu có ít nhất 1 ký tự đặc biệt
+
+            return ($containsSmallLetter && $containsCapsLetter && $containsDigit && $containsSpecial);
         }
-        $all      = '';
-        $password = '';
-        foreach ($sets as $set) {
-            $password .= $set[array_rand(str_split($set))];
-            $all      .= $set;
+
+        /**
+         * Function hashPassword
+         *
+         * @param string $password
+         *
+         * @return false|string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 10/30/19 46:50
+         */
+        public static function hashPassword($password = '')
+        {
+            return password_hash($password, PASSWORD_DEFAULT);
         }
-        $all = str_split($all);
-        for ($i = 0; $i < $length - count($sets); $i++) {
-            $password .= $all[array_rand($all)];
+
+        /**
+         * Function reHashPassword
+         *
+         * @param string $hash
+         *
+         * @return bool
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 07/28/2021 45:45
+         */
+        public static function reHashPassword($hash = '')
+        {
+            return password_needs_rehash($hash, PASSWORD_DEFAULT);
         }
-        $password = str_shuffle($password);
-        if (!$add_dashes) {
-            return $password;
+
+        /**
+         * Function passwordGetInfo
+         *
+         * @param string $hash
+         *
+         * @return array|null
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 07/28/2021 45:29
+         */
+        public static function passwordGetInfo($hash = '')
+        {
+            return password_get_info($hash);
         }
-        $dash_len = floor(sqrt($length));
-        $dash_str = '';
-        while (strlen($password) > $dash_len) {
-            $dash_str .= substr($password, 0, $dash_len) . '-';
-            $password = substr($password, $dash_len);
+
+        /**
+         * Function verifyPassword
+         *
+         * @param string $password
+         * @param string $hash
+         *
+         * @return bool
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 10/30/19 02:54
+         */
+        public static function verifyPassword($password = '', $hash = '')
+        {
+            return password_verify($password, $hash);
         }
-        $dash_str .= $password;
 
-        return $dash_str;
-    }
+        /**
+         * Function changeHashPassword
+         *
+         * @param string $password
+         * @param string $hash
+         *
+         * @return false|string|null
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 07/28/2021 45:19
+         */
+        public static function changeHashPassword($password = '', $hash = '')
+        {
+            if (password_verify($password, $hash)) {
+                // Check if a newer hashing algorithm is available
+                // or the cost has changed
+                if (password_needs_rehash($hash, PASSWORD_DEFAULT)) {
+                    // If so, create a new hash, and replace the old one
+                    return password_hash($password, PASSWORD_DEFAULT);
+                }
 
-    /**
-     * Function validStrongPassword
-     *
-     * @param string $password
-     *
-     * @return bool
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 04:14
-     */
-    public static function validStrongPassword($password = '')
-    {
-        $containsSmallLetter = preg_match('/[a-z]/', $password); // Yêu cầu có ít nhất 1 ký tự viết thường
-        $containsCapsLetter  = preg_match('/[A-Z]/', $password); // Yêu cầu có ít nhất 1 ký tự viết hoa
-        $containsDigit       = preg_match('/\d/', $password); // Yêu cầu có ít nhất 1 số
-        $containsSpecial     = preg_match('/[^a-zA-Z\d]/', $password); // Yêu cầu có ít nhất 1 ký tự đặc biệt
-
-        return ($containsSmallLetter && $containsCapsLetter && $containsDigit && $containsSpecial);
-    }
-
-    /**
-     * Function hashPassword
-     *
-     * @param string $password
-     *
-     * @return false|string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 46:50
-     */
-    public static function hashPassword($password = '')
-    {
-        return password_hash($password, PASSWORD_DEFAULT);
-    }
-
-    /**
-     * Function reHashPassword
-     *
-     * @param string $hash
-     *
-     * @return bool|string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 08:50
-     */
-    public static function reHashPassword($hash = '')
-    {
-        $hash    = password_needs_rehash($hash, PASSWORD_DEFAULT);
-
-        return $hash;
-    }
-
-    /**
-     * Function passwordGetInfo
-     *
-     * @param string $hash
-     *
-     * @return array|string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 12:56
-     */
-    public static function passwordGetInfo($hash = '')
-    {
-        $hash = password_get_info($hash);
-
-        return $hash;
-    }
-
-    /**
-     * Function verifyPassword
-     *
-     * @param string $password
-     * @param string $hash
-     *
-     * @return bool
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 02:54
-     */
-    public static function verifyPassword($password = '', $hash = '')
-    {
-        return password_verify($password, $hash);
-    }
-
-    /**
-     * Function changeHashPassword
-     *
-     * @param string $password
-     * @param string $hash
-     *
-     * @return bool|false|string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/30/19 10:56
-     */
-    public static function changeHashPassword($password = '', $hash = '')
-    {
-        if (password_verify($password, $hash)) {
-            // Check if a newer hashing algorithm is available
-            // or the cost has changed
-            if (password_needs_rehash($hash, PASSWORD_DEFAULT)) {
-                // If so, create a new hash, and replace the old one
-                return password_hash($password, PASSWORD_DEFAULT);
+                // Log user in
             }
 
-            // Log user in
+            return FALSE;
         }
-
-        return FALSE;
     }
 }
+
