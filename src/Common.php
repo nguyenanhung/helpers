@@ -11,7 +11,6 @@ namespace nguyenanhung\Classes\Helper;
 
 use stdClass;
 use Exception;
-use Carbon\Carbon;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
     /**
@@ -191,16 +190,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function zuluTime
          *
-         * @return mixed|string
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 2018-12-15 02:56
-         *
+         * @return string
+         * @throws \Exception
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 07/28/2021 34:29
          */
         public function zuluTime()
         {
-            $time = new Carbon();
+            $dateUTC = new \DateTime("now", new \DateTimeZone("UTC"));
 
-            return $time->toIso8601ZuluString();
+            return $dateUTC->format('Y-m-d\TH:i:s\Z');
         }
 
         /**

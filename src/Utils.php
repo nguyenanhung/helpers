@@ -12,7 +12,6 @@ namespace nguyenanhung\Classes\Helper;
 use stdClass;
 use Exception;
 use DateTime;
-use Carbon\Carbon;
 
 /**
  * Class Utils
@@ -219,9 +218,7 @@ class Utils implements ProjectInterface
      */
     public static function generateRequestId()
     {
-        $time = new Carbon();
-
-        return $time->format('YmdHis') . random_string('numeric', 10);
+        return date('YmdHis') . random_string('numeric', 10);
     }
 
     /**
@@ -234,9 +231,7 @@ class Utils implements ProjectInterface
      */
     public static function generateVinaRequestId()
     {
-        $time = new Carbon();
-
-        return $time->format('YmdHis') . ceil(microtime(TRUE) * 1000);
+        return date('YmdHis') . ceil(microtime(TRUE) * 1000);
     }
 
     /**
@@ -276,15 +271,16 @@ class Utils implements ProjectInterface
      * Function zuluTime
      *
      * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/21/18 14:48
-     *
+     * @throws \Exception
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 07/28/2021 35:16
      */
     public static function zuluTime()
     {
-        $time = new Carbon();
+        $dateUTC = new DateTime("now", new \DateTimeZone("UTC"));
 
-        return $time->toIso8601ZuluString();
+        return $dateUTC->format('Y-m-d\TH:i:s\Z');
     }
 
     /**
@@ -304,15 +300,9 @@ class Utils implements ProjectInterface
     {
         if ($type === 'length') {
             return strlen($content);
-        } elseif ($type === 'count') {
-            // Kiểm tra nhà mạng nếu có
-            if ($count_type === 'default') {
-                return ceil(strlen($content) / 160);
-            } else {
-                // $count_mt  = 0;
-                // $length_mt = strlen($content);
-                return $content;
-            }
+        }
+        if ($type === 'count' && $count_type === 'default') {
+            return ceil(strlen($content) / 160);
         }
 
         return $content;

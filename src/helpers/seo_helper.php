@@ -26,7 +26,7 @@ if (!function_exists('seo_meta_tag_equiv')) {
             ],
             [
                 'name'    => 'refresh',
-                'content' => isset($data['refresh']['content']) ? $data['refresh']['content'] : 1800,
+                'content' => !isset($data['refresh']['content']) ? 1800 : $data['refresh']['content'],
                 'type'    => 'equiv'
             ],
             [
@@ -36,7 +36,7 @@ if (!function_exists('seo_meta_tag_equiv')) {
             ],
             [
                 'name'    => 'audience',
-                'content' => isset($data['audience']['content']) ? $data['audience']['content'] : 'general',
+                'content' => !isset($data['audience']['content']) ? 'general' : $data['audience']['content'],
                 'type'    => 'equiv'
             ]
         ];
