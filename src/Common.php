@@ -10,6 +10,8 @@
 namespace nguyenanhung\Classes\Helper;
 
 use stdClass;
+use DateTime;
+use DateTimeZone;
 use Exception;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
@@ -198,7 +200,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function zuluTime()
         {
-            $dateUTC = new \DateTime("now", new \DateTimeZone("UTC"));
+            $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
 
             return $dateUTC->format('Y-m-d\TH:i:s\Z');
         }
@@ -330,10 +332,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @param int $bytes
          *
-         * @return int|string
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 14:40
-         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/08/2021 12:58
          */
         public function formatSizeUnits($bytes = 0)
         {
@@ -412,9 +414,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             $str = '';
             foreach ($name as $meta) {
                 $type    = (isset($meta['type']) && $meta['type'] !== 'name') ? 'http-equiv' : 'name';
-                $name    = isset($meta['name']) ? $meta['name'] : '';
-                $content = isset($meta['content']) ? $meta['content'] : '';
-                $newline = isset($meta['newline']) ? $meta['newline'] : "\n";
+                $name    = $meta['name'] ?? '';
+                $content = $meta['content'] ?? '';
+                $newline = $meta['newline'] ?? "\n";
 
                 $str .= '<meta ' . $type . '="' . $name . '" content="' . $content . '" />' . $newline;
             }
@@ -456,10 +458,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             }
             $str = '';
             foreach ($property as $meta) {
-                $type     = (isset($meta['type']) && $meta['type'] !== 'property') ? 'itemprop' : 'property';
-                $property = isset($meta['property']) ? $meta['property'] : '';
-                $content  = isset($meta['content']) ? $meta['content'] : '';
-                $newline  = isset($meta['newline']) ? $meta['newline'] : "\n";
+                if (!empty($meta)) {
+                    $type = (isset($meta['type']) && $meta['type'] !== 'property') ? 'itemprop' : 'property';
+                }
+                $property = $meta['property'] ?? '';
+                $content  = $meta['content'] ?? '';
+                $newline  = $meta['newline'] ?? "\n";
                 $str      .= '<meta ' . $type . '="' . $property . '" content="' . $content . '" />' . $newline;
             }
 
@@ -486,7 +490,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                 ],
                 [
                     'name'    => 'refresh',
-                    'content' => isset($data['refresh']['content']) ? $data['refresh']['content'] : 1800,
+                    'content' => $data['refresh']['content'] ?? 1800,
                     'type'    => 'equiv'
                 ],
                 [
@@ -496,7 +500,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                 ],
                 [
                     'name'    => 'audience',
-                    'content' => isset($data['audience']['content']) ? $data['audience']['content'] : 'general',
+                    'content' => $data['audience']['content'] ?? 'general',
                     'type'    => 'equiv'
                 ]
             ];
@@ -560,14 +564,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             }
             $str = '';
             foreach ($loc as $meta) {
-                if ((isset($meta['type']) && $meta['type'] !== 'loc')) {
-                    $type = 'loc';
-                } else {
-                    $type = 'loc';
-                }
-                $loc     = isset($meta['loc']) ? $meta['loc'] : '';
-                $lastmod = isset($meta['lastmod']) ? $meta['lastmod'] : '';
-                $newline = isset($meta['newline']) ? $meta['newline'] : "\n";
+                $type    = 'loc';
+                $loc     = $meta['loc'] ?? '';
+                $lastmod = $meta['lastmod'] ?? '';
+                $newline = $meta['newline'] ?? "\n";
                 $str     .= "\n<sitemap>\n";
                 $str     .= '<' . $type . '>' . trim($domain) . trim($loc) . '.xml' . '</loc>';
                 $str     .= "\n<lastmod>" . $lastmod . "</lastmod>";
@@ -629,18 +629,18 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function viewPagination($input_data = [])
         {
-            // $page_type           = isset($input_data['page_type']) ? $input_data['page_type'] : '';
-            $page_link           = isset($input_data['page_link']) ? $input_data['page_link'] : '';
-            $page_title          = isset($input_data['page_title']) ? $input_data['page_title'] : '';
-            $page_prefix         = isset($input_data['page_prefix']) ? $input_data['page_prefix'] : '';
-            $page_suffix         = isset($input_data['page_suffix']) ? $input_data['page_suffix'] : '';
-            $current_page_number = isset($input_data['current_page_number']) ? $input_data['current_page_number'] : 1;
-            $total_item          = isset($input_data['total_item']) ? $input_data['total_item'] : 0;
-            $item_per_page       = isset($input_data['item_per_page']) ? $input_data['item_per_page'] : 10;
-            $begin               = isset($input_data['pre_rows']) ? $input_data['pre_rows'] : 3;
-            $end                 = isset($input_data['suf_rows']) ? $input_data['suf_rows'] : 3;
-            $first_link          = isset($input_data['first_link']) ? $input_data['first_link'] : '&nbsp;';
-            $last_link           = isset($input_data['last_link']) ? $input_data['last_link'] : '&nbsp;';
+            // $page_type           = $input_data['page_type'] ?? '';
+            $page_link           = $input_data['page_link'] ?? '';
+            $page_title          = $input_data['page_title'] ?? '';
+            $page_prefix         = $input_data['page_prefix'] ?? '';
+            $page_suffix         = $input_data['page_suffix'] ?? '';
+            $current_page_number = $input_data['current_page_number'] ?? 1;
+            $total_item          = $input_data['total_item'] ?? 0;
+            $item_per_page       = $input_data['item_per_page'] ?? 10;
+            $begin               = $input_data['pre_rows'] ?? 3;
+            $end                 = $input_data['suf_rows'] ?? 3;
+            $first_link          = $input_data['first_link'] ?? '&nbsp;';
+            $last_link           = $input_data['last_link'] ?? '&nbsp;';
             /**
              * Kiểm tra giá trị page_number truyền vào
              * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
@@ -703,16 +703,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         }
 
         /**
-         * Strip Quotes
-         *
-         * Removes single and double quotes from a string
+         * Function stripQuotes
          *
          * @param string $str
          *
-         * @return mixed
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:25
-         *
+         * @return array|string|string[]
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/08/2021 11:13
          */
         public function stripQuotes($str = '')
         {
@@ -1225,10 +1223,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param string $str
          * @param string $separator
          *
-         * @return bool|mixed|null|string|string[]
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 10:02
-         *
+         * @return array|mixed|string|string[]
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/08/2021 09:43
          */
         public function convertStrToEn($str = '', $separator = '-')
         {
@@ -1260,11 +1258,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
 
         /************************** EMAIL HELPER **************************/
         /**
-         * Validate email address
+         * Function validEmail
          *
          * @param string $email
          *
-         * @return    bool
+         * @return bool
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/08/2021 09:36
          */
         public function validEmail($email = '')
         {
@@ -1276,13 +1277,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * Function strongPassword
          *
          * @param int    $length
-         * @param bool   $add_dashes
+         * @param false  $add_dashes
          * @param string $available_sets
          *
-         * @return bool|string
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 10:20
-         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/08/2021 08:39
          */
         public function strongPassword($length = 20, $add_dashes = FALSE, $available_sets = 'luna')
         {
@@ -1330,9 +1331,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param string $password
          *
          * @return bool
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 10:21
-         *
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/08/2021 08:31
          */
         public function validStrongPassword($password = '')
         {
@@ -1347,18 +1348,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function createSalt
          *
-         * @return mixed|string
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 10/13/18 10:29
-         *
+         * @return array|false|string|string[]
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/08/2021 08:23
          */
         public function createSalt()
         {
             $salt = mcrypt_create_iv(32, CRYPT_BLOWFISH);
             $salt = base64_encode($salt);
-            $salt = str_replace('+', '.', $salt);
 
-            return $salt;
+            return str_replace('+', '.', $salt);
         }
 
         /************************** ALPHA ID **************************/
@@ -1417,7 +1417,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param mixed   $pad_up  Number or boolean padds the result up to a specified length
          * @param string  $passKey Supplying a password makes it harder to calculate the original ID
          *
-         * @return mixed string or long
+         * @return false|string string or long
          */
         public static function alphaID($in, $to_num = FALSE, $pad_up = FALSE, $passKey = NULL)
         {

@@ -36,18 +36,18 @@ if (!function_exists('view_pagination')) {
      */
     function view_pagination($input_data = array())
     {
-        // $page_type           = isset($input_data['page_type']) ? $input_data['page_type'] : '';
-        $page_link           = isset($input_data['page_link']) ? $input_data['page_link'] : '';
-        $page_title          = isset($input_data['page_title']) ? $input_data['page_title'] : '';
-        $page_prefix         = isset($input_data['page_prefix']) ? $input_data['page_prefix'] : '';
-        $page_suffix         = isset($input_data['page_suffix']) ? $input_data['page_suffix'] : '';
-        $current_page_number = isset($input_data['current_page_number']) ? $input_data['current_page_number'] : 1;
-        $total_item          = isset($input_data['total_item']) ? $input_data['total_item'] : 0;
-        $item_per_page       = isset($input_data['item_per_page']) ? $input_data['item_per_page'] : 10;
-        $begin               = isset($input_data['pre_rows']) ? $input_data['pre_rows'] : 3;
-        $end                 = isset($input_data['suf_rows']) ? $input_data['suf_rows'] : 3;
-        $first_link          = isset($input_data['first_link']) ? $input_data['first_link'] : '&nbsp;';
-        $last_link           = isset($input_data['last_link']) ? $input_data['last_link'] : '&nbsp;';
+        // $page_type           = $input_data['page_type'] ?? '';
+        $page_link           = $input_data['page_link'] ?? '';
+        $page_title          = $input_data['page_title'] ?? '';
+        $page_prefix         = $input_data['page_prefix'] ?? '';
+        $page_suffix         = $input_data['page_suffix'] ?? '';
+        $current_page_number = $input_data['current_page_number'] ?? 1;
+        $total_item          = $input_data['total_item'] ?? 0;
+        $item_per_page       = $input_data['item_per_page'] ?? 10;
+        $begin               = $input_data['pre_rows'] ?? 3;
+        $end                 = $input_data['suf_rows'] ?? 3;
+        $first_link          = $input_data['first_link'] ?? '&nbsp;';
+        $last_link           = $input_data['last_link'] ?? '&nbsp;';
         /**
          * Kiểm tra giá trị page_number truyền vào
          * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
