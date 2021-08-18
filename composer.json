@@ -39,6 +39,7 @@
             "src/helpers/ci_string_helper.php",
             "src/helpers/ci_text_helper.php",
             "src/helpers/ci_xml_helper.php",
+            "src/helpers/ci_security_helper.php",
             "src/helpers/common_helper.php",
             "src/helpers/date_helper.php",
             "src/helpers/email_helper.php",
