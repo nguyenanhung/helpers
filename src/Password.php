@@ -45,6 +45,23 @@ if (!class_exists('nguyenanhung\Classes\Helper\Password')) {
         public static function generateRandomSalt()
         {
             return random_string('alnum', 16);
+
+        }
+
+        /**
+         * Function createSaltWithMcrypt
+         *
+         * @return array|false|string|string[]
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 44:29
+         */
+        public static function createSaltWithMcrypt()
+        {
+            $salt = mcrypt_create_iv(32, CRYPT_BLOWFISH);
+            $salt = base64_encode($salt);
+
+            return str_replace('+', '.', $salt);
         }
 
         /**

@@ -195,16 +195,16 @@
         },
         {
             "name": "nguyenanhung/helpers-filesystem",
-            "version": "v1.0.2",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nguyenanhung/helpers-filesystem.git",
-                "reference": "4b6ddca7913e801b0d08c7ffb6d41e670be5a8c2"
+                "reference": "0977841d708a8f073072a59e98f4075ca474805c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nguyenanhung/helpers-filesystem/zipball/4b6ddca7913e801b0d08c7ffb6d41e670be5a8c2",
-                "reference": "4b6ddca7913e801b0d08c7ffb6d41e670be5a8c2",
+                "url": "https://api.github.com/repos/nguyenanhung/helpers-filesystem/zipball/0977841d708a8f073072a59e98f4075ca474805c",
+                "reference": "0977841d708a8f073072a59e98f4075ca474805c",
                 "shasum": ""
             },
             "require": {
@@ -244,9 +244,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nguyenanhung/helpers-filesystem/issues",
-                "source": "https://github.com/nguyenanhung/helpers-filesystem/tree/v1.0.2"
+                "source": "https://github.com/nguyenanhung/helpers-filesystem/tree/v1.0.4"
             },
-            "time": "2021-08-16T23:31:34+00:00"
+            "time": "2021-08-18T02:39:07+00:00"
         },
         {
             "name": "nguyenanhung/helpers-mobile",

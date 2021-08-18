@@ -22,8 +22,10 @@ class UserUtils implements ProjectInterface
 
     /** @var string Password Prefix */
     public static $passwordPrefix = '|';
+
     /** @var int Password Algorithm */
     public static $passwordAlgorithm = PASSWORD_DEFAULT;
+
     /** @var array Password Options */
     public static $passwordOptions = array('cost' => 10);
 
@@ -33,10 +35,10 @@ class UserUtils implements ProjectInterface
      * @param string $password
      * @param string $salt
      *
-     * @return bool|false|string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/25/18 18:46
-     *
+     * @return false|string|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 50:16
      */
     public static function hashUserPassword($password = '', $salt = '')
     {
@@ -50,10 +52,10 @@ class UserUtils implements ProjectInterface
      *
      * @param string $hash
      *
-     * @return array
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/25/18 18:46
-     *
+     * @return array|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 50:20
      */
     public static function hashUserPasswordGetInfo($hash = '')
     {
@@ -66,9 +68,9 @@ class UserUtils implements ProjectInterface
      * @param string $hash
      *
      * @return bool
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/25/18 19:03
-     *
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 50:23
      */
     public static function userPasswordNeedSReHash($hash = '')
     {
@@ -82,9 +84,9 @@ class UserUtils implements ProjectInterface
      * @param string $hash
      *
      * @return bool
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/25/18 19:04
-     *
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 50:26
      */
     public static function passwordVerify($password = '', $hash = '')
     {

@@ -473,6 +473,51 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
         }
 
         /**
+         * Create a "Random" String
+         *
+         * @param string    type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
+         * @param int    number of characters
+         *
+         * @return    string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:25
+         *
+         */
+        public static function randomString($type = 'alnum', $len = 8)
+        {
+            switch ($type) {
+                case 'basic':
+                    return mt_rand();
+                case 'alnum':
+                case 'numeric':
+                case 'nozero':
+                case 'alpha':
+                    switch ($type) {
+                        case 'alpha':
+                            $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            break;
+                        case 'alnum':
+                            $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            break;
+                        case 'numeric':
+                            $pool = '0123456789';
+                            break;
+                        case 'nozero':
+                            $pool = '123456789';
+                            break;
+                        default:
+                            $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    }
+
+                    return substr(str_shuffle(str_repeat($pool, ceil($len / strlen($pool)))), 0, $len);
+                case 'sha1':
+                    return sha1(uniqid(mt_rand(), TRUE));
+                default:
+                    return md5(uniqid(mt_rand()));
+            }
+        }
+
+        /**
          * Splits a string on the first alpha character
          *
          * I'll return an array with two parts. The first element is the string part before
@@ -971,6 +1016,45 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
             }
             foreach ($str as $key => $value) {
                 $str[$key] = str_replace(['"', "'"], '', $value);
+            }
+
+            return $str;
+        }
+
+        /**
+         * Function convertStrToEn
+         *
+         * @param string $str
+         * @param string $separator
+         *
+         * @return array|mixed|string|string[]
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 47:43
+         */
+        public static function convertStrToEn($str = '', $separator = '-')
+        {
+            $str = trim($str);
+            if (function_exists('mb_strtolower')) {
+                $str = mb_strtolower($str);
+            } else {
+                $str = strtolower($str);
+            }
+            $data = DataRepository::getData('string');
+            if (!empty($str)) {
+                $str = preg_replace("/[^a-zA-Z0-9]/", $separator, $str);
+                $str = preg_replace("/-+/", $separator, $str);
+                $str = str_replace($data['special_array'], $separator, $str);
+                $str = str_replace($data['vn_array'], $data['en_array'], $str);
+                $str = str_replace($data['ascii_array'], $data['normal_array'], $str);
+                $str = str_replace($data['utf8_array'], $data['normal_array'], $str);
+                $str = str_replace(' ', $separator, $str);
+                while (strpos($str, '--') > 0) {
+                    $str = str_replace('--', $separator, $str);
+                }
+                while (strpos($str, '--') === 0) {
+                    $str = str_replace('--', $separator, $str);
+                }
             }
 
             return $str;

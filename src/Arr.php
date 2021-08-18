@@ -11,6 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use InvalidArgumentException;
 use BadMethodCallException;
+use stdClass;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
     /**
@@ -858,6 +859,59 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             }
         }
 
+        /**
+         * Function objectToArray
+         *
+         * @param string $object
+         *
+         * @return mixed|string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 22:02
+         */
+        public static function objectToArray($object = '')
+        {
+            if (!is_object($object)) {
+                return $object;
+            }
+            $object = json_encode($object);
+
+            return json_decode($object, TRUE);
+        }
+
+        /**
+         * Function arrayToObject
+         *
+         * @param array $array
+         * @param false $str_to_lower
+         *
+         * @return array|false|\stdClass
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 23:49
+         */
+        public static function arrayToObject($array = [], $str_to_lower = FALSE)
+        {
+            if (!is_array($array)) {
+                return $array;
+            }
+            $object = new stdClass();
+            if (count($array) > 0) {
+                foreach ($array as $name => $value) {
+                    $name = trim($name);
+                    if ($str_to_lower === TRUE) {
+                        $name = strtolower($name);
+                    }
+                    if (!empty($name)) {
+                        $object->$name = static::arrayToObject($value);
+                    }
+                }
+
+                return $object;
+            }
+
+            return FALSE;
+        }
         //=============================| Protected methods =============================//
 
         /**

@@ -19,6 +19,7 @@ namespace nguyenanhung\Classes\Helper;
 class URI
 {
     const SCHEMES_WITH_AUTHORITY = ';http;https;ftp';
+
     /** @var string */
     private $scheme;
     /** @var string */
