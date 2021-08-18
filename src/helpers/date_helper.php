@@ -9,10 +9,10 @@ if (!function_exists('iso_8601_utc_time')) {
     /**
      * Function iso_8601_utc_time
      *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2019-03-25 14:25
-     *
-     * @return mixed|string
+     * @return string|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 17:38
      */
     function iso_8601_utc_time()
     {

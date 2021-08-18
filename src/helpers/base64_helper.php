@@ -32,10 +32,10 @@ if (!function_exists('base64url_decode')) {
      *
      * @param $data
      *
-     * @return false|string
+     * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 10/8/19 33:29
+     * @time     : 08/18/2021 18:27
      */
     function base64url_decode($data)
     {
@@ -45,5 +45,37 @@ if (!function_exists('base64url_decode')) {
         }
 
         return $decoded;
+    }
+}
+if (!function_exists('super_base64_encode')) {
+    /**
+     * Function super_base64_encode
+     *
+     * @param $input
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 19:36
+     */
+    function super_base64_encode($input)
+    {
+        return nguyenanhung\Classes\Helper\Base64::superBase64Encode($input);
+    }
+}
+if (!function_exists('super_base64_decode')) {
+    /**
+     * Function super_base64_decode
+     *
+     * @param $input
+     *
+     * @return false|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 20:11
+     */
+    function super_base64_decode($input)
+    {
+        return nguyenanhung\Classes\Helper\Base64::superBase64Decode($input);
     }
 }

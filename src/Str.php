@@ -853,13 +853,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since   0.1.0
          *
-         * @param string $str    the string to truncate
-         * @param int    $limit  the string's max length
-         * @param string $break  the break character (to truncate at exact length set to
-         *                       empty string or null) (if the break character does not exist in the string,
-         *                       the string will be truncated at limit) (optional; if omitted, defaults to ' ')
-         * @param string $pad    the padding to add to end of string (optional; if
-         *                       omitted, defaults to '...')
+         * @param        $string    the string to truncate
+         * @param        $limit     the string's max length
+         * @param string $break     the break character (to truncate at exact length set to
+         *                          empty string or null) (if the break character does not exist in the string,
+         *                          the string will be truncated at limit) (optional; if omitted, defaults to ' ')
+         * @param string $pad       the padding to add to end of string (optional; if
+         *                          omitted, defaults to '...')
          *
          * @return  string  the truncated string
          *

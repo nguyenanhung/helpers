@@ -181,5 +181,48 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
                 return FALSE;
             }
         }
+
+        /**
+         * Get IP Information
+         *
+         * @param string $ip
+         *
+         * @return bool|string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 12:29
+         */
+        public static function getIpInformation($ip = '')
+        {
+            if (empty($ip)) {
+                $ip = static::getIPAddress();
+            }
+            try {
+                $endpoint = 'http://ip-api.com/json/' . $ip;
+                $curl     = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL            => $endpoint,
+                    CURLOPT_RETURNTRANSFER => TRUE,
+                    CURLOPT_ENCODING       => "",
+                    CURLOPT_MAXREDIRS      => 10,
+                    CURLOPT_TIMEOUT        => 30,
+                    CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST  => "GET",
+                    CURLOPT_POSTFIELDS     => "",
+                    CURLOPT_HTTPHEADER     => array(),
+                ));
+                $response = curl_exec($curl);
+                $err      = curl_error($curl);
+                curl_close($curl);
+                if ($err) {
+                    $response = "cURL Error #:" . $err;
+                }
+
+                return $response;
+            }
+            catch (Exception $e) {
+                return 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+            }
+        }
     }
 }

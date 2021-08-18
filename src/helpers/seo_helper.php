@@ -9,12 +9,12 @@ if (!function_exists('seo_meta_tag_equiv')) {
     /**
      * Function seo_meta_tag_equiv
      *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2019-03-25 14:26
-     *
      * @param array $data
      *
      * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 10:20
      */
     function seo_meta_tag_equiv($data = [])
     {
@@ -26,7 +26,7 @@ if (!function_exists('seo_meta_tag_equiv')) {
             ],
             [
                 'name'    => 'refresh',
-                'content' => !isset($data['refresh']['content']) ? 1800 : $data['refresh']['content'],
+                'content' => $data['refresh']['content'] ?? 1800,
                 'type'    => 'equiv'
             ],
             [
@@ -36,7 +36,7 @@ if (!function_exists('seo_meta_tag_equiv')) {
             ],
             [
                 'name'    => 'audience',
-                'content' => !isset($data['audience']['content']) ? 'general' : $data['audience']['content'],
+                'content' => $data['audience']['content'] ?? 'general',
                 'type'    => 'equiv'
             ]
         ];

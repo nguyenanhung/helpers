@@ -20,6 +20,6 @@ if (!function_exists('isEmail')) {
      */
     function isEmail($mail = '')
     {
-        return filter_var($mail, FILTER_VALIDATE_EMAIL) ? TRUE : FALSE;
+        return (bool) filter_var($mail, FILTER_VALIDATE_EMAIL);
     }
 }

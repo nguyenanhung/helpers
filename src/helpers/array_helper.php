@@ -50,13 +50,13 @@ if (!function_exists('arrayToObject')) {
     /**
      * Function arrayToObject
      *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2019-01-02 10:58
-     *
      * @param array $array
-     * @param bool  $strToLower
+     * @param false $strToLower
      *
      * @return array|bool|\stdClass
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 23:40
      */
     function arrayToObject($array = array(), $strToLower = FALSE)
     {

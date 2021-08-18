@@ -14,9 +14,11 @@ use BadMethodCallException;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
     /**
-     * The array (aka, "arr") class
+     * Class Arr - The array (aka, "arr") class
      *
-     * @since 0.1.0
+     * @package   nguyenanhung\Classes\Helper
+     * @author    713uk13m <dev@nguyenanhung.com>
+     * @copyright 713uk13m <dev@nguyenanhung.com>
      */
     class Arr
     {
@@ -35,7 +37,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          *     array of columns).
          * @since  0.1.2
          */
-        public static function diff(Array $from, Array $to)
+        public static function diff(array $from, array $to)
         {
             $diffs = [];
 
@@ -120,7 +122,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          * @see   http://php.net/manual/en/function.array-filter.php#99073  Acid24's filter
          *    by key function on on array_filter() man page
          */
-        public static function filterBykey($array, $callback)
+        public static function filterByKey($array, $callback)
         {
             $filtered = array();
 
@@ -515,7 +517,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          *     O'Reilly's PHPCookbook
          * @since  0.1.2
          */
-        public static function permute(Array $set)
+        public static function permute(array $set)
         {
             $perms = [];
 
@@ -817,8 +819,47 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             return $array;
         }
 
+        /**
+         * Function arrayQuickSort
+         *
+         * @param array $array
+         *
+         * @return array
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 21:58
+         */
+        public static function arrayQuickSort($array = array())
+        {
+            // find array size
+            $length = count($array);
+            // base case test, if array of length 0 then just return array to caller
+            if ($length <= 1) {
+                return $array;
+            } else {
+                // select an item to act as our pivot point, since list is unsorted first position is easiest
+                $pivot = $array[0];
+                // declare our two arrays to act as partitions
+                $left  = array();
+                $right = array();
+                // loop and compare each item in the array to the pivot value, place item in appropriate partition
+                for ($i = 1; $i < count($array); $i++) {
+                    if ($array[$i] < $pivot) {
+                        $left[] = $array[$i];
+                    } else {
+                        $right[] = $array[$i];
+                    }
+                }
 
-        /* !Protected methods */
+                // use recursion to now sort the left and right lists
+                return array_merge(static::arrayQuickSort($left), array(
+                    $pivot
+                ), static::arrayQuickSort($right));
+            }
+        }
+
+        //=============================| Protected methods =============================//
+
         /**
          * Returns the next permutation
          *

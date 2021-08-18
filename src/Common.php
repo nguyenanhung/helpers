@@ -192,17 +192,21 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function zuluTime
          *
-         * @return string
-         * @throws \Exception
+         * @return string|null
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 07/28/2021 34:29
+         * @time     : 08/18/2021 17:29
          */
         public function zuluTime()
         {
-            $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
+            try {
+                $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
 
-            return $dateUTC->format('Y-m-d\TH:i:s\Z');
+                return $dateUTC->format('Y-m-d\TH:i:s\Z');
+            }
+            catch (Exception $e) {
+                return NULL;
+            }
         }
 
         /**
