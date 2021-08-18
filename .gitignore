@@ -119,4 +119,4 @@ GitHub.sublime-settings
 
 ## Composer
 /vendor/
-#composer.lock
+composer.lock

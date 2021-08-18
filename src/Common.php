@@ -492,6 +492,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             $end                 = $input_data['suf_rows'] ?? 3;
             $first_link          = $input_data['first_link'] ?? '&nbsp;';
             $last_link           = $input_data['last_link'] ?? '&nbsp;';
+
             /**
              * Kiểm tra giá trị page_number truyền vào
              * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
@@ -499,26 +500,32 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             if (!$current_page_number || empty($current_page_number)) {
                 $current_page_number = 1;
             }
+
             // Tính tổng số page có
             $total_page = ceil($total_item / $item_per_page);
             if ($total_page <= 1) {
                 return NULL;
             }
+
             $output_html = '';
             if ($current_page_number <> 1) {
                 $output_html .= '<li class="left"><a href="' . trim($page_link) . trim($page_suffix) . '" title="' . trim($page_title) . '">' . trim($first_link) . '</a></li>';
             }
+
             for ($page_number = 1; $page_number <= $total_page; $page_number++) {
                 if ($page_number < ($current_page_number - $begin) || $page_number > ($current_page_number + $end)) {
                     continue;
                 }
+
                 if ($page_number == $current_page_number) {
                     $output_html .= '<li class="selected"><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
                 } else {
                     $output_html .= '<li><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
                 }
             }
+
             unset($page_number);
+
             if ($current_page_number <> $total_page) {
                 $output_html .= '<li class="right"><a href="' . trim($page_link) . trim($page_prefix) . trim($total_page) . trim($page_suffix) . '" title="' . trim($page_title) . ' - trang cuối">' . trim($last_link) . '</a></li>';
             }

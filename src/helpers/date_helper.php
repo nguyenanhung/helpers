@@ -12,12 +12,10 @@ if (!function_exists('iso_8601_utc_time')) {
      * @return string|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 08/18/2021 17:38
+     * @time     : 08/18/2021 57:13
      */
     function iso_8601_utc_time()
     {
-        $common = new nguyenanhung\Classes\Helper\Common();
-
-        return $common->zuluTime();
+        return nguyenanhung\Classes\Helper\DateAndTime::zuluTime();
     }
 }

@@ -24,7 +24,7 @@
         "ext-json": "Needed to support JSON",
         "ext-mcrypt": "Needed to support mcrypt",
         "ext-iconv": "Needed to support iconv",
-        "ext-openssl": "Needed to support openssl helper",
+        "ext-openssl": "Needed to support openssl",
         "ext-mbstring": "Needed to support mb_string"
     },
     "autoload": {
