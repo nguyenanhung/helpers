@@ -89,9 +89,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
                 }
             }
 
-            $diffs = array_reverse($diffs);
-
-            return $diffs;
+            return array_reverse($diffs);
         }
 
         /**

@@ -12,13 +12,15 @@ namespace nguyenanhung\Classes\Helper;
 use InvalidArgumentException;
 use BadMethodCallException;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Bool')) {
+if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
     /**
-     * The boolean (aka, "bool") class
+     * Class BoolType - The boolean (aka, "bool") class
      *
-     * @since  0.1.0
+     * @package   nguyenanhung\Classes\Helper
+     * @author    713uk13m <dev@nguyenanhung.com>
+     * @copyright 713uk13m <dev@nguyenanhung.com>
      */
-    class Bool
+    class BoolType
     {
         /**
          * Returns $bool value in the string $format
@@ -27,9 +29,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Bool')) {
          *
          * For example:
          *
-         *     Bool::booltostr(true);             // returns (string) 'true'
-         *     Bool::booltostr(true, 'yes-no');   // returns (string) 'true'
-         *     Bool::booltostr(false, 'on-off');  // returns (string) 'off'
+         *     BoolType::boolToString(true);             // returns (string) 'true'
+         *     BoolType::boolToString(true, 'yes-no');   // returns (string) 'true'
+         *     BoolType::boolToString(false, 'on-off');  // returns (string) 'off'
          *
          * @since  0.1.0
          *
@@ -45,7 +47,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Bool')) {
          * @throws  \InvalidArgumentException  if $format is not a string
          * @throws  \InvalidArgumentException  if $format is not a valid format
          */
-        public static function booltostr($bool, $format = 'true-false')
+        public static function boolToString($bool, $format = 'true-false')
         {
             $string = FALSE;
 
@@ -137,25 +139,25 @@ if (!class_exists('nguyenanhung\Classes\Helper\Bool')) {
          *
          * For example...
          *
-         *     Bool::val("");              // returns (bool) false
-         *     Bool::val(true);            // returns (bool) true
-         *     Bool::val(0);               // returns (bool) false
-         *     Bool::val(0.0);             // returns (bool) false
-         *     Bool::val('0');             // returns (bool) false
-         *     Bool::val('abc');           // returns (bool) true
-         *     Bool::val('true');          // returns (bool) true
-         *     Bool::val('on');            // returns (bool) true
-         *     Bool::val('yes');           // returns (bool) true
-         *     Bool::val('off');           // returns (bool) false
-         *     Bool::val([]);              // returns (bool) false
-         *     Bool::val([1, 2]);          // returns (bool) true
-         *     Bool::val(new StdClass());  // returns (bool) true
+         *     BoolType::val("");              // returns (bool) false
+         *     BoolType::val(true);            // returns (bool) true
+         *     BoolType::val(0);               // returns (bool) false
+         *     BoolType::val(0.0);             // returns (bool) false
+         *     BoolType::val('0');             // returns (bool) false
+         *     BoolType::val('abc');           // returns (bool) true
+         *     BoolType::val('true');          // returns (bool) true
+         *     BoolType::val('on');            // returns (bool) true
+         *     BoolType::val('yes');           // returns (bool) true
+         *     BoolType::val('off');           // returns (bool) false
+         *     BoolType::val([]);              // returns (bool) false
+         *     BoolType::val([1, 2]);          // returns (bool) true
+         *     BoolType::val(new StdClass());  // returns (bool) true
          *
          * @since  0.1.0
          *
          * @param mixed $var the variable to test
          *
-         * @return  bool|null|mixed  the bool value
+         * @return  bool|null  the bool value
          *
          * @see    http://www.php.net/manual/en/function.boolval.php  boolval() man page
          */
