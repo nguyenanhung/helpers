@@ -62,7 +62,7 @@ if (!function_exists('trim_slashes')) {
      * @todo          Remove in version 3.1+.
      * @deprecated    3.0.0    This is just an alias for PHP's native trim()
      *
-     * @param    string
+     * @param string
      *
      * @return    string
      */
@@ -80,9 +80,9 @@ if (!function_exists('strip_slashes')) {
      *
      * Removes slashes contained in a string or in an array
      *
-     * @param    mixed    string or array
+     * @param mixed    string or array
      *
-     * @return    mixed    string or array
+     * @return    array|string    string or array
      */
     function strip_slashes($str)
     {
@@ -106,7 +106,7 @@ if (!function_exists('strip_quotes')) {
      *
      * Removes single and double quotes from a string
      *
-     * @param    string
+     * @param string
      *
      * @return    string
      */
@@ -124,7 +124,7 @@ if (!function_exists('quotes_to_entities')) {
      *
      * Converts single and double quotes to entities
      *
-     * @param    string
+     * @param string
      *
      * @return    string
      */
@@ -149,7 +149,7 @@ if (!function_exists('reduce_double_slashes')) {
      *
      * http://www.some-site.com/index.php
      *
-     * @param    string
+     * @param string
      *
      * @return    string
      */
@@ -173,9 +173,9 @@ if (!function_exists('reduce_multiples')) {
      *
      * Fred, Bill, Joe, Jimmy
      *
-     * @param    string
-     * @param    string    the character you wish to reduce
-     * @param    bool    TRUE/FALSE - whether to trim the character from the beginning/end
+     * @param string
+     * @param string    the character you wish to reduce
+     * @param bool    TRUE/FALSE - whether to trim the character from the beginning/end
      *
      * @return    string
      */
@@ -193,8 +193,8 @@ if (!function_exists('random_string')) {
     /**
      * Create a "Random" String
      *
-     * @param    string    type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
-     * @param    int    number of characters
+     * @param string    type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
+     * @param int    number of characters
      *
      * @return    string
      */
@@ -210,9 +210,6 @@ if (!function_exists('random_string')) {
                 switch ($type) {
                     case 'alpha':
                         $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                        break;
-                    case 'alnum':
-                        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                         break;
                     case 'numeric':
                         $pool = '0123456789';
@@ -232,6 +229,8 @@ if (!function_exists('random_string')) {
             case 'encrypt': // todo: remove in 3.1+
             case 'sha1':
                 return sha1(uniqid(mt_rand(), TRUE));
+            default:
+                return md5(mt_rand());
         }
     }
 }
@@ -242,9 +241,9 @@ if (!function_exists('increment_string')) {
     /**
      * Add's _1 to a string or increment the ending number to allow _2, _3, etc
      *
-     * @param    string     $str       required
-     * @param    string     $separator What should the duplicate number be appended with
-     * @param    string|int $first     Which number should be used for the first dupe increment
+     * @param string     $str       required
+     * @param string     $separator What should the duplicate number be appended with
+     * @param string|int $first     Which number should be used for the first dupe increment
      *
      * @return    string
      */
@@ -264,7 +263,7 @@ if (!function_exists('alternator')) {
      *
      * Allows strings to be alternated. See docs...
      *
-     * @param    string (as many parameters as needed)
+     * @param string (as many parameters as needed)
      *
      * @return    string
      */
@@ -293,8 +292,8 @@ if (!function_exists('repeater')) {
      * @todo          Remove in version 3.1+.
      * @deprecated    3.0.0    This is just an alias for PHP's native str_repeat()
      *
-     * @param    string $data String to repeat
-     * @param    int    $num  Number of repeats
+     * @param string $data String to repeat
+     * @param int    $num  Number of repeats
      *
      * @return    string
      */

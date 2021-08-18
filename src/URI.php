@@ -19,6 +19,7 @@ namespace nguyenanhung\Classes\Helper;
 class URI
 {
     const SCHEMES_WITH_AUTHORITY = ';http;https;ftp';
+
     /** @var string */
     private $scheme;
     /** @var string */
@@ -260,7 +261,7 @@ class URI
     public function setScheme($scheme)
     {
         $this->scheme = NULL;
-        if (empty($scheme) || NULL === $scheme) {
+        if (empty($scheme)) {
             return $this;
         }
         $schemePattern = '/[^a-zA-Z0-9\.\:\-]/';
@@ -403,8 +404,14 @@ class URI
     }
 
     /**
-     * @see http://tools.ietf.org/html/rfc3986#section-3
-     * @return array
+     * Function getSchemesWithAuthority
+     *
+     * @return false|string[]
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 54:11
+     *
+     * @see      http://tools.ietf.org/html/rfc3986#section-3
      */
     public static function getSchemesWithAuthority()
     {
@@ -412,12 +419,17 @@ class URI
     }
 
     /**
+     * Function isSchemeLess
+     *
      * @return bool
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 54:07
      */
     public function isSchemeLess()
     {
         $scheme = $this->getScheme();
 
-        return (bool) ($this->isRelative() || ($this->isAbsolute() && empty($scheme)));
+        return ($this->isRelative() || ($this->isAbsolute() && empty($scheme)));
     }
 }

@@ -10,9 +10,6 @@
 namespace nguyenanhung\Classes\Helper;
 
 use stdClass;
-use DateTime;
-use DateTimeZone;
-use Exception;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
     /**
@@ -53,60 +50,6 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         }
 
         /**
-         * Function arrayToObject
-         *
-         * @param array $array
-         * @param bool  $str_to_lower
-         *
-         * @return array|bool|stdClass
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 10:57
-         *
-         */
-        public function arrayToObject($array = [], $str_to_lower = FALSE)
-        {
-            if (!is_array($array)) {
-                return $array;
-            }
-            $object = new stdClass();
-            if (count($array) > 0) {
-                foreach ($array as $name => $value) {
-                    $name = trim($name);
-                    if ($str_to_lower === TRUE) {
-                        $name = strtolower($name);
-                    }
-                    if (!empty($name)) {
-                        $object->$name = $this->arrayToObject($value);
-                    }
-                }
-
-                return $object;
-            }
-
-            return FALSE;
-        }
-
-        /**
-         * Function objectToArray
-         *
-         * @param string $object
-         *
-         * @return false|mixed|string
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 10:58
-         *
-         */
-        public function objectToArray($object = '')
-        {
-            if (!is_object($object)) {
-                return $object;
-            }
-            $object = json_encode($object);
-
-            return json_decode($object, TRUE);
-        }
-
-        /**
          * Function jsonItem
          *
          * @param string $json_string
@@ -119,15 +62,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function jsonItem($json_string = '', $item_output = '')
         {
-            $result      = json_decode(trim($json_string));
-            $item_output = trim($item_output);
-            if ($result !== NULL) {
-                if (isset($result->$item_output)) {
-                    return trim($result->$item_output);
-                }
-            }
-
-            return NULL;
+            return Json::jsonItem($json_string, $item_output);
         }
 
         /**
@@ -142,12 +77,38 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function isJson($json = '')
         {
-            $decode = json_decode(trim($json));
-            if ($decode == NULL) {
-                return FALSE;
-            }
+            return Json::isJson($json);
+        }
 
-            return TRUE;
+        /**
+         * Function arrayToObject
+         *
+         * @param array $array
+         * @param bool  $str_to_lower
+         *
+         * @return array|bool|stdClass
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 10:57
+         *
+         */
+        public function arrayToObject($array = [], $str_to_lower = FALSE)
+        {
+            return Arr::arrayToObject($array, $str_to_lower);
+        }
+
+        /**
+         * Function objectToArray
+         *
+         * @param string $object
+         *
+         * @return false|mixed|string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 10:58
+         *
+         */
+        public function objectToArray($object = '')
+        {
+            return Arr::objectToArray($object);
         }
 
         /**
@@ -162,47 +123,20 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function arrayQuickSort($array = [])
         {
-            // find array size
-            $length = count($array);
-            // base case test, if array of length 0 then just return array to caller
-            if ($length <= 1) {
-                return $array;
-            } else {
-                // select an item to act as our pivot point, since list is unsorted first position is easiest
-                $pivot = $array[0];
-                // declare our two arrays to act as partitions
-                $left  = [];
-                $right = [];
-                // loop and compare each item in the array to the pivot value, place item in appropriate partition
-                for ($i = 1; $i < count($array); $i++) {
-                    if ($array[$i] < $pivot) {
-                        $left[] = $array[$i];
-                    } else {
-                        $right[] = $array[$i];
-                    }
-                }
-
-                // use recursion to now sort the left and right lists
-                return array_merge($this->arrayQuickSort($left), [
-                    $pivot
-                ], $this->arrayQuickSort($right));
-            }
+            return Arr::arrayQuickSort($array);
         }
 
         /**
          * Function zuluTime
          *
-         * @return string
-         * @throws \Exception
+         * @return string|null
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 07/28/2021 34:29
+         * @time     : 08/18/2021 17:29
          */
         public function zuluTime()
         {
-            $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
-
-            return $dateUTC->format('Y-m-d\TH:i:s\Z');
+            return DateAndTime::zuluTime();
         }
 
         /**
@@ -218,36 +152,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function randomString($type = 'alnum', $len = 8)
         {
-            switch ($type) {
-                case 'basic':
-                    return mt_rand();
-                case 'alnum':
-                case 'numeric':
-                case 'nozero':
-                case 'alpha':
-                    switch ($type) {
-                        case 'alpha':
-                            $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                            break;
-                        case 'alnum':
-                            $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                            break;
-                        case 'numeric':
-                            $pool = '0123456789';
-                            break;
-                        case 'nozero':
-                            $pool = '123456789';
-                            break;
-                        default:
-                            $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                    }
-
-                    return substr(str_shuffle(str_repeat($pool, ceil($len / strlen($pool)))), 0, $len);
-                case 'sha1':
-                    return sha1(uniqid(mt_rand(), TRUE));
-                default:
-                    return md5(uniqid(mt_rand()));
-            }
+            return Str::randomString($type, $len);
         }
 
         /**
@@ -264,28 +169,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function directoryMap($source_dir, $directory_depth = 0, $hidden = FALSE)
         {
-            if ($fp = @opendir($source_dir)) {
-                $fileData   = [];
-                $new_depth  = $directory_depth - 1;
-                $source_dir = rtrim($source_dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-                while (FALSE !== ($file = readdir($fp))) {
-                    // Remove '.', '..', and hidden files [optional]
-                    if ($file === '.' or $file === '..' or ($hidden === FALSE && $file[0] === '.')) {
-                        continue;
-                    }
-                    is_dir($source_dir . $file) && $file .= DIRECTORY_SEPARATOR;
-                    if (($directory_depth < 1 or $new_depth > 0) && is_dir($source_dir . $file)) {
-                        $fileData[$file] = $this->directoryMap($source_dir . $file, $new_depth, $hidden);
-                    } else {
-                        $fileData[] = $file;
-                    }
-                }
-                closedir($fp);
-
-                return $fileData;
-            }
-
-            return FALSE;
+            return Dir::directoryMap($source_dir, $directory_depth, $hidden);
         }
 
         /**
@@ -295,36 +179,15 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param int    $mode     Mode Permission, default is 0777
          *
          * @return bool
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 14:44
-         *
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 41:25
          */
         public function newFolder($pathname = '', $mode = 0777)
         {
-            if (is_null($pathname) || empty($pathname)) {
-                return FALSE;
-            }
-            if (is_dir($pathname) || $pathname === "/") {
-                return TRUE;
-            }
-            if (!is_dir($pathname) && strlen($pathname) > 0) {
-                try {
-                    $file = new File();
-                    $file->mkdir($pathname, $mode);
-                    // Gen file Index.html + .htaccess
-                    $fileContentIndex    = "<!DOCTYPE html>\n<html lang='vi'>\n<head>\n<title>403 Forbidden</title>\n</head>\n<body>\n<p>Directory access is forbidden.</p>\n</body>\n</html>";
-                    $fileContentHtaccess = "RewriteEngine On\nOptions -Indexes\nAddType text/plain php3 php4 php5 php cgi asp aspx html css js";
-                    $file->appendToFile($pathname . '/index.html', $fileContentIndex);
-                    $file->appendToFile($pathname . '/.htaccess', $fileContentHtaccess);
+            $file = new File();
 
-                    return TRUE;
-                }
-                catch (Exception $e) {
-                    return FALSE;
-                }
-            }
-
-            return FALSE;
+            return $file->createNewFolder($pathname, $mode);
         }
 
         /**
@@ -339,21 +202,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function formatSizeUnits($bytes = 0)
         {
-            if ($bytes >= 1073741824) {
-                $bytes = number_format($bytes / 1073741824, 2) . ' GB';
-            } elseif ($bytes >= 1048576) {
-                $bytes = number_format($bytes / 1048576, 2) . ' MB';
-            } elseif ($bytes >= 1024) {
-                $bytes = number_format($bytes / 1024, 2) . ' KB';
-            } elseif ($bytes > 1) {
-                $bytes = $bytes . ' bytes';
-            } elseif ($bytes == 1) {
-                $bytes = $bytes . ' byte';
-            } else {
-                $bytes = '0 bytes';
-            }
+            $file = new File();
 
-            return $bytes;
+            return $file->formatSizeUnits($bytes);
         }
 
         /**
@@ -543,7 +394,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:11
          *
          */
-        function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n")
+        public function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n")
         {
             // Since we allow the data to be passes as a string, a simple array
             // or a multidimensional one, we need to do a little prepping.
@@ -641,6 +492,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             $end                 = $input_data['suf_rows'] ?? 3;
             $first_link          = $input_data['first_link'] ?? '&nbsp;';
             $last_link           = $input_data['last_link'] ?? '&nbsp;';
+
             /**
              * Kiểm tra giá trị page_number truyền vào
              * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
@@ -648,26 +500,32 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             if (!$current_page_number || empty($current_page_number)) {
                 $current_page_number = 1;
             }
+
             // Tính tổng số page có
             $total_page = ceil($total_item / $item_per_page);
             if ($total_page <= 1) {
                 return NULL;
             }
+
             $output_html = '';
             if ($current_page_number <> 1) {
                 $output_html .= '<li class="left"><a href="' . trim($page_link) . trim($page_suffix) . '" title="' . trim($page_title) . '">' . trim($first_link) . '</a></li>';
             }
+
             for ($page_number = 1; $page_number <= $total_page; $page_number++) {
                 if ($page_number < ($current_page_number - $begin) || $page_number > ($current_page_number + $end)) {
                     continue;
                 }
+
                 if ($page_number == $current_page_number) {
                     $output_html .= '<li class="selected"><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
                 } else {
                     $output_html .= '<li><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
                 }
             }
+
             unset($page_number);
+
             if ($current_page_number <> $total_page) {
                 $output_html .= '<li class="right"><a href="' . trim($page_link) . trim($page_prefix) . trim($total_page) . trim($page_suffix) . '" title="' . trim($page_title) . ' - trang cuối">' . trim($last_link) . '</a></li>';
             }
@@ -1230,30 +1088,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function convertStrToEn($str = '', $separator = '-')
         {
-            $str = trim($str);
-            if (function_exists('mb_strtolower')) {
-                $str = mb_strtolower($str);
-            } else {
-                $str = strtolower($str);
-            }
-            $data = DataRepository::getData('string');
-            if (!empty($str)) {
-                $str = preg_replace("/[^a-zA-Z0-9]/", $separator, $str);
-                $str = preg_replace("/-+/", $separator, $str);
-                $str = str_replace($data['special_array'], $separator, $str);
-                $str = str_replace($data['vn_array'], $data['en_array'], $str);
-                $str = str_replace($data['ascii_array'], $data['normal_array'], $str);
-                $str = str_replace($data['utf8_array'], $data['normal_array'], $str);
-                $str = str_replace(' ', $separator, $str);
-                while (strpos($str, '--') > 0) {
-                    $str = str_replace('--', $separator, $str);
-                }
-                while (strpos($str, '--') === 0) {
-                    $str = str_replace('--', $separator, $str);
-                }
-            }
-
-            return $str;
+            return Str::convertStrToEn($str, $separator);
         }
 
         /************************** EMAIL HELPER **************************/
@@ -1265,11 +1100,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 08/08/2021 09:36
+         * @time     : 08/18/2021 47:01
          */
         public function validEmail($email = '')
         {
-            return (bool) filter_var($email, FILTER_VALIDATE_EMAIL);
+            return Email::validateEmail($email);
         }
 
         /************************** PASSWORD HELPER **************************/
@@ -1283,46 +1118,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @return string
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 08/08/2021 08:39
+         * @time     : 08/18/2021 46:00
          */
         public function strongPassword($length = 20, $add_dashes = FALSE, $available_sets = 'luna')
         {
-            $sets = [];
-            if (strpos($available_sets, 'l') !== FALSE) {
-                $sets[] = 'abcdefghjkmnpqrstuvwxyz';
-            }
-            if (strpos($available_sets, 'u') !== FALSE) {
-                $sets[] = 'ABCDEFGHJKMNPQRSTUVWXYZ';
-            }
-            if (strpos($available_sets, 'n') !== FALSE) {
-                $sets[] = '0123456789';
-            }
-            if (strpos($available_sets, 'a') !== FALSE) {
-                $sets[] = '!@#$%&*?';
-            }
-            $all      = '';
-            $password = '';
-            foreach ($sets as $set) {
-                $password .= $set[array_rand(str_split($set))];
-                $all      .= $set;
-            }
-            $all = str_split($all);
-            for ($i = 0; $i < $length - count($sets); $i++) {
-                $password .= $all[array_rand($all)];
-            }
-            $password = str_shuffle($password);
-            if (!$add_dashes) {
-                return $password;
-            }
-            $dash_len = floor(sqrt($length));
-            $dash_str = '';
-            while (strlen($password) > $dash_len) {
-                $dash_str .= substr($password, 0, $dash_len) . '-';
-                $password = substr($password, $dash_len);
-            }
-            $dash_str .= $password;
-
-            return $dash_str;
+            return Password::generateStrongPassword($length, $add_dashes, $available_sets);
         }
 
         /**
@@ -1333,16 +1133,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 08/08/2021 08:31
+         * @time     : 08/18/2021 45:16
          */
         public function validStrongPassword($password = '')
         {
-            $containsSmallLetter = preg_match('/[a-z]/', $password); // Yêu cầu có ít nhất 1 ký tự viết thường
-            $containsCapsLetter  = preg_match('/[A-Z]/', $password); // Yêu cầu có ít nhất 1 ký tự viết hoa
-            $containsDigit       = preg_match('/\d/', $password); // Yêu cầu có ít nhất 1 số
-            $containsSpecial     = preg_match('/[^a-zA-Z\d]/', $password); // Yêu cầu có ít nhất 1 ký tự đặc biệt
-
-            return ($containsSmallLetter && $containsCapsLetter && $containsDigit && $containsSpecial);
+            return Password::validStrongPassword($password);
         }
 
         /**
@@ -1351,14 +1146,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @return array|false|string|string[]
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 08/08/2021 08:23
+         * @time     : 08/18/2021 44:46
          */
         public function createSalt()
         {
-            $salt = mcrypt_create_iv(32, CRYPT_BLOWFISH);
-            $salt = base64_encode($salt);
-
-            return str_replace('+', '.', $salt);
+            return Password::createSaltWithMcrypt();
         }
 
         /************************** ALPHA ID **************************/

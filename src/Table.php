@@ -337,7 +337,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
                         }
                     }
 
-                    $out .= $temp . (isset($heading['data']) ? $heading['data'] : '') . $this->template['heading_cell_end'];
+                    $out .= $temp . ($heading['data'] ?? '') . $this->template['heading_cell_end'];
                 }
 
                 $out .= $this->template['heading_row_end'] . $this->newline . $this->template['thead_close'] . $this->newline;
@@ -367,7 +367,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
                             }
                         }
 
-                        $cell = isset($cell['data']) ? $cell['data'] : '';
+                        $cell = $cell['data'] ?? '';
                         $out  .= $temp;
 
                         if ($cell === '' OR $cell === NULL) {

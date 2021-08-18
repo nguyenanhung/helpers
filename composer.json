@@ -11,13 +11,21 @@
         }
     ],
     "require": {
+        "php": ">=7.0",
         "ext-json": "*",
         "ext-curl": "*",
-        "ext-mcrypt": "*",
+        "ext-mbstring": "*",
         "nguyenanhung/helpers-filesystem": "^1.0",
-        "mobiledetect/mobiledetectlib": "^2.8",
-        "laminas/laminas-escaper": "^2.6",
-        "ext-mbstring": "*"
+        "nguyenanhung/helpers-mobile": "^1.0",
+        "laminas/laminas-escaper": "^2.6"
+    },
+    "suggest": {
+        "ext-curl": "Needed to support cURL",
+        "ext-json": "Needed to support JSON",
+        "ext-mcrypt": "Needed to support mcrypt",
+        "ext-iconv": "Needed to support iconv",
+        "ext-openssl": "Needed to support openssl",
+        "ext-mbstring": "Needed to support mb_string"
     },
     "autoload": {
         "psr-4": {

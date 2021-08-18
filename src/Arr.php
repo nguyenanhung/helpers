@@ -11,12 +11,15 @@ namespace nguyenanhung\Classes\Helper;
 
 use InvalidArgumentException;
 use BadMethodCallException;
+use stdClass;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
     /**
-     * The array (aka, "arr") class
+     * Class Arr - The array (aka, "arr") class
      *
-     * @since 0.1.0
+     * @package   nguyenanhung\Classes\Helper
+     * @author    713uk13m <dev@nguyenanhung.com>
+     * @copyright 713uk13m <dev@nguyenanhung.com>
      */
     class Arr
     {
@@ -35,7 +38,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          *     array of columns).
          * @since  0.1.2
          */
-        public static function diff(Array $from, Array $to)
+        public static function diff(array $from, array $to)
         {
             $diffs = [];
 
@@ -89,9 +92,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
                 }
             }
 
-            $diffs = array_reverse($diffs);
-
-            return $diffs;
+            return array_reverse($diffs);
         }
 
         /**
@@ -122,7 +123,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          * @see   http://php.net/manual/en/function.array-filter.php#99073  Acid24's filter
          *    by key function on on array_filter() man page
          */
-        public static function filterBykey($array, $callback)
+        public static function filterByKey($array, $callback)
         {
             $filtered = array();
 
@@ -517,7 +518,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          *     O'Reilly's PHPCookbook
          * @since  0.1.2
          */
-        public static function permute(Array $set)
+        public static function permute(array $set)
         {
             $perms = [];
 
@@ -819,8 +820,100 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             return $array;
         }
 
+        /**
+         * Function arrayQuickSort
+         *
+         * @param array $array
+         *
+         * @return array
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 21:58
+         */
+        public static function arrayQuickSort($array = array())
+        {
+            // find array size
+            $length = count($array);
+            // base case test, if array of length 0 then just return array to caller
+            if ($length <= 1) {
+                return $array;
+            } else {
+                // select an item to act as our pivot point, since list is unsorted first position is easiest
+                $pivot = $array[0];
+                // declare our two arrays to act as partitions
+                $left  = array();
+                $right = array();
+                // loop and compare each item in the array to the pivot value, place item in appropriate partition
+                for ($i = 1; $i < count($array); $i++) {
+                    if ($array[$i] < $pivot) {
+                        $left[] = $array[$i];
+                    } else {
+                        $right[] = $array[$i];
+                    }
+                }
 
-        /* !Protected methods */
+                // use recursion to now sort the left and right lists
+                return array_merge(static::arrayQuickSort($left), array(
+                    $pivot
+                ), static::arrayQuickSort($right));
+            }
+        }
+
+        /**
+         * Function objectToArray
+         *
+         * @param string $object
+         *
+         * @return mixed|string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 22:02
+         */
+        public static function objectToArray($object = '')
+        {
+            if (!is_object($object)) {
+                return $object;
+            }
+            $object = json_encode($object);
+
+            return json_decode($object, TRUE);
+        }
+
+        /**
+         * Function arrayToObject
+         *
+         * @param array $array
+         * @param false $str_to_lower
+         *
+         * @return array|false|\stdClass
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 23:49
+         */
+        public static function arrayToObject($array = [], $str_to_lower = FALSE)
+        {
+            if (!is_array($array)) {
+                return $array;
+            }
+            $object = new stdClass();
+            if (count($array) > 0) {
+                foreach ($array as $name => $value) {
+                    $name = trim($name);
+                    if ($str_to_lower === TRUE) {
+                        $name = strtolower($name);
+                    }
+                    if (!empty($name)) {
+                        $object->$name = static::arrayToObject($value);
+                    }
+                }
+
+                return $object;
+            }
+
+            return FALSE;
+        }
+        //=============================| Protected methods =============================//
+
         /**
          * Returns the next permutation
          *

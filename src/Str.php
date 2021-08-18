@@ -9,6 +9,9 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use InvalidArgumentException;
+use BadMethodCallException;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
     /**
      * The string (aka, "str") class
@@ -37,14 +40,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since  0.1.0
          *
-         * @param  string $haystack the string to search
-         * @param  string $needle   the substring to search for
+         * @param string $haystack the string to search
+         * @param string $needle   the substring to search for
          *
          * @return  bool  true if $haystack ends with $needle
          *
-         * @throws  \BadMethodCallException    if $haystack or $needle is omitted
-         * @throws  \InvalidArgumentException  if $haystack is not a string
-         * @throws  \InvalidArgumentException  if $needle is not a string
+         * @throws  BadMethodCallException    if $haystack or $needle is omitted
+         * @throws  InvalidArgumentException  if $haystack is not a string
+         * @throws  InvalidArgumentException  if $needle is not a string
          *
          * @see    \nguyenanhung\Classes\Helper\Str::iEndsWith()  case-insensitive version
          * @see    http://stackoverflow.com/a/834355  MrHus' answer to "startsWith()
@@ -71,17 +74,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                             $endsWith = FALSE;
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects the second parameter, the needle, to be a string"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter, the haystack, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects two string parameters"
                 );
             }
@@ -98,14 +101,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since  0.1.0
          *
-         * @param  string $haystack str  the string to search
-         * @param  string $needle   str  the substring to search for
+         * @param string $haystack str  the string to search
+         * @param string $needle   str  the substring to search for
          *
          * @return  bool
          *
-         * @throws  \BadMethodCallException    if $haystack or $needle is omitted
-         * @throws  \InvalidArgumentException  if $haystack is not a string
-         * @throws  \InvalidArgumentException  if $needle is not a string
+         * @throws  BadMethodCallException    if $haystack or $needle is omitted
+         * @throws  InvalidArgumentException  if $haystack is not a string
+         * @throws  InvalidArgumentException  if $needle is not a string
          *
          * @see    \nguyenanhung\Classes\Helper\Str::iEndsWith()  case-sensitive version
          */
@@ -121,17 +124,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                     if (is_string($needle)) {
                         $endsWith = self::endsWith(strtolower($haystack), strtolower($needle));
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . "() expects parameter two, needle, to be a string"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . "() expects parameter one, haystack, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects two string parameters, haystack and needle"
                 );
             }
@@ -172,7 +175,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since  0.1.0
          *
-         * @param  string $string the string to test
+         * @param string $string the string to test
          *
          * @return  bool
          */
@@ -195,14 +198,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since   0.1.0
          *
-         * @param  string $haystack the case-insensitive string to search
-         * @param  string $needle   the case-insensitive substring to search for
+         * @param string $haystack the case-insensitive string to search
+         * @param string $needle   the case-insensitive substring to search for
          *
          * @return  bool  true if $haystack ends with $needle
          *
-         * @throws  \BadMethodCallException    if $haystack or $needle is omitted
-         * @throws  \InvalidArgumentException  if $haystack is not a string
-         * @throws  \InvalidArgumentException  if $needle is not a string
+         * @throws  BadMethodCallException    if $haystack or $needle is omitted
+         * @throws  InvalidArgumentException  if $haystack is not a string
+         * @throws  InvalidArgumentException  if $needle is not a string
          *
          * @see     \nguyenanhung\Classes\Helper\Str::startsWith()  case-sensitive version
          */
@@ -218,17 +221,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                     if (is_string($needle)) {
                         $startsWith = self::startsWith(strtolower($haystack), strtolower($needle));
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . "() expects parameter two, needle, to be a string"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . "() expects parameter one, haystack, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects two string parameters, haystack and needle"
                 );
             }
@@ -259,21 +262,21 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since  0.1.0
          *
-         * @param  int   $length the length of the password (optional; if omitted,
+         * @param int   $length  the length of the password (optional; if omitted,
          *                       defaults to 8)
-         * @param  int[] $rules  an array of character counts indexed by charset name
+         * @param int[] $rules   an array of character counts indexed by charset name
          *                       (possible charset names are 'lower', 'upper', 'number', 'alpha', and 'symbol')
          *                       (optional; if omitted, defaults to ['lower' => 1, 'upper' => 1, 'number' => 1,
          *                       'symbol' => 1])
          *
          * @return  string  the password
          *
-         * @throws  \BadMethodCallException    if $rules or $length is omitted
-         * @throws  \InvalidArgumentException  if $rules is not an array
-         * @throws  \InvalidArgumentException  if $length is not an integer
-         * @throws  \InvalidArgumentException  if a key in $rules is not a valid charset name
-         * @throws  \InvalidArgumentException  if a value in $rules is not an integer
-         * @throws  \InvalidArgumentException  if the number of required characters (as defined
+         * @throws  BadMethodCallException    if $rules or $length is omitted
+         * @throws  InvalidArgumentException  if $rules is not an array
+         * @throws  InvalidArgumentException  if $length is not an integer
+         * @throws  InvalidArgumentException  if a key in $rules is not a valid charset name
+         * @throws  InvalidArgumentException  if a value in $rules is not an integer
+         * @throws  InvalidArgumentException  if the number of required characters (as defined
          *    in the $rules array) exceeds the $length
          */
         public static function password($length = 8, $rules = array('lower' => 1, 'upper' => 1, 'number' => 1, 'symbol' => 1))
@@ -299,23 +302,23 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                             // shuffle the password
                             $password = str_shuffle($password);
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . " expects the number of required characters to be less than or " .
                                 "equal to the length"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects the seond parameter, length, to be an integer"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter, rules, to be an array"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects two parameters, an array of charset rules and a length"
                 );
             }
@@ -334,18 +337,18 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since  0.1.0
          *
-         * @param  int   $length   the length of the string to return
-         * @param  mixed $charsets a string charset name or an array of charset names
+         * @param int   $length    the length of the string to return
+         * @param mixed $charsets  a string charset name or an array of charset names
          *                         (possible values are are 'lower', 'upper', 'alpha' (a combination of 'upper'
          *                         and 'lower'), 'number', and 'symbol') (optional; if omitted, defaults to
          *                         ['alpha', 'number', 'symbol'])
          *
          * @return  string  a random string
          *
-         * @throws  \BadMethodCallException    if $length or $charset is null
-         * @throws  \InvalidArgumentException  if $length is not an integer
-         * @throws  \InvalidArgumentException  if $charsets is not a string or array
-         * @throws  \InvalidArgumentException  if a given $charset is not a valid charset
+         * @throws  BadMethodCallException    if $length or $charset is null
+         * @throws  InvalidArgumentException  if $length is not an integer
+         * @throws  InvalidArgumentException  if $charsets is not a string or array
+         * @throws  InvalidArgumentException  if a given $charset is not a valid charset
          */
         public static function rand($length, $charsets = array('alpha', 'number', 'symbol'))
         {
@@ -378,7 +381,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                             } elseif ($charset === 'alpha') {
                                 $chars = array_merge($chars, $lower, $upper);
                             } else {
-                                throw new \InvalidArgumentException(
+                                throw new InvalidArgumentException(
                                     __METHOD__ . " expects parameter two to be a string charset name or an array " .
                                     "of charset names such as 'lower', 'upper', 'alpha', 'number', or 'symbol'"
                                 );
@@ -393,18 +396,18 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                             $rand .= $chars[array_rand($chars)];
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects the second parameter, charsets, to be a string charset " .
                             "name or an array of charset names"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter, length, to be an integer"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects at least one argument, length"
                 );
             }
@@ -470,6 +473,51 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
         }
 
         /**
+         * Create a "Random" String
+         *
+         * @param string    type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
+         * @param int    number of characters
+         *
+         * @return    string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 9/29/18 11:25
+         *
+         */
+        public static function randomString($type = 'alnum', $len = 8)
+        {
+            switch ($type) {
+                case 'basic':
+                    return mt_rand();
+                case 'alnum':
+                case 'numeric':
+                case 'nozero':
+                case 'alpha':
+                    switch ($type) {
+                        case 'alpha':
+                            $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            break;
+                        case 'alnum':
+                            $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                            break;
+                        case 'numeric':
+                            $pool = '0123456789';
+                            break;
+                        case 'nozero':
+                            $pool = '123456789';
+                            break;
+                        default:
+                            $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    }
+
+                    return substr(str_shuffle(str_repeat($pool, ceil($len / strlen($pool)))), 0, $len);
+                case 'sha1':
+                    return sha1(uniqid(mt_rand(), TRUE));
+                default:
+                    return md5(uniqid(mt_rand()));
+            }
+        }
+
+        /**
          * Splits a string on the first alpha character
          *
          * I'll return an array with two parts. The first element is the string part before
@@ -485,12 +533,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since   0.1.0
          *
-         * @param  string $string the string to split
+         * @param string $string the string to split
          *
          * @return  string[]  an array
          *
-         * @throws  \BadMethodCallException    if $string is null
-         * @throws  \InvalidArgumentException  if $string is not a string
+         * @throws  BadMethodCallException    if $string is null
+         * @throws  InvalidArgumentException  if $string is not a string
          *
          * @see     http://stackoverflow.com/a/18990341  FrankieTheKneeMan's answer to "Split
          *    string on first occurrence of a letter" on StackOverflow (version using Regex
@@ -512,12 +560,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                         $pieces = array();
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . "() expects parameter one to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects one parameter, a string"
                 );
             }
@@ -538,14 +586,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since  0.1.0
          *
-         * @param  string $haystack the string to search
-         * @param  string $needle   the substring to search for
+         * @param string $haystack the string to search
+         * @param string $needle   the substring to search for
          *
          * @return  bool  true if $haystack starts with $needle
          *
-         * @throws  \BadMethodCallException    if $haystack or $needle is omitted
-         * @throws  \InvalidArgumentException  if $haystack is not a string
-         * @throws  \InvalidArgumentException  if $needle is not a string
+         * @throws  BadMethodCallException    if $haystack or $needle is omitted
+         * @throws  InvalidArgumentException  if $haystack is not a string
+         * @throws  InvalidArgumentException  if $needle is not a string
          *
          * @see    \nguyenanhung\Classes\Helper\Str::startsWith()  case-insensitive version
          * @see    http://stackoverflow.com/a/834355  MrHus' answer to "startsWith() and
@@ -573,17 +621,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                             $startsWith = FALSE;
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . " expects the second parameter, the needle, to be a string"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter, the haystack, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects two string parameters, haystack and needle"
                 );
             }
@@ -607,13 +655,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since   0.1.0
          *
-         * @param  string $string the string to convert
+         * @param string $string the string to convert
          *
          * @return  int|float  the number of bytes
          *
-         * @throws  \BadMethodCallException    if $string is null
-         * @throws  \InvalidArgumentException  if $string is not a string
-         * @throws  \InvalidArgumentException  if $string does not end in 'k', 'm', or 'g'
+         * @throws  BadMethodCallException    if $string is null
+         * @throws  InvalidArgumentException  if $string is not a string
+         * @throws  InvalidArgumentException  if $string does not end in 'k', 'm', or 'g'
          *
          * @see     http://www.php.net/manual/en/function.ini-get.php  ini_get() man page
          */
@@ -644,17 +692,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                             break;
 
                         default:
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . " expects the first parameter to end in 'k', 'm', or 'g'"
                             );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects one parameter"
                 );
             }
@@ -663,14 +711,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
         }
 
         /**
-         * Convert the given string to upper-case.
-         *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 2018-12-27 22:21
+         * Function upperCase - Convert the given string to upper-case.
          *
          * @param $value
          *
-         * @return bool|false|mixed|string|string[]|null
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 51:39
          */
         public static function upperCase($value)
         {
@@ -678,14 +726,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
         }
 
         /**
-         * Convert the given string to lower-case.
-         *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 2018-12-27 22:21
+         * Function lowerCase - Convert the given string to lower-case.
          *
          * @param $value
          *
-         * @return bool|false|mixed|string|string[]|null
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 51:28
          */
         public static function lowerCase($value)
         {
@@ -728,12 +776,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since  0.1.0
          *
-         * @param  string $string the string to camel-case
+         * @param string $string the string to camel-case
          *
          * @return  string  the camel-cased string
          *
-         * @throws  \BadMethodCallException    if $string is empty
-         * @throws  \InvalidArgumentException  if $string is not a string
+         * @throws  BadMethodCallException    if $string is empty
+         * @throws  InvalidArgumentException  if $string is not a string
          */
         public static function strToCamelCase($string)
         {
@@ -765,12 +813,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                         $string = preg_replace("#[^a-zA-Z0-9]+#", '', $string);
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . " expects the first parameter, the string, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . " expects one parameter, a string to camel-case"
                 );
             }
@@ -850,21 +898,21 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          *
          * @since   0.1.0
          *
-         * @param  string $str   the string to truncate
-         * @param  int    $limit the string's max length
-         * @param  string $break the break character (to truncate at exact length set to
-         *                       empty string or null) (if the break character does not exist in the string,
-         *                       the string will be truncated at limit) (optional; if omitted, defaults to ' ')
-         * @param  string $pad   the padding to add to end of string (optional; if
-         *                       omitted, defaults to '...')
+         * @param        $string    the string to truncate
+         * @param        $limit     the string's max length
+         * @param string $break     the break character (to truncate at exact length set to
+         *                          empty string or null) (if the break character does not exist in the string,
+         *                          the string will be truncated at limit) (optional; if omitted, defaults to ' ')
+         * @param string $pad       the padding to add to end of string (optional; if
+         *                          omitted, defaults to '...')
          *
          * @return  string  the truncated string
          *
-         * @throws  \BadMethodCallException    if $string or $limit is omitted
-         * @throws  \InvalidArgumentException  if $string is not a string
-         * @throws  \InvalidArgumentException  if $limit is not an integer (or integer string)
-         * @throws  \InvalidArgumentException  if $break is not a string or null
-         * @throws  \InvalidArgumentException  if $pad is not a string or null
+         * @throws  BadMethodCallException    if $string or $limit is omitted
+         * @throws  InvalidArgumentException  if $string is not a string
+         * @throws  InvalidArgumentException  if $limit is not an integer (or integer string)
+         * @throws  InvalidArgumentException  if $break is not a string or null
+         * @throws  InvalidArgumentException  if $pad is not a string or null
          *
          * @see     http://blog.justin.kelly.org.au/php-truncate/  The original function
          *    from "Best PHP Truncate Function" posted 6/27/12 on "Justin Kelly - various
@@ -901,27 +949,27 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                                     $truncated = $string;
                                 }
                             } else {
-                                throw new \InvalidArgumentException(
+                                throw new InvalidArgumentException(
                                     __METHOD__ . "() expects the fourth parameter, pad, to be a string or null"
                                 );
                             }
                         } else {
-                            throw new \InvalidArgumentException(
+                            throw new InvalidArgumentException(
                                 __METHOD__ . "() expects the third parameter, break, to be a string or null"
                             );
                         }
                     } else {
-                        throw new \InvalidArgumentException(
+                        throw new InvalidArgumentException(
                             __METHOD__ . "() expects the second parameter, limit, to be an integer"
                         );
                     }
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         __METHOD__ . "() expects the first parameter, the string, to be a string"
                     );
                 }
             } else {
-                throw new \BadMethodCallException(
+                throw new BadMethodCallException(
                     __METHOD__ . "() expects at least two parameters, a string and an integer length limit"
                 );
             }
@@ -930,11 +978,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
         }
 
         /**
-         * Strip Slashes
+         * Function stripSlashes
          *
-         * @param array|string $str
+         * @param $str
          *
-         * @return mixed
+         * @return array|string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 50:48
          */
         public static function stripSlashes($str)
         {
@@ -949,11 +1000,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
         }
 
         /**
-         * Strip Quotes
+         * Function stripQuotes
          *
-         * @param  array|string $str
+         * @param $str
          *
-         * @return mixed
+         * @return array|string|string[]
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 50:43
          */
         public static function stripQuotes($str)
         {
@@ -962,6 +1016,45 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
             }
             foreach ($str as $key => $value) {
                 $str[$key] = str_replace(['"', "'"], '', $value);
+            }
+
+            return $str;
+        }
+
+        /**
+         * Function convertStrToEn
+         *
+         * @param string $str
+         * @param string $separator
+         *
+         * @return array|mixed|string|string[]
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 47:43
+         */
+        public static function convertStrToEn($str = '', $separator = '-')
+        {
+            $str = trim($str);
+            if (function_exists('mb_strtolower')) {
+                $str = mb_strtolower($str);
+            } else {
+                $str = strtolower($str);
+            }
+            $data = DataRepository::getData('string');
+            if (!empty($str)) {
+                $str = preg_replace("/[^a-zA-Z0-9]/", $separator, $str);
+                $str = preg_replace("/-+/", $separator, $str);
+                $str = str_replace($data['special_array'], $separator, $str);
+                $str = str_replace($data['vn_array'], $data['en_array'], $str);
+                $str = str_replace($data['ascii_array'], $data['normal_array'], $str);
+                $str = str_replace($data['utf8_array'], $data['normal_array'], $str);
+                $str = str_replace(' ', $separator, $str);
+                while (strpos($str, '--') > 0) {
+                    $str = str_replace('--', $separator, $str);
+                }
+                while (strpos($str, '--') === 0) {
+                    $str = str_replace('--', $separator, $str);
+                }
             }
 
             return $str;

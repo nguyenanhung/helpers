@@ -12,6 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 use stdClass;
 use Exception;
 use DateTime;
+use DateTimeZone;
 
 /**
  * Class Utils
@@ -278,7 +279,7 @@ class Utils implements ProjectInterface
      */
     public static function zuluTime()
     {
-        $dateUTC = new DateTime("now", new \DateTimeZone("UTC"));
+        $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
 
         return $dateUTC->format('Y-m-d\TH:i:s\Z');
     }
@@ -287,16 +288,15 @@ class Utils implements ProjectInterface
      * Function commonMessageTelco
      *
      * @param string $content
-     * @param string $telco
      * @param string $type
      * @param string $count_type
      *
-     * @return float|int|string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2019-07-20 08:54
-     *
+     * @return false|float|int|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 52:42
      */
-    public static function commonMessageTelco($content = '', $telco = '', $type = 'length', $count_type = 'default')
+    public static function commonMessageTelco($content = '', $type = 'length', $count_type = 'default')
     {
         if ($type === 'length') {
             return strlen($content);

@@ -54,9 +54,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
         var $data_mod     = 0;
         var $data_type    = 0;
         var $data_section = 0; //section download
-        /**
-         * @var ObjectHandler
-         **/
+        /** @var null[] */
         var $handler      = array('auth' => NULL);
         var $use_resume   = TRUE;
         var $use_autoexit = FALSE;
@@ -168,7 +166,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
             //Use seek end here
             if ($this->seek_start > ($size - 1)) $this->seek_start = 0;
             if ($this->seek_end <= 0) $this->seek_end = $size - 1;
-            $this->header($size, $seek, $this->seek_end);
+            $this->header($size, $this->seek_start, $this->seek_end);
             $this->data_mod = time();
 
             return TRUE;

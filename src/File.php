@@ -9,7 +9,7 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-use nguyenanhung\Classes\Helper\Filesystem\Filesystem as SymfonyFilesystem;
+use nguyenanhung\Classes\Helper\Filesystem\Filesystem as BaseFilesystem;
 
 if (!class_exists('nguyenanhung\Classes\Helper\File')) {
     /**
@@ -19,7 +19,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\File')) {
      * @author    713uk13m <dev@nguyenanhung.com>
      * @copyright 713uk13m <dev@nguyenanhung.com>
      */
-    class File extends SymfonyFilesystem
+    class File extends BaseFilesystem
     {
     }
 }

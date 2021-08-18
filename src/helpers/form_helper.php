@@ -201,14 +201,15 @@ if (!function_exists('form_option')) {
 }
 if (!function_exists('form_file')) {
     /**
-     * Creates a file input field
+     * Function form_file - Creates a file input field
      *
-     *
-     *
-     * @param string $name
-     * @param array  $attributes HTML attributes
+     * @param       $name
+     * @param array $attributes
      *
      * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 15:31
      */
     function form_file($name, array $attributes = array())
     {
@@ -217,16 +218,16 @@ if (!function_exists('form_file')) {
 }
 if (!function_exists('form_button')) {
     /**
-     * Function button
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-27 23:02
+     * Function form_button
      *
      * @param       $name
      * @param       $text
      * @param array $attributes
      *
      * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 15:22
      */
     function form_button($name, $text, array $attributes = array())
     {
@@ -235,13 +236,14 @@ if (!function_exists('form_button')) {
 }
 if (!function_exists('form_autoId')) {
     /**
-     * Generate an ID given the name of an input
+     * Function form_autoId - Generate an ID given the name of an input
      *
-     *
-     *
-     * @param string $name
+     * @param $name
      *
      * @return string|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/18/2021 15:13
      */
     function form_autoId($name)
     {

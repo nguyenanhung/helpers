@@ -51,8 +51,8 @@ if (!function_exists('xml_convert')) {
     /**
      * Convert Reserved XML characters to Entities
      *
-     * @param    string
-     * @param    bool
+     * @param string
+     * @param bool
      *
      * @return    string
      */
@@ -100,9 +100,8 @@ if (!function_exists('parse_sitemap')) {
      */
     function parse_sitemap($loc = '', $lastmod = '', $type = 'property', $newline = "\n")
     {
-        $common = new \nguyenanhung\Classes\Helper\Common();
-        $result = $common->sitemapParse($loc, $lastmod, $type, $newline);
+        $common = new nguyenanhung\Classes\Helper\Common();
 
-        return $result;
+        return $common->sitemapParse($loc, $lastmod, $type, $newline);
     }
 }

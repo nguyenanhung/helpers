@@ -22,10 +22,10 @@ if (!trait_exists('nguyenanhung\Classes\Helper\Version')) {
         /**
          * Function getVersion
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 2018-12-27 20:26
-         *
-         * @return mixed|string
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 36:14
          */
         public function getVersion()
         {

@@ -11,6 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use InvalidArgumentException;
 use BadMethodCallException;
+use SplStack;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
     /**
@@ -881,7 +882,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
                                 preg_split('/[\s-]+/', $var)
                             );
 
-                            $stack = new \SplStack();  // the current work stack
+                            $stack = new SplStack();  // the current work stack
                             $sum   = 0;               // the running total
                             $last  = NULL;            // the last part
 
