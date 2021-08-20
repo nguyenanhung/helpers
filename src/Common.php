@@ -83,8 +83,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function arrayToObject
          *
-         * @param array $array
-         * @param bool  $str_to_lower
+         * @param array|mixed $array
+         * @param bool        $str_to_lower
          *
          * @return array|bool|stdClass
          * @author: 713uk13m <dev@nguyenanhung.com>

@@ -13,7 +13,7 @@ if (!function_exists('arrayQuickSort')) {
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 2019-01-02 10:56
      *
-     * @param array $array
+     * @param array|mixed $array
      *
      * @return array
      */
@@ -50,8 +50,8 @@ if (!function_exists('arrayToObject')) {
     /**
      * Function arrayToObject
      *
-     * @param array $array
-     * @param false $strToLower
+     * @param array|mixed $array
+     * @param bool        $strToLower
      *
      * @return array|bool|\stdClass
      * @author   : 713uk13m <dev@nguyenanhung.com>
