@@ -1,8 +1,9 @@
-[![Latest Stable Version](https://poser.pugx.org/nguyenanhung/helpers/v/stable)](https://packagist.org/packages/nguyenanhung/helpers)
-[![Total Downloads](https://poser.pugx.org/nguyenanhung/helpers/downloads)](https://packagist.org/packages/nguyenanhung/helpers)
-[![Latest Unstable Version](https://poser.pugx.org/nguyenanhung/helpers/v/unstable)](https://packagist.org/packages/nguyenanhung/helpers)
-[![composer.lock](https://poser.pugx.org/nguyenanhung/helpers/composerlock)](https://packagist.org/packages/nguyenanhung/helpers)
-[![License](https://poser.pugx.org/nguyenanhung/helpers/license)](https://packagist.org/packages/nguyenanhung/helpers)
+[![Latest Stable Version](http://poser.pugx.org/nguyenanhung/helpers/v)](https://packagist.org/packages/nguyenanhung/helpers) 
+[![Total Downloads](http://poser.pugx.org/nguyenanhung/helpers/downloads)](https://packagist.org/packages/nguyenanhung/helpers)
+[![Monthly Downloads](http://poser.pugx.org/nguyenanhung/helpers/d/monthly)](https://packagist.org/packages/nguyenanhung/helpers)
+[![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/helpers/v/unstable)](https://packagist.org/packages/nguyenanhung/helpers) 
+[![License](http://poser.pugx.org/nguyenanhung/helpers/license)](https://packagist.org/packages/nguyenanhung/helpers) 
+[![PHP Version Require](http://poser.pugx.org/nguyenanhung/helpers/require/php)](https://packagist.org/packages/nguyenanhung/helpers)
 
 # Helpers
 
