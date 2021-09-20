@@ -1143,10 +1143,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function createSalt
          *
-         * @return array|false|string|string[]
+         * @return array|string|string[]
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 08/18/2021 44:46
+         * @time     : 09/21/2021 03:04
          */
         public function createSalt()
         {

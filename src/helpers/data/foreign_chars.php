@@ -7,7 +7,7 @@
 | conversion used by the Text helper
 |
 */
-$foreign_characters = [
+return [
     '/ä|æ|ǽ/'                                                     => 'ae',
     '/ö|œ/'                                                       => 'oe',
     '/ü/'                                                         => 'ue',

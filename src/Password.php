@@ -9,6 +9,9 @@
  */
 
 namespace nguyenanhung\Classes\Helper;
+
+use nguyenanhung\Libraries\Math\Random;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Password')) {
     /**
      * Class Password
@@ -51,20 +54,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Password')) {
         /**
          * Function createSaltWithMcrypt
          *
-         * @return array|false|string|string[]|null
+         * @return array|string|string[]
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 09/21/2021 38:54
+         * @time     : 09/21/2021 02:49
          */
         public static function createSaltWithMcrypt()
         {
-            if (function_exists('mcrypt_create_iv')) {
-                $salt = mcrypt_create_iv(32, CRYPT_BLOWFISH);
-                $salt = base64_encode($salt);
+            $salt = Random::getBytes(32);
+            $salt = base64_encode($salt);
 
-                return str_replace('+', '.', $salt);
-            }
-            return null;
+            return str_replace('+', '.', $salt);
         }
 
         /**
@@ -79,19 +79,19 @@ if (!class_exists('nguyenanhung\Classes\Helper\Password')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 49:04
          */
-        public static function generateStrongPassword($length = 20, $add_dashes = FALSE, $available_sets = 'hung'): string
+        public static function generateStrongPassword($length = 20, $add_dashes = false, $available_sets = 'hung'): string
         {
             $sets = [];
-            if (strpos($available_sets, 'h') !== FALSE) {
+            if (strpos($available_sets, 'h') !== false) {
                 $sets[] = 'abcdefghjkmnpqrstuvwxyz';
             }
-            if (strpos($available_sets, 'u') !== FALSE) {
+            if (strpos($available_sets, 'u') !== false) {
                 $sets[] = 'ABCDEFGHJKMNPQRSTUVWXYZ';
             }
-            if (strpos($available_sets, 'n') !== FALSE) {
+            if (strpos($available_sets, 'n') !== false) {
                 $sets[] = '0123456789';
             }
-            if (strpos($available_sets, 'g') !== FALSE) {
+            if (strpos($available_sets, 'g') !== false) {
                 $sets[] = '!@#$%&*?';
             }
             $all      = '';
@@ -220,7 +220,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Password')) {
                 return password_hash($password, PASSWORD_DEFAULT);
             }
 
-            return FALSE;
+            return false;
         }
     }
 }

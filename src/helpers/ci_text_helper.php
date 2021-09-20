@@ -53,9 +53,9 @@ if (!function_exists('word_limiter')) {
      *
      * Limits a string to X number of words.
      *
-     * @param    string
-     * @param    int
-     * @param    string    the end character. Usually an ellipsis
+     * @param string
+     * @param int
+     * @param string    the end character. Usually an ellipsis
      *
      * @return    string
      */
@@ -84,9 +84,9 @@ if (!function_exists('character_limiter')) {
      * Limits the string based on the character count.  Preserves complete words
      * so the character count may not be exactly as specified.
      *
-     * @param    string
-     * @param    int
-     * @param    string    the end character. Usually an ellipsis
+     * @param string
+     * @param int
+     * @param string    the end character. Usually an ellipsis
      *
      * @return    string
      */
@@ -126,7 +126,7 @@ if (!function_exists('ascii_to_entities')) {
      *
      * Converts high ASCII text and MS Word special characters to character entities
      *
-     * @param    string $str
+     * @param string $str
      *
      * @return    string
      */
@@ -184,12 +184,12 @@ if (!function_exists('entities_to_ascii')) {
      *
      * Converts character entities back to ASCII
      *
-     * @param    string
-     * @param    bool
+     * @param string
+     * @param bool
      *
      * @return    string
      */
-    function entities_to_ascii($str, $all = TRUE)
+    function entities_to_ascii($str, $all = true)
     {
         if (preg_match_all('/\&#(\d+)\;/', $str, $matches)) {
             for ($i = 0, $s = count($matches[0]); $i < $s; $i++) {
@@ -233,9 +233,9 @@ if (!function_exists('word_censor')) {
      * matched words will be converted to #### or to the replacement
      * word you've submitted.
      *
-     * @param    string    the text string
-     * @param    string    the array of censored words
-     * @param    string    the optional replacement value
+     * @param string    the text string
+     * @param string    the array of censored words
+     * @param string    the optional replacement value
      *
      * @return    string
      */
@@ -287,7 +287,7 @@ if (!function_exists('highlight_code')) {
      *
      * Colorizes code strings
      *
-     * @param    string    the text string
+     * @param string    the text string
      *
      * @return    string
      */
@@ -308,7 +308,7 @@ if (!function_exists('highlight_code')) {
 
         // The highlight_string function requires that the text be surrounded
         // by PHP tags, which we will remove later
-        $str = highlight_string('<?php ' . $str . ' ?>', TRUE);
+        $str = highlight_string('<?php ' . $str . ' ?>', true);
 
         // Remove our artificially added PHP, and the syntax highlighting that came with it
         $str = preg_replace(
@@ -342,17 +342,17 @@ if (!function_exists('highlight_phrase')) {
      *
      * Highlights a phrase within a text string
      *
-     * @param    string $str       the text string
-     * @param    string $phrase    the phrase you'd like to highlight
-     * @param    string $tag_open  the openging tag to precede the phrase with
-     * @param    string $tag_close the closing tag to end the phrase with
+     * @param string $str       the text string
+     * @param string $phrase    the phrase you'd like to highlight
+     * @param string $tag_open  the openging tag to precede the phrase with
+     * @param string $tag_close the closing tag to end the phrase with
      *
      * @return    string
      */
     function highlight_phrase($str, $phrase, $tag_open = '<mark>', $tag_close = '</mark>')
     {
         return ($str !== '' && $phrase !== '')
-            ? preg_replace('/(' . preg_quote($phrase, '/') . ')/i' . (TRUE ? 'u' : ''), $tag_open . '\\1' . $tag_close, $str)
+            ? preg_replace('/(' . preg_quote($phrase, '/') . ')/i' . (true ? 'u' : ''), $tag_open . '\\1' . $tag_close, $str)
             : $str;
     }
 }
@@ -363,7 +363,7 @@ if (!function_exists('convert_accented_characters')) {
     /**
      * Convert Accented Foreign Characters to ASCII
      *
-     * @param    string $str Input string
+     * @param string $str Input string
      *
      * @return    string
      */
@@ -372,10 +372,11 @@ if (!function_exists('convert_accented_characters')) {
         static $array_from, $array_to;
 
         if (!is_array($array_from)) {
+            $foreign_characters = [];
             if (file_exists(__DIR__ . '/data/foreign_chars.php')) {
-                include(__DIR__ . '/data/foreign_chars.php');
+                $foreign_characters = include __DIR__ . '/data/foreign_chars.php';
             }
-            if (empty($foreign_characters) OR !is_array($foreign_characters)) {
+            if (empty($foreign_characters) || !is_array($foreign_characters)) {
                 $array_from = [];
                 $array_to   = [];
 
@@ -400,21 +401,21 @@ if (!function_exists('word_wrap')) {
      * Anything placed between {unwrap}{/unwrap} will not be word wrapped, nor
      * will URLs.
      *
-     * @param    string $str     the text string
-     * @param    int    $charlim = 76    the number of characters to wrap at
+     * @param string $str     the text string
+     * @param int    $charlim = 76    the number of characters to wrap at
      *
      * @return    string
      */
     function word_wrap($str, $charlim = 76)
     {
         // Set the character limit
-        is_numeric($charlim) OR $charlim = 76;
+        is_numeric($charlim) or $charlim = 76;
 
         // Reduce multiple spaces
         $str = preg_replace('| +|', ' ', $str);
 
         // Standardize newlines
-        if (strpos($str, "\r") !== FALSE) {
+        if (strpos($str, "\r") !== false) {
             $str = str_replace(["\r\n", "\r"], "\n", $str);
         }
 
@@ -431,7 +432,7 @@ if (!function_exists('word_wrap')) {
         // Use PHP's native function to do the initial wordwrap.
         // We set the cut flag to FALSE so that any individual words that are
         // too long get left alone. In the next step we'll deal with them.
-        $str = wordwrap($str, $charlim, "\n", FALSE);
+        $str = wordwrap($str, $charlim, "\n", false);
 
         // Split the string into individual lines of text and cycle through them
         $output = '';
@@ -483,10 +484,10 @@ if (!function_exists('ellipsize')) {
      *
      * This function will strip tags from a string, split it at its max_length and ellipsize
      *
-     * @param    string    string to ellipsize
-     * @param    int    max length of string
-     * @param    mixed    int (1|0) or float, .5, .2, etc for position to split
-     * @param    string    ellipsis ; Default '...'
+     * @param string    string to ellipsize
+     * @param int    max length of string
+     * @param mixed    int (1|0) or float, .5, .2, etc for position to split
+     * @param string    ellipsis ; Default '...'
      *
      * @return    string    ellipsized string
      */
