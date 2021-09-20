@@ -20,6 +20,7 @@
         "nguyenanhung/ip-helper": "^1.0",
         "nguyenanhung/escape-helper": "^1.0",
         "nguyenanhung/json-helper": "^1.0",
+        "nguyenanhung/html-helper": "^1.0",
         "nguyenanhung/xml-helper": "^1.0",
         "nguyenanhung/xml2json-helper": "^1.0",
         "nguyenanhung/math-helper": "^1.0"
@@ -39,7 +40,6 @@
         "files": [
             "src/helpers/30s-of-php-code.php",
             "src/helpers/array_helper.php",
-            "src/helpers/assets_helper.php",
             "src/helpers/base64_helper.php",
             "src/helpers/ci_string_helper.php",
             "src/helpers/ci_text_helper.php",

@@ -5,27 +5,6 @@
  * Date: 5/4/18
  * Time: 11:52
  */
-if (!function_exists('meta_property')) {
-    /**
-     * Function meta_property
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2019-03-25 14:28
-     *
-     * @param string $property
-     * @param string $content
-     * @param string $type
-     * @param string $newline
-     *
-     * @return string
-     */
-    function meta_property($property = '', $content = '', $type = 'property', $newline = "\n")
-    {
-        $common = new nguyenanhung\Classes\Helper\Common();
-
-        return $common->metaProperty($property, $content, $type, $newline);
-    }
-}
 if (!function_exists('get_json_item')) {
     /**
      * Function get_json_item
@@ -41,27 +20,6 @@ if (!function_exists('get_json_item')) {
     function get_json_item($json_string = '', $item_output = '')
     {
         return jsonItem($json_string, $item_output);
-    }
-}
-if (!function_exists('placeholder_img')) {
-    /**
-     * Function placeholder_img
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2019-03-25 14:28
-     *
-     * @param string $size
-     * @param string $background_color
-     * @param string $text_color
-     * @param string $text
-     *
-     * @return string
-     */
-    function placeholder_img($size = '300x250', $background_color = '', $text_color = '', $text = '')
-    {
-        $common = new nguyenanhung\Classes\Helper\Common();
-
-        return $common->placeholder($size, $background_color, $text_color, $text);
     }
 }
 if (!function_exists('clean_title')) {
