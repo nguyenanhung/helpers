@@ -120,3 +120,8 @@ GitHub.sublime-settings
 ## Composer
 /vendor/
 composer.lock
+
+tmp/*
+!tmp/.gitkeep
+!tmp/README.md
+!tmp/index.html

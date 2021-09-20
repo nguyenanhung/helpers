@@ -11,13 +11,14 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.1",
         "ext-json": "*",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "nguyenanhung/helpers-filesystem": "^1.0",
         "nguyenanhung/helpers-mobile": "^1.0",
-        "laminas/laminas-escaper": "^2.6"
+        "nguyenanhung/ip-helper": "^1.0",
+        "nguyenanhung/escape-helper": "^1.0"
     },
     "suggest": {
         "ext-curl": "Needed to support cURL",
@@ -43,10 +44,8 @@
             "src/helpers/common_helper.php",
             "src/helpers/date_helper.php",
             "src/helpers/email_helper.php",
-            "src/helpers/escape_helper.php",
             "src/helpers/form_helper.php",
             "src/helpers/html_helper.php",
-            "src/helpers/ip_helper.php",
             "src/helpers/json_helper.php",
             "src/helpers/pagination_helper.php",
             "src/helpers/seo_helper.php",
