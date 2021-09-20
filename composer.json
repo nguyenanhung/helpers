@@ -21,7 +21,8 @@
         "nguyenanhung/escape-helper": "^1.0",
         "nguyenanhung/json-helper": "^1.0",
         "nguyenanhung/xml-helper": "^1.0",
-        "nguyenanhung/xml2json-helper": "^1.0"
+        "nguyenanhung/xml2json-helper": "^1.0",
+        "nguyenanhung/math-helper": "^1.0"
     },
     "suggest": {
         "ext-curl": "Needed to support cURL",
