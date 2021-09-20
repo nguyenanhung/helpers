@@ -35,18 +35,18 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:00
          *
          */
-        public function isEmpty($input = '')
+        public function isEmpty($input = ''): bool
         {
             $isset = isset($input);
-            if ($isset === TRUE) {
+            if ($isset === true) {
                 if (empty($input)) {
-                    return TRUE;
-                } else {
-                    return FALSE;
+                    return true;
                 }
+
+                return false;
             }
 
-            return TRUE;
+            return true;
         }
 
         /**
@@ -60,7 +60,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:08
          *
          */
-        public function jsonItem($json_string = '', $item_output = '')
+        public function jsonItem($json_string = '', $item_output = ''): ?string
         {
             return Json::jsonItem($json_string, $item_output);
         }
@@ -75,7 +75,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 10/13/18 09:39
          *
          */
-        public function isJson($json = '')
+        public function isJson($json = ''): bool
         {
             return Json::isJson($json);
         }
@@ -91,7 +91,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 10:57
          *
          */
-        public function arrayToObject($array = [], $str_to_lower = FALSE)
+        public function arrayToObject($array = [], $str_to_lower = false)
         {
             return Arr::arrayToObject($array, $str_to_lower);
         }
@@ -121,7 +121,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:47
          *
          */
-        public function arrayQuickSort($array = [])
+        public function arrayQuickSort($array = []): array
         {
             return Arr::arrayQuickSort($array);
         }
@@ -134,7 +134,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 17:29
          */
-        public function zuluTime()
+        public function zuluTime(): ?string
         {
             return DateAndTime::zuluTime();
         }
@@ -150,7 +150,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function randomString($type = 'alnum', $len = 8)
+        public function randomString($type = 'alnum', $len = 8): string
         {
             return Str::randomString($type, $len);
         }
@@ -167,7 +167,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:33
          *
          */
-        public function directoryMap($source_dir, $directory_depth = 0, $hidden = FALSE)
+        public function directoryMap($source_dir, $directory_depth = 0, $hidden = false)
         {
             return Dir::directoryMap($source_dir, $directory_depth, $hidden);
         }
@@ -183,7 +183,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 41:25
          */
-        public function newFolder($pathname = '', $mode = 0777)
+        public function newFolder($pathname = '', $mode = 0777): bool
         {
             $file = new File();
 
@@ -200,7 +200,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/08/2021 12:58
          */
-        public function formatSizeUnits($bytes = 0)
+        public function formatSizeUnits($bytes = 0): string
         {
             $file = new File();
 
@@ -221,7 +221,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:07
          *
          */
-        public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://via.placeholder.com/')
+        public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://via.placeholder.com/'): string
         {
             if (!empty($bg_color)) {
                 $bg_color = '/' . $bg_color;
@@ -241,17 +241,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function meta
          *
-         * @param string $name
-         * @param string $content
-         * @param string $type
-         * @param string $newline
+         * @param string|array $name
+         * @param string       $content
+         * @param string       $type
+         * @param string       $newline
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:17
          *
          */
-        public function meta($name = '', $content = '', $type = 'name', $newline = "\n")
+        public function meta($name = '', $content = '', $type = 'name', $newline = "\n"): string
         {
             // Since we allow the data to be passes as a string, a simple array
             // or a multidimensional one, we need to do a little prepping.
@@ -278,17 +278,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function metaProperty
          *
-         * @param string $property
-         * @param string $content
-         * @param string $type
-         * @param string $newline
+         * @param string|array $property
+         * @param string       $content
+         * @param string       $type
+         * @param string       $newline
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:09
          *
          */
-        public function metaProperty($property = '', $content = '', $type = 'property', $newline = "\n")
+        public function metaProperty($property = '', $content = '', $type = 'property', $newline = "\n"): string
         {
             // Since we allow the data to be passes as a string, a simple array
             // or a multidimensional one, we need to do a little prepping.
@@ -331,7 +331,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:18
          *
          */
-        public function metaTagEquiv($data = [])
+        public function metaTagEquiv($data = []): string
         {
             $content    = [
                 [
@@ -368,7 +368,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/30/18 16:17
          *
          */
-        public function metaDnsPrefetch()
+        public function metaDnsPrefetch(): string
         {
             $meta = "<!-- DNS prefetch -->\n";
             $meta .= "<link rel='dns-prefetch' href = '//www.google-analytics.com/' > \n";
@@ -383,18 +383,18 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function sitemapParse
          *
-         * @param string $domain
-         * @param string $loc
-         * @param string $lastmod
-         * @param string $type
-         * @param string $newline
+         * @param string       $domain
+         * @param string|array $loc
+         * @param string       $lastmod
+         * @param string       $type
+         * @param string       $newline
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:11
          *
          */
-        public function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n")
+        public function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n"): string
         {
             // Since we allow the data to be passes as a string, a simple array
             // or a multidimensional one, we need to do a little prepping.
@@ -440,7 +440,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:11
          *
          */
-        public function xmlConvert($str, $protect_all = FALSE)
+        public function xmlConvert($str, $protect_all = false): string
         {
             $temp = '__TEMP_AMPERSANDS__';
 
@@ -448,7 +448,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             // ampersands won't get messed up
             $str = preg_replace('/&#(\d+);/', $temp . '\\1;', $str);
 
-            if ($protect_all === TRUE) {
+            if ($protect_all === true) {
                 $str = preg_replace('/&(\w+);/', $temp . '\\1;', $str);
             }
 
@@ -461,7 +461,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             // Decode the temp markers back to entities
             $str = preg_replace('/' . $temp . '(\d+);/', '&#\\1;', $str);
 
-            if ($protect_all === TRUE) {
+            if ($protect_all === true) {
                 return preg_replace('/' . $temp . '(\w+);/', '&\\1;', $str);
             }
 
@@ -478,7 +478,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:16
          *
          */
-        public function viewPagination($input_data = [])
+        public function viewPagination($input_data = []): ?string
         {
             // $page_type           = $input_data['page_type'] ?? '';
             $page_link           = $input_data['page_link'] ?? '';
@@ -504,7 +504,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             // Tính tổng số page có
             $total_page = ceil($total_item / $item_per_page);
             if ($total_page <= 1) {
-                return NULL;
+                return null;
             }
 
             $output_html = '';
@@ -517,7 +517,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                     continue;
                 }
 
-                if ($page_number == $current_page_number) {
+                if ($page_number === $current_page_number) {
                     $output_html .= '<li class="selected"><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
                 } else {
                     $output_html .= '<li><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
@@ -544,7 +544,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:22
          *
          */
-        public function htmlEscape($var = '', $double_encode = TRUE)
+        public function htmlEscape($var = '', $double_encode = true)
         {
             if (empty($var)) {
                 return $var;
@@ -587,7 +587,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function quotesToEntities($str = '')
+        public function quotesToEntities($str = ''): string
         {
             return str_replace(["\'", "\"", "'", '"'], ["&#39;", "&quot;", "&#39;", "&quot;"], $str);
         }
@@ -611,7 +611,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function reduceDoubleSlashes($str = '')
+        public function reduceDoubleSlashes($str = ''): string
         {
             return preg_replace('#(^|[^:])//+#', '\\1/', $str);
         }
@@ -636,11 +636,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function reduceMultiples($str = '', $character = ',', $trim = FALSE)
+        public function reduceMultiples($str = '', $character = ',', $trim = false): string
         {
             $str = preg_replace('#' . preg_quote($character, '#') . '{2,}#', $character, $str);
 
-            return ($trim === TRUE) ? trim($str, $character) : $str;
+            return ($trim === true) ? trim($str, $character) : $str;
         }
 
         /**
@@ -653,7 +653,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 10/13/18 09:49
          *
          */
-        public function stripHtmlTag($str = '')
+        public function stripHtmlTag($str = ''): string
         {
             $regex          = '/([^<]*<\s*[a-z](?:[0-9]|[a-z]{0,9}))(?:(?:\s*[a-z\-]{2,14}\s*=\s*(?:"[^"]*"|\'[^\']*\'))*)(\s*\/?>[^<]*)/i';
             $chunks         = preg_split($regex, $str, -1, PREG_SPLIT_DELIM_CAPTURE);
@@ -680,14 +680,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 10/13/18 09:51
          *
          */
-        public function stripIsTags($str, $tags, $stripContent = FALSE)
+        public function stripIsTags($str, $tags, $stripContent = false)
         {
             $content = '';
             if (!is_array($tags)) {
-                $tags = (strpos($str, '>') !== FALSE ? explode('>', str_replace('<', '', $tags)) : [
+                $tags = (strpos($str, '>') !== false ? explode('>', str_replace('<', '', $tags)) : [
                     $tags
                 ]);
-                if (end($tags) == '') {
+                if (end($tags) === '') {
                     array_pop($tags);
                 }
             }
@@ -716,7 +716,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function wordLimiter($str = '', $limit = 100, $end_char = '&#8230;')
+        public function wordLimiter($str = '', $limit = 100, $end_char = '&#8230;'): string
         {
             if (trim($str) === '') {
                 return $str;
@@ -743,7 +743,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function characterLimiter($str = '', $n = 500, $end_char = '&#8230;')
+        public function characterLimiter($str = '', $n = 500, $end_char = '&#8230;'): ?string
         {
             if (mb_strlen($str) < $n) {
                 return $str;
@@ -767,7 +767,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                 }
             }
 
-            return NULL;
+            return null;
         }
 
         /**
@@ -779,7 +779,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function asciiToEntities($str = '')
+        public function asciiToEntities($str = ''): string
         {
             $out    = '';
             $length = defined('MB_OVERLOAD_STRING')
@@ -834,7 +834,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function entitiesToAscii($str = '', $all = TRUE)
+        public function entitiesToAscii($str = '', $all = true): string
         {
             $pattern = '/\&#(\d+)\;/';
             if (preg_match_all($pattern, $str, $matches)) {
@@ -875,13 +875,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * matched words will be converted to #### or to the replacement
          * word you've submitted.
          *
-         * @param string    the text string
-         * @param string    the array of censored words
-         * @param string    the optional replacement value
+         * @param string $str         the text string
+         * @param string|array $censored    the array of censored words
+         * @param string $replacement the optional replacement value
          *
          * @return    string
          */
-        public function wordCensor($str = '', $censored = '', $replacement = '')
+        public function wordCensor($str = '', $censored = '', $replacement = ''): string
         {
             if (!is_array($censored)) {
                 return $str;
@@ -929,7 +929,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function highlightCode($str = '')
+        public function highlightCode($str = ''): string
         {
             /* The highlight string function encodes and highlights
              * brackets so we need them to start raw.
@@ -946,7 +946,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
 
             // The highlight_string function requires that the text be surrounded
             // by PHP tags, which we will remove later
-            $str = highlight_string('<?php ' . $str . ' ?>', TRUE);
+            $str = highlight_string('<?php ' . $str . ' ?>', true);
 
             // Remove our artificially added PHP, and the syntax highlighting that came with it
             $str = preg_replace(
@@ -983,9 +983,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function highlightPhrase($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>')
+        public function highlightPhrase($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>'): string
         {
-            define('UTF8_ENABLED', TRUE);
+            define('UTF8_ENABLED', true);
 
             return ($str !== '' && $phrase !== '')
                 ? preg_replace('/(' . preg_quote($phrase, '/') . ')/i' . (UTF8_ENABLED ? 'u' : ''), $tag_open . '\\1' . $tag_close, $str)
@@ -1004,7 +1004,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function wordWrap($str = '', $charlim = 76)
+        public function wordWrap($str = '', $charlim = 76): string
         {
             // Set the character limit
             is_numeric($charlim) or $charlim = 76;
@@ -1013,7 +1013,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             $str = preg_replace('| +|', ' ', $str);
 
             // Standardize newlines
-            if (strpos($str, "\r") !== FALSE) {
+            if (strpos($str, "\r") !== false) {
                 $str = str_replace(["\r\n", "\r"], "\n", $str);
             }
 
@@ -1031,7 +1031,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
             // Use PHP's native function to do the initial wordwrap.
             // We set the cut flag to FALSE so that any individual words that are
             // too long get left alone. In the next step we'll deal with them.
-            $str = wordwrap($str, $charlim, "\n", FALSE);
+            $str = wordwrap($str, $charlim, "\n", false);
 
             // Split the string into individual lines of text and cycle through them
             $output = '';
@@ -1102,7 +1102,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 47:01
          */
-        public function validEmail($email = '')
+        public function validEmail($email = ''): bool
         {
             return Email::validateEmail($email);
         }
@@ -1120,7 +1120,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 46:00
          */
-        public function strongPassword($length = 20, $add_dashes = FALSE, $available_sets = 'luna')
+        public function strongPassword($length = 20, $add_dashes = false, $available_sets = 'luna'): string
         {
             return Password::generateStrongPassword($length, $add_dashes, $available_sets);
         }
@@ -1135,7 +1135,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 45:16
          */
-        public function validStrongPassword($password = '')
+        public function validStrongPassword($password = ''): bool
         {
             return Password::validStrongPassword($password);
         }
@@ -1211,17 +1211,17 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return false|string string or long
          */
-        public static function alphaID($in, $to_num = FALSE, $pad_up = FALSE, $passKey = NULL)
+        public static function alphaID($in, $to_num = false, $pad_up = false, $passKey = null)
         {
             $index = "abcdefghijkmnpqrstuvwxyz123456789";
-            if ($passKey !== NULL) {
+            if ($passKey !== null) {
                 // Although this function's purpose is to just make the
                 // ID short - and not so much secure,
                 // with this patch by Simon Franz (http://blog.snaky.org/)
                 // you can optionally supply a password to make it harder
                 // to calculate the corresponding numeric ID
-
-                for ($n = 0; $n < strlen($index); $n++) {
+                $indexLen = strlen($index);
+                for ($n = 0; $n < $indexLen; $n++) {
                     $i[] = substr($index, $n, 1);
                 }
 
@@ -1230,7 +1230,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
                     ? hash('sha512', $passKey)
                     : $passhash;
 
-                for ($n = 0; $n < strlen($index); $n++) {
+                for ($n = 0; $n < $indexLen; $n++) {
                     $p[] = substr($passhash, $n, 1);
                 }
 

@@ -109,9 +109,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
          * @return string|null
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 09/20/2021 38:18
+         * @time     : 09/21/2021 39:53
          */
-        public static function getIpInformation($ip = '')
+        public static function getIpInformation($ip = ''): ?string
         {
             return (new BaseIP())->ipInfo($ip);
         }

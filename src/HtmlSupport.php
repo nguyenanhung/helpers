@@ -31,7 +31,7 @@ if (!trait_exists('nguyenanhung\Classes\Helper\HtmlSupport')) {
          *
          * @return string
          */
-        public function tableColor($current, $previous, $id)
+        public function tableColor($current, $previous, $id): string
         {
             if (isset($previous->$id)) {
                 if ($previous->$id > $current->$id) {

@@ -55,9 +55,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          */
         public static function endsWith($haystack, $needle)
         {
-            $endsWith = FALSE;
+            $endsWith = false;
             // if $haystack and $needle are passed
-            if ($haystack !== NULL && $needle !== NULL) {
+            if ($haystack !== null && $needle !== null) {
                 // if $haystack is a string
                 if (is_string($haystack)) {
                     // if $needle is a string
@@ -68,10 +68,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                             if (strlen($needle) > 0) {
                                 $endsWith = substr($haystack, -strlen($needle)) === $needle;
                             } else {
-                                $endsWith = FALSE;
+                                $endsWith = false;
                             }
                         } else {
-                            $endsWith = FALSE;
+                            $endsWith = false;
                         }
                     } else {
                         throw new InvalidArgumentException(
@@ -114,10 +114,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          */
         public static function iEndsWith($haystack, $needle)
         {
-            $endsWith = NULL;
+            $endsWith = null;
 
             // if $haystack and $needle are given
-            if ($haystack !== NULL && $needle !== NULL) {
+            if ($haystack !== null && $needle !== null) {
                 // if $haystack is a string
                 if (is_string($haystack)) {
                     // if $needle is a string
@@ -211,10 +211,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          */
         public static function iStartsWith($haystack, $needle)
         {
-            $startsWith = NULL;
+            $startsWith = null;
 
             // if $haystack and $needle are given
-            if ($haystack !== NULL && $needle !== NULL) {
+            if ($haystack !== null && $needle !== null) {
                 // if $haystack is a string
                 if (is_string($haystack)) {
                     // if $needle is a string
@@ -284,7 +284,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
             $password = '';
 
             // if $rules and $length are given
-            if ($rules !== NULL && $length !== NULL) {
+            if ($rules !== null && $length !== null) {
                 // if $rules is an array
                 if (is_array($rules)) {
                     // if $length is an integer
@@ -355,7 +355,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
             $rand = '';
 
             // if $length and $charsets are given
-            if ($length !== NULL && $charsets !== NULL) {
+            if ($length !== null && $charsets !== null) {
                 // if $length is an integer
                 if (is_numeric($length) && is_int(+$length)) {
                     // if $charsets is a string or array
@@ -451,7 +451,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                     }
                     break;
                 case 'md5':
-                    return md5(uniqid(mt_rand()));
+                    return md5(uniqid(mt_rand(), true));
                     break;
                 case 'hex':
                     if (($length % 2) != 0) {
@@ -511,9 +511,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
 
                     return substr(str_shuffle(str_repeat($pool, ceil($len / strlen($pool)))), 0, $len);
                 case 'sha1':
-                    return sha1(uniqid(mt_rand(), TRUE));
+                    return sha1(uniqid(mt_rand(), true));
                 default:
-                    return md5(uniqid(mt_rand()));
+                    return md5(uniqid(mt_rand(), true));
             }
         }
 
@@ -549,7 +549,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
             $pieces = array();
 
             // if $string is not null
-            if ($string !== NULL) {
+            if ($string !== null) {
                 // if $string is actually a string
                 if (is_string($string)) {
                     // if the trimmed string isn't empty
@@ -601,10 +601,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          */
         public static function startsWith($haystack, $needle)
         {
-            $startsWith = FALSE;
+            $startsWith = false;
 
             // if $haystack and $needle are given
-            if ($haystack !== NULL && $needle !== NULL) {
+            if ($haystack !== null && $needle !== null) {
                 // if $haystack is a string
                 if (is_string($haystack)) {
                     // if $needle is a string
@@ -615,10 +615,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                             if (strlen($needle) > 0) {
                                 $startsWith = !strncmp($haystack, $needle, strlen($needle));
                             } else {
-                                $startsWith = FALSE;
+                                $startsWith = false;
                             }
                         } else {
-                            $startsWith = FALSE;
+                            $startsWith = false;
                         }
                     } else {
                         throw new InvalidArgumentException(
@@ -667,10 +667,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          */
         public static function strToBytes($string)
         {
-            $val = FALSE;
+            $val = false;
 
             // if $string is given
-            if ($string !== NULL) {
+            if ($string !== null) {
                 // if $string is actually a string
                 if (is_string($string)) {
                     // get the string's last character
@@ -786,7 +786,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
         public static function strToCamelCase($string)
         {
             // if $string is given
-            if ($string !== NULL) {
+            if ($string !== null) {
                 // if $string is actually a string
                 if (is_string($string)) {
                     // if $string is not empty
@@ -921,10 +921,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
          */
         public static function truncate($string, $limit, $break = ' ', $pad = '...')
         {
-            $truncated = NULL;
+            $truncated = null;
 
             // if $string and $limit are given
-            if ($string !== NULL && $limit !== NULL) {
+            if ($string !== null && $limit !== null) {
                 // if $string is actually a string
                 if (is_string($string)) {
                     // if $limit is a number
@@ -938,11 +938,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
                                     // truncate the string at the limit
                                     $truncated = substr($string, 0, $limit);
                                     // if a break character is defined and it exists in the truncated string
-                                    if ($break !== NULL && $break !== '' && strpos($truncated, $break)) {
+                                    if ($break !== null && $break !== '' && strpos($truncated, $break)) {
                                         $truncated = substr($truncated, 0, strrpos($truncated, $break));
                                     }
                                     // if a pad exists, use it
-                                    if ($pad !== NULL && $pad !== '') {
+                                    if ($pad !== null && $pad !== '') {
                                         $truncated .= $pad;
                                     }
                                 } else {
@@ -1044,11 +1044,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
             if (!empty($str)) {
                 $str = preg_replace("/[^a-zA-Z0-9]/", $separator, $str);
                 $str = preg_replace("/-+/", $separator, $str);
-                $str = str_replace($data['special_array'], $separator, $str);
-                $str = str_replace($data['vn_array'], $data['en_array'], $str);
-                $str = str_replace($data['ascii_array'], $data['normal_array'], $str);
-                $str = str_replace($data['utf8_array'], $data['normal_array'], $str);
-                $str = str_replace(' ', $separator, $str);
+                $str = str_replace(array($data['special_array'], $data['vn_array'], $data['ascii_array'], $data['utf8_array'], ' '), array($separator, $data['en_array'], $data['normal_array'], $data['normal_array'], $separator), $str);
                 while (strpos($str, '--') > 0) {
                     $str = str_replace('--', $separator, $str);
                 }

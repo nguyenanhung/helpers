@@ -35,24 +35,24 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
          * @time  : 2018-12-18 22:37
          *
          */
-        public static function filterInputDataIsArray($inputData = [], $requireData = [])
+        public static function filterInputDataIsArray($inputData = [], $requireData = []): bool
         {
             if (empty($inputData) || empty($requireData)) {
-                return FALSE;
+                return false;
             }
             if (count($requireData) <= 0 || count($inputData) <= 0) {
-                return FALSE;
+                return false;
             }
             if (!is_array($requireData) || !is_array($inputData)) {
-                return FALSE;
+                return false;
             }
             foreach ($requireData as $params) {
                 if (!array_key_exists($params, $inputData)) {
-                    return FALSE;
+                    return false;
                 }
             }
 
-            return TRUE;
+            return true;
         }
 
         /**
@@ -66,28 +66,28 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 2/11/20 22:06
          */
-        public static function filterRequireInputDataIsNull($inputData = [], $requireData = [])
+        public static function filterRequireInputDataIsNull($inputData = [], $requireData = []): bool
         {
             if (empty($inputData) || empty($requireData)) {
-                return FALSE;
+                return false;
             }
             if (count($requireData) <= 0 || count($inputData) <= 0) {
-                return FALSE;
+                return false;
             }
             if (!is_array($requireData) || !is_array($inputData)) {
-                return FALSE;
+                return false;
             }
             foreach ($requireData as $params) {
                 if (!array_key_exists($params, $inputData)) {
-                    return FALSE;
-                } else {
-                    if (is_null($inputData[$params])) {
-                        return FALSE;
-                    }
+                    return false;
+                }
+
+                if ($inputData[$params] === null) {
+                    return false;
                 }
             }
 
-            return TRUE;
+            return true;
         }
 
         /**
@@ -101,28 +101,28 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 2/11/20 22:28
          */
-        public static function filterRequireInputDataIsEmpty($inputData = [], $requireData = [])
+        public static function filterRequireInputDataIsEmpty($inputData = [], $requireData = []): bool
         {
             if (empty($inputData) || empty($requireData)) {
-                return FALSE;
+                return false;
             }
             if (count($requireData) <= 0 || count($inputData) <= 0) {
-                return FALSE;
+                return false;
             }
             if (!is_array($requireData) || !is_array($inputData)) {
-                return FALSE;
+                return false;
             }
             foreach ($requireData as $params) {
                 if (!array_key_exists($params, $inputData)) {
-                    return FALSE;
-                } else {
-                    if (empty($inputData[$params])) {
-                        return FALSE;
-                    }
+                    return false;
+                }
+
+                if (empty($inputData[$params])) {
+                    return false;
                 }
             }
 
-            return TRUE;
+            return true;
         }
 
         /**
@@ -135,15 +135,15 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
          * @time  : 2019-07-11 10:27
          *
          */
-        public static function filterInputDataIsNull($inputData = [])
+        public static function filterInputDataIsNull($inputData = []): bool
         {
             foreach ($inputData as $item) {
-                if ($item === NULL) {
-                    return TRUE;
+                if ($item === null) {
+                    return true;
                 }
             }
 
-            return FALSE;
+            return false;
         }
 
         /**
@@ -156,11 +156,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
          * @time  : 2018-12-18 23:39
          *
          */
-        public static function filterDate($inputDate = '')
+        public static function filterDate($inputDate = ''): array
         {
-            if ($inputDate != '') {
+            if ($inputDate !== '') {
                 // Get date
-                if ($inputDate == 'back_1_day') {
+                if ($inputDate === 'back_1_day') {
                     try {
                         $dateTime = new DateTime("-1 day");
                         $result   = array(
@@ -172,8 +172,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                             'months'     => $dateTime->format('m'),
                             'year'       => $dateTime->format('Y'),
                         );
-                    }
-                    catch (Exception $e) {
+                    } catch (Exception $e) {
                         if (function_exists('log_message')) {
                             $message = 'Error Code: ' . $e->getCode() . ' - File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Message: ' . $e->getMessage();
                             log_message('error', $message);
@@ -183,9 +182,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                             'day'        => date('Ymd', strtotime("-1 day", strtotime($inputDate))),
                             'month'      => date('Y-m', strtotime("-1 day", strtotime($inputDate))),
                             'monthTable' => date('Y_m', strtotime("-1 day", strtotime($inputDate))),
-                            'week' => date('w', strtotime("-1 day", strtotime($inputDate))),
-                            'months' => date('m', strtotime("-1 day", strtotime($inputDate))),
-                            'year' => date('Y', strtotime("-1 day", strtotime($inputDate)))
+                            'week'       => date('w', strtotime("-1 day", strtotime($inputDate))),
+                            'months'     => date('m', strtotime("-1 day", strtotime($inputDate))),
+                            'year'       => date('Y', strtotime("-1 day", strtotime($inputDate)))
                         );
                     }
                 } else {
@@ -194,9 +193,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                         'day'        => date('Ymd', strtotime($inputDate)),
                         'month'      => date('Y-m', strtotime($inputDate)),
                         'monthTable' => date('Y_m', strtotime($inputDate)),
-                        'week' => date('w', strtotime($inputDate)),
-                        'months' => date('m', strtotime($inputDate)),
-                        'year' => date('Y', strtotime($inputDate)),
+                        'week'       => date('w', strtotime($inputDate)),
+                        'months'     => date('m', strtotime($inputDate)),
+                        'year'       => date('Y', strtotime($inputDate)),
                     );
                 }
             } else {
@@ -205,9 +204,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
                     'day'        => date('Ymd'),
                     'month'      => date('Y-m'),
                     'monthTable' => date('Y_m'),
-                    'week' => date('w'),
-                    'months' => date('m'),
-                    'year' => date('Y'),
+                    'week'       => date('w'),
+                    'months'     => date('m'),
+                    'year'       => date('Y'),
                 );
             }
 

@@ -67,7 +67,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Cookie')) {
          *
          * @return array|null
          */
-        public static function get($name)
+        public static function get($name): ?array
         {
             if (is_array($name)) {
                 $output = [];

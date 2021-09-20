@@ -30,7 +30,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\JWTHelper')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 11/6/19 50:26
          */
-        public static function getAuthorizationHeader()
+        public static function getAuthorizationHeader(): ?string
         {
             $headers = NULL;
             if (isset($_SERVER['Authorization'])) {
@@ -61,10 +61,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\JWTHelper')) {
         {
             $headers = static::getAuthorizationHeader();
             // HEADER: Get the access token from the header
-            if (!empty($headers)) {
-                if (preg_match('/Bearer\s(\S+)/', $headers, $matches)) {
-                    return $matches[1];
-                }
+            if (!empty($headers) && preg_match('/Bearer\s(\S+)/', $headers, $matches)) {
+                return $matches[1];
             }
 
             return NULL;

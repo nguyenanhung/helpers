@@ -31,14 +31,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Json')) {
          * @time  : 9/29/18 11:08
          *
          */
-        public static function jsonItem($json_string = '', $item_output = '')
+        public static function jsonItem($json_string = '', $item_output = ''): ?string
         {
             $result      = json_decode(trim($json_string));
             $item_output = trim($item_output);
-            if ($result !== NULL) {
-                if (isset($result->$item_output)) {
-                    return trim($result->$item_output);
-                }
+            if (($result !== null) && isset($result->$item_output)) {
+                return trim($result->$item_output);
             }
 
             return NULL;
@@ -54,14 +52,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Json')) {
          * @time  : 10/13/18 09:39
          *
          */
-        public static function isJson($json = '')
+        public static function isJson($json = ''): bool
         {
             $decode = json_decode(trim($json));
-            if ($decode == NULL) {
-                return FALSE;
-            }
 
-            return TRUE;
+            return !($decode === null);
         }
     }
 }

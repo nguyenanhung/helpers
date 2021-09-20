@@ -32,16 +32,18 @@ class UUID
      */
     public static function v3($namespace, $name)
     {
-        if (!self::isValid($namespace)) return FALSE;
+        if (!self::isValid($namespace)) {
+            return false;
+        }
 
         // Get hexadecimal components of namespace
         $nhex = str_replace(array('-', '{', '}'), '', $namespace);
 
         // Binary Value
         $nstr = '';
-
+        $nhexLen = strlen($nhex);
         // Convert Namespace UUID to bits
-        for ($i = 0; $i < strlen($nhex); $i += 2) {
+        for ($i = 0; $i < $nhexLen; $i += 2) {
             $nstr .= chr(hexdec($nhex[$i] . $nhex[$i + 1]));
         }
 
@@ -78,7 +80,7 @@ class UUID
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 11/6/19 58:47
      */
-    public static function v4()
+    public static function v4(): string
     {
         return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
 
@@ -115,7 +117,9 @@ class UUID
      */
     public static function v5($namespace, $name)
     {
-        if (!self::isValid($namespace)) return FALSE;
+        if (!self::isValid($namespace)) {
+            return false;
+        }
 
         // Get hexadecimal components of namespace
         $nhex = str_replace(array('-', '{', '}'), '', $namespace);
@@ -123,8 +127,9 @@ class UUID
         // Binary Value
         $nstr = '';
 
+        $nhexLen = strlen($nhex);
         // Convert Namespace UUID to bits
-        for ($i = 0; $i < strlen($nhex); $i += 2) {
+        for ($i = 0; $i < $nhexLen; $i += 2) {
             $nstr .= chr(hexdec($nhex[$i] . $nhex[$i + 1]));
         }
 
@@ -163,7 +168,7 @@ class UUID
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 11/6/19 59:04
      */
-    public static function isValid($uuid)
+    public static function isValid($uuid): bool
     {
         $uuidPattern = '/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?' . '[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i';
 

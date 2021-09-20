@@ -32,7 +32,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Base64')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 06/03/2021 09:34
          */
-        public static function superBase64Encode($input)
+        public static function superBase64Encode($input): string
         {
             $output = $input;
             $output = base64_encode($output);

@@ -32,7 +32,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 25:38
          */
-        public static function zuluTime()
+        public static function zuluTime(): ?string
         {
             try {
                 $dateUTC = new DateTime("now", new DateTimeZone("UTC"));

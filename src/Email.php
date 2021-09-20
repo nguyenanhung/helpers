@@ -31,7 +31,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Email')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 59:25
          */
-        public static function validateEmail($email)
+        public static function validateEmail($email): bool
         {
             // Remove all illegal characters from email
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);

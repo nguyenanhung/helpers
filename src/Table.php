@@ -72,21 +72,21 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @var bool
          */
-        public $auto_heading = TRUE;
+        public $auto_heading = true;
 
         /**
          * Table caption
          *
          * @var string
          */
-        public $caption = NULL;
+        public $caption;
 
         /**
          * Table layout template
          *
          * @var array
          */
-        public $template = NULL;
+        public $template;
 
         /**
          * Newline setting
@@ -103,7 +103,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
         public $empty_cells = '';
 
         /** @var null Callback for custom table layout */
-        public $function = NULL;
+        public $function;
 
         /**
          * Set the template from the table config file if it exists
@@ -129,15 +129,15 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    bool
          */
-        public function set_template($template)
+        public function set_template($template): bool
         {
             if (!is_array($template)) {
-                return FALSE;
+                return false;
             }
 
             $this->template = $template;
 
-            return TRUE;
+            return true;
         }
 
         // --------------------------------------------------------------------
@@ -151,7 +151,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    Table
          */
-        public function set_heading($args = array())
+        public function set_heading($args = array()): Table
         {
             $this->heading = $this->_prep_args(func_get_args());
 
@@ -173,13 +173,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          */
         public function make_columns($array = array(), $col_limit = 0)
         {
-            if (!is_array($array) OR count($array) === 0 OR !is_int($col_limit)) {
-                return FALSE;
+            if (!is_array($array) || count($array) === 0 || !is_int($col_limit)) {
+                return false;
             }
 
             // Turn off the auto-heading feature since it's doubtful we
             // will want headings from a one-dimensional array
-            $this->auto_heading = FALSE;
+            $this->auto_heading = false;
 
             if ($col_limit === 0) {
                 return $array;
@@ -213,7 +213,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    Table
          */
-        public function set_empty($value)
+        public function set_empty($value): Table
         {
             $this->empty_cells = $value;
 
@@ -231,7 +231,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    Table
          */
-        public function add_row($args = array())
+        public function add_row($args = array()): Table
         {
             $this->rows[] = $this->_prep_args(func_get_args());
 
@@ -249,7 +249,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    array
          */
-        protected function _prep_args($args)
+        protected function _prep_args($args): array
         {
             // If there is no $args[0], skip this and treat as an associative array
             // This can happen if there is only a single key, for example this is passed to table->generate
@@ -259,7 +259,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
             }
 
             foreach ($args as $key => $val) {
-                is_array($val) OR $args[$key] = array('data' => $val);
+                is_array($val) or $args[$key] = array('data' => $val);
             }
 
             return $args;
@@ -274,7 +274,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    Table
          */
-        public function set_caption($caption)
+        public function set_caption($caption): Table
         {
             $this->caption = $caption;
 
@@ -290,7 +290,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    string
          */
-        public function generate($table_data = NULL)
+        public function generate($table_data = null): string
         {
             // The table data can optionally be passed to this function
             // either as a database result object or an array
@@ -312,7 +312,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
 
             // Validate a possibly existing custom cell manipulation function
             if (isset($this->function) && !is_callable($this->function)) {
-                $this->function = NULL;
+                $this->function = null;
             }
 
             // Build the table!
@@ -370,7 +370,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
                         $cell = $cell['data'] ?? '';
                         $out  .= $temp;
 
-                        if ($cell === '' OR $cell === NULL) {
+                        if ($cell === '' || $cell === null) {
                             $out .= $this->empty_cells;
                         } elseif (isset($this->function)) {
                             $out .= call_user_func($this->function, $cell);
@@ -402,11 +402,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    Table
          */
-        public function clear()
+        public function clear(): Table
         {
             $this->rows         = array();
             $this->heading      = array();
-            $this->auto_heading = TRUE;
+            $this->auto_heading = true;
 
             return $this;
         }
@@ -420,10 +420,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    void
          */
-        protected function _set_from_db_result($object)
+        protected function _set_from_db_result($object): void
         {
             // First generate the headings from the table column names
-            if ($this->auto_heading === TRUE && empty($this->heading)) {
+            if ($this->auto_heading === true && empty($this->heading)) {
                 $this->heading = $this->_prep_args($object->list_fields());
             }
 
@@ -441,9 +441,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    void
          */
-        protected function _set_from_array($data)
+        protected function _set_from_array($data): void
         {
-            if ($this->auto_heading === TRUE && empty($this->heading)) {
+            if ($this->auto_heading === true && empty($this->heading)) {
                 $this->heading = $this->_prep_args(array_shift($data));
             }
 
@@ -459,9 +459,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    void
          */
-        protected function _compile_template()
+        protected function _compile_template(): void
         {
-            if ($this->template === NULL) {
+            if ($this->template === null) {
                 $this->template = $this->_default_template();
 
                 return;
@@ -484,7 +484,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
          *
          * @return    array
          */
-        protected function _default_template()
+        protected function _default_template(): array
         {
             return array(
                 'table_open'         => '<table border="0" cellpadding="4" cellspacing="0">',

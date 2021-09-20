@@ -102,7 +102,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utf8')) {
          *
          * @return    string
          */
-        public function clean_string($str)
+        public function clean_string($str): string
         {
             if ($this->is_ascii($str) === FALSE) {
                 if (MB_ENABLED) {
@@ -128,7 +128,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utf8')) {
          *
          * @return    string
          */
-        public function safe_ascii_for_xml($str)
+        public function safe_ascii_for_xml($str): string
         {
             return removeInvisibleCharacters($str, FALSE);
         }
@@ -149,7 +149,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utf8')) {
         {
             if (MB_ENABLED) {
                 return mb_convert_encoding($str, 'UTF-8', $encoding);
-            } elseif (ICONV_ENABLED) {
+            }
+
+            if (ICONV_ENABLED) {
                 return @iconv($encoding, 'UTF-8', $str);
             }
 
@@ -167,7 +169,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utf8')) {
          *
          * @return    bool
          */
-        public function is_ascii($str)
+        public function is_ascii($str): bool
         {
             return (preg_match('/[^\x00-\x7F]/S', $str) === 0);
         }

@@ -37,16 +37,16 @@ class URI
     /** @var int */
     private $port;
     /** @var bool */
-    private $absolute = TRUE;
+    private $absolute = true;
 
     /**
      * If $uri is set, we'll hydrate this object with it
      *
      * @param string $uri {optional}
      */
-    public function __construct($uri = NULL)
+    public function __construct($uri = null)
     {
-        if ($uri !== NULL) {
+        if ($uri !== null) {
             $this->fromString($uri);
         }
     }
@@ -68,7 +68,7 @@ class URI
      *
      * @return self
      */
-    public function fromString($uri)
+    public function fromString($uri): self
     {
         if (is_numeric($uri)) { //Could be a valid url
             $uri = '' . $uri;
@@ -102,16 +102,18 @@ class URI
      *
      * @return string
      */
-    public function getUri()
+    public function getUri(): string
     {
         $userPart = '';
-        if ($this->getUser() !== NULL && $this->getPass() !== NULL) {
-            $userPart = $this->getUser() . ':' . $this->getPass() . '@';
-        } elseif ($this->getUser() !== NULL) {
-            $userPart = $this->getUser() . '@';
+        if ($this->getUser() !== null) {
+            if ($this->getPass() !== null) {
+                $userPart = $this->getUser() . ':' . $this->getPass() . '@';
+            } else {
+                $userPart = $this->getUser() . '@';
+            }
         }
         $schemePart = ($this->getScheme() ? $this->getScheme() . '://' : '//');
-        if (!in_array($this->getScheme(), self::getSchemesWithAuthority())) {
+        if (!in_array($this->getScheme(), self::getSchemesWithAuthority(), true)) {
             $schemePart = $this->getScheme() . ':';
         }
         $portPart     = ($this->getPort() ? ':' . $this->getPort() : '');
@@ -122,8 +124,9 @@ class URI
                    $queryPart .
                    $fragmentPart;
         }
-        $path = $this->getPath();
-        if (0 !== strlen($path) && '/' !== $path[0]) {
+        $path    = $this->getPath();
+        $pathLen = strlen($path);
+        if (0 !== $pathLen && '/' !== $path[0]) {
             $path = '/' . $path;
         }
 
@@ -141,7 +144,7 @@ class URI
      *
      * @return self
      */
-    public function setFragment($fragment)
+    public function setFragment($fragment): self
     {
         $this->fragment = $fragment;
 
@@ -151,7 +154,7 @@ class URI
     /**
      * @return string
      */
-    public function getFragment()
+    public function getFragment(): string
     {
         return $this->fragment;
     }
@@ -161,7 +164,7 @@ class URI
      *
      * @return self
      */
-    public function setHost($host)
+    public function setHost($host): self
     {
         $this->host = $host;
         $this->setAbsolute();
@@ -172,7 +175,7 @@ class URI
     /**
      * @return string
      */
-    public function getHost()
+    public function getHost(): string
     {
         return $this->host;
     }
@@ -182,7 +185,7 @@ class URI
      *
      * @return self
      */
-    public function setPass($pass)
+    public function setPass($pass): self
     {
         $this->pass = $pass;
 
@@ -192,7 +195,7 @@ class URI
     /**
      * @return string
      */
-    public function getPass()
+    public function getPass(): string
     {
         return $this->pass;
     }
@@ -202,7 +205,7 @@ class URI
      *
      * @return self
      */
-    public function setPath($path)
+    public function setPath($path): self
     {
         $this->path = $path;
 
@@ -212,7 +215,7 @@ class URI
     /**
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
@@ -227,9 +230,9 @@ class URI
      * @see Sensimity_Helper_UriTest::provideSetQuery
      *
      */
-    public function setQuery($query)
+    public function setQuery($query): self
     {
-        $this->query = NULL;
+        $this->query = null;
         if (is_string($query)) {
             $this->query = ltrim($query, '?');
         }
@@ -240,7 +243,7 @@ class URI
     /**
      * @return string
      */
-    public function getQuery()
+    public function getQuery(): string
     {
         return $this->query;
     }
@@ -258,9 +261,9 @@ class URI
      * @see Sensimity_Helper_UriTest::provideSetScheme
      *
      */
-    public function setScheme($scheme)
+    public function setScheme($scheme): self
     {
-        $this->scheme = NULL;
+        $this->scheme = null;
         if (empty($scheme)) {
             return $this;
         }
@@ -270,16 +273,18 @@ class URI
         $scheme        = rtrim($scheme, ':/');
         $scheme        = trim($scheme, ':/');
         $scheme        = str_replace('::', ':', $scheme);
-        if (strlen($scheme) != 0) {
+        $schemeLen     = strlen($scheme);
+        if ($schemeLen !== 0) {
             if ($this->isRelative()) {
                 /* Explained: */
                 /* @see Sensimity_Helper_UriTest::testRelativeAbsoluteUrls */
                 $exp = explode('/', ltrim($this->getPath(), '/'));
                 $this->setHost($exp[0]);
                 unset($exp[0]);
-                $this->setPath(NULL);
-                $path = implode('/', $exp);
-                if (strlen($path) > 0) {
+                $this->setPath(null);
+                $path    = implode('/', $exp);
+                $pathLen = strlen($path);
+                if ($pathLen > 0) {
                     //Only create the "/" if theres a path
                     $this->setPath('/' . $path);
                 }
@@ -294,7 +299,7 @@ class URI
     /**
      * @return string
      */
-    public function getScheme()
+    public function getScheme(): string
     {
         return $this->scheme;
     }
@@ -304,7 +309,7 @@ class URI
      *
      * @return self
      */
-    public function setUser($user)
+    public function setUser($user): self
     {
         $this->user = $user;
 
@@ -314,7 +319,7 @@ class URI
     /**
      * @return string
      */
-    public function getUser()
+    public function getUser(): string
     {
         return $this->user;
     }
@@ -328,10 +333,10 @@ class URI
      * @see Sensimity_Helper_UriTest::provideSetPort
      *
      */
-    public function setPort($port)
+    public function setPort($port): self
     {
-        $this->port = NULL;
-        if ((is_string($port) || is_numeric($port)) && ctype_digit(strval($port))) {
+        $this->port = null;
+        if ((is_string($port) || is_numeric($port)) && ctype_digit((string) $port)) {
             $this->port = (int) $port;
         }
 
@@ -341,7 +346,7 @@ class URI
     /**
      * @return int
      */
-    public function getPort()
+    public function getPort(): int
     {
         return $this->port;
     }
@@ -349,7 +354,7 @@ class URI
     /**
      * @return bool
      */
-    public function isRelative()
+    public function isRelative(): bool
     {
         return (!$this->absolute);
     }
@@ -357,7 +362,7 @@ class URI
     /**
      * @return bool
      */
-    public function isAbsolute()
+    public function isAbsolute(): bool
     {
         return ($this->absolute);
     }
@@ -365,9 +370,9 @@ class URI
     /**
      * @return $this
      */
-    public function setAbsolute()
+    public function setAbsolute(): self
     {
-        $this->absolute = TRUE;
+        $this->absolute = true;
 
         return $this;
     }
@@ -375,9 +380,9 @@ class URI
     /**
      * @return $this
      */
-    public function setRelative()
+    public function setRelative(): self
     {
-        $this->absolute = FALSE;
+        $this->absolute = false;
 
         return $this;
     }
@@ -390,9 +395,9 @@ class URI
      *
      * @return string
      */
-    public static function changeScheme($uri, $scheme = NULL)
+    public static function changeScheme($uri, $scheme = null): string
     {
-        if ($scheme == NULL) { //null for scheme = just no change at all - only in this static function, for BC!
+        if ($scheme === null) { //null for scheme = just no change at all - only in this static function, for BC!
             return $uri;
         }
         $class = get_called_class();
@@ -426,7 +431,7 @@ class URI
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 08/18/2021 54:07
      */
-    public function isSchemeLess()
+    public function isSchemeLess(): bool
     {
         $scheme = $this->getScheme();
 

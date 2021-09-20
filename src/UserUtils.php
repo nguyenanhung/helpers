@@ -57,7 +57,7 @@ class UserUtils implements ProjectInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 08/18/2021 50:20
      */
-    public static function hashUserPasswordGetInfo($hash = '')
+    public static function hashUserPasswordGetInfo($hash = ''): ?array
     {
         return password_get_info($hash);
     }
@@ -72,7 +72,7 @@ class UserUtils implements ProjectInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 08/18/2021 50:23
      */
-    public static function userPasswordNeedSReHash($hash = '')
+    public static function userPasswordNeedSReHash($hash = ''): bool
     {
         return password_needs_rehash($hash, self::$passwordAlgorithm, self::$passwordOptions);
     }
@@ -88,7 +88,7 @@ class UserUtils implements ProjectInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 08/18/2021 50:26
      */
-    public static function passwordVerify($password = '', $hash = '')
+    public static function passwordVerify($password = '', $hash = ''): bool
     {
         return password_verify($password, $hash);
     }

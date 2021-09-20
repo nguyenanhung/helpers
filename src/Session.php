@@ -25,7 +25,7 @@ class Session
      * @time  : 2018-12-27 22:39
      *
      */
-    public static function start()
+    public static function start(): void
     {
         if (self::sessionStarted()) {
             session_start();
@@ -40,7 +40,7 @@ class Session
      *
      * @return bool
      */
-    public static function sessionStarted()
+    public static function sessionStarted(): bool
     {
         return PHP_SESSION_NONE === session_status() || '' === session_id();
     }
@@ -84,7 +84,7 @@ class Session
      *
      * @return array|null
      */
-    public static function get($name)
+    public static function get($name): ?array
     {
         if (is_array($name)) {
             $output = [];
@@ -109,7 +109,7 @@ class Session
      *
      * @return null
      */
-    public static function save($name, $value = NULL)
+    public static function save($name, $value = NULL): ?array
     {
         return static::put($name, $value);
     }
@@ -125,7 +125,7 @@ class Session
      *
      * @return null
      */
-    public static function set($name, $value = NULL)
+    public static function set($name, $value = NULL): ?array
     {
         return static::put($name, $value);
     }
@@ -141,7 +141,7 @@ class Session
      *
      * @return null
      */
-    public static function put($name, $value = NULL)
+    public static function put($name, $value = NULL): ?array
     {
         if (is_array($name)) {
             foreach ($name as $key => $v) {
@@ -164,7 +164,7 @@ class Session
      *
      * @return array|null
      */
-    public static function delete($name)
+    public static function delete($name): ?array
     {
         $output = self::get($name);
         if (NULL !== $output && is_array($output)) {
@@ -188,7 +188,7 @@ class Session
      * @time  : 2018-12-27 22:38
      *
      */
-    public static function destroy()
+    public static function destroy(): void
     {
         if (self::sessionStarted()) {
             session_destroy();

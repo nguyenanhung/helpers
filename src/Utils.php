@@ -76,11 +76,11 @@ class Utils implements ProjectInterface
      * @time  : 11/26/18 10:50
      *
      */
-    public static function isJson($string = '')
+    public static function isJson($string = ''): bool
     {
         json_decode($string);
 
-        return (json_last_error() == JSON_ERROR_NONE);
+        return (json_last_error() === JSON_ERROR_NONE);
     }
 
     /**
@@ -110,7 +110,7 @@ class Utils implements ProjectInterface
     /**
      * Function objectFormat
      *
-     * @param string $data
+     * @param string|array|object $data
      *
      * @return array|bool|mixed|\stdClass|string
      * @author: 713uk13m <dev@nguyenanhung.com>
@@ -142,7 +142,7 @@ class Utils implements ProjectInterface
      * @time  : 2019-07-15 10:57
      *
      */
-    public static function expireTime($duration = 1)
+    public static function expireTime($duration = 1): string
     {
         try {
             $expire     = $duration <= 1 ? new DateTime("+0 days") : new DateTime("+$duration days");
@@ -165,7 +165,7 @@ class Utils implements ProjectInterface
      * @time  : 11/18/18 03:04
      *
      */
-    public static function generateHashValue($str = '')
+    public static function generateHashValue($str = ''): string
     {
         return hash(self::HASH_ALGORITHM, $str);
     }
@@ -178,7 +178,7 @@ class Utils implements ProjectInterface
      * @time  : 11/19/18 10:08
      *
      */
-    public static function generateUserPasswordRandom()
+    public static function generateUserPasswordRandom(): string
     {
         return random_string(self::USER_PASSWORD_RANDOM_ALGORITHM, self::USER_PASSWORD_RANDOM_LENGTH);
     }
@@ -191,7 +191,7 @@ class Utils implements ProjectInterface
      * @time  : 11/19/18 10:08
      *
      */
-    public static function generateUserToken()
+    public static function generateUserToken(): string
     {
         return random_string(self::USER_TOKEN_ALGORITHM);
     }
@@ -204,7 +204,7 @@ class Utils implements ProjectInterface
      * @time  : 11/19/18 10:08
      *
      */
-    public static function generateUserSaltKey()
+    public static function generateUserSaltKey(): string
     {
         return random_string(self::USER_SALT_ALGORITHM);
     }
@@ -217,7 +217,7 @@ class Utils implements ProjectInterface
      * @time  : 11/23/18 17:15
      *
      */
-    public static function generateRequestId()
+    public static function generateRequestId(): string
     {
         return date('YmdHis') . random_string('numeric', 10);
     }
@@ -230,7 +230,7 @@ class Utils implements ProjectInterface
      * @time  : 2018-12-06 22:04
      *
      */
-    public static function generateVinaRequestId()
+    public static function generateVinaRequestId(): string
     {
         return date('YmdHis') . ceil(microtime(TRUE) * 1000);
     }
@@ -245,7 +245,7 @@ class Utils implements ProjectInterface
      * @time  : 11/23/18 17:16
      *
      */
-    public static function generateOTPCode($length = 6)
+    public static function generateOTPCode($length = 6): string
     {
         return random_string('numeric', $length);
     }
@@ -261,7 +261,7 @@ class Utils implements ProjectInterface
      * @time  : 2018-12-06 16:03
      *
      */
-    public static function generateOTPExpireTime($hour = 4)
+    public static function generateOTPExpireTime($hour = 4): string
     {
         $time = new DateTime('+' . $hour . ' days');
 
@@ -277,7 +277,7 @@ class Utils implements ProjectInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/28/2021 35:16
      */
-    public static function zuluTime()
+    public static function zuluTime(): string
     {
         $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
 

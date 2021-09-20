@@ -19,10 +19,11 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
      */
     interface ProjectInterface
     {
-        const VERSION       = '3.0.1';
-        const LAST_MODIFIED = '2021-09-16';
+        const VERSION       = '3.0.2';
+        const LAST_MODIFIED = '2021-09-20';
         const AUTHOR_NAME   = 'Hung Nguyen';
         const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
+        const AUTHOR_URL    = 'https://nguyenanhung.com';
         const PROJECT_NAME  = 'Helper';
         const TIMEZONE      = 'Asia/Ho_Chi_Minh';
         const USE_BENCHMARK = false;
@@ -39,7 +40,7 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
         /**
          * Function getVersion
          *
-         * @return mixed
+         * @return string
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 03:59
