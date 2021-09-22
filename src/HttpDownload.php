@@ -48,19 +48,18 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
      **/
     class HttpDownload
     {
-
-        var $data         = NULL;
+        var $data;
         var $data_len     = 0;
         var $data_mod     = 0;
         var $data_type    = 0;
         var $data_section = 0; //section download
         /** @var null[] */
-        var $handler      = array('auth' => NULL);
-        var $use_resume   = TRUE;
-        var $use_autoexit = FALSE;
-        var $use_auth     = FALSE;
-        var $filename     = NULL;
-        var $mime         = NULL;
+        var $handler      = array('auth' => null);
+        var $use_resume   = true;
+        var $use_autoexit = false;
+        var $use_auth     = false;
+        var $filename;
+        var $mime;
         var $bufsize      = 2048;
         var $seek_start   = 0;
         var $seek_end     = -1;
@@ -86,37 +85,47 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
          *
          * @return bool
          **/
-        function initialize()
+        public function initialize(): bool
         {
             global $HTTP_SERVER_VARS;
 
             //use authentication
-            if ($this->use_auth) {
-                //no authentication
-                if (!$this->_auth()) {
-                    header('WWW-Authenticate: Basic realm="Please enter your username and password"');
-                    header('HTTP/1.0 401 Unauthorized');
-                    header('status: 401 Unauthorized');
-                    if ($this->use_autoexit) exit();
-
-                    return FALSE;
+            //no authentication
+            if ($this->use_auth && !$this->_auth()) {
+                header('WWW-Authenticate: Basic realm="Please enter your username and password"');
+                header('HTTP/1.0 401 Unauthorized');
+                header('status: 401 Unauthorized');
+                if ($this->use_autoexit) {
+                    exit();
                 }
+
+                return false;
             }
-            if ($this->mime == NULL) $this->mime = "application/octet-stream"; //default mime
+            if ($this->mime === null) {
+                $this->mime = "application/octet-stream";
+            } //default mime
 
-            if (isset($_SERVER['HTTP_RANGE']) || isset($HTTP_SERVER_VARS['HTTP_RANGE'])) {
+            if (isset($HTTP_SERVER_VARS['HTTP_RANGE'])) {
+                $seek_range = substr($HTTP_SERVER_VARS['HTTP_RANGE'], strlen('bytes='));
+            } elseif (isset($_SERVER['HTTP_RANGE'])) {
+                $seek_range = substr($_SERVER['HTTP_RANGE'], strlen('bytes='));
+            } else {
+                $seek_range = null;
+            }
 
-                if (isset($HTTP_SERVER_VARS['HTTP_RANGE'])) $seek_range = substr($HTTP_SERVER_VARS['HTTP_RANGE'], strlen('bytes='));
-                else $seek_range = substr($_SERVER['HTTP_RANGE'], strlen('bytes='));
+            if ($seek_range !== null) {
 
                 $range = explode('-', $seek_range);
 
                 if ($range[0] > 0) {
-                    $this->seek_start = intval($range[0]);
+                    $this->seek_start = (int) $range[0];
                 }
 
-                if ($range[1] > 0) $this->seek_end = intval($range[1]);
-                else $this->seek_end = -1;
+                if ($range[1] > 0) {
+                    $this->seek_end = (int) $range[1];
+                } else {
+                    $this->seek_end = -1;
+                }
 
                 if (!$this->use_resume) {
                     $this->seek_start = 0;
@@ -136,13 +145,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
                 $this->seek_end   = -1;
             }
 
-            return TRUE;
+            return true;
         }
 
         /**
          * Send download information header
          **/
-        function header($size, $seek_start = NULL, $seek_end = NULL)
+        public function header($size, $seek_start = null, $seek_end = null): void
         {
             header('Content-type: ' . $this->mime);
             header('Content-Disposition: attachment; filename="' . $this->filename . '"');
@@ -159,17 +168,23 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
             }
         }
 
-        function download_ex($size)
+        public function download_ex($size): bool
         {
-            if (!$this->initialize()) return FALSE;
-            ignore_user_abort(TRUE);
+            if (!$this->initialize()) {
+                return false;
+            }
+            ignore_user_abort(true);
             //Use seek end here
-            if ($this->seek_start > ($size - 1)) $this->seek_start = 0;
-            if ($this->seek_end <= 0) $this->seek_end = $size - 1;
+            if ($this->seek_start > ($size - 1)) {
+                $this->seek_start = 0;
+            }
+            if ($this->seek_end <= 0) {
+                $this->seek_end = $size - 1;
+            }
             $this->header($size, $this->seek_start, $this->seek_end);
             $this->data_mod = time();
 
-            return TRUE;
+            return true;
         }
 
         /**
@@ -177,9 +192,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
          *
          * @return bool
          **/
-        function download()
+        public function download(): bool
         {
-            if (!$this->initialize()) return FALSE;
+            if (!$this->initialize()) {
+                return false;
+            }
 
             $seek    = $this->seek_start;
             $speed   = $this->speed;
@@ -188,27 +205,35 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
 
             //do some clean up
             @ob_end_clean();
-            $old_status = ignore_user_abort(TRUE);
+            $old_status = ignore_user_abort(true);
             @set_time_limit(0);
             $this->bandwidth = 0;
 
             $size = $this->data_len;
 
             //download from a file
-            if ($this->data_type == 0) {
+            if ($this->data_type === 0) {
 
                 $size = filesize($this->data);
-                if ($seek > ($size - 1)) $seek = 0;
-                if ($this->filename == NULL) $this->filename = basename($this->data);
+                if ($seek > ($size - 1)) {
+                    $seek = 0;
+                }
+                if ($this->filename === null) {
+                    $this->filename = basename($this->data);
+                }
 
                 $res = fopen($this->data, 'rb');
-                if ($seek) fseek($res, $seek);
-                if ($this->seek_end < $seek) $this->seek_end = $size - 1;
+                if ($seek) {
+                    fseek($res, $seek);
+                }
+                if ($this->seek_end < $seek) {
+                    $this->seek_end = $size - 1;
+                }
 
                 $this->header($size, $seek, $this->seek_end); //always use the last seek
                 $size = $this->seek_end - $seek + 1;
 
-                while (!(connection_aborted() || connection_status() == 1) && $size > 0) {
+                while (!(connection_aborted() || connection_status() === 1) && $size > 0) {
                     if ($size < $bufsize) {
                         echo fread($res, $size);
                         $this->bandwidth += $size;
@@ -227,12 +252,18 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
                 }
                 fclose($res);
 
-            } elseif ($this->data_type == 1) {
+            } elseif ($this->data_type === 1) {
                 //download from a string
-                if ($seek > ($size - 1)) $seek = 0;
-                if ($this->seek_end < $seek) $this->seek_end = $this->data_len - 1;
+                if ($seek > ($size - 1)) {
+                    $seek = 0;
+                }
+                if ($this->seek_end < $seek) {
+                    $this->seek_end = $this->data_len - 1;
+                }
                 $this->data = substr($this->data, $seek, $this->seek_end - $seek + 1);
-                if ($this->filename == NULL) $this->filename = time();
+                if ($this->filename === null) {
+                    $this->filename = time();
+                }
                 $size = strlen($this->data);
                 $this->header($this->data_len, $seek, $this->seek_end);
                 while (!connection_aborted() && $size > 0) {
@@ -253,21 +284,23 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
                         $packet++;
                     }
                 }
-            } elseif ($this->data_type == 2) {
+            } elseif ($this->data_type === 2) {
                 //just send a redirect header
                 header('location: ' . $this->data);
             }
 
-            if ($this->use_autoexit) exit();
+            if ($this->use_autoexit) {
+                exit();
+            }
 
             //restore old status
             ignore_user_abort($old_status);
             set_time_limit(ini_get("max_execution_time"));
 
-            return TRUE;
+            return true;
         }
 
-        function set_byfile($dir)
+        public function set_byfile($dir): ?bool
         {
             if (is_readable($dir) && is_file($dir)) {
                 $this->data_len  = 0;
@@ -275,34 +308,40 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
                 $this->data_type = 0;
                 $this->data_mod  = filemtime($dir);
 
-                return TRUE;
-            } else return FALSE;
+                return true;
+            }
+
+            return false;
         }
 
-        function set_bydata($data)
+        public function set_bydata($data): bool
         {
-            if ($data == '') return FALSE;
+            if ($data === '') {
+                return false;
+            }
             $this->data      = $data;
             $this->data_len  = strlen($data);
             $this->data_type = 1;
             $this->data_mod  = time();
 
-            return TRUE;
+            return true;
         }
 
-        function set_byurl($data)
+        public function set_byurl($data): bool
         {
             $this->data      = $data;
             $this->data_len  = 0;
             $this->data_type = 2;
 
-            return TRUE;
+            return true;
         }
 
-        function set_lastmodtime($time)
+        public function set_lastmodtime($time): void
         {
-            $time = intval($time);
-            if ($time <= 0) $time = time();
+            $time = (int) $time;
+            if ($time <= 0) {
+                $time = time();
+            }
             $this->data_mod = $time;
         }
 
@@ -311,13 +350,16 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
          *
          * @return bool
          **/
-        function _auth()
+        public function _auth(): bool
         {
-            if (!isset($_SERVER['PHP_AUTH_USER'])) return FALSE;
+            if (!isset($_SERVER['PHP_AUTH_USER'])) {
+                return false;
+            }
             if (isset($this->handler['auth']) && function_exists($this->handler['auth'])) {
                 return $this->handler['auth']('auth', $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']);
-            } else return TRUE; //you must use a handler
-        }
+            }
 
+            return true; //you must use a handler
+        }
     }
 }

@@ -9,6 +9,8 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use nguyenanhung\Libraries\HTML\Common as HtmlCommon;
+
 if (!trait_exists('nguyenanhung\Classes\Helper\HtmlSupport')) {
     /**
      * Trait HtmlSupport
@@ -33,19 +35,7 @@ if (!trait_exists('nguyenanhung\Classes\Helper\HtmlSupport')) {
          */
         public function tableColor($current, $previous, $id): string
         {
-            if (isset($previous->$id)) {
-                if ($previous->$id > $current->$id) {
-                    $style = "<b style='color: red'>" . number_format($current->$id) . "</b>";
-                } elseif ($previous->$id < $current->$id) {
-                    $style = "<b style='color: blue'>" . number_format($current->$id) . "</b>";
-                } else {
-                    $style = "<b style='color: black'>" . number_format($current->$id) . "</b>";
-                }
-            } else {
-                $style = "<b style='color: green'>" . number_format($current->$id) . "</b>";
-            }
-
-            return $style;
+            return (new HtmlCommon())->tableColor($current, $previous, $id);
         }
     }
 }
