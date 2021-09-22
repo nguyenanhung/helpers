@@ -19,11 +19,9 @@ if (!function_exists('base64url_encode')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 10/8/19 31:44
      */
-    function base64url_encode($data, $usePadding = FALSE)
+    function base64url_encode($data, $usePadding = false)
     {
-        $encoded = strtr(base64_encode($data), '+/', '-_');
-
-        return TRUE === $usePadding ? $encoded : rtrim($encoded, '=');
+        return nguyenanhung\Classes\Helper\Base64::base64UrlEncode($data, $usePadding);
     }
 }
 if (!function_exists('base64url_decode')) {
@@ -39,12 +37,7 @@ if (!function_exists('base64url_decode')) {
      */
     function base64url_decode($data)
     {
-        $decoded = base64_decode(strtr($data, '-_', '+/'), TRUE);
-        if (FALSE === $decoded) {
-            throw new InvalidArgumentException('Invalid data provided');
-        }
-
-        return $decoded;
+        return nguyenanhung\Classes\Helper\Base64::base64UrlDecode($data);
     }
 }
 if (!function_exists('super_base64_encode')) {

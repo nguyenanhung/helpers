@@ -10,6 +10,8 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use InvalidArgumentException;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Base64')) {
     /**
      * Class Base64
@@ -62,6 +64,44 @@ if (!class_exists('nguyenanhung\Classes\Helper\Base64')) {
             $output = strrev($output);
 
             return base64_decode($output);
+        }
+
+        /**
+         * Function base64UrlEncode
+         *
+         * @param       $data
+         * @param false $usePadding
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 09/22/2021 14:10
+         */
+        public static function base64UrlEncode($data, $usePadding = false): string
+        {
+            $encoded = strtr(base64_encode($data), '+/', '-_');
+
+            return true === $usePadding ? $encoded : rtrim($encoded, '=');
+        }
+
+        /**
+         * Function base64UrlDecode
+         *
+         * @param $data
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 09/22/2021 14:53
+         */
+        public static function base64UrlDecode($data): string
+        {
+            $decoded = base64_decode(strtr($data, '-_', '+/'), true);
+            if (false === $decoded) {
+                throw new InvalidArgumentException('Invalid data provided');
+            }
+
+            return $decoded;
         }
     }
 }
