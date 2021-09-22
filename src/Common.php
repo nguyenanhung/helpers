@@ -9,7 +9,9 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-use stdClass;
+use nguyenanhung\Libraries\Text\TextProcessor;
+use nguyenanhung\Libraries\HTML\Common as HtmlCommon;
+use nguyenanhung\Libraries\UUID\AlphaID;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
     /**
@@ -31,9 +33,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param string $input
          *
          * @return bool
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 11:00
-         *
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 09/22/2021 09:44
          */
         public function isEmpty($input = ''): bool
         {
@@ -83,13 +85,13 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function arrayToObject
          *
-         * @param array|mixed $array
-         * @param bool        $str_to_lower
+         * @param array $array
+         * @param false $str_to_lower
          *
-         * @return array|bool|stdClass
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 9/29/18 10:57
-         *
+         * @return array|false|\stdClass
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 09/22/2021 09:23
          */
         public function arrayToObject($array = [], $str_to_lower = false)
         {
@@ -223,18 +225,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://via.placeholder.com/'): string
         {
-            if (!empty($bg_color)) {
-                $bg_color = '/' . $bg_color;
-            }
-            if (!empty($text_color)) {
-                $text_color = '/' . $text_color;
-            }
-            if (!empty($text)) {
-                $text = '/' . $text;
-            }
-            $link = trim($domain) . trim($size) . trim($bg_color) . trim($text_color) . trim($text);
-
-            return '<img alt="Place-Holder" title="Place Holder" src="' . $link . '">';
+            return (new HtmlCommon())->placeholder($size, $bg_color, $text_color, $text, $domain);
         }
 
         /************************** HTML + XML HELPER **************************/
@@ -253,26 +244,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function meta($name = '', $content = '', $type = 'name', $newline = "\n"): string
         {
-            // Since we allow the data to be passes as a string, a simple array
-            // or a multidimensional one, we need to do a little prepping.
-            if (!is_array($name)) {
-                $name = [['name' => $name, 'content' => $content, 'type' => $type, 'newline' => $newline]];
-            } elseif (isset($name['name'])) {
-                // Turn single array into multidimensional
-                $name = [$name];
-            }
-
-            $str = '';
-            foreach ($name as $meta) {
-                $type    = (isset($meta['type']) && $meta['type'] !== 'name') ? 'http-equiv' : 'name';
-                $name    = $meta['name'] ?? '';
-                $content = $meta['content'] ?? '';
-                $newline = $meta['newline'] ?? "\n";
-
-                $str .= '<meta ' . $type . '="' . $name . '" content="' . $content . '" />' . $newline;
-            }
-
-            return $str;
+            return (new HtmlCommon())->meta($name, $content, $type, $newline);
         }
 
         /**
@@ -290,35 +262,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function metaProperty($property = '', $content = '', $type = 'property', $newline = "\n"): string
         {
-            // Since we allow the data to be passes as a string, a simple array
-            // or a multidimensional one, we need to do a little prepping.
-            if (!is_array($property)) {
-                $property = [
-                    [
-                        'property' => $property,
-                        'content'  => $content,
-                        'type'     => $type,
-                        'newline'  => $newline
-                    ]
-                ];
-            } elseif (isset($property['property'])) {
-                // Turn single array into multidimensional
-                $property = [
-                    $property
-                ];
-            }
-            $str = '';
-            foreach ($property as $meta) {
-                if (!empty($meta)) {
-                    $type = (isset($meta['type']) && $meta['type'] !== 'property') ? 'itemprop' : 'property';
-                }
-                $property = $meta['property'] ?? '';
-                $content  = $meta['content'] ?? '';
-                $newline  = $meta['newline'] ?? "\n";
-                $str      .= '<meta ' . $type . '="' . $property . '" content="' . $content . '" />' . $newline;
-            }
-
-            return $str;
+            return (new HtmlCommon())->metaProperty($property, $content, $type, $newline);
         }
 
         /**
@@ -333,31 +277,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function metaTagEquiv($data = []): string
         {
-            $content    = [
-                [
-                    'name'    => 'X-UA-Compatible',
-                    'content' => 'IE=edge',
-                    'type'    => 'http-equiv'
-                ],
-                [
-                    'name'    => 'refresh',
-                    'content' => $data['refresh']['content'] ?? 1800,
-                    'type'    => 'equiv'
-                ],
-                [
-                    'name'    => 'content-language',
-                    'content' => 'vi',
-                    'type'    => 'equiv'
-                ],
-                [
-                    'name'    => 'audience',
-                    'content' => $data['audience']['content'] ?? 'general',
-                    'type'    => 'equiv'
-                ]
-            ];
-            $meta_equiv = $this->meta($content);
-
-            return trim($meta_equiv);
+            return (new HtmlCommon())->metaTagEquiv($data);
         }
 
         /**
@@ -370,14 +290,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function metaDnsPrefetch(): string
         {
-            $meta = "<!-- DNS prefetch -->\n";
-            $meta .= "<link rel='dns-prefetch' href = '//www.google-analytics.com/' > \n";
-            $meta .= "<link rel='dns-prefetch' href = '//fonts.googleapis.com' > \n";
-            $meta .= "<link rel='dns-prefetch' href='//ajax.googleapis.com'>\n";
-            $meta .= "<link rel='dns-prefetch' href='//maps.google.com'>\n";
-            $meta .= "<link rel='dns-prefetch' href='//connect.facebook.net/'>\n";
-
-            return $meta;
+            return (new HtmlCommon())->metaDnsPrefetch();
         }
 
         /**
@@ -396,37 +309,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n"): string
         {
-            // Since we allow the data to be passes as a string, a simple array
-            // or a multidimensional one, we need to do a little prepping.
-            if (!is_array($loc)) {
-                $loc = [
-                    [
-                        'loc'     => $loc,
-                        'lastmod' => $lastmod,
-                        'type'    => $type,
-                        'newline' => $newline
-                    ]
-                ];
-            } elseif (isset($loc['loc'])) {
-                // Turn single array into multidimensional
-                $loc = [
-                    $loc
-                ];
-            }
-            $str = '';
-            foreach ($loc as $meta) {
-                $type    = 'loc';
-                $loc     = $meta['loc'] ?? '';
-                $lastmod = $meta['lastmod'] ?? '';
-                $newline = $meta['newline'] ?? "\n";
-                $str     .= "\n<sitemap>\n";
-                $str     .= '<' . $type . '>' . trim($domain) . trim($loc) . '.xml' . '</loc>';
-                $str     .= "\n<lastmod>" . $lastmod . "</lastmod>";
-                $str     .= "\n</sitemap>";
-                $str     .= $newline;
-            }
-
-            return $str;
+            return (new HtmlCommon())->sitemapParse($domain, $loc, $lastmod, $type, $newline);
         }
 
         /**
@@ -442,30 +325,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function xmlConvert($str, $protect_all = false): string
         {
-            $temp = '__TEMP_AMPERSANDS__';
-
-            // Replace entities to temporary markers so that
-            // ampersands won't get messed up
-            $str = preg_replace('/&#(\d+);/', $temp . '\\1;', $str);
-
-            if ($protect_all === true) {
-                $str = preg_replace('/&(\w+);/', $temp . '\\1;', $str);
-            }
-
-            $str = str_replace(
-                ['&', '<', '>', '"', "'", '-'],
-                ['&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#45;'],
-                $str
-            );
-
-            // Decode the temp markers back to entities
-            $str = preg_replace('/' . $temp . '(\d+);/', '&#\\1;', $str);
-
-            if ($protect_all === true) {
-                return preg_replace('/' . $temp . '(\w+);/', '&\\1;', $str);
-            }
-
-            return $str;
+            return (new HtmlCommon())->xmlConvert($str, $protect_all);
         }
 
         /**
@@ -480,57 +340,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function viewPagination($input_data = []): ?string
         {
-            // $page_type           = $input_data['page_type'] ?? '';
-            $page_link           = $input_data['page_link'] ?? '';
-            $page_title          = $input_data['page_title'] ?? '';
-            $page_prefix         = $input_data['page_prefix'] ?? '';
-            $page_suffix         = $input_data['page_suffix'] ?? '';
-            $current_page_number = $input_data['current_page_number'] ?? 1;
-            $total_item          = $input_data['total_item'] ?? 0;
-            $item_per_page       = $input_data['item_per_page'] ?? 10;
-            $begin               = $input_data['pre_rows'] ?? 3;
-            $end                 = $input_data['suf_rows'] ?? 3;
-            $first_link          = $input_data['first_link'] ?? '&nbsp;';
-            $last_link           = $input_data['last_link'] ?? '&nbsp;';
-
-            /**
-             * Kiểm tra giá trị page_number truyền vào
-             * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
-             */
-            if (!$current_page_number || empty($current_page_number)) {
-                $current_page_number = 1;
-            }
-
-            // Tính tổng số page có
-            $total_page = ceil($total_item / $item_per_page);
-            if ($total_page <= 1) {
-                return null;
-            }
-
-            $output_html = '';
-            if ($current_page_number <> 1) {
-                $output_html .= '<li class="left"><a href="' . trim($page_link) . trim($page_suffix) . '" title="' . trim($page_title) . '">' . trim($first_link) . '</a></li>';
-            }
-
-            for ($page_number = 1; $page_number <= $total_page; $page_number++) {
-                if ($page_number < ($current_page_number - $begin) || $page_number > ($current_page_number + $end)) {
-                    continue;
-                }
-
-                if ($page_number === $current_page_number) {
-                    $output_html .= '<li class="selected"><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
-                } else {
-                    $output_html .= '<li><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
-                }
-            }
-
-            unset($page_number);
-
-            if ($current_page_number <> $total_page) {
-                $output_html .= '<li class="right"><a href="' . trim($page_link) . trim($page_prefix) . trim($total_page) . trim($page_suffix) . '" title="' . trim($page_title) . ' - trang cuối">' . trim($last_link) . '</a></li>';
-            }
-
-            return $output_html;
+            return (new HtmlCommon())->viewPagination($input_data);
         }
 
         /**
@@ -546,18 +356,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function htmlEscape($var = '', $double_encode = true)
         {
-            if (empty($var)) {
-                return $var;
-            }
-            if (is_array($var)) {
-                foreach (array_keys($var) as $key) {
-                    $var[$key] = $this->htmlEscape($var[$key], $double_encode);
-                }
-
-                return $var;
-            }
-
-            return htmlspecialchars($var, ENT_QUOTES, self::HTML_ESCAPE_CHARSET, $double_encode);
+            return (new HtmlCommon())->htmlEscape($var, $double_encode);
         }
 
         /**
@@ -572,7 +371,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function stripQuotes($str = '')
         {
-            return str_replace(['"', "'"], '', $str);
+            return (new HtmlCommon())->stripQuotes($str);
         }
 
         /**
@@ -589,7 +388,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function quotesToEntities($str = ''): string
         {
-            return str_replace(["\'", "\"", "'", '"'], ["&#39;", "&quot;", "&#39;", "&quot;"], $str);
+            return (new HtmlCommon())->quotesToEntities($str);
         }
 
         /**
@@ -613,7 +412,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function reduceDoubleSlashes($str = ''): string
         {
-            return preg_replace('#(^|[^:])//+#', '\\1/', $str);
+            return (new HtmlCommon())->reduceDoubleSlashes($str);
         }
 
         /**
@@ -638,9 +437,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function reduceMultiples($str = '', $character = ',', $trim = false): string
         {
-            $str = preg_replace('#' . preg_quote($character, '#') . '{2,}#', $character, $str);
-
-            return ($trim === true) ? trim($str, $character) : $str;
+            return (new HtmlCommon())->reduceMultiples($str, $character, $trim);
         }
 
         /**
@@ -655,15 +452,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function stripHtmlTag($str = ''): string
         {
-            $regex          = '/([^<]*<\s*[a-z](?:[0-9]|[a-z]{0,9}))(?:(?:\s*[a-z\-]{2,14}\s*=\s*(?:"[^"]*"|\'[^\']*\'))*)(\s*\/?>[^<]*)/i';
-            $chunks         = preg_split($regex, $str, -1, PREG_SPLIT_DELIM_CAPTURE);
-            $chunkCount     = count($chunks);
-            $strippedString = '';
-            for ($n = 1; $n < $chunkCount; $n++) {
-                $strippedString .= $chunks[$n];
-            }
-
-            return $strippedString;
+            return (new HtmlCommon())->stripHtmlTag($str);
         }
 
         /**
@@ -682,23 +471,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function stripIsTags($str, $tags, $stripContent = false)
         {
-            $content = '';
-            if (!is_array($tags)) {
-                $tags = (strpos($str, '>') !== false ? explode('>', str_replace('<', '', $tags)) : [
-                    $tags
-                ]);
-                if (end($tags) === '') {
-                    array_pop($tags);
-                }
-            }
-            foreach ($tags as $tag) {
-                if ($stripContent) {
-                    $content = '(.+</' . $tag . '(>|\s[^>]*>)|)';
-                }
-                $str = preg_replace('#</?' . $tag . '(>|\s[^>]*>)' . $content . '#is', '', $str);
-            }
-
-            return $str;
+            return (new HtmlCommon())->stripIsTags($str, $tags, $stripContent);
         }
 
         /************************** TEXT HELPER **************************/
@@ -718,154 +491,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function wordLimiter($str = '', $limit = 100, $end_char = '&#8230;'): string
         {
-            if (trim($str) === '') {
-                return $str;
-            }
-
-            preg_match('/^\s*+(?:\S++\s*+){1,' . (int) $limit . '}/', $str, $matches);
-
-            if (strlen($str) === strlen($matches[0])) {
-                $end_char = '';
-            }
-
-            return rtrim($matches[0]) . $end_char;
-        }
-
-        /**
-         * Character Limiter
-         *
-         * Limits the string based on the character count.  Preserves complete words
-         * so the character count may not be exactly as specified.
-         *
-         * @param string
-         * @param int
-         * @param string    the end character. Usually an ellipsis
-         *
-         * @return    string
-         */
-        public function characterLimiter($str = '', $n = 500, $end_char = '&#8230;'): ?string
-        {
-            if (mb_strlen($str) < $n) {
-                return $str;
-            }
-
-            // a bit complicated, but faster than preg_replace with \s+
-            $str = preg_replace('/ {2,}/', ' ', str_replace(["\r", "\n", "\t", "\v", "\f"], ' ', $str));
-
-            if (mb_strlen($str) <= $n) {
-                return $str;
-            }
-
-            $out = '';
-            foreach (explode(' ', trim($str)) as $val) {
-                $out .= $val . ' ';
-
-                if (mb_strlen($out) >= $n) {
-                    $out = trim($out);
-
-                    return (mb_strlen($out) === mb_strlen($str)) ? $out : $out . $end_char;
-                }
-            }
-
-            return null;
-        }
-
-        /**
-         * High ASCII to Entities
-         *
-         * Converts high ASCII text and MS Word special characters to character entities
-         *
-         * @param string $str
-         *
-         * @return    string
-         */
-        public function asciiToEntities($str = ''): string
-        {
-            $out    = '';
-            $length = defined('MB_OVERLOAD_STRING')
-                ? mb_strlen($str, '8bit') - 1
-                : strlen($str) - 1;
-            for ($i = 0, $count = 1, $temp = []; $i <= $length; $i++) {
-                $ordinal = ord($str[$i]);
-
-                if ($ordinal < 128) {
-                    /*
-                        If the $temp array has a value but we have moved on, then it seems only
-                        fair that we output that entity and restart $temp before continuing. -Paul
-                    */
-                    if (count($temp) === 1) {
-                        $out   .= '&#' . array_shift($temp) . ';';
-                        $count = 1;
-                    }
-
-                    $out .= $str[$i];
-                } else {
-                    if (count($temp) === 0) {
-                        $count = ($ordinal < 224) ? 2 : 3;
-                    }
-
-                    $temp[] = $ordinal;
-
-                    if (count($temp) === $count) {
-                        $number = ($count === 3)
-                            ? (($temp[0] % 16) * 4096) + (($temp[1] % 64) * 64) + ($temp[2] % 64)
-                            : (($temp[0] % 32) * 64) + ($temp[1] % 64);
-
-                        $out   .= '&#' . $number . ';';
-                        $count = 1;
-                        $temp  = [];
-                    } // If this is the last iteration, just output whatever we have
-                    elseif ($i === $length) {
-                        $out .= '&#' . implode(';', $temp) . ';';
-                    }
-                }
-            }
-
-            return $out;
-        }
-
-        /**
-         * Entities to ASCII
-         *
-         * Converts character entities back to ASCII
-         *
-         * @param string
-         * @param bool
-         *
-         * @return    string
-         */
-        public function entitiesToAscii($str = '', $all = true): string
-        {
-            $pattern = '/\&#(\d+)\;/';
-            if (preg_match_all($pattern, $str, $matches)) {
-                for ($i = 0, $s = count($matches[0]); $i < $s; $i++) {
-                    $digits = $matches[1][$i];
-                    $out    = '';
-
-                    if ($digits < 128) {
-                        $out .= chr($digits);
-
-                    } elseif ($digits < 2048) {
-                        $out .= chr(192 + (($digits - ($digits % 64)) / 64)) . chr(128 + ($digits % 64));
-                    } else {
-                        $out .= chr(224 + (($digits - ($digits % 4096)) / 4096))
-                                . chr(128 + ((($digits % 4096) - ($digits % 64)) / 64))
-                                . chr(128 + ($digits % 64));
-                    }
-
-                    $str = str_replace($matches[0][$i], $out, $str);
-                }
-            }
-
-            if ($all) {
-                return str_replace(
-                    ['&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#45;'],
-                    ['&', '<', '>', '"', "'", '-'],
-                    $str
-                );
-            }
-
-            return $str;
+            return TextProcessor::wordLimiter($str, $limit, $end_char);
         }
 
         /**
@@ -875,121 +501,15 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * matched words will be converted to #### or to the replacement
          * word you've submitted.
          *
-         * @param string $str         the text string
+         * @param string       $str         the text string
          * @param string|array $censored    the array of censored words
-         * @param string $replacement the optional replacement value
+         * @param string       $replacement the optional replacement value
          *
          * @return    string
          */
         public function wordCensor($str = '', $censored = '', $replacement = ''): string
         {
-            if (!is_array($censored)) {
-                return $str;
-            }
-
-            $str = ' ' . $str . ' ';
-
-            // \w, \b and a few others do not match on a unicode character
-            // set for performance reasons. As a result words like über
-            // will not match on a word boundary. Instead, we'll assume that
-            // a bad word will be bookeneded by any of these characters.
-            $delim = '[-_\'\"`(){}<>\[\]|!?@#%&,.:;^~*+=\/ 0-9\n\r\t]';
-
-            foreach ($censored as $badword) {
-                $badword = str_replace('\*', '\w*?', preg_quote($badword, '/'));
-                if ($replacement !== '') {
-                    $str = preg_replace(
-                        "/({$delim})(" . $badword . ")({$delim})/i",
-                        "\\1{$replacement}\\3",
-                        $str
-                    );
-                } elseif (preg_match_all("/{$delim}(" . $badword . "){$delim}/i", $str, $matches, PREG_PATTERN_ORDER | PREG_OFFSET_CAPTURE)) {
-                    $matches = $matches[1];
-                    for ($i = count($matches) - 1; $i >= 0; $i--) {
-                        $length = strlen($matches[$i][0]);
-                        $str    = substr_replace(
-                            $str,
-                            str_repeat('#', $length),
-                            $matches[$i][1],
-                            $length
-                        );
-                    }
-                }
-            }
-
-            return trim($str);
-        }
-
-        /**
-         * Code Highlighter
-         *
-         * Colorizes code strings
-         *
-         * @param string    the text string
-         *
-         * @return    string
-         */
-        public function highlightCode($str = ''): string
-        {
-            /* The highlight string function encodes and highlights
-             * brackets so we need them to start raw.
-             *
-             * Also replace any existing PHP tags to temporary markers
-             * so they don't accidentally break the string out of PHP,
-             * and thus, thwart the highlighting.
-             */
-            $str = str_replace(
-                ['&lt;', '&gt;', '<?', '?>', '<%', '%>', '\\', '</script>'],
-                ['<', '>', 'phptagopen', 'phptagclose', 'asptagopen', 'asptagclose', 'backslashtmp', 'scriptclose'],
-                $str
-            );
-
-            // The highlight_string function requires that the text be surrounded
-            // by PHP tags, which we will remove later
-            $str = highlight_string('<?php ' . $str . ' ?>', true);
-
-            // Remove our artificially added PHP, and the syntax highlighting that came with it
-            $str = preg_replace(
-                [
-                    '/<span style="color: #([A-Z0-9]+)">&lt;\?php(&nbsp;| )/i',
-                    '/(<span style="color: #[A-Z0-9]+">.*?)\?&gt;<\/span>\n<\/span>\n<\/code>/is',
-                    '/<span style="color: #[A-Z0-9]+"><\/span>/i'
-                ],
-                [
-                    '<span style="color: #$1">',
-                    "$1</span>\n</span>\n</code>",
-                    ''
-                ],
-                $str
-            );
-
-            // Replace our markers back to PHP tags.
-            return str_replace(
-                ['phptagopen', 'phptagclose', 'asptagopen', 'asptagclose', 'backslashtmp', 'scriptclose'],
-                ['&lt;?', '?&gt;', '&lt;%', '%&gt;', '\\', '&lt;/script&gt;'],
-                $str
-            );
-        }
-
-        /**
-         * Phrase Highlighter
-         *
-         * Highlights a phrase within a text string
-         *
-         * @param string $str       the text string
-         * @param string $phrase    the phrase you'd like to highlight
-         * @param string $tag_open  the openging tag to precede the phrase with
-         * @param string $tag_close the closing tag to end the phrase with
-         *
-         * @return    string
-         */
-        public function highlightPhrase($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>'): string
-        {
-            define('UTF8_ENABLED', true);
-
-            return ($str !== '' && $phrase !== '')
-                ? preg_replace('/(' . preg_quote($phrase, '/') . ')/i' . (UTF8_ENABLED ? 'u' : ''), $tag_open . '\\1' . $tag_close, $str)
-                : $str;
+            return TextProcessor::wordCensor($str, $censored, $replacement);
         }
 
         /**
@@ -1006,73 +526,84 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function wordWrap($str = '', $charlim = 76): string
         {
-            // Set the character limit
-            is_numeric($charlim) or $charlim = 76;
+            return TextProcessor::wordWrap($str, $charlim);
+        }
 
-            // Reduce multiple spaces
-            $str = preg_replace('| +|', ' ', $str);
+        /**
+         * Character Limiter
+         *
+         * Limits the string based on the character count.  Preserves complete words
+         * so the character count may not be exactly as specified.
+         *
+         * @param string
+         * @param int
+         * @param string    the end character. Usually an ellipsis
+         *
+         * @return    string
+         */
+        public function characterLimiter($str = '', $n = 500, $end_char = '&#8230;'): ?string
+        {
+            return TextProcessor::characterLimiter($str, $n, $end_char);
+        }
 
-            // Standardize newlines
-            if (strpos($str, "\r") !== false) {
-                $str = str_replace(["\r\n", "\r"], "\n", $str);
-            }
+        /**
+         * High ASCII to Entities
+         *
+         * Converts high ASCII text and MS Word special characters to character entities
+         *
+         * @param string $str
+         *
+         * @return    string
+         */
+        public function asciiToEntities($str = ''): string
+        {
+            return TextProcessor::asciiToEntities($str);
+        }
 
-            // If the current word is surrounded by {unwrap} tags we'll
-            // strip the entire chunk and replace it with a marker.
-            $unwrap        = [];
-            $patternUnWrap = '|\{unwrap\}(.+?)\{/unwrap\}|s';
-            if (preg_match_all($patternUnWrap, $str, $matches)) {
-                for ($i = 0, $c = count($matches[0]); $i < $c; $i++) {
-                    $unwrap[] = $matches[1][$i];
-                    $str      = str_replace($matches[0][$i], '{{unwrapped' . $i . '}}', $str);
-                }
-            }
+        /**
+         * Entities to ASCII
+         *
+         * Converts character entities back to ASCII
+         *
+         * @param string
+         * @param bool
+         *
+         * @return    string
+         */
+        public function entitiesToAscii($str = '', $all = true): string
+        {
+            return TextProcessor::entitiesToAscii($str, $all);
+        }
 
-            // Use PHP's native function to do the initial wordwrap.
-            // We set the cut flag to FALSE so that any individual words that are
-            // too long get left alone. In the next step we'll deal with them.
-            $str = wordwrap($str, $charlim, "\n", false);
+        /**
+         * Code Highlighter
+         *
+         * Colorizes code strings
+         *
+         * @param string    the text string
+         *
+         * @return    string
+         */
+        public function highlightCode($str = ''): string
+        {
+            return TextProcessor::highlightCode($str);
+        }
 
-            // Split the string into individual lines of text and cycle through them
-            $output = '';
-            foreach (explode("\n", $str) as $line) {
-                // Is the line within the allowed character count?
-                // If so we'll join it to the output and continue
-                if (mb_strlen($line) <= $charlim) {
-                    $output .= $line . "\n";
-                    continue;
-                }
-
-                $temp = '';
-                while (mb_strlen($line) > $charlim) {
-                    // If the over-length word is a URL we won't wrap it
-                    $charlimPatter = '!\[url.+\]|://|www\.!';
-                    if (preg_match($charlimPatter, $line)) {
-                        break;
-                    }
-
-                    // Trim the word down
-                    $temp .= mb_substr($line, 0, $charlim - 1);
-                    $line = mb_substr($line, $charlim - 1);
-                }
-
-                // If $temp contains data it means we had to split up an over-length
-                // word into smaller chunks so we'll add it back to our current line
-                if ($temp !== '') {
-                    $output .= $temp . "\n" . $line . "\n";
-                } else {
-                    $output .= $line . "\n";
-                }
-            }
-
-            // Put our markers back
-            if (count($unwrap) > 0) {
-                foreach ($unwrap as $key => $val) {
-                    $output = str_replace('{{unwrapped' . $key . '}}', $val, $output);
-                }
-            }
-
-            return $output;
+        /**
+         * Phrase Highlighter
+         *
+         * Highlights a phrase within a text string
+         *
+         * @param string $str       the text string
+         * @param string $phrase    the phrase you'd like to highlight
+         * @param string $tag_open  the openging tag to precede the phrase with
+         * @param string $tag_close the closing tag to end the phrase with
+         *
+         * @return    string
+         */
+        public function highlightPhrase($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>'): string
+        {
+            return TextProcessor::highlightPhrase($str, $phrase, $tag_open, $tag_close);
         }
 
         /**
@@ -1209,75 +740,11 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @param mixed   $pad_up  Number or boolean padds the result up to a specified length
          * @param string  $passKey Supplying a password makes it harder to calculate the original ID
          *
-         * @return false|string string or long
+         * @return string string or long
          */
-        public static function alphaID($in, $to_num = false, $pad_up = false, $passKey = null)
+        public static function alphaID($in, $to_num = false, $pad_up = false, $passKey = null): string
         {
-            $index = "abcdefghijkmnpqrstuvwxyz123456789";
-            if ($passKey !== null) {
-                // Although this function's purpose is to just make the
-                // ID short - and not so much secure,
-                // with this patch by Simon Franz (http://blog.snaky.org/)
-                // you can optionally supply a password to make it harder
-                // to calculate the corresponding numeric ID
-                $indexLen = strlen($index);
-                for ($n = 0; $n < $indexLen; $n++) {
-                    $i[] = substr($index, $n, 1);
-                }
-
-                $passhash = hash('sha256', $passKey);
-                $passhash = (strlen($passhash) < strlen($index))
-                    ? hash('sha512', $passKey)
-                    : $passhash;
-
-                for ($n = 0; $n < $indexLen; $n++) {
-                    $p[] = substr($passhash, $n, 1);
-                }
-
-                array_multisort($p, SORT_DESC, $i);
-                $index = implode($i);
-            }
-
-            $base = strlen($index);
-
-            if ($to_num) {
-                // Digital number  <<--  alphabet letter code
-                $in  = strrev($in);
-                $out = 0;
-                $len = strlen($in) - 1;
-                for ($t = 0; $t <= $len; $t++) {
-                    $pow = pow($base, $len - $t);
-                    $out = $out + strpos($index, substr($in, $t, 1)) * $pow;
-                }
-
-                if (is_numeric($pad_up)) {
-                    $pad_up--;
-                    if ($pad_up > 0) {
-                        $out -= pow($base, $pad_up);
-                    }
-                }
-                $out = sprintf('%F', $out);
-                $out = substr($out, 0, strpos($out, '.'));
-            } else {
-                // Digital number  -->>  alphabet letter code
-                if (is_numeric($pad_up)) {
-                    $pad_up--;
-                    if ($pad_up > 0) {
-                        $in += pow($base, $pad_up);
-                    }
-                }
-
-                $out = "";
-                for ($t = floor(log($in, $base)); $t >= 0; $t--) {
-                    $bcp = pow($base, $t);
-                    $a   = floor($in / $bcp) % $base;
-                    $out = $out . substr($index, $a, 1);
-                    $in  = $in - ($a * $bcp);
-                }
-                $out = strrev($out); // reverse
-            }
-
-            return $out;
+            return AlphaID::generateAlphaId($in, $to_num, $pad_up, $passKey);
         }
     }
 }
