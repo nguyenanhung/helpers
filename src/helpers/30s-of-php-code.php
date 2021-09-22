@@ -495,8 +495,9 @@ if (!function_exists('lcm')) {
      */
     function lcm(...$numbers)
     {
-        $ans = $numbers[0];
-        for ($i = 1; $i < count($numbers); $i++) {
+        $ans         = $numbers[0];
+        $countNumber = count($numbers);
+        for ($i = 1; $i < $countNumber; $i++) {
             $ans = ((($numbers[$i] * $ans)) / (gcd($numbers[$i], $ans)));
         }
 
@@ -521,7 +522,7 @@ if (!function_exists('isPrime')) {
         $boundary = floor(sqrt($number));
         for ($i = 2; $i <= $boundary; $i++) {
             if ($number % $i === 0) {
-                return FALSE;
+                return false;
             }
         }
 
@@ -647,7 +648,7 @@ if (!function_exists('isContains')) {
      */
     function isContains($string, $needle)
     {
-        return strpos($string, $needle) !== FALSE;
+        return strpos($string, $needle) !== false;
     }
 }
 if (!function_exists('isLowerCase')) {
@@ -740,7 +741,7 @@ if (!function_exists('firstStringBetween')) {
      */
     function firstStringBetween($haystack, $start, $end)
     {
-        return trim(strstr(strstr($haystack, $start), $end, TRUE), $start . $end);
+        return trim(strstr(strstr($haystack, $start), $end, true), $start . $end);
     }
 }
 if (!function_exists('compose')) {
@@ -854,7 +855,7 @@ if (!function_exists('decapitalize')) {
      *
      * @return string
      */
-    function decapitalize($string, $upperRest = FALSE)
+    function decapitalize($string, $upperRest = false)
     {
         return lcfirst($upperRest ? strtoupper($string) : $string);
     }
@@ -955,11 +956,11 @@ if (!function_exists('memoize')) {
 
             $args   = func_get_args();
             $key    = serialize($args);
-            $cached = TRUE;
+            $cached = true;
 
             if (!isset($cache[$key])) {
                 $cache[$key] = $func(...$args);
-                $cached      = FALSE;
+                $cached      = false;
             }
 
             return ['result' => $cache[$key], 'cached' => $cached];
@@ -1014,11 +1015,11 @@ if (!function_exists('once')) {
     function once($function)
     {
         return function (...$args) use ($function) {
-            static $called = FALSE;
+            static $called = false;
             if ($called) {
                 return;
             }
-            $called = TRUE;
+            $called = true;
 
             return $function(...$args);
         };

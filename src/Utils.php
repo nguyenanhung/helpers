@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 use stdClass;
 use Exception;
 use DateTime;
-use DateTimeZone;
+use nguyenanhung\Libraries\Password\Hash;
 
 /**
  * Class Utils
@@ -41,12 +41,12 @@ class Utils implements ProjectInterface
      *
      * @copyright https://www.codeigniter.com/
      */
-    public static function redirect($uri = '', $method = 'auto', $code = NULL)
+    public static function redirect($uri = '', $method = 'auto', $code = null): void
     {
         // IIS environment likely? Use 'refresh' for better compatibility
-        if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE) {
+        if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== false) {
             $method = 'refresh';
-        } elseif ($method !== 'refresh' && (empty($code) or !is_numeric($code))) {
+        } elseif ($method !== 'refresh' && ($code === null || !is_numeric($code))) {
             if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
                 $code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
                     ? 303    // reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
@@ -55,14 +55,12 @@ class Utils implements ProjectInterface
                 $code = 302;
             }
         }
-        switch ($method) {
-            case 'refresh':
-                header('Refresh:0;url=' . $uri);
-                break;
-            default:
-                header('Location: ' . $uri, TRUE, $code);
-                break;
+        if ($method === 'refresh') {
+            header('Refresh:0;url=' . $uri);
+        } else {
+            header('Location: ' . $uri, true, $code);
         }
+
         exit;
     }
 
@@ -78,9 +76,7 @@ class Utils implements ProjectInterface
      */
     public static function isJson($string = ''): bool
     {
-        json_decode($string);
-
-        return (json_last_error() === JSON_ERROR_NONE);
+        return isJson($string);
     }
 
     /**
@@ -104,7 +100,7 @@ class Utils implements ProjectInterface
             return json_decode($json);
         }
 
-        return FALSE;
+        return false;
     }
 
     /**
@@ -147,142 +143,13 @@ class Utils implements ProjectInterface
         try {
             $expire     = $duration <= 1 ? new DateTime("+0 days") : new DateTime("+$duration days");
             $expireTime = $expire->format('Y-m-d') . ' 23:59:59';
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             $expireTime = date('Y-m-d') . ' 23:59:59';
         }
 
         return $expireTime;
     }
 
-    /**
-     * Function generateHashValue
-     *
-     * @param string $str
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/18/18 03:04
-     *
-     */
-    public static function generateHashValue($str = ''): string
-    {
-        return hash(self::HASH_ALGORITHM, $str);
-    }
-
-    /**
-     * Function generateUserPasswordRandom
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/19/18 10:08
-     *
-     */
-    public static function generateUserPasswordRandom(): string
-    {
-        return random_string(self::USER_PASSWORD_RANDOM_ALGORITHM, self::USER_PASSWORD_RANDOM_LENGTH);
-    }
-
-    /**
-     * Function generateUserToken
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/19/18 10:08
-     *
-     */
-    public static function generateUserToken(): string
-    {
-        return random_string(self::USER_TOKEN_ALGORITHM);
-    }
-
-    /**
-     * Function generateUserSaltKey
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/19/18 10:08
-     *
-     */
-    public static function generateUserSaltKey(): string
-    {
-        return random_string(self::USER_SALT_ALGORITHM);
-    }
-
-    /**
-     * Function generateRequestId
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/23/18 17:15
-     *
-     */
-    public static function generateRequestId(): string
-    {
-        return date('YmdHis') . random_string('numeric', 10);
-    }
-
-    /**
-     * Function generateVinaRequestId
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-06 22:04
-     *
-     */
-    public static function generateVinaRequestId(): string
-    {
-        return date('YmdHis') . ceil(microtime(TRUE) * 1000);
-    }
-
-    /**
-     * Function generateOTPCode
-     *
-     * @param int $length
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/23/18 17:16
-     *
-     */
-    public static function generateOTPCode($length = 6): string
-    {
-        return random_string('numeric', $length);
-    }
-
-    /**
-     * Function generateOTPExpireTime
-     *
-     * @param int $hour
-     *
-     * @return string
-     * @throws \Exception
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-06 16:03
-     *
-     */
-    public static function generateOTPExpireTime($hour = 4): string
-    {
-        $time = new DateTime('+' . $hour . ' days');
-
-        return $time->format('Y-m-d H:i:s');
-    }
-
-    /**
-     * Function zuluTime
-     *
-     * @return string
-     * @throws \Exception
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 07/28/2021 35:16
-     */
-    public static function zuluTime(): string
-    {
-        $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
-
-        return $dateUTC->format('Y-m-d\TH:i:s\Z');
-    }
 
     /**
      * Function commonMessageTelco
@@ -306,5 +173,129 @@ class Utils implements ProjectInterface
         }
 
         return $content;
+    }
+    /**
+     * Function generateHashValue
+     *
+     * @param string $str
+     *
+     * @return string
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 11/18/18 03:04
+     *
+     */
+    public static function generateHashValue($str = ''): string
+    {
+        return Hash::generateHashValue($str);
+    }
+
+    /**
+     * Function generateUserPasswordRandom
+     *
+     * @return string
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 11/19/18 10:08
+     *
+     */
+    public static function generateUserPasswordRandom(): string
+    {
+        return Hash::generateUserPasswordRandom();
+    }
+
+    /**
+     * Function generateUserToken
+     *
+     * @return string
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 11/19/18 10:08
+     *
+     */
+    public static function generateUserToken(): string
+    {
+        return Hash::generateUserToken();
+    }
+
+    /**
+     * Function generateUserSaltKey
+     *
+     * @return string
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 11/19/18 10:08
+     *
+     */
+    public static function generateUserSaltKey(): string
+    {
+        return Hash::generateUserSaltKey();
+    }
+
+    /**
+     * Function generateRequestId
+     *
+     * @return string
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 11/23/18 17:15
+     *
+     */
+    public static function generateRequestId(): string
+    {
+        return Hash::generateRequestId();
+    }
+
+    /**
+     * Function generateVinaRequestId
+     *
+     * @return string
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 2018-12-06 22:04
+     *
+     */
+    public static function generateVinaRequestId(): string
+    {
+        return Hash::generateVinaRequestId();
+    }
+
+    /**
+     * Function generateOTPCode
+     *
+     * @param int $length
+     *
+     * @return string
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 11/23/18 17:16
+     *
+     */
+    public static function generateOTPCode($length = 6): string
+    {
+        return Hash::generateOTPCode($length);
+    }
+
+    /**
+     * Function generateOTPExpireTime
+     *
+     * @param int $hour
+     *
+     * @return string
+     * @throws \Exception
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 2018-12-06 16:03
+     *
+     */
+    public static function generateOTPExpireTime($hour = 4): string
+    {
+        return Hash::generateOTPExpireTime($hour);
+    }
+
+    /**
+     * Function zuluTime
+     *
+     * @return string
+     * @throws \Exception
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 07/28/2021 35:16
+     */
+    public static function zuluTime(): string
+    {
+        return Hash::zuluTime();
     }
 }

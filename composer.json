@@ -24,7 +24,12 @@
         "nguyenanhung/xml-helper": "^1.0",
         "nguyenanhung/xml2json-helper": "^1.0",
         "nguyenanhung/math-helper": "^1.0",
-        "nguyenanhung/string-helper": "^1.0"
+        "nguyenanhung/string-helper": "^1.0",
+        "nguyenanhung/text-helper": "^1.0",
+        "nguyenanhung/uuid-helper": "^1.0",
+        "nguyenanhung/nanoid-helper": "^1.0",
+        "nguyenanhung/number-helper": "^1.0",
+        "nguyenanhung/password-helper": "^1.0"
     },
     "suggest": {
         "ext-curl": "Needed to support cURL",
@@ -42,8 +47,6 @@
             "src/helpers/30s-of-php-code.php",
             "src/helpers/array_helper.php",
             "src/helpers/base64_helper.php",
-            "src/helpers/ci_text_helper.php",
-            "src/helpers/ci_security_helper.php",
             "src/helpers/common_helper.php",
             "src/helpers/date_helper.php",
             "src/helpers/email_helper.php",
