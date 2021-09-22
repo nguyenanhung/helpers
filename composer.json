@@ -29,7 +29,8 @@
         "nguyenanhung/uuid-helper": "^1.0",
         "nguyenanhung/nanoid-helper": "^1.0",
         "nguyenanhung/number-helper": "^1.0",
-        "nguyenanhung/password-helper": "^1.0"
+        "nguyenanhung/password-helper": "^1.0",
+        "nguyenanhung/date-helper": "^1.0"
     },
     "suggest": {
         "ext-curl": "Needed to support cURL",

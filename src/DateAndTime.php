@@ -10,11 +10,9 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-use DateTime;
-use DateTimeZone;
-use Exception;
+use nguyenanhung\Libraries\DateAndTime\DateAndTime as BaseDateAndTime;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
+if (!class_exists('nguyenanhung\Classes\Helper\DateAndTime')) {
     /**
      * Class DateAndTime
      *
@@ -22,26 +20,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
      * @author    713uk13m <dev@nguyenanhung.com>
      * @copyright 713uk13m <dev@nguyenanhung.com>
      */
-    class DateAndTime
+    class DateAndTime extends BaseDateAndTime
     {
-        /**
-         * Function zuluTime
-         *
-         * @return string|null
-         * @author   : 713uk13m <dev@nguyenanhung.com>
-         * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 08/18/2021 25:38
-         */
-        public static function zuluTime(): ?string
-        {
-            try {
-                $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
-
-                return $dateUTC->format('Y-m-d\TH:i:s\Z');
-            }
-            catch (Exception $e) {
-                return NULL;
-            }
-        }
     }
 }

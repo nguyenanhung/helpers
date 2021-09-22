@@ -10,292 +10,286 @@
 namespace nguyenanhung\Classes\Helper;
 
 use stdClass;
-use Exception;
-use DateTime;
 use nguyenanhung\Libraries\Password\Hash;
+use nguyenanhung\Libraries\DateAndTime\DateAndTime;
 
-/**
- * Class Utils
- *
- * @package   nguyenanhung\Classes\Helper
- * @author    713uk13m <dev@nguyenanhung.com>
- * @copyright 713uk13m <dev@nguyenanhung.com>
- */
-class Utils implements ProjectInterface
-{
-    use Version;
-
+if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
     /**
-     * Header Redirect
+     * Class Utils
      *
-     * Header redirect in two flavors
-     * For very fine grained control over headers, you could use the Output
-     * Library's set_header() function.
-     *
-     * @param string $uri       URL
-     * @param string $method    Redirect method
-     *                          'auto', 'location' or 'refresh'
-     * @param int    $code      HTTP Response status code
-     *
-     * @return    void
-     *
-     * @copyright https://www.codeigniter.com/
+     * @package   nguyenanhung\Classes\Helper
+     * @author    713uk13m <dev@nguyenanhung.com>
+     * @copyright 713uk13m <dev@nguyenanhung.com>
      */
-    public static function redirect($uri = '', $method = 'auto', $code = null): void
+    class Utils implements ProjectInterface
     {
-        // IIS environment likely? Use 'refresh' for better compatibility
-        if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== false) {
-            $method = 'refresh';
-        } elseif ($method !== 'refresh' && ($code === null || !is_numeric($code))) {
-            if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
-                $code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
-                    ? 303    // reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
-                    : 307;
-            } else {
-                $code = 302;
+        use Version;
+
+        /**
+         * Header Redirect
+         *
+         * Header redirect in two flavors
+         * For very fine grained control over headers, you could use the Output
+         * Library's set_header() function.
+         *
+         * @param string $uri       URL
+         * @param string $method    Redirect method
+         *                          'auto', 'location' or 'refresh'
+         * @param int    $code      HTTP Response status code
+         *
+         * @return    void
+         *
+         * @copyright https://www.codeigniter.com/
+         */
+        public static function redirect($uri = '', $method = 'auto', $code = null): void
+        {
+            // IIS environment likely? Use 'refresh' for better compatibility
+            if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== false) {
+                $method = 'refresh';
+            } elseif ($method !== 'refresh' && ($code === null || !is_numeric($code))) {
+                if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
+                    $code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
+                        ? 303    // reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
+                        : 307;
+                } else {
+                    $code = 302;
+                }
             }
-        }
-        if ($method === 'refresh') {
-            header('Refresh:0;url=' . $uri);
-        } else {
-            header('Location: ' . $uri, true, $code);
-        }
+            if ($method === 'refresh') {
+                header('Refresh:0;url=' . $uri);
+            } else {
+                header('Location: ' . $uri, true, $code);
+            }
 
-        exit;
-    }
-
-    /**
-     * Function isJson
-     *
-     * @param $string
-     *
-     * @return bool
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/26/18 10:50
-     *
-     */
-    public static function isJson($string = ''): bool
-    {
-        return isJson($string);
-    }
-
-    /**
-     * Function arrayToObject
-     *
-     * @param array $data
-     *
-     * @return array|bool|mixed
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2019-07-18 11:29
-     *
-     */
-    public static function arrayToObject($data = [])
-    {
-        if (!is_array($data)) {
-            return $data;
-        }
-        if (count($data) > 0) {
-            $json = json_encode($data);
-
-            return json_decode($json);
+            exit;
         }
 
-        return false;
-    }
-
-    /**
-     * Function objectFormat
-     *
-     * @param string|array|object $data
-     *
-     * @return array|bool|mixed|\stdClass|string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/26/18 10:51
-     *
-     */
-    public static function objectFormat($data = '')
-    {
-        if (is_object($data)) {
-            return $data;
-        }
-        if (is_array($data)) {
-            return static::arrayToObject($data);
-        }
-        if (static::isJson($data)) {
-            return json_decode($data);
+        /**
+         * Function isJson
+         *
+         * @param $string
+         *
+         * @return bool
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/26/18 10:50
+         *
+         */
+        public static function isJson($string = ''): bool
+        {
+            return isJson($string);
         }
 
-        return new stdClass();
-    }
+        /**
+         * Function arrayToObject
+         *
+         * @param array $data
+         *
+         * @return array|bool|mixed
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 2019-07-18 11:29
+         *
+         */
+        public static function arrayToObject($data = [])
+        {
+            if (!is_array($data)) {
+                return $data;
+            }
+            if (count($data) > 0) {
+                $json = json_encode($data);
 
-    /**
-     * Function expireTime
-     *
-     * @param int $duration
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2019-07-15 10:57
-     *
-     */
-    public static function expireTime($duration = 1): string
-    {
-        try {
-            $expire     = $duration <= 1 ? new DateTime("+0 days") : new DateTime("+$duration days");
-            $expireTime = $expire->format('Y-m-d') . ' 23:59:59';
-        } catch (Exception $e) {
-            $expireTime = date('Y-m-d') . ' 23:59:59';
+                return json_decode($json);
+            }
+
+            return false;
         }
 
-        return $expireTime;
-    }
+        /**
+         * Function objectFormat
+         *
+         * @param string|array|object $data
+         *
+         * @return array|bool|mixed|\stdClass|string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/26/18 10:51
+         *
+         */
+        public static function objectFormat($data = '')
+        {
+            if (is_object($data)) {
+                return $data;
+            }
+            if (is_array($data)) {
+                return static::arrayToObject($data);
+            }
+            if (static::isJson($data)) {
+                return json_decode($data);
+            }
 
-
-    /**
-     * Function commonMessageTelco
-     *
-     * @param string $content
-     * @param string $type
-     * @param string $count_type
-     *
-     * @return false|float|int|string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 08/18/2021 52:42
-     */
-    public static function commonMessageTelco($content = '', $type = 'length', $count_type = 'default')
-    {
-        if ($type === 'length') {
-            return strlen($content);
+            return new stdClass();
         }
-        if ($type === 'count' && $count_type === 'default') {
-            return ceil(strlen($content) / 160);
+
+        /**
+         * Function commonMessageTelco
+         *
+         * @param string $content
+         * @param string $type
+         * @param string $count_type
+         *
+         * @return false|float|int|string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 08/18/2021 52:42
+         */
+        public static function commonMessageTelco($content = '', $type = 'length', $count_type = 'default')
+        {
+            if ($type === 'length') {
+                return strlen($content);
+            }
+            if ($type === 'count' && $count_type === 'default') {
+                return ceil(strlen($content) / 160);
+            }
+
+            return $content;
         }
 
-        return $content;
-    }
-    /**
-     * Function generateHashValue
-     *
-     * @param string $str
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/18/18 03:04
-     *
-     */
-    public static function generateHashValue($str = ''): string
-    {
-        return Hash::generateHashValue($str);
-    }
+        /**
+         * Function expireTime
+         *
+         * @param int $duration
+         *
+         * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 2019-07-15 10:57
+         *
+         */
+        public static function expireTime($duration = 1): string
+        {
+            return DateAndTime::expireTime($duration);
+        }
 
-    /**
-     * Function generateUserPasswordRandom
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/19/18 10:08
-     *
-     */
-    public static function generateUserPasswordRandom(): string
-    {
-        return Hash::generateUserPasswordRandom();
-    }
+        /**
+         * Function generateHashValue
+         *
+         * @param string $str
+         *
+         * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/18/18 03:04
+         *
+         */
+        public static function generateHashValue($str = ''): string
+        {
+            return Hash::generateHashValue($str);
+        }
 
-    /**
-     * Function generateUserToken
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/19/18 10:08
-     *
-     */
-    public static function generateUserToken(): string
-    {
-        return Hash::generateUserToken();
-    }
+        /**
+         * Function generateUserPasswordRandom
+         *
+         * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/19/18 10:08
+         *
+         */
+        public static function generateUserPasswordRandom(): string
+        {
+            return Hash::generateUserPasswordRandom();
+        }
 
-    /**
-     * Function generateUserSaltKey
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/19/18 10:08
-     *
-     */
-    public static function generateUserSaltKey(): string
-    {
-        return Hash::generateUserSaltKey();
-    }
+        /**
+         * Function generateUserToken
+         *
+         * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/19/18 10:08
+         *
+         */
+        public static function generateUserToken(): string
+        {
+            return Hash::generateUserToken();
+        }
 
-    /**
-     * Function generateRequestId
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/23/18 17:15
-     *
-     */
-    public static function generateRequestId(): string
-    {
-        return Hash::generateRequestId();
-    }
+        /**
+         * Function generateUserSaltKey
+         *
+         * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/19/18 10:08
+         *
+         */
+        public static function generateUserSaltKey(): string
+        {
+            return Hash::generateUserSaltKey();
+        }
 
-    /**
-     * Function generateVinaRequestId
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-06 22:04
-     *
-     */
-    public static function generateVinaRequestId(): string
-    {
-        return Hash::generateVinaRequestId();
-    }
+        /**
+         * Function generateRequestId
+         *
+         * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/23/18 17:15
+         *
+         */
+        public static function generateRequestId(): string
+        {
+            return Hash::generateRequestId();
+        }
 
-    /**
-     * Function generateOTPCode
-     *
-     * @param int $length
-     *
-     * @return string
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 11/23/18 17:16
-     *
-     */
-    public static function generateOTPCode($length = 6): string
-    {
-        return Hash::generateOTPCode($length);
-    }
+        /**
+         * Function generateVinaRequestId
+         *
+         * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 2018-12-06 22:04
+         *
+         */
+        public static function generateVinaRequestId(): string
+        {
+            return Hash::generateVinaRequestId();
+        }
 
-    /**
-     * Function generateOTPExpireTime
-     *
-     * @param int $hour
-     *
-     * @return string
-     * @throws \Exception
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 2018-12-06 16:03
-     *
-     */
-    public static function generateOTPExpireTime($hour = 4): string
-    {
-        return Hash::generateOTPExpireTime($hour);
-    }
+        /**
+         * Function generateOTPCode
+         *
+         * @param int $length
+         *
+         * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 11/23/18 17:16
+         *
+         */
+        public static function generateOTPCode($length = 6): string
+        {
+            return Hash::generateOTPCode($length);
+        }
 
-    /**
-     * Function zuluTime
-     *
-     * @return string
-     * @throws \Exception
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 07/28/2021 35:16
-     */
-    public static function zuluTime(): string
-    {
-        return Hash::zuluTime();
+        /**
+         * Function generateOTPExpireTime
+         *
+         * @param int $hour
+         *
+         * @return string
+         * @throws \Exception
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 2018-12-06 16:03
+         *
+         */
+        public static function generateOTPExpireTime($hour = 4): string
+        {
+            return Hash::generateOTPExpireTime($hour);
+        }
+
+        /**
+         * Function zuluTime
+         *
+         * @return string
+         * @throws \Exception
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 07/28/2021 35:16
+         */
+        public static function zuluTime(): string
+        {
+            return DateAndTime::zuluTime();
+        }
     }
 }
