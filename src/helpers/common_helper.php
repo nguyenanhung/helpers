@@ -35,7 +35,7 @@ if (!function_exists('vardump_pre')) {
     function vardump_pre($str = '')
     {
         echo "<pre>";
-        var_dump($str);
+        print_r($str);
         echo "</pre>";
     }
 }

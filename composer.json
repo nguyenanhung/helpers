@@ -30,7 +30,11 @@
         "nguyenanhung/nanoid-helper": "^1.0",
         "nguyenanhung/number-helper": "^1.0",
         "nguyenanhung/password-helper": "^1.0",
-        "nguyenanhung/date-helper": "^1.0"
+        "nguyenanhung/date-helper": "^1.0",
+        "nguyenanhung/array-helper": "^1.0"
+    },
+    "require-dev": {
+        "kint-php/kint": "^3.3"
     },
     "suggest": {
         "ext-curl": "Needed to support cURL",
@@ -46,13 +50,9 @@
         },
         "files": [
             "src/helpers/30s-of-php-code.php",
-            "src/helpers/array_helper.php",
             "src/helpers/base64_helper.php",
             "src/helpers/common_helper.php",
-            "src/helpers/date_helper.php",
             "src/helpers/email_helper.php",
-            "src/helpers/pagination_helper.php",
-            "src/helpers/seo_helper.php",
             "src/helpers/copyright_helper.php"
         ]
     }
