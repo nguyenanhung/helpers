@@ -12,6 +12,8 @@ namespace nguyenanhung\Classes\Helper;
 use stdClass;
 use nguyenanhung\Libraries\Password\Hash;
 use nguyenanhung\Libraries\DateAndTime\DateAndTime;
+use nguyenanhung\Libraries\ArrayHelper\ArrayHelper;
+use nguyenanhung\Libraries\URI\URI;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
     /**
@@ -43,25 +45,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          */
         public static function redirect($uri = '', $method = 'auto', $code = null): void
         {
-            // IIS environment likely? Use 'refresh' for better compatibility
-            if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== false) {
-                $method = 'refresh';
-            } elseif ($method !== 'refresh' && ($code === null || !is_numeric($code))) {
-                if (isset($_SERVER['SERVER_PROTOCOL'], $_SERVER['REQUEST_METHOD']) && $_SERVER['SERVER_PROTOCOL'] === 'HTTP/1.1') {
-                    $code = ($_SERVER['REQUEST_METHOD'] !== 'GET')
-                        ? 303    // reference: http://en.wikipedia.org/wiki/Post/Redirect/Get
-                        : 307;
-                } else {
-                    $code = 302;
-                }
-            }
-            if ($method === 'refresh') {
-                header('Refresh:0;url=' . $uri);
-            } else {
-                header('Location: ' . $uri, true, $code);
-            }
-
-            exit;
+            URI::redirect($uri, $method, $code);
         }
 
         /**
@@ -84,23 +68,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          *
          * @param array $data
          *
-         * @return array|bool|mixed
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 2019-07-18 11:29
-         *
+         * @return array|false|\stdClass
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 09/22/2021 49:55
          */
         public static function arrayToObject($data = [])
         {
-            if (!is_array($data)) {
-                return $data;
-            }
-            if (count($data) > 0) {
-                $json = json_encode($data);
-
-                return json_decode($json);
-            }
-
-            return false;
+            return ArrayHelper::arrayToObject($data);
         }
 
         /**
