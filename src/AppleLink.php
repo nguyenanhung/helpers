@@ -9,15 +9,17 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-use nguyenanhung\Classes\Helper\Mobile\AppleLink as DeviceAppleLink;
+use nguyenanhung\Libraries\Mobile\AppleLink as MobileAppleLink;
 
-/**
- * Class AppleLink
- *
- * @package   nguyenanhung\Classes\Helper
- * @author    713uk13m <dev@nguyenanhung.com>
- * @copyright 713uk13m <dev@nguyenanhung.com>
- */
-class AppleLink extends DeviceAppleLink
-{
+if (!class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
+    /**
+     * Class AppleLink
+     *
+     * @package   nguyenanhung\Classes\Helper
+     * @author    713uk13m <dev@nguyenanhung.com>
+     * @copyright 713uk13m <dev@nguyenanhung.com>
+     */
+    class AppleLink extends MobileAppleLink
+    {
+    }
 }

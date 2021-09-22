@@ -128,7 +128,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             $filtered = array();
 
             // if $array and $callback are given
-            if ($array !== NULL && $callback !== NULL) {
+            if ($array !== null && $callback !== null) {
                 // if the input arr is actually an arr
                 if (is_array($array)) {
                     // if $callback is callable
@@ -186,7 +186,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             $filtered = array();
 
             // if $array and $prefix are given
-            if ($array !== NULL && $prefix !== NULL) {
+            if ($array !== null && $prefix !== null) {
                 // if $array is actually an array
                 if (is_array($array)) {
                     // if $prefix is a string
@@ -248,10 +248,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          */
         public static function inArray($needle, $haystack, $wildcard = '*')
         {
-            $inArray = FALSE;
+            $inArray = false;
 
             // if $needle, $haystack, and $wildcard are given
-            if ($needle !== NULL && $haystack !== NULL && $wildcard !== NULL) {
+            if ($needle !== null && $haystack !== null && $wildcard !== null) {
                 // if $needle is a string
                 if (is_string($needle)) {
                     // if $haystack is an array
@@ -259,7 +259,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
                         // if $wildcard is a string
                         if (is_string($wildcard)) {
                             // if $needle contains the wildcard character
-                            if (strpos($needle, $wildcard) !== FALSE) {
+                            if (strpos($needle, $wildcard) !== false) {
                                 // determine if the neeedle starts or ends with the wildcard
                                 $startsWith = Str::startsWith($needle, $wildcard);
                                 $endsWith   = Str::endsWith($needle, $wildcard);
@@ -268,7 +268,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
                                 // loop through the haystack
                                 foreach ($haystack as $value) {
                                     if ($startsWith && $endsWith) {
-                                        $inArray = strpos($value, $needle) !== FALSE;
+                                        $inArray = strpos($value, $needle) !== false;
                                     } elseif ($startsWith) {
                                         $inArray = Str::endsWith($value, $needle);
                                     } else {
@@ -330,7 +330,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          */
         public static function isAssoc($array)
         {
-            $isAssoc = FALSE;
+            $isAssoc = false;
 
             if (!empty($array) && is_array($array)) {
                 $isAssoc = (bool) count(array_filter(array_keys($array), 'is_string'));
@@ -392,12 +392,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          * @throws  InvalidArgumentException  if $array is not an array
          * @throws  InvalidArgumentException  if $isZeroEmpty is not a bool value
          */
-        public static function isEmpty($key, $array, $isZeroEmpty = TRUE)
+        public static function isEmpty($key, $array, $isZeroEmpty = true)
         {
-            $isEmpty = TRUE;
+            $isEmpty = true;
 
             // if $key and array are given
-            if ($key !== NULL && $array !== NULL) {
+            if ($key !== null && $array !== null) {
                 // if $key is a string
                 if (is_string($key)) {
                     // if $array is an array
@@ -468,7 +468,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             $replaced = array();
 
             // if $search, $replace, and $array are given
-            if ($search !== NULL && $replace !== NULL && $array !== NULL) {
+            if ($search !== null && $replace !== null && $array !== null) {
                 // if $search is a string or an array
                 if (is_string($search) || is_array($search)) {
                     // if $replace is a string or an array
@@ -569,7 +569,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
         public static function sortByField($array, $field, $sort = 'asc')
         {
             // if $array, $field, and $sort are given
-            if ($array !== NULL && $field !== NULL && $sort !== NULL) {
+            if ($array !== null && $field !== null && $sort !== null) {
                 // if $array is actually an array
                 if (is_array($array)) {
                     // if $field is a string
@@ -659,7 +659,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
         public static function sortByProperty($array, $property, $sort = 'asc')
         {
             // if $array, $property, and $sort are given
-            if ($array !== NULL && $property !== NULL && $sort !== NULL) {
+            if ($array !== null && $property !== null && $sort !== null) {
                 // if $array is actually an array
                 if (is_array($array)) {
                     // if $property is a string
@@ -753,7 +753,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
         public static function sortByMethod($array, $method, $sort = 'asc')
         {
             // if $array, $method, and $sort are given
-            if ($array !== NULL && $method !== NULL && $sort !== NULL) {
+            if ($array !== null && $method !== null && $sort !== null) {
                 // if $array is actually an array
                 if (is_array($array)) {
                     // if $method is a string
@@ -830,33 +830,33 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 21:58
          */
-        public static function arrayQuickSort($array = array())
+        public static function arrayQuickSort($array = array()): ?array
         {
             // find array size
             $length = count($array);
             // base case test, if array of length 0 then just return array to caller
             if ($length <= 1) {
                 return $array;
-            } else {
-                // select an item to act as our pivot point, since list is unsorted first position is easiest
-                $pivot = $array[0];
-                // declare our two arrays to act as partitions
-                $left  = array();
-                $right = array();
-                // loop and compare each item in the array to the pivot value, place item in appropriate partition
-                for ($i = 1; $i < count($array); $i++) {
-                    if ($array[$i] < $pivot) {
-                        $left[] = $array[$i];
-                    } else {
-                        $right[] = $array[$i];
-                    }
-                }
-
-                // use recursion to now sort the left and right lists
-                return array_merge(static::arrayQuickSort($left), array(
-                    $pivot
-                ), static::arrayQuickSort($right));
             }
+
+            // select an item to act as our pivot point, since list is unsorted first position is easiest
+            $pivot = $array[0];
+            // declare our two arrays to act as partitions
+            $left  = array();
+            $right = array();
+            // loop and compare each item in the array to the pivot value, place item in appropriate partition
+            for ($i = 1; $i < $length; $i++) {
+                if ($array[$i] < $pivot) {
+                    $left[] = $array[$i];
+                } else {
+                    $right[] = $array[$i];
+                }
+            }
+
+            // use recursion to now sort the left and right lists
+            return array_merge(static::arrayQuickSort($left), array(
+                $pivot
+            ), static::arrayQuickSort($right));
         }
 
         /**
@@ -876,21 +876,21 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             }
             $object = json_encode($object);
 
-            return json_decode($object, TRUE);
+            return json_decode($object, true);
         }
 
         /**
          * Function arrayToObject
          *
          * @param array|mixed $array
-         * @param bool $str_to_lower
+         * @param bool        $str_to_lower
          *
          * @return array|false|\stdClass
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 23:49
          */
-        public static function arrayToObject($array = [], $str_to_lower = FALSE)
+        public static function arrayToObject($array = [], $str_to_lower = false)
         {
             if (!is_array($array)) {
                 return $array;
@@ -899,7 +899,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             if (count($array) > 0) {
                 foreach ($array as $name => $value) {
                     $name = trim($name);
-                    if ($str_to_lower === TRUE) {
+                    if ($str_to_lower === true) {
                         $name = strtolower($name);
                     }
                     if (!empty($name)) {
@@ -910,7 +910,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
                 return $object;
             }
 
-            return FALSE;
+            return false;
         }
         //=============================| Protected methods =============================//
 
@@ -934,7 +934,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
             // if this doesn't occur, we've finished our permutations
             // the array is reversed: (1, 2, 3, 4) => (4, 3, 2, 1)
             if ($i == -1) {
-                return FALSE;
+                return false;
             }
 
             // slide down the array looking for a bigger number than what we found before

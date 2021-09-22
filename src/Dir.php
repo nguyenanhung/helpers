@@ -9,7 +9,7 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-use nguyenanhung\Classes\Helper\Filesystem\Directory as BaseDirectory;
+use nguyenanhung\Libraries\Filesystem\Directory as FilesystemDirectory;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
     /**
@@ -17,7 +17,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
      *
      * @since  0.1.0
      */
-    class Dir extends BaseDirectory
+    class Dir extends FilesystemDirectory
     {
     }
 }

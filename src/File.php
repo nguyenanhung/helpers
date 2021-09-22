@@ -9,7 +9,7 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-use nguyenanhung\Classes\Helper\Filesystem\Filesystem as BaseFilesystem;
+use nguyenanhung\Libraries\Filesystem\Filesystem as BaseFilesystem;
 
 if (!class_exists('nguyenanhung\Classes\Helper\File')) {
     /**

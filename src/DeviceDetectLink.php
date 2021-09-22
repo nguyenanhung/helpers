@@ -9,15 +9,17 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-use nguyenanhung\Classes\Helper\Mobile\DeviceDetectLink as MobileDeviceDetectLink;
+use nguyenanhung\Libraries\Mobile\DeviceDetectLink as MobileDeviceDetectLink;
 
-/**
- * Class DeviceDetectLink
- *
- * @package   nguyenanhung\Classes\Helper
- * @author    713uk13m <dev@nguyenanhung.com>
- * @copyright 713uk13m <dev@nguyenanhung.com>
- */
-class DeviceDetectLink extends MobileDeviceDetectLink
-{
+if (!class_exists('nguyenanhung\Classes\Helper\DeviceDetectLink')) {
+    /**
+     * Class DeviceDetectLink
+     *
+     * @package   nguyenanhung\Classes\Helper
+     * @author    713uk13m <dev@nguyenanhung.com>
+     * @copyright 713uk13m <dev@nguyenanhung.com>
+     */
+    class DeviceDetectLink extends MobileDeviceDetectLink
+    {
+    }
 }
