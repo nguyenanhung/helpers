@@ -47,7 +47,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
          * @throws  \InvalidArgumentException  if $format is not a string
          * @throws  \InvalidArgumentException  if $format is not a valid format
          */
-        public static function boolToString($bool, $format = 'true-false')
+        public static function boolToString($bool, $format = 'true-false'): string
         {
             $string = FALSE;
 
@@ -161,7 +161,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
          *
          * @see    http://www.php.net/manual/en/function.boolval.php  boolval() man page
          */
-        public static function val($var)
+        public static function val($var): ?bool
         {
             $value = NULL;
 
