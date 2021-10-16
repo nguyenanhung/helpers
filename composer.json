@@ -33,6 +33,7 @@
         "nguyenanhung/date-helper": "^2.0 || ^1.0",
         "nguyenanhung/array-helper": "^2.0 || ^1.0",
         "nguyenanhung/uri-helper": "^2.0 || ^1.0",
+        "nguyenanhung/slug-helper": "^2.0 || ^1.0",
         "nguyenanhung/zip-helper": "^2.0 || ^1.0"
     },
     "require-dev": {
