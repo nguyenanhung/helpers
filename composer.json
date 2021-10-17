@@ -16,6 +16,7 @@
         "ext-curl": "*",
         "ext-mbstring": "*",
         "nguyenanhung/array-helper": "^2.0 || ^1.0",
+        "nguyenanhung/base64-php-helper": "^2.0 || ^1.0",
         "nguyenanhung/date-helper": "^2.0 || ^1.0",
         "nguyenanhung/escape-helper": "^2.0 || ^1.0",
         "nguyenanhung/filesystem-helper": "^2.0 || ^1.0",
@@ -53,7 +54,6 @@
         },
         "files": [
             "src/helpers/30s-of-php-code.php",
-            "src/helpers/base64_helper.php",
             "src/helpers/common_helper.php",
             "src/helpers/email_helper.php",
             "src/helpers/copyright_helper.php"
