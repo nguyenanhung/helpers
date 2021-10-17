@@ -19,8 +19,8 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
      */
     interface ProjectInterface
     {
-        const VERSION       = '3.0.5';
-        const LAST_MODIFIED = '2021-09-24';
+        const VERSION       = '3.0.7';
+        const LAST_MODIFIED = '2021-10-18';
         const AUTHOR_NAME   = 'Hung Nguyen';
         const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
         const AUTHOR_URL    = 'https://nguyenanhung.com';
@@ -45,6 +45,6 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 03:59
          */
-        public function getVersion();
+        public function getVersion(): string;
     }
 }
