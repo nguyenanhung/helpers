@@ -331,16 +331,61 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function viewPagination
          *
-         * @param array $input_data
+         * @param array $options
          *
          * @return null|string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:16
          *
          */
-        public function viewPagination($input_data = []): ?string
+        public function viewPagination($options = []): ?string
         {
-            return (new HtmlCommon())->viewPagination($input_data);
+            return (new HtmlCommon())->viewPagination($options);
+        }
+
+        /**
+         * Function viewVideoTVPagination
+         *
+         * @param $options
+         *
+         * @return string|null
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 16/06/2022 53:14
+         */
+        public function viewVideoTVPagination($options = [])
+        {
+            return (new HtmlCommon())->viewVideoTVPagination($options);
+        }
+
+        /**
+         * Function cleanPaginationUrl
+         *
+         * @param $str
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 16/06/2022 53:52
+         */
+        public function cleanPaginationUrl($str = '')
+        {
+            return (new HtmlCommon())->cleanPaginationUrl($str);
+        }
+
+        /**
+         * Function getPageNumber
+         *
+         * @param $str
+         *
+         * @return array|string|string[]
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 16/06/2022 54:22
+         */
+        public function getPageNumber($str = '')
+        {
+            return (new HtmlCommon())->getPageNumber($str);
         }
 
         /**

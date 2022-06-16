@@ -54,7 +54,7 @@ Các hàm Escape được xây dựng phần lớn dựa trên Zend-Escaper
 Nếu có bất cứ thông tin nào cần trao đổi và tìm hiểu, vui lòng liên hệ theo thông tin sau
 
 | Name        | Email                | Skype            | Facebook      |
-| ----------- | -------------------- | ---------------- | ------------- |
+|-------------|----------------------|------------------|---------------|
 | Hung Nguyen | dev@nguyenanhung.com | nguyenanhung5891 | @nguyenanhung |
 
 From Hanoi with Love <3
