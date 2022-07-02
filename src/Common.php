@@ -62,7 +62,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:08
          *
          */
-        public function jsonItem($json_string = '', $item_output = ''): ?string
+        public function jsonItem($json_string = '', $item_output = '')
         {
             return Json::jsonItem($json_string, $item_output);
         }
@@ -136,7 +136,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 17:29
          */
-        public function zuluTime(): ?string
+        public function zuluTime()
         {
             return DateAndTime::zuluTime();
         }
@@ -333,12 +333,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @param array $options
          *
-         * @return null|string
+         * @return string|null
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:16
          *
          */
-        public function viewPagination($options = []): ?string
+        public function viewPagination($options = [])
         {
             return (new HtmlCommon())->viewPagination($options);
         }
@@ -586,7 +586,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function characterLimiter($str = '', $n = 500, $end_char = '&#8230;'): ?string
+        public function characterLimiter($str = '', $n = 500, $end_char = '&#8230;')
         {
             return TextProcessor::characterLimiter($str, $n, $end_char);
         }

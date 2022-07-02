@@ -111,7 +111,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 09/21/2021 39:53
          */
-        public static function getIpInformation($ip = ''): ?string
+        public static function getIpInformation($ip = '')
         {
             return (new BaseIP())->ipInfo($ip);
         }

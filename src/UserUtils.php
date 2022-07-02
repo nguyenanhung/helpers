@@ -49,7 +49,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 50:20
          */
-        public static function hashUserPasswordGetInfo($hash = ''): ?array
+        public static function hashUserPasswordGetInfo($hash = '')
         {
             return Password::hashUserPasswordGetInfo($hash);
         }

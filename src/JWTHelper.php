@@ -30,9 +30,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\JWTHelper')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 11/6/19 50:26
          */
-        public static function getAuthorizationHeader(): ?string
+        public static function getAuthorizationHeader()
         {
-            $headers = NULL;
+            $headers = null;
             if (isset($_SERVER['Authorization'])) {
                 $headers = trim($_SERVER["Authorization"]);
             } elseif (isset($_SERVER['HTTP_AUTHORIZATION'])) { //Nginx or fast CGI
@@ -65,7 +65,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\JWTHelper')) {
                 return $matches[1];
             }
 
-            return NULL;
+            return null;
         }
     }
 }

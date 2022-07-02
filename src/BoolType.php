@@ -161,7 +161,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
          *
          * @see    http://www.php.net/manual/en/function.boolval.php  boolval() man page
          */
-        public static function val($var): ?bool
+        public static function val($var)
         {
             $value = NULL;
 

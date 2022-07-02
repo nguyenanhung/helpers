@@ -300,7 +300,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
             return true;
         }
 
-        public function set_byfile($dir): ?bool
+        public function set_byfile($dir)
         {
             if (is_readable($dir) && is_file($dir)) {
                 $this->data_len  = 0;
