@@ -11,14 +11,14 @@ if (!function_exists('isEmail')) {
     /**
      * Function isEmail
      *
-     * @param string $mail
+     * @param mixed $mail
      *
      * @return bool
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 11/6/19 52:32
      */
-    function isEmail($mail = '')
+    function isEmail($mail = ''): bool
     {
         return (bool) filter_var($mail, FILTER_VALIDATE_EMAIL);
     }

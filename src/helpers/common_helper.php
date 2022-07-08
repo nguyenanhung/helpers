@@ -13,7 +13,7 @@ if (!function_exists('dump')) {
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 2019-03-25 14:37
      *
-     * @param string $str
+     * @param mixed $str
      */
     function dump($str = '')
     {
@@ -26,7 +26,7 @@ if (!function_exists('vardump_pre')) {
     /**
      * Function vardump_pre
      *
-     * @param string $str
+     * @param mixed $str
      *
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
@@ -43,7 +43,7 @@ if (!function_exists('dump_die')) {
     /**
      * Function dump_die
      *
-     * @param string $str
+     * @param mixed $str
      *
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
@@ -64,11 +64,11 @@ if (!function_exists('isEmpty')) {
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 2019-03-25 14:37
      *
-     * @param string $input
+     * @param mixed $input
      *
      * @return bool
      */
-    function isEmpty($input = '')
+    function isEmpty($input = ''): bool
     {
         $common = new nguyenanhung\Classes\Helper\Common();
 

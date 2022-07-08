@@ -30,7 +30,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function isEmpty
          *
-         * @param string $input
+         * @param mixed $input
          *
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -93,7 +93,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 09/22/2021 09:23
          */
-        public function arrayToObject($array = [], $str_to_lower = false)
+        public function arrayToObject($array = array(), $str_to_lower = false)
         {
             return Arr::arrayToObject($array, $str_to_lower);
         }
@@ -123,7 +123,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:47
          *
          */
-        public function arrayQuickSort($array = []): array
+        public function arrayQuickSort($array = array()): array
         {
             return Arr::arrayQuickSort($array);
         }
@@ -275,7 +275,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:18
          *
          */
-        public function metaTagEquiv($data = []): string
+        public function metaTagEquiv($data = array()): string
         {
             return (new HtmlCommon())->metaTagEquiv($data);
         }
@@ -338,7 +338,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:16
          *
          */
-        public function viewPagination($options = [])
+        public function viewPagination($options = array())
         {
             return (new HtmlCommon())->viewPagination($options);
         }
@@ -353,7 +353,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 16/06/2022 53:14
          */
-        public function viewVideoTVPagination($options = [])
+        public function viewVideoTVPagination($options = array())
         {
             return (new HtmlCommon())->viewVideoTVPagination($options);
         }

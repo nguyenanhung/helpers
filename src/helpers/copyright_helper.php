@@ -16,7 +16,7 @@ if (!function_exists('developer_fullname_copyright')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/28/2021 09:42
      */
-    function developer_name_copyright()
+    function developer_name_copyright(): string
     {
         return 'Nguyễn An Hưng';
     }
@@ -30,7 +30,7 @@ if (!function_exists('developer_shortname_copyright')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/28/2021 10:24
      */
-    function developer_shortname_copyright()
+    function developer_shortname_copyright(): string
     {
         return 'Hung Nguyen';
     }
@@ -44,7 +44,7 @@ if (!function_exists('developer_website_copyright')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/28/2021 11:06
      */
-    function developer_website_copyright()
+    function developer_website_copyright(): string
     {
         return 'https://nguyenanhung.com/';
     }
@@ -58,7 +58,7 @@ if (!function_exists('developer_email_copyright')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/28/2021 11:03
      */
-    function developer_email_copyright()
+    function developer_email_copyright(): string
     {
         return 'dev@nguyenanhung.com';
     }
