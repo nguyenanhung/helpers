@@ -73,7 +73,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 09/22/2021 49:55
          */
-        public static function arrayToObject($data = [])
+        public static function arrayToObject($data = array())
         {
             return ArrayHelper::arrayToObject($data);
         }

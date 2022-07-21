@@ -71,7 +71,7 @@ if (!function_exists('flatten')) {
      */
     function flatten($items)
     {
-        $result = [];
+        $result = array();
         foreach ($items as $item) {
             if (!is_array($item)) {
                 $result[] = $item;
@@ -98,7 +98,7 @@ if (!function_exists('deepFlatten')) {
      */
     function deepFlatten($items)
     {
-        $result = [];
+        $result = array();
         foreach ($items as $item) {
             if (!is_array($item)) {
                 $result[] = $item;
@@ -377,7 +377,7 @@ if (!function_exists('groupBy')) {
      */
     function groupBy($items, $func)
     {
-        $group = [];
+        $group = array();
         foreach ($items as $item) {
             if ((!is_string($func) && is_callable($func)) || function_exists($func)) {
                 $key           = call_user_func($func, $item);
@@ -922,7 +922,7 @@ if (!function_exists('orderBy')) {
      */
     function orderBy($items, $attr, $order)
     {
-        $sortedItems = [];
+        $sortedItems = array();
         foreach ($items as $item) {
             $key               = is_object($item) ? $item->{$attr} : $item[$attr];
             $sortedItems[$key] = $item;
@@ -952,7 +952,7 @@ if (!function_exists('memoize')) {
     function memoize($func)
     {
         return function () use ($func) {
-            static $cache = [];
+            static $cache = array();
 
             $args   = func_get_args();
             $key    = serialize($args);
