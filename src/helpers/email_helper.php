@@ -20,6 +20,6 @@ if (!function_exists('isEmail')) {
      */
     function isEmail($mail = ''): bool
     {
-        return (bool) filter_var($mail, FILTER_VALIDATE_EMAIL);
+        return \nguyenanhung\Classes\Helper\Email::validateEmail($mail);
     }
 }

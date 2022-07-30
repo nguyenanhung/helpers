@@ -9,6 +9,7 @@
  */
 
 namespace nguyenanhung\Classes\Helper;
+
 if (!class_exists('nguyenanhung\Classes\Helper\Email')) {
     /**
      * Class Email
@@ -37,10 +38,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Email')) {
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return TRUE;
+                return true;
             }
 
-            return FALSE;
+            return false;
         }
     }
 }

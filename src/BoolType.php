@@ -49,10 +49,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
          */
         public static function boolToString($bool, $format = 'true-false'): string
         {
-            $string = FALSE;
+            $string = false;
 
             // if $bool and format are not null
-            if ($bool !== NULL && $format !== NULL) {
+            if ($bool !== null && $format !== null) {
                 // if $bool is actually a bool
                 if (is_bool($bool)) {
                     // if $format is a string
@@ -163,7 +163,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
          */
         public static function val($var)
         {
-            $value = NULL;
+            $value = null;
 
             // if $var is not empty
             // any value considered empty by empty() is considered false
@@ -185,14 +185,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
                             case 'on':
                             case 'yes':
                             case 'true':
-                                $value = TRUE;
+                                $value = true;
                                 break;
 
                             case '0':
                             case 'no':
                             case 'off':
                             case 'false':
-                                $value = FALSE;
+                                $value = false;
                                 break;
 
                             default:
@@ -203,7 +203,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
                         $value = ($var !== 0 && $var !== 0.0);
                     } elseif (is_object($var)) {
                         // any object is considered true
-                        $value = TRUE;
+                        $value = true;
                     } elseif (is_array($var)) {
                         // any non-empty array is considered true
                         $value = !empty($var);
@@ -212,7 +212,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
                     $value = $var;
                 }
             } else {
-                $value = FALSE;
+                $value = false;
             }
 
             return $value;
