@@ -19,22 +19,22 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
      */
     interface ProjectInterface
     {
-        const VERSION       = '3.0.8.5';
-        const LAST_MODIFIED = '2022-07-30';
-        const AUTHOR_NAME   = 'Hung Nguyen';
-        const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
-        const AUTHOR_URL    = 'https://nguyenanhung.com';
-        const PROJECT_NAME  = 'Helper';
-        const TIMEZONE      = 'Asia/Ho_Chi_Minh';
+        const VERSION = '3.0.8.6';
+        const LAST_MODIFIED = '2022-12-30';
+        const AUTHOR_NAME = 'Hung Nguyen';
+        const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
+        const AUTHOR_URL = 'https://nguyenanhung.com';
+        const PROJECT_NAME = 'Helper';
+        const TIMEZONE = 'Asia/Ho_Chi_Minh';
         const USE_BENCHMARK = false;
-        const USE_DEBUG     = false;
+        const USE_DEBUG = false;
         // Thuật toán mã hóa chữ ký xác thực
-        const HASH_ALGORITHM                 = 'md5';
-        const REQUEST_METHOD                 = 'POST';
-        const USER_PASSWORD_RANDOM_LENGTH    = 16;
+        const HASH_ALGORITHM = 'md5';
+        const REQUEST_METHOD = 'POST';
+        const USER_PASSWORD_RANDOM_LENGTH = 16;
         const USER_PASSWORD_RANDOM_ALGORITHM = 'numeric';
-        const USER_TOKEN_ALGORITHM           = 'md5';
-        const USER_SALT_ALGORITHM            = 'md5';
+        const USER_TOKEN_ALGORITHM = 'md5';
+        const USER_SALT_ALGORITHM = 'md5';
 
         /**
          * Function getVersion

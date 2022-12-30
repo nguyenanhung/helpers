@@ -28,6 +28,39 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         use Version;
 
         /**
+         * Function dump
+         *
+         * @param $str
+         *
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 30/12/2022 12:51
+         */
+        public function dump($str)
+        {
+            echo "<pre>";
+            var_dump($str);
+            echo "</pre>";
+        }
+
+        /**
+         * Function dump_die
+         *
+         * @param $str
+         *
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 30/12/2022 13:17
+         */
+        public function dump_die($str)
+        {
+            echo "<pre>";
+            var_dump($str);
+            echo "</pre>";
+            die;
+        }
+
+        /**
          * Function isEmpty
          *
          * @param mixed $input
