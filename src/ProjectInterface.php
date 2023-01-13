@@ -19,8 +19,8 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
      */
     interface ProjectInterface
     {
-        const VERSION = '3.0.8.6';
-        const LAST_MODIFIED = '2022-12-30';
+        const VERSION = '3.0.8.7';
+        const LAST_MODIFIED = '2023-01-14';
         const AUTHOR_NAME = 'Hung Nguyen';
         const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
         const AUTHOR_URL = 'https://nguyenanhung.com';
