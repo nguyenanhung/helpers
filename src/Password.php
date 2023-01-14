@@ -24,4 +24,3 @@ if (!class_exists('nguyenanhung\Classes\Helper\Password')) {
     {
     }
 }
-

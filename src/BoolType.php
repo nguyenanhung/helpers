@@ -88,26 +88,16 @@ if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
                                 break;
 
                             default:
-                                throw new InvalidArgumentException(
-                                    __METHOD__ . "() expects parameter two, format, to be one of the following: " .
-                                    "'t[/-]f', 'true[/-]false', 'y[/-]s', 'yes[/-]no', 'o[/-]o', or " .
-                                    "'on[/-]off', '$format' given"
-                                );
+                                throw new InvalidArgumentException(__METHOD__ . "() expects parameter two, format, to be one of the following: " . "'t[/-]f', 'true[/-]false', 'y[/-]s', 'yes[/-]no', 'o[/-]o', or " . "'on[/-]off', '$format' given");
                         }
                     } else {
-                        throw new InvalidArgumentException(
-                            __METHOD__ . "() expects parameter two, format, to be a string"
-                        );
+                        throw new InvalidArgumentException(__METHOD__ . "() expects parameter two, format, to be a string");
                     }
                 } else {
-                    throw new InvalidArgumentException(
-                        __METHOD__ . "() expects parameter one, bool, to be a bool value given"
-                    );
+                    throw new InvalidArgumentException(__METHOD__ . "() expects parameter one, bool, to be a bool value given");
                 }
             } else {
-                throw new BadMethodCallException(
-                    __METHOD__ . "() expects one or two parameters, a bool value and a string format"
-                );
+                throw new BadMethodCallException(__METHOD__ . "() expects one or two parameters, a bool value and a string format");
             }
 
             return $string;

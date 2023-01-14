@@ -35,7 +35,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 53:01
          */
-        public static function getIPAddress($convertToInteger = FALSE)
+        public static function getIPAddress($convertToInteger = false)
         {
             return (new BaseIP())->getIpAddress($convertToInteger);
         }

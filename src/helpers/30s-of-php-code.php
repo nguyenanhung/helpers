@@ -262,7 +262,7 @@ if (!function_exists('pluck')) {
      */
     function pluck($items, $key)
     {
-        return array_map(function ($item) use ($key) {
+        return array_map(function($item) use ($key) {
             return is_object($item) ? $item->$key : $item[$key];
         }, $items);
     }
@@ -380,7 +380,7 @@ if (!function_exists('groupBy')) {
         $group = array();
         foreach ($items as $item) {
             if ((!is_string($func) && is_callable($func)) || function_exists($func)) {
-                $key           = call_user_func($func, $item);
+                $key = call_user_func($func, $item);
                 $group[$key][] = $item;
             } elseif (is_object($item)) {
                 $group[$item->{$func}][] = $item;
@@ -495,7 +495,7 @@ if (!function_exists('lcm')) {
      */
     function lcm(...$numbers)
     {
-        $ans         = $numbers[0];
+        $ans = $numbers[0];
         $countNumber = count($numbers);
         for ($i = 1; $i < $countNumber; $i++) {
             $ans = ((($numbers[$i] * $ans)) / (gcd($numbers[$i], $ans)));
@@ -564,7 +564,7 @@ if (!function_exists('median')) {
     {
         sort($numbers);
         $totalNumbers = count($numbers);
-        $mid          = floor($totalNumbers / 2);
+        $mid = floor($totalNumbers / 2);
 
         return ($totalNumbers % 2) === 0 ? ($numbers[$mid - 1] + $numbers[$mid]) / 2 : $numbers[$mid];
     }
@@ -759,17 +759,13 @@ if (!function_exists('compose')) {
      */
     function compose(...$functions)
     {
-        return array_reduce(
-            $functions,
-            function ($carry, $function) {
-                return function ($x) use ($carry, $function) {
-                    return $function($carry($x));
-                };
-            },
-            function ($x) {
-                return $x;
-            }
-        );
+        return array_reduce($functions, function($carry, $function) {
+            return function($x) use ($carry, $function) {
+                return $function($carry($x));
+            };
+        }, function($x) {
+            return $x;
+        });
     }
 }
 if (!function_exists('maxN')) {
@@ -787,8 +783,8 @@ if (!function_exists('maxN')) {
      */
     function maxN($numbers)
     {
-        $maxValue      = max($numbers);
-        $maxValueArray = array_filter($numbers, function ($value) use ($maxValue) {
+        $maxValue = max($numbers);
+        $maxValueArray = array_filter($numbers, function($value) use ($maxValue) {
             return $maxValue === $value;
         });
 
@@ -810,8 +806,8 @@ if (!function_exists('minN')) {
      */
     function minN($numbers)
     {
-        $minValue      = min($numbers);
-        $minValueArray = array_filter($numbers, function ($value) use ($minValue) {
+        $minValue = min($numbers);
+        $minValueArray = array_filter($numbers, function($value) use ($minValue) {
             return $minValue === $value;
         });
 
@@ -924,7 +920,7 @@ if (!function_exists('orderBy')) {
     {
         $sortedItems = array();
         foreach ($items as $item) {
-            $key               = is_object($item) ? $item->{$attr} : $item[$attr];
+            $key = is_object($item) ? $item->{$attr} : $item[$attr];
             $sortedItems[$key] = $item;
         }
         if ($order === 'desc') {
@@ -951,16 +947,16 @@ if (!function_exists('memoize')) {
      */
     function memoize($func)
     {
-        return function () use ($func) {
+        return function() use ($func) {
             static $cache = array();
 
-            $args   = func_get_args();
-            $key    = serialize($args);
+            $args = func_get_args();
+            $key = serialize($args);
             $cached = true;
 
             if (!isset($cache[$key])) {
                 $cache[$key] = $func(...$args);
-                $cached      = false;
+                $cached = false;
             }
 
             return ['result' => $cache[$key], 'cached' => $cached];
@@ -982,10 +978,10 @@ if (!function_exists('curry')) {
      */
     function curry($function)
     {
-        $accumulator = function ($arguments) use ($function, &$accumulator) {
-            return function (...$args) use ($function, $arguments, $accumulator) {
-                $arguments      = array_merge($arguments, $args);
-                $reflection     = new ReflectionFunction($function);
+        $accumulator = function($arguments) use ($function, &$accumulator) {
+            return function(...$args) use ($function, $arguments, $accumulator) {
+                $arguments = array_merge($arguments, $args);
+                $reflection = new ReflectionFunction($function);
                 $totalArguments = $reflection->getNumberOfRequiredParameters();
 
                 if ($totalArguments <= count($arguments)) {
@@ -1014,7 +1010,7 @@ if (!function_exists('once')) {
      */
     function once($function)
     {
-        return function (...$args) use ($function) {
+        return function(...$args) use ($function) {
             static $called = false;
             if ($called) {
                 return;
