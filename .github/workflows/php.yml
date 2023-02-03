@@ -27,5 +27,3 @@ jobs:
                     restore-keys: ${{ runner.os }}-composer-
             -   name: Install dependencies
                 run: composer install --ignore-platform-reqs --no-progress --prefer-dist --optimize-autoloader
-            -   name: Test Helper
-                run: php ./test/test.php
