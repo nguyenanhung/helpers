@@ -35,15 +35,15 @@ Các hàm Escape được xây dựng phần lớn dựa trên Zend-Escaper
 
 ### XML Helper
 
-- [x] Các hàm XML Helper được base từ CodeIgniter, see: https://www.codeigniter.com/user_guide/helpers/xml_helper.html
+- [x] Các hàm XML Helper được base từ CodeIgniter, see: https://www.codeigniter.com/userguide3/helpers/xml_helper.html
 
 ### Text Helper
 
-- [x] Các hàm Text Helper được base từ CodeIgniter, see: https://www.codeigniter.com/user_guide/helpers/text_helper.html
+- [x] Các hàm Text Helper được base từ CodeIgniter, see: https://www.codeigniter.com/userguide3/helpers/text_helper.html
 
 ### String Helper
 
-- [x] Các hàm String Helper được base từ CodeIgniter, see: https://www.codeigniter.com/user_guide/helpers/string_helper.html
+- [x] Các hàm String Helper được base từ CodeIgniter, see: https://www.codeigniter.com/userguide3/helpers/string_helper.html
 
 ### 30-seconds-of-php-code
 

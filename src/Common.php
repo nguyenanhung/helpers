@@ -10,8 +10,9 @@
 namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Text\TextProcessor;
-use nguyenanhung\Libraries\HTML\Common as HtmlCommon;
 use nguyenanhung\Libraries\UUID\AlphaID;
+use nguyenanhung\Libraries\Snippets\IsEmpty\IsEmpty;
+use nguyenanhung\Libraries\HTML\Common as HtmlCommon;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
     /**
@@ -40,25 +41,16 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function isEmpty
          *
-         * @param mixed $input
+         * @param mixed $var
          *
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 09/22/2021 09:44
          */
-        public function isEmpty($input = ''): bool
+        public function isEmpty($var = ''): bool
         {
-            $isset = isset($input);
-            if ($isset === true) {
-                if (empty($input)) {
-                    return true;
-                }
-
-                return false;
-            }
-
-            return true;
+            return (new IsEmpty())->isEmpty($var);
         }
 
         /**

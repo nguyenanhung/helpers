@@ -9,8 +9,6 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-use nguyenanhung\Libraries\Password\Password;
-
 if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
     /**
      * Class UserUtils

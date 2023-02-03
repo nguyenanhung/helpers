@@ -97,7 +97,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
                 return static::arrayToObject($data);
             }
             if (static::isJson($data)) {
-                return json_decode($data);
+                return json_decode($data, false);
             }
 
             return new stdClass();
