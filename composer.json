@@ -39,7 +39,8 @@
         "nguyenanhung/uuid-helper": "^2.0 || ^1.0",
         "nguyenanhung/xml-helper": "^2.0 || ^1.0",
         "nguyenanhung/xml2json-helper": "^2.0 || ^1.0",
-        "nguyenanhung/zip-helper": "^2.0 || ^1.0"
+        "nguyenanhung/zip-helper": "^2.0 || ^1.0",
+        "nguyenanhung/simple-php-30s-of-code": "^1.0"
     },
     "require-dev": {
         "kint-php/kint": "^3.3"
@@ -57,10 +58,9 @@
             "nguyenanhung\\Classes\\Helper\\": "src/"
         },
         "files": [
-            "src/helpers/30s-of-php-code.php",
-            "src/helpers/common_helper.php",
-            "src/helpers/email_helper.php",
-            "src/helpers/copyright_helper.php"
+            "helpers/common_helper.php",
+            "helpers/email_helper.php",
+            "helpers/copyright_helper.php"
         ]
     }
 }
