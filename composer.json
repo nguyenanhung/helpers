@@ -62,9 +62,7 @@
             "nguyenanhung\\Classes\\Helper\\": "src/"
         },
         "files": [
-            "helpers/common_helper.php",
-            "helpers/email_helper.php",
-            "helpers/copyright_helper.php"
+            "helpers/common_helper.php"
         ]
     }
 }
