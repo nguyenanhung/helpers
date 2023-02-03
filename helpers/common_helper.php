@@ -30,12 +30,6 @@ if (!function_exists('isEmpty')) {
         return (new nguyenanhung\Classes\Helper\Common())->isEmpty($input);
     }
 }
-if (!function_exists('isEmail')) {
-    function isEmail($mail = ''): bool
-    {
-        return \nguyenanhung\Classes\Helper\Email::validateEmail($mail);
-    }
-}
 if (!function_exists('developer_fullname_copyright')) {
     function developer_name_copyright(): string
     {

@@ -27,37 +27,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
 
         use Version;
 
-        /**
-         * Function dump
-         *
-         * @param $str
-         *
-         * @author   : 713uk13m <dev@nguyenanhung.com>
-         * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 30/12/2022 12:51
-         */
         public function dump($str)
         {
-            echo "<pre>";
-            var_dump($str);
-            echo "</pre>";
+            return dump($str);
         }
 
-        /**
-         * Function dump_die
-         *
-         * @param $str
-         *
-         * @author   : 713uk13m <dev@nguyenanhung.com>
-         * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 30/12/2022 13:17
-         */
         public function dump_die($str)
         {
-            echo "<pre>";
-            var_dump($str);
-            echo "</pre>";
-            die;
+            dump_die($str);
         }
 
         /**
@@ -220,9 +197,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function newFolder($pathname = '', $mode = 0777): bool
         {
-            $file = new File();
-
-            return $file->createNewFolder($pathname, $mode);
+            return (new File())->createNewFolder($pathname, $mode);
         }
 
         /**
@@ -237,9 +212,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          */
         public function formatSizeUnits($bytes = 0): string
         {
-            $file = new File();
-
-            return $file->formatSizeUnits($bytes);
+            return (new File())->formatSizeUnits($bytes);
         }
 
         /**
@@ -682,6 +655,23 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         public function highlightPhrase($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>'): string
         {
             return TextProcessor::highlightPhrase($str, $phrase, $tag_open, $tag_close);
+        }
+
+        /**
+         * Keyword Highlighter
+         *
+         * Highlights a keyword within a text string
+         *
+         * @param string $str       the text string
+         * @param string $phrase    the phrase you'd like to highlight
+         * @param string $tag_open  the opening tag to precede the phrase with
+         * @param string $tag_close the closing tag to end the phrase with
+         *
+         * @return    string
+         */
+        public function highlightKeyword($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>'): string
+        {
+            return TextProcessor::highlightKeyword($str, $phrase, $tag_open, $tag_close);
         }
 
         /**
