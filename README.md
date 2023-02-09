@@ -14,7 +14,7 @@ Các helper hỗ trợ trong xây dựng các dự án sử dụng PHP. Đầy �
 
 ## Version
 
-- [x] V1.x, V1.x support all PHP version `>=5.6`
+- [x] V1.x, V2.x support all PHP version `>=5.6`
 - [x] V3.x support all PHP version `>=7.0`
 
 ### JSON Helper
