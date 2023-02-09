@@ -19,12 +19,12 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
      */
     interface ProjectInterface
     {
-        const VERSION = '3.1.0';
+        const VERSION = '2.1.0';
         const LAST_MODIFIED = '2023-02-10';
         const AUTHOR_NAME = 'Hung Nguyen';
         const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
         const AUTHOR_URL = 'https://nguyenanhung.com';
-        const PROJECT_NAME = 'Helper';
+        const PROJECT_NAME = 'Helper Wrapper - PHP Powerful library, helper and tools';
         const TIMEZONE = 'Asia/Ho_Chi_Minh';
         const USE_BENCHMARK = false;
         const USE_DEBUG = false;
@@ -44,6 +44,6 @@ if (!interface_exists('nguyenanhung\Classes\Helper\ProjectInterface')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 03:59
          */
-        public function getVersion(): string;
+        public function getVersion();
     }
 }

@@ -27,7 +27,7 @@ if (!trait_exists('nguyenanhung\Classes\Helper\Version')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 36:14
          */
-        public function getVersion(): string
+        public function getVersion()
         {
             return self::VERSION;
         }

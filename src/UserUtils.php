@@ -62,7 +62,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 50:23
          */
-        public static function userPasswordNeedSReHash($hash = ''): bool
+        public static function userPasswordNeedSReHash($hash = '')
         {
             return Password::userPasswordNeedSReHash($hash);
         }
@@ -78,7 +78,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 50:26
          */
-        public static function passwordVerify($password = '', $hash = ''): bool
+        public static function passwordVerify($password = '', $hash = '')
         {
             return Password::passwordVerify($password, $hash);
         }

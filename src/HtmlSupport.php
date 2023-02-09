@@ -33,7 +33,7 @@ if (!trait_exists('nguyenanhung\Classes\Helper\HtmlSupport')) {
          *
          * @return string
          */
-        public function tableColor($current, $previous, $id): string
+        public function tableColor($current, $previous, $id)
         {
             return (new HtmlCommon())->tableColor($current, $previous, $id);
         }

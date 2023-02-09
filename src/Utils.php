@@ -59,7 +59,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 11/26/18 10:50
          *
          */
-        public static function isJson($string = ''): bool
+        public static function isJson($string = '')
         {
             return isJson($string);
         }
@@ -146,7 +146,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 2019-07-15 10:57
          *
          */
-        public static function expireTime($duration = 1): string
+        public static function expireTime($duration = 1)
         {
             return DateAndTime::expireTime($duration);
         }
@@ -161,7 +161,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 11/18/18 03:04
          *
          */
-        public static function generateHashValue($str = ''): string
+        public static function generateHashValue($str = '')
         {
             return Hash::generateHashValue($str);
         }
@@ -174,7 +174,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 11/19/18 10:08
          *
          */
-        public static function generateUserPasswordRandom(): string
+        public static function generateUserPasswordRandom()
         {
             return Hash::generateUserPasswordRandom();
         }
@@ -187,7 +187,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 11/19/18 10:08
          *
          */
-        public static function generateUserToken(): string
+        public static function generateUserToken()
         {
             return Hash::generateUserToken();
         }
@@ -200,7 +200,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 11/19/18 10:08
          *
          */
-        public static function generateUserSaltKey(): string
+        public static function generateUserSaltKey()
         {
             return Hash::generateUserSaltKey();
         }
@@ -213,7 +213,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 11/23/18 17:15
          *
          */
-        public static function generateRequestId(): string
+        public static function generateRequestId()
         {
             return Hash::generateRequestId();
         }
@@ -226,7 +226,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 2018-12-06 22:04
          *
          */
-        public static function generateVinaRequestId(): string
+        public static function generateVinaRequestId()
         {
             return Hash::generateVinaRequestId();
         }
@@ -241,7 +241,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 11/23/18 17:16
          *
          */
-        public static function generateOTPCode($length = 6): string
+        public static function generateOTPCode($length = 6)
         {
             return Hash::generateOTPCode($length);
         }
@@ -257,7 +257,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @time  : 2018-12-06 16:03
          *
          */
-        public static function generateOTPExpireTime($hour = 4): string
+        public static function generateOTPExpireTime($hour = 4)
         {
             return Hash::generateOTPExpireTime($hour);
         }
@@ -271,7 +271,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 35:16
          */
-        public static function zuluTime(): string
+        public static function zuluTime()
         {
             return DateAndTime::zuluTime();
         }

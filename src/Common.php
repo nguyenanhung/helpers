@@ -49,7 +49,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 09/22/2021 09:44
          */
-        public function isEmpty($var = ''): bool
+        public function isEmpty($var = '')
         {
             return (new IsEmpty())->isEmpty($var);
         }
@@ -80,7 +80,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 10/13/18 09:39
          *
          */
-        public function isJson($json = ''): bool
+        public function isJson($json = '')
         {
             return Json::isJson($json);
         }
@@ -126,7 +126,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:47
          *
          */
-        public function arrayQuickSort($array = array()): array
+        public function arrayQuickSort($array = array())
         {
             return Arr::arrayQuickSort($array);
         }
@@ -155,7 +155,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function randomString($type = 'alnum', $len = 8): string
+        public function randomString($type = 'alnum', $len = 8)
         {
             return Str::randomString($type, $len);
         }
@@ -188,7 +188,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 41:25
          */
-        public function newFolder($pathname = '', $mode = 0777): bool
+        public function newFolder($pathname = '', $mode = 0777)
         {
             return (new File())->createNewFolder($pathname, $mode);
         }
@@ -203,7 +203,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/08/2021 12:58
          */
-        public function formatSizeUnits($bytes = 0): string
+        public function formatSizeUnits($bytes = 0)
         {
             return (new File())->formatSizeUnits($bytes);
         }
@@ -222,7 +222,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:07
          *
          */
-        public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://via.placeholder.com/'): string
+        public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://via.placeholder.com/')
         {
             return (new HtmlCommon())->placeholder($size, $bg_color, $text_color, $text, $domain);
         }
@@ -241,7 +241,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:17
          *
          */
-        public function meta($name = '', $content = '', $type = 'name', $newline = "\n"): string
+        public function meta($name = '', $content = '', $type = 'name', $newline = "\n")
         {
             return (new HtmlCommon())->meta($name, $content, $type, $newline);
         }
@@ -259,7 +259,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:09
          *
          */
-        public function metaProperty($property = '', $content = '', $type = 'property', $newline = "\n"): string
+        public function metaProperty($property = '', $content = '', $type = 'property', $newline = "\n")
         {
             return (new HtmlCommon())->metaProperty($property, $content, $type, $newline);
         }
@@ -274,7 +274,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:18
          *
          */
-        public function metaTagEquiv($data = array()): string
+        public function metaTagEquiv($data = array())
         {
             return (new HtmlCommon())->metaTagEquiv($data);
         }
@@ -287,7 +287,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/30/18 16:17
          *
          */
-        public function metaDnsPrefetch(): string
+        public function metaDnsPrefetch()
         {
             return (new HtmlCommon())->metaDnsPrefetch();
         }
@@ -306,7 +306,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:11
          *
          */
-        public function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n"): string
+        public function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n")
         {
             return (new HtmlCommon())->sitemapParse($domain, $loc, $lastmod, $type, $newline);
         }
@@ -322,7 +322,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:11
          *
          */
-        public function xmlConvert($str, $protect_all = false): string
+        public function xmlConvert($str, $protect_all = false)
         {
             return (new HtmlCommon())->xmlConvert($str, $protect_all);
         }
@@ -430,7 +430,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function quotesToEntities($str = ''): string
+        public function quotesToEntities($str = '')
         {
             return (new HtmlCommon())->quotesToEntities($str);
         }
@@ -454,7 +454,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function reduceDoubleSlashes($str = ''): string
+        public function reduceDoubleSlashes($str = '')
         {
             return (new HtmlCommon())->reduceDoubleSlashes($str);
         }
@@ -479,7 +479,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function reduceMultiples($str = '', $character = ',', $trim = false): string
+        public function reduceMultiples($str = '', $character = ',', $trim = false)
         {
             return (new HtmlCommon())->reduceMultiples($str, $character, $trim);
         }
@@ -494,7 +494,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 10/13/18 09:49
          *
          */
-        public function stripHtmlTag($str = ''): string
+        public function stripHtmlTag($str = '')
         {
             return (new HtmlCommon())->stripHtmlTag($str);
         }
@@ -533,7 +533,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:25
          *
          */
-        public function wordLimiter($str = '', $limit = 100, $end_char = '&#8230;'): string
+        public function wordLimiter($str = '', $limit = 100, $end_char = '&#8230;')
         {
             return TextProcessor::wordLimiter($str, $limit, $end_char);
         }
@@ -551,7 +551,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function wordCensor($str = '', $censored = '', $replacement = ''): string
+        public function wordCensor($str = '', $censored = '', $replacement = '')
         {
             return TextProcessor::wordCensor($str, $censored, $replacement);
         }
@@ -568,7 +568,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function wordWrap($str = '', $charlim = 76): string
+        public function wordWrap($str = '', $charlim = 76)
         {
             return TextProcessor::wordWrap($str, $charlim);
         }
@@ -599,7 +599,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function asciiToEntities($str = ''): string
+        public function asciiToEntities($str = '')
         {
             return TextProcessor::asciiToEntities($str);
         }
@@ -614,7 +614,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function entitiesToAscii($str = '', $all = true): string
+        public function entitiesToAscii($str = '', $all = true)
         {
             return TextProcessor::entitiesToAscii($str, $all);
         }
@@ -628,7 +628,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function highlightCode($str = ''): string
+        public function highlightCode($str = '')
         {
             return TextProcessor::highlightCode($str);
         }
@@ -645,7 +645,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function highlightPhrase($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>'): string
+        public function highlightPhrase($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>')
         {
             return TextProcessor::highlightPhrase($str, $phrase, $tag_open, $tag_close);
         }
@@ -662,7 +662,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return    string
          */
-        public function highlightKeyword($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>'): string
+        public function highlightKeyword($str = '', $phrase = '', $tag_open = '<mark>', $tag_close = '</mark>')
         {
             return TextProcessor::highlightKeyword($str, $phrase, $tag_open, $tag_close);
         }
@@ -694,7 +694,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 47:01
          */
-        public function validEmail($email = ''): bool
+        public function validEmail($email = '')
         {
             return Email::validateEmail($email);
         }
@@ -712,7 +712,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 46:00
          */
-        public function strongPassword($length = 20, $add_dashes = false, $available_sets = 'luna'): string
+        public function strongPassword($length = 20, $add_dashes = false, $available_sets = 'luna')
         {
             return Password::generateStrongPassword($length, $add_dashes, $available_sets);
         }
@@ -727,7 +727,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 08/18/2021 45:16
          */
-        public function validStrongPassword($password = ''): bool
+        public function validStrongPassword($password = '')
         {
             return Password::validStrongPassword($password);
         }
@@ -803,7 +803,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @return string string or long
          */
-        public static function alphaID($in, $to_num = false, $pad_up = false, $passKey = null): string
+        public static function alphaID($in, $to_num = false, $pad_up = false, $passKey = null)
         {
             return AlphaID::generateAlphaId($in, $to_num, $pad_up, $passKey);
         }

@@ -63,7 +63,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 09/20/2021 37:26
          */
-        public static function validateIP($ip): bool
+        public static function validateIP($ip)
         {
             return (new BaseIP())->ipValidate($ip);
         }
@@ -78,7 +78,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 53:52
          */
-        public static function validateIPV4($ip): bool
+        public static function validateIPV4($ip)
         {
             return (new BaseIP())->ipValidateV4($ip);
         }
@@ -93,7 +93,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
          * @copyright: 713uk13m <dev@nguyenanhung.com>
          * @time     : 07/28/2021 54:15
          */
-        public static function validateIPV6($ip): bool
+        public static function validateIPV6($ip)
         {
             return (new BaseIP())->ipValidateV6($ip);
         }
