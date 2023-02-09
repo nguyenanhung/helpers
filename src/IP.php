@@ -41,6 +41,19 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
         }
 
         /**
+         * Function getUserIP
+         *
+         * @return bool|int|string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 09/02/2023 55:51
+         */
+        public static function getUserIP()
+        {
+            return (new BaseIP())->getIpAddress();
+        }
+
+        /**
          * Function validateIP
          *
          * @param $ip

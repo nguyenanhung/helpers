@@ -14,6 +14,7 @@ use nguyenanhung\Libraries\Password\Hash;
 use nguyenanhung\Libraries\DateAndTime\DateAndTime;
 use nguyenanhung\Libraries\ArrayHelper\ArrayHelper;
 use nguyenanhung\Libraries\URI\URI;
+use nguyenanhung\Libraries\Basic\Miscellaneous\Miscellaneous;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
     /**
@@ -43,7 +44,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          *
          * @copyright https://www.codeigniter.com/
          */
-        public static function redirect($uri = '', $method = 'auto', $code = null): void
+        public static function redirect($uri = '', $method = 'auto', $code = null)
         {
             URI::redirect($uri, $method, $code);
         }
@@ -76,6 +77,21 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
         public static function arrayToObject($data = array())
         {
             return ArrayHelper::arrayToObject($data);
+        }
+
+        /**
+         * Function objectToArray
+         *
+         * @param $data
+         *
+         * @return mixed|string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 09/02/2023 54:12
+         */
+        public static function objectToArray($data)
+        {
+            return ArrayHelper::objectToArray($data);
         }
 
         /**
@@ -117,14 +133,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          */
         public static function commonMessageTelco($content = '', $type = 'length', $count_type = 'default')
         {
-            if ($type === 'length') {
-                return strlen($content);
-            }
-            if ($type === 'count' && $count_type === 'default') {
-                return ceil(strlen($content) / 160);
-            }
-
-            return $content;
+            return Miscellaneous::commonMessageVietnamTelco($content, $type, $count_type);
         }
 
         /**

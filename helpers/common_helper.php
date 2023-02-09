@@ -1,27 +1,14 @@
 <?php
 if (!function_exists('dump')) {
-    function dump($str = '')
+    function dump($str)
     {
-        echo "<pre>";
-        print_r($str);
-        echo "</pre>";
-    }
-}
-if (!function_exists('vardump_pre')) {
-    function vardump_pre($str = '')
-    {
-        echo "<pre>";
-        print_r($str);
-        echo "</pre>";
+        pre_print_r($str);
     }
 }
 if (!function_exists('dump_die')) {
-    function dump_die($str = '')
+    function dump_die($str)
     {
-        echo "<pre>";
-        print_r($str);
-        echo "</pre>";
-        die;
+        pre_print_r_die($str);
     }
 }
 if (!function_exists('isEmpty')) {

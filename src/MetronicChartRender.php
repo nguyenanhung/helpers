@@ -10,6 +10,8 @@
 
 namespace nguyenanhung\Classes\Helper;
 
+use nguyenanhung\Libraries\Basic\Miscellaneous\Miscellaneous;
+
 if (!class_exists('nguyenanhung\Classes\Helper\MetronicChartRender')) {
     class MetronicChartRender implements ProjectInterface
     {
@@ -29,28 +31,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\MetronicChartRender')) {
          */
         public function get_data_chart($item_list, $valueGet, $total)
         {
-            $dataChart = '';
-            if (count($item_list) > 0) {
-                $dataChart .= '[';
-                foreach ($item_list as $key => $value) {
-                    $dataChart .= '{' . '"country" : ' . '"' . $value->$valueGet . '", ';
-                    $dataChart .= '"visits" : ' . $value->sl . ', ';
-                    $dataChart .= '"color" : ' . '"#FF9E01"';
-                    if ($key === count($item_list) - 1) {
-                        $dataChart .= '}';
-                    } else {
-                        $dataChart .= '}, ';
-                    }
-                }
-                if ($total) {
-                    $dataChart .= ', {"country" : "Total", "visits" : ' . $total . ', "color" : "#0D52D1" }';
-                }
-                $dataChart .= ']';
-            } else {
-                $dataChart = '[]';
-            }
-
-            return $dataChart;
+            return (new Miscellaneous())->metronic_get_data_chart($item_list, $valueGet, $total);
         }
 
         /**
@@ -66,25 +47,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\MetronicChartRender')) {
          */
         public function get_data_chart_report($item_list, $valueGet)
         {
-            $dataChart = '';
-            if (count($item_list) > 0) {
-                $dataChart .= '[';
-                foreach ($item_list as $key => $value) {
-                    $dataChart .= '{' . '"country" : ' . '"' . date('d-m-Y', strtotime($value->date)) . '", ';
-                    $dataChart .= '"visits" : ' . $value->$valueGet . ', ';
-                    $dataChart .= '"color" : ' . '"#FF9E01"';
-                    if ($key === count($item_list) - 1) {
-                        $dataChart .= '}';
-                    } else {
-                        $dataChart .= '}, ';
-                    }
-                }
-                $dataChart .= ']';
-            } else {
-                $dataChart = '[]';
-            }
-
-            return $dataChart;
+            return (new Miscellaneous())->metronic_get_data_chart_report($item_list, $valueGet);
         }
     }
 }

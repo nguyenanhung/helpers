@@ -13,6 +13,7 @@ use nguyenanhung\Libraries\Text\TextProcessor;
 use nguyenanhung\Libraries\UUID\AlphaID;
 use nguyenanhung\Libraries\Snippets\IsEmpty\IsEmpty;
 use nguyenanhung\Libraries\HTML\Common as HtmlCommon;
+use nguyenanhung\Libraries\Basic\Miscellaneous\Miscellaneous;
 
 if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
     /**
@@ -30,12 +31,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
 
         public function dump($str)
         {
-            return dump($str);
+            Miscellaneous::dump($str);
         }
 
         public function dump_die($str)
         {
-            dump_die($str);
+            Miscellaneous::dump_die($str);
         }
 
         /**
@@ -146,8 +147,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Create a "Random" String
          *
-         * @param string    type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
-         * @param int    number of characters
+         * @param string $type type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
+         * @param int    $len  number of characters
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -313,8 +314,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Convert Reserved XML characters to Entities
          *
-         * @param string
-         * @param bool
+         * @param string $str
+         * @param bool   $protect_all
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -422,7 +423,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Converts single and double quotes to entities
          *
-         * @param string
+         * @param string $str
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -446,7 +447,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * http://www.some-site.com/index.php
          *
-         * @param string
+         * @param string $str
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -469,9 +470,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Fred, Bill, Joe, Jimmy
          *
-         * @param string
-         * @param string    the character you wish to reduce
-         * @param bool    TRUE/FALSE - whether to trim the character from the beginning/end
+         * @param string $str
+         * @param string $character the character you wish to reduce
+         * @param bool   $trim      TRUE/FALSE - whether to trim the character from the beginning/end
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -523,9 +524,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Limits a string to X number of words.
          *
-         * @param string
-         * @param int
-         * @param string    the end character. Usually an ellipsis
+         * @param string $str
+         * @param int    $limit
+         * @param string $end_char the end character. Usually an ellipsis
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -578,9 +579,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * Limits the string based on the character count.  Preserves complete words
          * so the character count may not be exactly as specified.
          *
-         * @param string
-         * @param int
-         * @param string    the end character. Usually an ellipsis
+         * @param string $str
+         * @param int    $n
+         * @param string $end_char the end character. Usually an ellipsis
          *
          * @return    string
          */
@@ -608,8 +609,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Converts character entities back to ASCII
          *
-         * @param string
-         * @param bool
+         * @param string $str
+         * @param bool   $all
          *
          * @return    string
          */
@@ -623,7 +624,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Colorizes code strings
          *
-         * @param string    the text string
+         * @param string $str the text string
          *
          * @return    string
          */

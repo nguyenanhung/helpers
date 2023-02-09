@@ -1,13 +1,21 @@
 [![Latest Stable Version](http://poser.pugx.org/nguyenanhung/helpers/v)](https://packagist.org/packages/nguyenanhung/helpers)
 [![Total Downloads](http://poser.pugx.org/nguyenanhung/helpers/downloads)](https://packagist.org/packages/nguyenanhung/helpers)
 [![Monthly Downloads](http://poser.pugx.org/nguyenanhung/helpers/d/monthly)](https://packagist.org/packages/nguyenanhung/helpers)
+[![Daily Downloads](http://poser.pugx.org/nguyenanhung/helpers/d/daily)](https://packagist.org/packages/nguyenanhung/helpers)
 [![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/helpers/v/unstable)](https://packagist.org/packages/nguyenanhung/helpers)
 [![License](http://poser.pugx.org/nguyenanhung/helpers/license)](https://packagist.org/packages/nguyenanhung/helpers)
 [![PHP Version Require](http://poser.pugx.org/nguyenanhung/helpers/require/php)](https://packagist.org/packages/nguyenanhung/helpers)
+[![composer.lock](http://poser.pugx.org/nguyenanhung/helpers/composerlock)](https://packagist.org/packages/nguyenanhung/helpers)
+[![Dependents](http://poser.pugx.org/nguyenanhung/helpers/dependents)](https://packagist.org/packages/nguyenanhung/helpers)
 
 # Helpers
 
-Các helper hỗ trợ trong xây dựng các dự án
+Các helper hỗ trợ trong xây dựng các dự án sử dụng PHP. Đầy đủ vũ khí để chiến mọi thể loại dự án, được cập nhật thường xuyên
+
+## Version
+
+- [x] V1.x, V1.x support all PHP version `>=5.6`
+- [x] V3.x support all PHP version `>=7.0`
 
 ### JSON Helper
 
