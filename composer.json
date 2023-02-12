@@ -43,6 +43,7 @@
         "nguyenanhung/slug-helper": ">=1.0",
         "nguyenanhung/string-helper": ">=1.0",
         "nguyenanhung/simple-curl-request-helper": ">=1.0",
+        "nguyenanhung/tracking-tag-helper": ">=1.0",
         "nguyenanhung/text-helper": ">=1.0",
         "nguyenanhung/uri-helper": ">=1.0",
         "nguyenanhung/uuid-helper": ">=1.0",
