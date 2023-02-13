@@ -358,6 +358,36 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         }
 
         /**
+         * Function viewMorePagination
+         *
+         * @param $options
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 14/02/2023 33:35
+         */
+        public function viewMorePagination($options = array())
+        {
+            return (new HtmlCommon())->viewMorePagination($options);
+        }
+
+        /**
+         * Function viewMorePagination
+         *
+         * @param $options
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 14/02/2023 33:28
+         */
+        public function viewSelectPagination($options = array())
+        {
+            return (new HtmlCommon())->viewSelectPagination($options);
+        }
+
+        /**
          * Function cleanPaginationUrl
          *
          * @param $str
@@ -370,21 +400,6 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         public function cleanPaginationUrl($str = '')
         {
             return (new HtmlCommon())->cleanPaginationUrl($str);
-        }
-
-        /**
-         * Function getPageNumber
-         *
-         * @param $str
-         *
-         * @return array|string|string[]
-         * @author   : 713uk13m <dev@nguyenanhung.com>
-         * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 16/06/2022 54:22
-         */
-        public function getPageNumber($str = '')
-        {
-            return (new HtmlCommon())->getPageNumber($str);
         }
 
         /**
