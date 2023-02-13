@@ -358,6 +358,36 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         }
 
         /**
+         * Function viewMorePagination
+         *
+         * @param $options
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 14/02/2023 33:35
+         */
+        public function viewMorePagination($options = array())
+        {
+            return (new HtmlCommon())->viewMorePagination($options);
+        }
+
+        /**
+         * Function viewMorePagination
+         *
+         * @param $options
+         *
+         * @return string
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 14/02/2023 33:28
+         */
+        public function viewSelectPagination($options = array())
+        {
+            return (new HtmlCommon())->viewSelectPagination($options);
+        }
+
+        /**
          * Function cleanPaginationUrl
          *
          * @param $str
