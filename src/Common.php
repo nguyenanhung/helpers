@@ -403,6 +403,21 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         }
 
         /**
+         * Function getPageNumber
+         *
+         * @param $str
+         *
+         * @return int
+         * @author   : 713uk13m <dev@nguyenanhung.com>
+         * @copyright: 713uk13m <dev@nguyenanhung.com>
+         * @time     : 14/02/2023 38:07
+         */
+        public function getPageNumber($str = '')
+        {
+            return (new HtmlCommon())->getPageNumber($str);
+        }
+
+        /**
          * Function htmlEscape - Returns HTML escaped variable.
          *
          * @param mixed $var           The input string or array of strings to be escaped.
