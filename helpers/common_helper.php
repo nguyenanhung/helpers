@@ -1,14 +1,14 @@
 <?php
 if (!function_exists('dump')) {
-    function dump($str)
+    function dump($var)
     {
-        pre_print_r($str);
+        pre_print_r($var);
     }
 }
 if (!function_exists('dump_die')) {
-    function dump_die($str)
+    function dump_die($var)
     {
-        pre_print_r_die($str);
+        pre_print_r_die($var);
     }
 }
 if (!function_exists('isEmpty')) {

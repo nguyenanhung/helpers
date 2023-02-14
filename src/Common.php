@@ -29,14 +29,14 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
 
         use Version;
 
-        public function dump($str)
+        public function dump($var)
         {
-            Miscellaneous::dump($str);
+            Miscellaneous::dump($var);
         }
 
-        public function dump_die($str)
+        public function dump_die($var)
         {
-            Miscellaneous::dump_die($str);
+            Miscellaneous::dump_die($var);
         }
 
         /**
@@ -407,10 +407,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @param $str
          *
-         * @return array|string|string[]
+         * @return int
          * @author   : 713uk13m <dev@nguyenanhung.com>
          * @copyright: 713uk13m <dev@nguyenanhung.com>
-         * @time     : 16/06/2022 54:22
+         * @time     : 14/02/2023 36:44
          */
         public function getPageNumber($str = '')
         {
