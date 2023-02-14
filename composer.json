@@ -54,7 +54,7 @@
         "nguyenanhung/simple-php-30s-of-code": "^1.0"
     },
     "require-dev": {
-        "kint-php/kint": "^3.3"
+        "kint-php/kint": "^5 || ^4 || ^3 || ^2 || ^1"
     },
     "suggest": {
         "ext-curl": "Needed to support cURL",
@@ -62,7 +62,23 @@
         "ext-mcrypt": "Needed to support mcrypt",
         "ext-iconv": "Needed to support iconv",
         "ext-openssl": "Needed to support openssl",
-        "ext-mbstring": "Needed to support mb_string"
+        "ext-mbstring": "Needed to support mb_string",
+        "nguyenanhung/security": "Awesome Helpers - Wrapper for Security, Encrypt, Encode, Purifier",
+        "nguyenanhung/validation": "Awesome Validation - A fast, extensible & stand-alone PHP input validation class that allows you to validate any data",
+        "nguyenanhung/image": "Need support for Image Service",
+        "nguyenanhung/seo": "Need support for SEO",
+        "nguyenanhung/my-cache": "Need support for Powerful Cache Implement",
+        "nguyenanhung/my-debug": "Need support for Powerful Logger (Extend from Monolog)",
+        "nguyenanhung/requests": "Need support for Powerful HTTP Request",
+        "nguyenanhung/database": "Need support for Powerful SQL Database Tools (Customize Laravel Database)",
+        "nguyenanhung/monitor": "Need support for Send Monitor Message to Monitor Service",
+        "nguyenanhung/markdown": "Parser for Markdown",
+        "nguyenanhung/basic-firewall": "PHP Basic Firewall - Library providing IP filtering features",
+        "nguyenanhung/google-recaptcha-helper": "Google reCAPTCHA Helper",
+        "nguyenanhung/dotenv": "PHP Dot ENV - Basic, Simple and Lightweight",
+        "bear8421/spreadsheets-basic": "Light, simple and standalone Google Spreadsheets Basic Connector",
+        "bear8421/gravatar": "Simple Gravatar",
+        "tramtro/make-some-noise": "Debug Library - Wrapper for Debug, OpCache, Test ENV"
     },
     "autoload": {
         "psr-4": {
