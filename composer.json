@@ -74,7 +74,11 @@
         "nguyenanhung/monitor": "Need support for Send Monitor Message to Monitor Service",
         "nguyenanhung/markdown": "Parser for Markdown",
         "nguyenanhung/basic-firewall": "PHP Basic Firewall - Library providing IP filtering features",
-        "nguyenanhung/google-recaptcha-helper": "Google reCAPTCHA Helper"
+        "nguyenanhung/google-recaptcha-helper": "Google reCAPTCHA Helper",
+        "nguyenanhung/dotenv": "PHP Dot ENV - Basic, Simple and Lightweight",
+        "bear8421/spreadsheets-basic": "Light, simple and standalone Google Spreadsheets Basic Connector",
+        "bear8421/gravatar": "Simple Gravatar",
+        "tramtro/make-some-noise": "Debug Library - Wrapper for Debug, OpCache, Test ENV"
     },
     "autoload": {
         "psr-4": {
