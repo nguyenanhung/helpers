@@ -222,7 +222,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @time  : 9/29/18 11:07
          *
          */
-        public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://via.placeholder.com/'): string
+        public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://placehold.co/'): string
         {
             return (new HtmlCommon())->placeholder($size, $bg_color, $text_color, $text, $domain);
         }
