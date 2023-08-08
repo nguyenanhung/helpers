@@ -8,18 +8,18 @@
 [![composer.lock](http://poser.pugx.org/nguyenanhung/helpers/composerlock)](https://packagist.org/packages/nguyenanhung/helpers)
 [![Dependents](http://poser.pugx.org/nguyenanhung/helpers/dependents)](https://packagist.org/packages/nguyenanhung/helpers)
 
-# Helpers
+# Helpers - PHP Powerful library, helper and tools
 
-PHP Powerful library, helper and tools
+Some useful libraries and functions for your work, saving you more time to do more useful things
 
 ## Version
 
 - [x] V1.x, V2.x support all PHP version `>=5.6`
 - [x] V3.x support all PHP version `>=7.0`
 
-### Liên hệ
+### Contact
 
-Nếu có bất cứ thông tin nào cần trao đổi và tìm hiểu, vui lòng liên hệ theo thông tin sau
+If there is any information that needs to be exchanged and learned, please contact the following information
 
 | Name        | Email                | Skype            | Facebook      |
 |-------------|----------------------|------------------|---------------|
