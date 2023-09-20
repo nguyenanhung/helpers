@@ -51,10 +51,11 @@
         "nguyenanhung/xml-helper": ">=1.0",
         "nguyenanhung/xml2json-helper": ">=1.0",
         "nguyenanhung/zip-helper": ">=1.0",
-        "nguyenanhung/simple-php-30s-of-code": "^1.0"
+        "nguyenanhung/simple-php-30s-of-code": "^1.0",
+        "smart-bear-cms/external-cdn-url-optimize": ">=1.0"
     },
     "require-dev": {
-        "kint-php/kint": "^4 || ^3 || ^2 || ^1"
+        "kint-php/kint": "^5 || ^4 || ^3 || ^2 || ^1"
     },
     "suggest": {
         "ext-curl": "Needed to support cURL",
