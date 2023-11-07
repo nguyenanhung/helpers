@@ -52,6 +52,7 @@
         "nguyenanhung/xml-helper": "^2.0 || ^1.0",
         "nguyenanhung/xml2json-helper": "^2.0 || ^1.0",
         "nguyenanhung/zip-helper": "^2.0 || ^1.0",
+        "nguyenanhung/php-cli-helper": ">=1.0",
         "nguyenanhung/simple-php-30s-of-code": "^1.0",
         "smart-bear-cms/external-cdn-url-optimize": ">=1.0"
     },
