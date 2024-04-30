@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\IP\Cookie as BaseCookie;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Cookie')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Cookie')) {
     /**
      * Class Cookie
      *

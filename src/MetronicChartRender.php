@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Basic\Miscellaneous\Miscellaneous;
 
-if (!class_exists('nguyenanhung\Classes\Helper\MetronicChartRender')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\MetronicChartRender')) {
     class MetronicChartRender implements ProjectInterface
     {
         use Version;

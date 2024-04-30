@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\ImageHelper\ImageHelper;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Image')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Image')) {
     class Image extends ImageHelper
     {
     }

@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Number\Number;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Num')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Num')) {
     /**
      * The number (aka, "num") class
      *

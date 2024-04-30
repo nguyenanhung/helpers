@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\HTML\Form as HtmlForm;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Form')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Form')) {
     /**
      * Class Form
      *

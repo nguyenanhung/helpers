@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Encryption\SimpleVerifiedKey as BaseSimpleVerifiedKey;
 
-if (!class_exists('nguyenanhung\Classes\Helper\SimpleVerifiedKey')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\SimpleVerifiedKey')) {
     class SimpleVerifiedKey extends BaseSimpleVerifiedKey implements ProjectInterface
     {
         use Version;

@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\ArrayHelper\ArrayHelper;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Arr')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Arr')) {
     /**
      * Class Arr - The array (aka, "arr") class
      *

@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Password\Password as BasePassword;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Password')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Password')) {
     /**
      * Class Password
      *

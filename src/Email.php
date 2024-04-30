@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Email\Email as BaseEmail;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Email')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Email')) {
     /**
      * Class Email
      *

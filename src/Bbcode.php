@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\BBCode\BBCode as BaseBBCode;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Bbcode')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Bbcode')) {
     /**
      * Class Bbcode
      *

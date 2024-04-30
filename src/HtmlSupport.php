@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\HTML\Common as HtmlCommon;
 
-if (!trait_exists('nguyenanhung\Classes\Helper\HtmlSupport')) {
+if ( ! trait_exists('nguyenanhung\Classes\Helper\HtmlSupport')) {
     /**
      * Trait HtmlSupport
      *
@@ -24,14 +24,14 @@ if (!trait_exists('nguyenanhung\Classes\Helper\HtmlSupport')) {
         /**
          * Function tableColor
          *
-         * @author: 713uk13m <dev@nguyenanhung.com>
-         * @time  : 2018-12-19 22:43
-         *
          * @param $current
          * @param $previous
          * @param $id
          *
          * @return string
+         * @author: 713uk13m <dev@nguyenanhung.com>
+         * @time  : 2018-12-19 22:43
+         *
          */
         public function tableColor($current, $previous, $id): string
         {

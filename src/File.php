@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Filesystem\Filesystem as BaseFilesystem;
 
-if (!class_exists('nguyenanhung\Classes\Helper\File')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\File')) {
     /**
      * Class File
      *
