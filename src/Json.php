@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\JSON\Json as BaseJson;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Json')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Json')) {
     /**
      * Class Json
      *

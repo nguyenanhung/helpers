@@ -9,7 +9,7 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
     /**
      * Class UserUtils
      *
@@ -24,8 +24,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
         /**
          * Function hashUserPassword
          *
-         * @param string $password
-         * @param string $salt
+         * @param  string  $password
+         * @param  string  $salt
          *
          * @return false|string|null
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -40,7 +40,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
         /**
          * Function hashUserPasswordGetInfo
          *
-         * @param string $hash
+         * @param  string  $hash
          *
          * @return array|null
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -55,7 +55,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
         /**
          * Function userPasswordNeedSReHash
          *
-         * @param string $hash
+         * @param  string  $hash
          *
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -70,8 +70,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\UserUtils')) {
         /**
          * Function passwordVerify
          *
-         * @param string $password
-         * @param string $hash
+         * @param  string  $password
+         * @param  string  $hash
          *
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>

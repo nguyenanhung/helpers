@@ -16,7 +16,7 @@ use nguyenanhung\Libraries\ArrayHelper\ArrayHelper;
 use nguyenanhung\Libraries\URI\URI;
 use nguyenanhung\Libraries\Basic\Miscellaneous\Miscellaneous;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Utils')) {
     /**
      * Class Utils
      *
@@ -35,10 +35,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
          * For very fine grained control over headers, you could use the Output
          * Library's set_header() function.
          *
-         * @param string $uri       URL
-         * @param string $method    Redirect method
+         * @param  string  $uri  URL
+         * @param  string  $method  Redirect method
          *                          'auto', 'location' or 'refresh'
-         * @param int    $code      HTTP Response status code
+         * @param  int  $code  HTTP Response status code
          *
          * @return    void
          *
@@ -67,7 +67,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
         /**
          * Function arrayToObject
          *
-         * @param array $data
+         * @param  array  $data
          *
          * @return array|false|\stdClass
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -97,7 +97,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
         /**
          * Function objectFormat
          *
-         * @param string|array|object $data
+         * @param  string|array|object  $data
          *
          * @return array|bool|mixed|\stdClass|string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -122,9 +122,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
         /**
          * Function commonMessageTelco
          *
-         * @param string $content
-         * @param string $type
-         * @param string $count_type
+         * @param  string  $content
+         * @param  string  $type
+         * @param  string  $count_type
          *
          * @return false|float|int|string
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -139,7 +139,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
         /**
          * Function expireTime
          *
-         * @param int $duration
+         * @param  int  $duration
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -154,7 +154,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
         /**
          * Function generateHashValue
          *
-         * @param string $str
+         * @param  string  $str
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -234,7 +234,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
         /**
          * Function generateOTPCode
          *
-         * @param int $length
+         * @param  int  $length
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -249,7 +249,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Utils')) {
         /**
          * Function generateOTPExpireTime
          *
-         * @param int $hour
+         * @param  int  $hour
          *
          * @return string
          * @throws \Exception

@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Filesystem\Directory as FilesystemDirectory;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Dir')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Dir')) {
     /**
      * The directory (aka, "dir") class
      *

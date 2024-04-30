@@ -15,7 +15,7 @@ use nguyenanhung\Libraries\Snippets\IsEmpty\IsEmpty;
 use nguyenanhung\Libraries\HTML\Common as HtmlCommon;
 use nguyenanhung\Libraries\Basic\Miscellaneous\Miscellaneous;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Common')) {
     /**
      * Class Common
      *
@@ -42,7 +42,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function isEmpty
          *
-         * @param mixed $var
+         * @param  mixed  $var
          *
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -57,8 +57,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function jsonItem
          *
-         * @param string $json_string
-         * @param string $item_output
+         * @param  string  $json_string
+         * @param  string  $item_output
          *
          * @return null|string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -73,7 +73,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function isJson
          *
-         * @param string $json
+         * @param  string  $json
          *
          * @return bool TRUE or FALSE
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -88,8 +88,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function arrayToObject
          *
-         * @param array $array
-         * @param false $str_to_lower
+         * @param  array  $array
+         * @param  false  $str_to_lower
          *
          * @return array|false|\stdClass
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -104,7 +104,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function objectToArray
          *
-         * @param string $object
+         * @param  string  $object
          *
          * @return false|mixed|string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -119,7 +119,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function arrayQuickSort
          *
-         * @param array $array
+         * @param  array  $array
          *
          * @return array
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -147,8 +147,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Create a "Random" String
          *
-         * @param string $type type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
-         * @param int    $len  number of characters
+         * @param  string  $type  type of random string.  basic, alpha, alnum, numeric, nozero, unique, md5, encrypt and sha1
+         * @param  int  $len  number of characters
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -164,8 +164,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * Function directoryMap
          *
          * @param      $source_dir
-         * @param int  $directory_depth
-         * @param bool $hidden
+         * @param  int  $directory_depth
+         * @param  bool  $hidden
          *
          * @return array|bool
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -180,8 +180,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function newFolder
          *
-         * @param string $pathname Folder to Create
-         * @param int    $mode     Mode Permission, default is 0777
+         * @param  string  $pathname  Folder to Create
+         * @param  int  $mode  Mode Permission, default is 0777
          *
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -196,7 +196,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function formatSizeUnits
          *
-         * @param int $bytes
+         * @param  int  $bytes
          *
          * @return string
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -211,19 +211,24 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function placeholder
          *
-         * @param string $size
-         * @param string $bg_color
-         * @param string $text_color
-         * @param string $text
-         * @param string $domain
+         * @param  string  $size
+         * @param  string  $bg_color
+         * @param  string  $text_color
+         * @param  string  $text
+         * @param  string  $domain
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:07
          *
          */
-        public function placeholder($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://placehold.co/'): string
-        {
+        public function placeholder(
+            $size = '300x250',
+            $bg_color = '',
+            $text_color = '',
+            $text = '',
+            $domain = 'https://placehold.co/'
+        ): string {
             return (new HtmlCommon())->placeholder($size, $bg_color, $text_color, $text, $domain);
         }
 
@@ -231,10 +236,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function meta
          *
-         * @param string|array $name
-         * @param string       $content
-         * @param string       $type
-         * @param string       $newline
+         * @param  string|array  $name
+         * @param  string  $content
+         * @param  string  $type
+         * @param  string  $newline
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -249,10 +254,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function metaProperty
          *
-         * @param string|array $property
-         * @param string       $content
-         * @param string       $type
-         * @param string       $newline
+         * @param  string|array  $property
+         * @param  string  $content
+         * @param  string  $type
+         * @param  string  $newline
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -267,7 +272,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function metaTagEquiv
          *
-         * @param array $data
+         * @param  array  $data
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -295,27 +300,32 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function sitemapParse
          *
-         * @param string       $domain
-         * @param string|array $loc
-         * @param string       $lastmod
-         * @param string       $type
-         * @param string       $newline
+         * @param  string  $domain
+         * @param  string|array  $loc
+         * @param  string  $lastmod
+         * @param  string  $type
+         * @param  string  $newline
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/29/18 11:11
          *
          */
-        public function sitemapParse($domain = '', $loc = '', $lastmod = '', $type = 'property', $newline = "\n"): string
-        {
+        public function sitemapParse(
+            $domain = '',
+            $loc = '',
+            $lastmod = '',
+            $type = 'property',
+            $newline = "\n"
+        ): string {
             return (new HtmlCommon())->sitemapParse($domain, $loc, $lastmod, $type, $newline);
         }
 
         /**
          * Convert Reserved XML characters to Entities
          *
-         * @param string $str
-         * @param bool   $protect_all
+         * @param  string  $str
+         * @param  bool  $protect_all
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -330,7 +340,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function viewPagination
          *
-         * @param array $options
+         * @param  array  $options
          *
          * @return string|null
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -420,8 +430,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function htmlEscape - Returns HTML escaped variable.
          *
-         * @param mixed $var           The input string or array of strings to be escaped.
-         * @param bool  $double_encode $double_encode set to FALSE prevents escaping twice.
+         * @param  mixed  $var  The input string or array of strings to be escaped.
+         * @param  bool  $double_encode  $double_encode set to FALSE prevents escaping twice.
          *
          * @return    mixed            The escaped string or array of strings as a result.
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -436,7 +446,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function stripQuotes
          *
-         * @param string $str
+         * @param  string  $str
          *
          * @return array|string|string[]
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -453,7 +463,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Converts single and double quotes to entities
          *
-         * @param string $str
+         * @param  string  $str
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -477,7 +487,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * http://www.some-site.com/index.php
          *
-         * @param string $str
+         * @param  string  $str
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -500,9 +510,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Fred, Bill, Joe, Jimmy
          *
-         * @param string $str
-         * @param string $character the character you wish to reduce
-         * @param bool   $trim      TRUE/FALSE - whether to trim the character from the beginning/end
+         * @param  string  $str
+         * @param  string  $character  the character you wish to reduce
+         * @param  bool  $trim  TRUE/FALSE - whether to trim the character from the beginning/end
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -517,7 +527,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function stripHtmlTag
          *
-         * @param string $str
+         * @param  string  $str
          *
          * @return string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -536,7 +546,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * @param      $str
          * @param      $tags
-         * @param bool $stripContent
+         * @param  bool  $stripContent
          *
          * @return null|string|string[]
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -554,9 +564,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Limits a string to X number of words.
          *
-         * @param string $str
-         * @param int    $limit
-         * @param string $end_char the end character. Usually an ellipsis
+         * @param  string  $str
+         * @param  int  $limit
+         * @param  string  $end_char  the end character. Usually an ellipsis
          *
          * @return    string
          * @author: 713uk13m <dev@nguyenanhung.com>
@@ -575,9 +585,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * matched words will be converted to #### or to the replacement
          * word you've submitted.
          *
-         * @param string       $str         the text string
-         * @param string|array $censored    the array of censored words
-         * @param string       $replacement the optional replacement value
+         * @param  string  $str  the text string
+         * @param  string|array  $censored  the array of censored words
+         * @param  string  $replacement  the optional replacement value
          *
          * @return    string
          */
@@ -593,8 +603,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * Anything placed between {unwrap}{/unwrap} will not be word wrapped, nor
          * will URLs.
          *
-         * @param string $str     the text string
-         * @param int    $charlim = 76    the number of characters to wrap at
+         * @param  string  $str  the text string
+         * @param  int  $charlim  = 76    the number of characters to wrap at
          *
          * @return    string
          */
@@ -609,9 +619,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * Limits the string based on the character count.  Preserves complete words
          * so the character count may not be exactly as specified.
          *
-         * @param string $str
-         * @param int    $n
-         * @param string $end_char the end character. Usually an ellipsis
+         * @param  string  $str
+         * @param  int  $n
+         * @param  string  $end_char  the end character. Usually an ellipsis
          *
          * @return    string
          */
@@ -625,7 +635,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Converts high ASCII text and MS Word special characters to character entities
          *
-         * @param string $str
+         * @param  string  $str
          *
          * @return    string
          */
@@ -639,8 +649,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Converts character entities back to ASCII
          *
-         * @param string $str
-         * @param bool   $all
+         * @param  string  $str
+         * @param  bool  $all
          *
          * @return    string
          */
@@ -654,7 +664,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Colorizes code strings
          *
-         * @param string $str the text string
+         * @param  string  $str  the text string
          *
          * @return    string
          */
@@ -668,10 +678,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Highlights a phrase within a text string
          *
-         * @param string $str       the text string
-         * @param string $phrase    the phrase you'd like to highlight
-         * @param string $tag_open  the openging tag to precede the phrase with
-         * @param string $tag_close the closing tag to end the phrase with
+         * @param  string  $str  the text string
+         * @param  string  $phrase  the phrase you'd like to highlight
+         * @param  string  $tag_open  the openging tag to precede the phrase with
+         * @param  string  $tag_close  the closing tag to end the phrase with
          *
          * @return    string
          */
@@ -685,10 +695,10 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          *
          * Highlights a keyword within a text string
          *
-         * @param string $str       the text string
-         * @param string $phrase    the phrase you'd like to highlight
-         * @param string $tag_open  the opening tag to precede the phrase with
-         * @param string $tag_close the closing tag to end the phrase with
+         * @param  string  $str  the text string
+         * @param  string  $phrase  the phrase you'd like to highlight
+         * @param  string  $tag_open  the opening tag to precede the phrase with
+         * @param  string  $tag_close  the closing tag to end the phrase with
          *
          * @return    string
          */
@@ -700,8 +710,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function convertStrToEn
          *
-         * @param string $str
-         * @param string $separator
+         * @param  string  $str
+         * @param  string  $separator
          *
          * @return array|mixed|string|string[]
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -717,7 +727,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function validEmail
          *
-         * @param string $email
+         * @param  string  $email
          *
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -733,9 +743,9 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function strongPassword
          *
-         * @param int    $length
-         * @param false  $add_dashes
-         * @param string $available_sets
+         * @param  int  $length
+         * @param  false  $add_dashes
+         * @param  string  $available_sets
          *
          * @return string
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -750,7 +760,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
         /**
          * Function validStrongPassword
          *
-         * @param string $password
+         * @param  string  $password
          *
          * @return bool
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -818,6 +828,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * but I haven't really dugg into this. If you have more info on those
          * matters feel free to leave a comment.
          *
+         * @param  mixed  $in  String or long input to translate
+         * @param  boolean  $to_num  Reverses translation when true
+         * @param  mixed  $pad_up  Number or boolean padds the result up to a specified length
+         * @param  string  $passKey  Supplying a password makes it harder to calculate the original ID
+         *
+         * @return string string or long
          * @author    Kevin van Zonneveld <kevin@vanzonneveld.net>
          * @author    Simon Franz
          * @author    Deadfish
@@ -826,12 +842,6 @@ if (!class_exists('nguyenanhung\Classes\Helper\Common')) {
          * @version   SVN: Release: $Id: alphaID.inc.php 344 2009-06-10 17:43:59Z kevin $
          * @link      http://kevin.vanzonneveld.net/
          *
-         * @param mixed   $in      String or long input to translate
-         * @param boolean $to_num  Reverses translation when true
-         * @param mixed   $pad_up  Number or boolean padds the result up to a specified length
-         * @param string  $passKey Supplying a password makes it harder to calculate the original ID
-         *
-         * @return string string or long
          */
         public static function alphaID($in, $to_num = false, $pad_up = false, $passKey = null): string
         {

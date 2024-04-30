@@ -40,7 +40,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\String\Utf8 as StringUtf8;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Utf8')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Utf8')) {
     /**
      * Utf8 Class
      *

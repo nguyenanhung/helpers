@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Filtered\Filter as BaseFilter;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Filter')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Filter')) {
     /**
      * Class Filter
      *

@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\String\Str as StrLibraries;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Str')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Str')) {
     /**
      * The string (aka, "str") class
      *

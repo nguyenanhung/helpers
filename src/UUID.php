@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\UUID\UUID as BasicUUID;
 
-if (!class_exists('nguyenanhung\Classes\Helper\UUID')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\UUID')) {
     /**
      * Class UUID
      *

@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\IP\IP as BaseIP;
 
-if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\IP')) {
     /**
      * Class IP
      *
@@ -28,7 +28,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
         /**
          * Function getIPAddress
          *
-         * @param false $convertToInteger
+         * @param  false  $convertToInteger
          *
          * @return false|int|string
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -101,8 +101,8 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
         /**
          * Function getRegion
          *
-         * @param string $ip
-         * @param string $apiToken
+         * @param  string  $ip
+         * @param  string  $apiToken
          *
          * @return false|mixed
          * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -117,7 +117,7 @@ if (!class_exists('nguyenanhung\Classes\Helper\IP')) {
         /**
          * Function getIpInformation
          *
-         * @param string $ip
+         * @param  string  $ip
          *
          * @return string|null
          * @author   : 713uk13m <dev@nguyenanhung.com>

@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\JWT\JWTHelper as BaseJWTHelper;
 
-if (!class_exists('nguyenanhung\Classes\Helper\JWTHelper')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\JWTHelper')) {
     /**
      * Class JWTHelper
      *

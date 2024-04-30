@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Base64\Base64 as LibrariesBase64;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Base64')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Base64')) {
     /**
      * Class Base64
      *

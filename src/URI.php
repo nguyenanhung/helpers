@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\URI\URI as BaseURI;
 
-if (!class_exists('nguyenanhung\Classes\Helper\URI')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\URI')) {
     /**
      * Class URI
      *

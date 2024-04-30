@@ -40,7 +40,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\HTML\Table as HtmlTable;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Table')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Table')) {
     /**
      * HTML Table Generating Class
      *

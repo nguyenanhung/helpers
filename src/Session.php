@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\IP\Session as BaseSession;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Session')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Session')) {
     /**
      * Class Session
      *

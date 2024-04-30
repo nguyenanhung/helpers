@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\HTML\HTML as BaseHtml;
 
-if (!class_exists('nguyenanhung\Classes\Helper\HTML')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\HTML')) {
     /**
      * @abstract
      * @author        Miranda <miranda@lunnaly.com> & Gustavo <guustavo_59@hotmail.com>

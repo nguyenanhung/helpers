@@ -9,7 +9,7 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-if (!class_exists('nguyenanhung\Classes\Helper\DataRepository')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\DataRepository')) {
     /**
      * Class DataRepository
      *
@@ -25,12 +25,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\DataRepository')) {
         /**
          * Hàm lấy nội dung config được quy định trong thư mục config
          *
+         * @param  string  $configName  Tên file config
+         *
+         * @return array|mixed
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 9/28/18 14:47
          *
-         * @param string $configName Tên file config
-         *
-         * @return array|mixed
          */
         public static function getData($configName)
         {
@@ -45,12 +45,12 @@ if (!class_exists('nguyenanhung\Classes\Helper\DataRepository')) {
         /**
          * Hàm lấy nội dung Data từ 1 file bất kỳ trong hệ thống
          *
+         * @param  string  $filename  Đường dẫn file config
+         *
+         * @return array|mixed
          * @author: 713uk13m <dev@nguyenanhung.com>
          * @time  : 10/17/18 09:25
          *
-         * @param string $filename Đường dẫn file config
-         *
-         * @return array|mixed
          */
         public static function getDataContent($filename)
         {

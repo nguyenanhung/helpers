@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\BoolType\BoolType as BaseBoolType;
 
-if (!class_exists('nguyenanhung\Classes\Helper\BoolType')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\BoolType')) {
     /**
      * Class BoolType - The boolean (aka, "bool") class
      *

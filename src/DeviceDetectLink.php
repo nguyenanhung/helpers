@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Mobile\DeviceDetectLink as MobileDeviceDetectLink;
 
-if (!class_exists('nguyenanhung\Classes\Helper\DeviceDetectLink')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\DeviceDetectLink')) {
     /**
      * Class DeviceDetectLink
      *

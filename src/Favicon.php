@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Favicon\Favicon as FaviconLib;
 
-if (!class_exists('nguyenanhung\Classes\Helper\Favicon')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\Favicon')) {
     class Favicon extends FaviconLib
     {
     }

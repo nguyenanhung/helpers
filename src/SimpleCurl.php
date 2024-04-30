@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\SimpleRequestCurl\SimpleCurl as SimpleRequestCurlLib;
 
-if (!class_exists('nguyenanhung\Classes\Helper\SimpleCurl')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\SimpleCurl')) {
     class SimpleCurl extends SimpleRequestCurlLib implements ProjectInterface
     {
         use Version;

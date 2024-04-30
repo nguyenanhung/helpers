@@ -11,7 +11,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\Mobile\AppleLink as MobileAppleLink;
 
-if (!class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\AppleLink')) {
     /**
      * Class AppleLink
      *

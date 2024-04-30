@@ -1,94 +1,94 @@
 {
-	"name": "nguyenanhung/helpers",
-	"description": "Helper Wrapper - PHP Powerful library, helper and tools",
-	"type": "library",
-	"license": "MIT",
-	"homepage": "https://github.com/nguyenanhung/helpers",
-	"authors": [
-		{
-			"name": "Nguyen An Hung",
-			"email": "dev@nguyenanhung.com",
-			"homepage": "https://nguyenanhung.com"
-		}
-	],
-	"require": {
-		"php": "^8.0 || ^7.0",
-		"ext-json": "*",
-		"ext-curl": "*",
-		"ext-mbstring": "*",
-		"nguyenanhung/array-helper": "^2.0 || ^1.0",
-		"nguyenanhung/base64-php-helper": "^2.0 || ^1.0",
-		"nguyenanhung/basic-miscellaneous-helper": "^2.0 || ^1.0",
-		"nguyenanhung/bool-type-helper": "^2.0 || ^1.0",
-		"nguyenanhung/bbcode-helper": "^2.0 || ^1.0",
-		"nguyenanhung/date-helper": "^2.0 || ^1.0",
-		"nguyenanhung/escape-helper": "^2.0 || ^1.0",
-		"nguyenanhung/email-helper": "^2.0 || ^1.0",
-		"nguyenanhung/encryption-helper": "^2.0 || ^1.0",
-		"nguyenanhung/filesystem-helper": "^2.0 || ^1.0",
-		"nguyenanhung/filtered-helper": "^2.0 || ^1.0",
-		"nguyenanhung/favicon-helper": "^2.0 || ^1.0",
-		"nguyenanhung/hashids-helper": "^2.0 || ^1.0",
-		"nguyenanhung/html-helper": "^2.0 || ^1.0",
-		"nguyenanhung/http-download-helper": "^2.0 || ^1.0",
-		"nguyenanhung/ip-helper": "^2.0 || ^1.0",
-		"nguyenanhung/is-empty-helper": "^2.0 || ^1.0",
-		"nguyenanhung/image-helper": "^2.0 || ^1.0",
-		"nguyenanhung/json-helper": "^2.0 || ^1.0",
-		"nguyenanhung/jwt-helper": "^2.0 || ^1.0",
-		"nguyenanhung/math-helper": "^2.0 || ^1.0",
-		"nguyenanhung/mobile-helper": "^2.0 || ^1.0",
-		"nguyenanhung/nanoid-helper": "^2.0 || ^1.0",
-		"nguyenanhung/number-helper": "^2.0 || ^1.0",
-		"nguyenanhung/password-helper": "^2.0 || ^1.0",
-		"nguyenanhung/slug-helper": "^2.0 || ^1.0",
-		"nguyenanhung/string-helper": "^2.0 || ^1.0",
-		"nguyenanhung/simple-curl-request-helper": "^2.0 || ^1.0",
-		"nguyenanhung/tracking-tag-helper": "^2.0 || ^1.0",
-		"nguyenanhung/text-helper": "^2.0 || ^1.0",
-		"nguyenanhung/typography-helper": "^2.0 || ^1.0",
-		"nguyenanhung/uri-helper": "^2.0 || ^1.0",
-		"nguyenanhung/uuid-helper": "^2.0 || ^1.0",
-		"nguyenanhung/xml-helper": "^2.0 || ^1.0",
-		"nguyenanhung/xml2json-helper": "^2.0 || ^1.0",
-		"nguyenanhung/zip-helper": "^2.0 || ^1.0",
-		"nguyenanhung/php-cli-helper": ">=1.0",
-		"nguyenanhung/simple-php-30s-of-code": "^1.0",
-		"smart-bear-cms/external-cdn-url-optimize": ">=1.0"
-	},
-	"require-dev": {
-		"kint-php/kint": "^5 || ^4 || ^3 || ^2 || ^1"
-	},
-	"suggest": {
-		"ext-curl": "Needed to support cURL",
-		"ext-json": "Needed to support JSON",
-		"ext-mcrypt": "Needed to support mcrypt",
-		"ext-iconv": "Needed to support iconv",
-		"ext-openssl": "Needed to support openssl",
-		"ext-mbstring": "Needed to support mb_string",
-		"nguyenanhung/security": "Awesome Helpers - Wrapper for Security, Encrypt, Encode, Purifier",
-		"nguyenanhung/validation": "Awesome Validation - A fast, extensible & stand-alone PHP input validation class that allows you to validate any data",
-		"nguyenanhung/image": "Need support for Image Service",
-		"nguyenanhung/seo": "Need support for SEO",
-		"nguyenanhung/my-cache": "Need support for Powerful Cache Implement",
-		"nguyenanhung/my-debug": "Need support for Powerful Logger (Extend from Monolog)",
-		"nguyenanhung/requests": "Need support for Powerful HTTP Request",
-		"nguyenanhung/database": "Need support for Powerful SQL Database Tools (Customize Laravel Database)",
-		"nguyenanhung/monitor": "Need support for Send Monitor Message to Monitor Service",
-		"nguyenanhung/markdown": "Parser for Markdown",
-		"nguyenanhung/basic-firewall": "PHP Basic Firewall - Library providing IP filtering features",
-		"nguyenanhung/google-recaptcha-helper": "Google reCAPTCHA Helper",
-		"nguyenanhung/dotenv": "PHP Dot ENV - Basic, Simple and Lightweight",
-		"bear8421/spreadsheets-basic": "Light, simple and standalone Google Spreadsheets Basic Connector",
-		"bear8421/gravatar": "Simple Gravatar",
-		"tramtro/make-some-noise": "Debug Library - Wrapper for Debug, OpCache, Test ENV"
-	},
-	"autoload": {
-		"psr-4": {
-			"nguyenanhung\\Classes\\Helper\\": "src/"
-		},
-		"files": [
-			"helpers/common_helper.php"
-		]
-	}
+    "name": "nguyenanhung/helpers",
+    "description": "Helper Wrapper - PHP Powerful library, helper and tools",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/nguyenanhung/helpers",
+    "authors": [
+        {
+            "name": "Nguyen An Hung",
+            "email": "dev@nguyenanhung.com",
+            "homepage": "https://nguyenanhung.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0 || ^7.0",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "nguyenanhung/array-helper": "^2.0 || ^1.0",
+        "nguyenanhung/base64-php-helper": "^2.0 || ^1.0",
+        "nguyenanhung/basic-miscellaneous-helper": "^2.0 || ^1.0",
+        "nguyenanhung/bool-type-helper": "^2.0 || ^1.0",
+        "nguyenanhung/bbcode-helper": "^2.0 || ^1.0",
+        "nguyenanhung/date-helper": "^2.0 || ^1.0",
+        "nguyenanhung/escape-helper": "^2.0 || ^1.0",
+        "nguyenanhung/email-helper": "^2.0 || ^1.0",
+        "nguyenanhung/encryption-helper": "^2.0 || ^1.0",
+        "nguyenanhung/filesystem-helper": "^2.0 || ^1.0",
+        "nguyenanhung/filtered-helper": "^2.0 || ^1.0",
+        "nguyenanhung/favicon-helper": "^2.0 || ^1.0",
+        "nguyenanhung/hashids-helper": "^2.0 || ^1.0",
+        "nguyenanhung/html-helper": "^2.0 || ^1.0",
+        "nguyenanhung/http-download-helper": "^2.0 || ^1.0",
+        "nguyenanhung/ip-helper": "^2.0 || ^1.0",
+        "nguyenanhung/is-empty-helper": "^2.0 || ^1.0",
+        "nguyenanhung/image-helper": "^2.0 || ^1.0",
+        "nguyenanhung/json-helper": "^2.0 || ^1.0",
+        "nguyenanhung/jwt-helper": "^2.0 || ^1.0",
+        "nguyenanhung/math-helper": "^2.0 || ^1.0",
+        "nguyenanhung/mobile-helper": "^2.0 || ^1.0",
+        "nguyenanhung/nanoid-helper": "^2.0 || ^1.0",
+        "nguyenanhung/number-helper": "^2.0 || ^1.0",
+        "nguyenanhung/password-helper": "^2.0 || ^1.0",
+        "nguyenanhung/slug-helper": "^3.0 || ^2.0 || ^1.0",
+        "nguyenanhung/string-helper": "^2.0 || ^1.0",
+        "nguyenanhung/simple-curl-request-helper": "^2.0 || ^1.0",
+        "nguyenanhung/tracking-tag-helper": "^2.0 || ^1.0",
+        "nguyenanhung/text-helper": "^2.0 || ^1.0",
+        "nguyenanhung/typography-helper": "^2.0 || ^1.0",
+        "nguyenanhung/uri-helper": "^2.0 || ^1.0",
+        "nguyenanhung/uuid-helper": "^2.0 || ^1.0",
+        "nguyenanhung/xml-helper": "^2.0 || ^1.0",
+        "nguyenanhung/xml2json-helper": "^2.0 || ^1.0",
+        "nguyenanhung/zip-helper": "^2.0 || ^1.0",
+        "nguyenanhung/php-cli-helper": ">=1.0",
+        "nguyenanhung/simple-php-30s-of-code": "^1.0",
+        "smart-bear-cms/external-cdn-url-optimize": ">=1.0"
+    },
+    "require-dev": {
+        "kint-php/kint": "^5 || ^4 || ^3 || ^2 || ^1"
+    },
+    "suggest": {
+        "ext-curl": "Needed to support cURL",
+        "ext-json": "Needed to support JSON",
+        "ext-mcrypt": "Needed to support mcrypt",
+        "ext-iconv": "Needed to support iconv",
+        "ext-openssl": "Needed to support openssl",
+        "ext-mbstring": "Needed to support mb_string",
+        "nguyenanhung/security": "Awesome Helpers - Wrapper for Security, Encrypt, Encode, Purifier",
+        "nguyenanhung/validation": "Awesome Validation - A fast, extensible & stand-alone PHP input validation class that allows you to validate any data",
+        "nguyenanhung/image": "Need support for Image Service",
+        "nguyenanhung/seo": "Need support for SEO",
+        "nguyenanhung/my-cache": "Need support for Powerful Cache Implement",
+        "nguyenanhung/my-debug": "Need support for Powerful Logger (Extend from Monolog)",
+        "nguyenanhung/requests": "Need support for Powerful HTTP Request",
+        "nguyenanhung/database": "Need support for Powerful SQL Database Tools (Customize Laravel Database)",
+        "nguyenanhung/monitor": "Need support for Send Monitor Message to Monitor Service",
+        "nguyenanhung/markdown": "Parser for Markdown",
+        "nguyenanhung/basic-firewall": "PHP Basic Firewall - Library providing IP filtering features",
+        "nguyenanhung/google-recaptcha-helper": "Google reCAPTCHA Helper",
+        "nguyenanhung/dotenv": "PHP Dot ENV - Basic, Simple and Lightweight",
+        "bear8421/spreadsheets-basic": "Light, simple and standalone Google Spreadsheets Basic Connector",
+        "bear8421/gravatar": "Simple Gravatar",
+        "tramtro/make-some-noise": "Debug Library - Wrapper for Debug, OpCache, Test ENV"
+    },
+    "autoload": {
+        "psr-4": {
+            "nguyenanhung\\Classes\\Helper\\": "src/"
+        },
+        "files": [
+            "helpers/common_helper.php"
+        ]
+    }
 }

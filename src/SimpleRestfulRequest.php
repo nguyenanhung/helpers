@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\SimpleRequestCurl\SimpleRestfulRequest as SimpleRequestRestfulCurlLib;
 
-if (!class_exists('nguyenanhung\Classes\Helper\SimpleRestfulRequest')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\SimpleRestfulRequest')) {
     class SimpleRestfulRequest extends SimpleRequestRestfulCurlLib implements ProjectInterface
     {
         use Version;

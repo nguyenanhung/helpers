@@ -9,7 +9,7 @@
 
 namespace nguyenanhung\Classes\Helper;
 
-if (!trait_exists('nguyenanhung\Classes\Helper\Version')) {
+if ( ! trait_exists('nguyenanhung\Classes\Helper\Version')) {
     /**
      * Trait Version
      *

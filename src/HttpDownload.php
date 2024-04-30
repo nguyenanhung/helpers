@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\HttpDownload\HttpDownload as LibrariesHttpDownload;
 
-if (!class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\HttpDownload')) {
     class HttpDownload extends LibrariesHttpDownload
     {
     }

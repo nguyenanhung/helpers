@@ -12,7 +12,7 @@ namespace nguyenanhung\Classes\Helper;
 
 use nguyenanhung\Libraries\DateAndTime\DateAndTime as BaseDateAndTime;
 
-if (!class_exists('nguyenanhung\Classes\Helper\DateAndTime')) {
+if ( ! class_exists('nguyenanhung\Classes\Helper\DateAndTime')) {
     /**
      * Class DateAndTime
      *
