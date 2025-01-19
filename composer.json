@@ -22,7 +22,7 @@
         "nguyenanhung/bool-type-helper": "^2.0 || ^1.0",
         "nguyenanhung/bbcode-helper": "^2.0 || ^1.0",
         "nguyenanhung/date-helper": "^2.0 || ^1.0",
-        "nguyenanhung/escape-helper": "^2.0 || ^1.0",
+        "nguyenanhung/escape-helper": "^3.0 || ^2.0 || ^1.0",
         "nguyenanhung/email-helper": "^2.0 || ^1.0",
         "nguyenanhung/encryption-helper": "^2.0 || ^1.0",
         "nguyenanhung/filesystem-helper": "^2.0 || ^1.0",
