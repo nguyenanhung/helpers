@@ -29,7 +29,7 @@
         "nguyenanhung/filtered-helper": "^2.0 || ^1.0",
         "nguyenanhung/favicon-helper": "^2.0 || ^1.0",
         "nguyenanhung/hashids-helper": "^2.0 || ^1.0",
-        "nguyenanhung/html-helper": "^2.0 || ^1.0",
+        "nguyenanhung/html-helper": "^3.0 || ^2.0 || ^1.0",
         "nguyenanhung/http-download-helper": "^2.0 || ^1.0",
         "nguyenanhung/ip-helper": "^2.0 || ^1.0",
         "nguyenanhung/is-empty-helper": "^2.0 || ^1.0",
